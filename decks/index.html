@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"> 
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
+  <script src="https://raw.github.com/allmarkedup/jQuery-URL-Parser/master/purl.js"></script>
+  <script type="text/javascript">
+  
+  function decode(str){
+	var key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
+	var result = 0
+	for(var i in str){
+		result <<= 6
+		result += key.indexOf(str.charAt(i))
+	}
+	return result
+  }
+  $(document).ready(function(){
+	$('#name').html($.url().param('name'))
+	var cards_encoded = $.url().param('cards')
+	for(var i=0; i<cards_encoded.length; i+=5){
+		var decoded = decode(cards_encoded.substr(i, 5))
+		var side = decoded >> 29
+		var count = decoded >> 27 & 0x3
+		var id = decoded & 0x07FFFFFF
+		$('#cards').append($('<dt />', {text: id}))
+		$('#cards').append($('<dd />', {text: count}))
+	}
+  })
+  </script>
+</head>
+<body>
+	<div id="name"></div>
+	<dl id="cards"></dl>
+</body>
+</html>
