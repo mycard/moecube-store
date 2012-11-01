@@ -31,6 +31,10 @@
 								count++
 							}else{
 								if(last_id){
+                                    var t = last_id | (side << 29) | (count << 27)
+                                    alert(t)
+                                    alert(encode(t))
+                                    alert('---')
 									result += encode(last_id | (side << 29) | (count << 27))
 								}
 								last_id = id

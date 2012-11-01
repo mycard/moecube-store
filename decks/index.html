@@ -1,37 +1,49 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="UTF-8"> 
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
-  <script src="https://raw.github.com/allmarkedup/jQuery-URL-Parser/master/purl.js"></script>
-  <script type="text/javascript">
-  
-  function decode(str){
-	var key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
-	var result = 0
-	for(var i in str){
-		result <<= 6
-		result += key.indexOf(str.charAt(i))
-	}
-	return result
-  }
-  $(document).ready(function(){
-	$('#name').html($.url().param('name'))
-	var cards_encoded = $.url().param('cards')
-	for(var i=0; i<cards_encoded.length; i+=5){
-		var decoded = decode(cards_encoded.substr(i, 5))
-		var side = decoded >> 29
-		var count = decoded >> 27 & 0x3
-		var id = decoded & 0x07FFFFFF
-		$('#cards').append($('<dt />', {text: id}))
-		$('#cards').append($('<dd />', {text: count}))
-	}
-  })
-  </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>mycard deck</title>
+    <meta name="description" content="mycard卡组编辑器">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="/assets/stylesheets/normalize.css">
+    <script src="/vendor/javascripts/modernizr-2.6.2.min.js"></script>
+
 </head>
 <body>
-	<div id="name"></div>
-	<dl id="cards"></dl>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<img id="qrcode" src="http://google.com/">
+<div id="name"></div>
+<dl id="cards">
+    <div id="card_template">
+        
+    </div>
+</dl>
+
+
+<script src="/vendor/javascripts/jquery-1.8.2.min.js"></script>
+<script src="/vendor/javascripts/jQuery-URL-Parser.js"></script>
+<script src="/vendor/javascripts/json2.js"></script>
+<script src="/vendor/javascripts/spine/spine.js"></script>
+<script src="/vendor/javascripts/spine/ajax.js"></script>
+<script src="/assets/javascripts/decks.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<!--<script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>-->
 </body>
 </html>
