@@ -118,7 +118,7 @@
     return result;
   };
 
-  $('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' + encodeURIComponent(location.href));
+  $('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(location.href));
 
   $('#name').html($.url().param('name'));
 
