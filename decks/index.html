@@ -35,7 +35,7 @@
 </head>
 <body>
 <div class="main_div line">
-    <div class="main_left floatleft line">
+    <div id="card" class="main_left floatleft line">
         <div id="card_name" class="card_name">第二型カトレア</div>
         <div class="card_img line floatleft">
             <img id="card_image" height="187px" width="130px" src="/assets/images/decks/24.jpg" alt="card_name"/>
@@ -84,11 +84,7 @@
                 </div>
             </div>
             <div class="statistics floatleft frame_element">
-                <div><label for="">卡片种族：</label>鸟兽</div>
-                <div><label for="">卡片种族：</label>鸟兽</div>
-                <div><label for="">卡片种族：</label>鸟兽</div>
             </div>
-            <!-- 修改 -->
             <div id="adjustment" class="adjustment floatleft frame_element card_frame_focus">
                 [第二型カトレア]BF－疾风のゲイル[10/08/07]<br/><br/><br/>
 
@@ -115,7 +111,6 @@
                 例：「神海龙
                 基希尔诺顿/神海竜ギシルノドン」2300/1800被这次效果把攻守『变成一半数值』1150/900后，场上表侧表示存在的3星以下的怪兽被送去墓地时自身效果发动，把攻击力『变成3000』3000/900，结束阶段时自身效果不再适用后是2300/900<br/>
             </div>
-            <!-- 修改 -->
         </div>
         <div class="floatleft bottom_area">
             <div class="bottom_button_active floatleft">效果</div>
@@ -187,6 +182,7 @@
 <script src="/vendor/javascripts/jQuery-URL-Parser.js"></script>
 <script src="/vendor/javascripts/jquery.tmpl.min.js"></script>
 <script src="/vendor/javascripts/jquery.mousewheel.js"></script>
+<script src="/vendor/javascripts/jquery.i18n.properties-min-1.0.9.js"></script>
 <script src="/vendor/javascripts/hScrollPane.js"></script>
 <script src="/vendor/javascripts/jscroll.js"></script>
 <script src="/vendor/javascripts/json2.js"></script>
@@ -194,12 +190,16 @@
 <script src="/vendor/javascripts/spine/ajax.js"></script>
 <script src="/vendor/javascripts/spine/relation.js"></script>
 
+<script src="/assets/javascripts/public.js"></script>
 <script src="/assets/javascripts/decks.js"></script>
-
-
 <script src="/assets/javascripts/public.js"></script>
 <script type="text/javascript">
-
+    jQuery.i18n.properties({
+        name: 'card',
+        path: '/locales/',
+        mode: 'map',
+        cache: true
+    });
 
     $(document).ready(function () {
         $("#more_info").jscroll({W:"12px", Btn:{btn:false}});

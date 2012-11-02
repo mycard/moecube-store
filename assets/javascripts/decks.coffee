@@ -47,7 +47,7 @@ class CardUsage extends Spine.Model
 
 class Deck extends Spine.Controller
   events: "mouseenter .card": "show"
-
+  key: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
   constructor: ->
     super
     CardUsage.bind("refresh change", @render)
@@ -55,39 +55,33 @@ class Deck extends Spine.Controller
     @html $("#card_template").tmpl(CardUsage.all())
   show: (e) ->
     card = $(e.target).tmplItem().data.card()
-    $("#card_image").attr 'src', "https://raw.github.com/zh99998/ygopro-images/master/#{card.id}.jpg"
+    $("#card_image").attr 'src', "http://images.my-card.in/#{card.id}.jpg"
     $("#card_name").html card.name
-    $("#card_card_type").html card.card_type.join('·')
-    $("#card_type").html card.type
-    $("#card_attribute").html card.attribute
-    $("#card_level").html card.level
-    $("#card_atk").html card.atk
-    $("#card_def").html card.def
+    $("#card_card_type").html ($.i18n.prop 'card_type.' + card_type for card_type in card.card_type).join('·')
+    $("#card_type").html if card.type then $.i18n.prop 'type.'+ card.type else ""
+    $("#card_attribute").html if card.attribute then $.i18n.prop 'attribute.' + card.attribute else ""
+    $("#card_level").html card.level if card.level
+    $("#card_atk").html card.atk || ""
+    $("#card_def").html card.def || ""
     $("#card_description").html card.description
-decode = (str)->
-	key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
-	result = 0
-	for char in str
-		result <<= 6
-		result += key.indexOf(char)
-	result
-
-name = $.url().param('name')
-cards_encoded = $.url().param('cards')
-$('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent("http://my-card.in/decks/?name=#{name}&cards=#{cards_encoded}"))
-$('#name').html(name)
+  parse: (str)->
+    card_usages = (for i in [0...str.length] by 5
+      decoded = 0
+      for char in str.substr(i, 5)
+        decoded = (decoded << 6) + @key.indexOf(char)
+      card_id = decoded & 0x07FFFFFF
+      side = decoded >> 29
+      count = decoded >> 27 & 0x3
+      {card_id: card_id, side: side, count: count}
+    )
+    Card.query {_id: { $in: card_usage.card_id for card_usage in card_usages}}, =>
+      CardUsage.refresh card_usages
 
 $(document).ready ->
-  deck = []
-  cards_id = []
-  for i in [0...cards_encoded.length] by 5
-    decoded = decode(cards_encoded.substr(i, 5))
-    side = decoded >> 29
-    count = decoded >> 27 & 0x3
-    id = decoded & 0x07FFFFFF
-    cards_id.push id
-    deck.push {card_id: id, count: count, side: side}
+  name = $.url().param('name')
+  cards_encoded = $.url().param('cards')
+  $('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent("http://my-card.in/decks/?name=#{name}&cards=#{cards_encoded}"))
+  $('#name').html(name)
 
-  a = new Deck(el: $("#deck"))
-  Card.query {_id: { $in: cards_id}}, =>
-    CardUsage.refresh deck
+  deck = new Deck(el: $("#deck"))
+  deck.parse cards_encoded
