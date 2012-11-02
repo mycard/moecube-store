@@ -74,7 +74,7 @@ decode = (str)->
 
 name = $.url().param('name')
 cards_encoded = $.url().param('cards')
-$('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent("http://my-card.in/decks/inline?name=#{name}&cards=#{cards_encoded}"))
+$('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent("http://my-card.in/decks/?name=#{name}&cards=#{cards_encoded}"))
 $('#name').html(name)
 
 $(document).ready ->
