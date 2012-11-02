@@ -6,21 +6,30 @@ class Card extends Spine.Model
   @url: "https://api.mongolab.com/api/1/databases/mycard/collections/cards?apiKey=508e5726e4b0c54ca4492ead"
   @locale_url: "https://api.mongolab.com/api/1/databases/mycard/collections/lang_#{locale}?apiKey=508e5726e4b0c54ca4492ead"
   @query: (q, callback)->
-    $.getJSON "#{@url}&q=#{JSON.stringify(q)}", (cards) ->
+    $.getJSON "#{@url}&q=#{JSON.stringify(q)}", (cards) =>
       cards_id = (card._id for card in cards)
-      $.getJSON "#{Card.locale_url}&q=#{JSON.stringify({_id: { $in: cards_id}})}", (langs) ->
-        @model.refresh (new Card(lang) for lang in langs
-          id = lang["id"] = lang["_id"]
+      $.getJSON "#{@locale_url}&q=#{JSON.stringify({_id: { $in: cards_id}})}", (langs) =>
+        cards = (for lang in langs
+          id = lang.id = lang._id
           for card in cards
-            if card["_id"] == id
+            if card._id == id
               $.extend(lang, card)
               break
+          lang
         )
+        @refresh cards
+        callback(cards)
 
 class CardUsage extends Spine.Model
   @configure "CardUsage", "card_id", "count", "side"
+  @belongsTo 'card', Card
 
-
+class Deck extends Spine.Controller
+  constructor: ->
+    super
+    CardUsage.bind("refresh change", @render)
+  render: =>
+    @html $("#card_template").tmpl(CardUsage.all())
 
 decode = (str)->
 	key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
@@ -42,9 +51,9 @@ for i in [0...cards_encoded.length] by 5
   count = decoded >> 27 & 0x3
   id = decoded & 0x07FFFFFF
   cards_id.push id
-  deck.push<< {card_id: id, count: count, side: side}
+  deck.push {card_id: id, count: count, side: side}
   $('#cards').append($('<dt />', {text: id}))
   $('#cards').append($('<dd />', {text: count}))
-
-Card.query {_id: { $in: cards_id}}
-Card.bind "refresh",
+a = new Deck(el: $("#deck"))
+Card.query {_id: { $in: cards_id}}, =>
+  CardUsage.refresh deck
