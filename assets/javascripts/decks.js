@@ -15,7 +15,13 @@
       return Card.__super__.constructor.apply(this, arguments);
     }
 
-    Card.configure("Card", "atk", "name");
+    Card.types = ['Warrior', 'Spellcaster', 'Fairy', 'Fiend', 'Zombie', 'Machine', 'Aqua', 'Pyro', 'Rock', 'Winged_Beast', 'Plant', 'Insect', 'Thunder', 'Dragon', 'Beast', 'Beast-Warrior', 'Dinosaur', 'Fish', 'Sea_Serpent', 'Reptile', 'Psychic', 'Divine-Beast', 'Creator_God'];
+
+    Card._attributes = ['EARTH', 'WATER', 'FIRE', 'WIND', 'LIGHT', 'DARK', 'DIVINE'];
+
+    Card.card_types = ['Monster', 'Spell', 'Trap', null, 'Normal', 'Effect', 'Fusion', 'Ritual', null, 'Spirit', 'Union', 'Gemini', 'Tuner', 'Synchro', null, null, 'Quick-Play', 'Continuous', 'Equip', 'Field', 'Counter', 'Flip', 'Toon', 'Xyz'];
+
+    Card.configure('Card', 'id', 'name', 'card_type', 'type', 'attribute', 'level', 'atk', 'def', 'description');
 
     Card.extend(Spine.Model.Ajax);
 
@@ -43,24 +49,56 @@
             $in: cards_id
           }
         })), function(langs) {
-          var id, lang;
+          var card_type, i, lang;
           cards = (function() {
             var _i, _j, _len, _len1, _results;
             _results = [];
             for (_i = 0, _len = langs.length; _i < _len; _i++) {
               lang = langs[_i];
-              id = lang.id = lang._id;
               for (_j = 0, _len1 = cards.length; _j < _len1; _j++) {
                 card = cards[_j];
-                if (card._id === id) {
+                if (card._id === lang._id) {
                   $.extend(lang, card);
                   break;
                 }
               }
-              _results.push(lang);
+              card_type = [];
+              i = 0;
+              while (lang.type) {
+                if (lang.type & 1) {
+                  card_type.push(this.card_types[i]);
+                }
+                lang.type >>= 1;
+                i++;
+              }
+              _results.push({
+                id: card._id,
+                name: lang.name,
+                card_type: card_type,
+                type: lang.race ? (i = 0, (function() {
+                  var _results1;
+                  _results1 = [];
+                  while (!(lang.race >> i & 1)) {
+                    _results1.push(i++);
+                  }
+                  return _results1;
+                })(), this.types[i]) : void 0,
+                attribute: lang.attribute ? (i = 0, (function() {
+                  var _results1;
+                  _results1 = [];
+                  while (!(lang.attribute >> i & 1)) {
+                    _results1.push(i++);
+                  }
+                  return _results1;
+                })(), this._attributes[i]) : void 0,
+                level: card.level,
+                atk: card.atk,
+                def: card.def,
+                description: lang.desc
+              });
             }
             return _results;
-          })();
+          }).call(_this);
           _this.refresh(cards);
           return callback(cards);
         });
@@ -109,7 +147,14 @@
       var card;
       card = $(e.target).tmplItem().data.card();
       $("#card_image").attr('src', "https://raw.github.com/zh99998/ygopro-images/master/" + card.id + ".jpg");
-      return $("#card_name").html(card.name);
+      $("#card_name").html(card.name);
+      $("#card_card_type").html(card.card_type.join('·'));
+      $("#card_type").html(card.type);
+      $("#card_attribute").html(card.attribute);
+      $("#card_level").html(card.level);
+      $("#card_atk").html(card.atk);
+      $("#card_def").html(card.def);
+      return $("#card_description").html(card.description);
     };
 
     return Deck;

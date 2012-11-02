@@ -1,31 +1,9 @@
 locale = 'zh'
 class Card extends Spine.Model
-  @type = [
-    'Warrior',
-    'Spellcaster',
-    'Fairy',
-    'Fiend',
-    'Zombie',
-    'Machine',
-    'Aqua',
-    'Pyro',
-    'Rock',
-    'Winged_Beast',
-    'Plant',
-    'Insect',
-    'Thunder',
-    'Dragon',
-    'Beast',
-    'Beast-Warrior',
-    'Dinosaur',
-    'Fish',
-    'Sea_Serpent',
-    'Reptile',
-    'Psychic',
-    'Divine-Beast',
-    'Creator_God'
-  ]
-  @configure "Card", "atk", "name"
+  @types = ['Warrior','Spellcaster','Fairy','Fiend','Zombie','Machine','Aqua','Pyro','Rock','Winged_Beast','Plant','Insect','Thunder','Dragon','Beast','Beast-Warrior','Dinosaur','Fish','Sea_Serpent','Reptile','Psychic','Divine-Beast','Creator_God']
+  @_attributes = ['EARTH','WATER','FIRE','WIND','LIGHT','DARK','DIVINE']
+  @card_types = ['Monster', 'Spell','Trap',null,'Normal','Effect','Fusion','Ritual',null, 'Spirit','Union','Gemini','Tuner','Synchro',null,null,'Quick-Play','Continuous','Equip','Field','Counter','Flip','Toon','Xyz']
+  @configure 'Card', 'id', 'name', 'card_type', 'type','attribute','level','atk','def','description'
   @extend Spine.Model.Ajax
   @extend Spine.Events
   @url: "https://api.mongolab.com/api/1/databases/mycard/collections/cards?apiKey=508e5726e4b0c54ca4492ead"
@@ -35,12 +13,30 @@ class Card extends Spine.Model
       cards_id = (card._id for card in cards)
       $.getJSON "#{@locale_url}&q=#{JSON.stringify({_id: { $in: cards_id}})}", (langs) =>
         cards = (for lang in langs
-          id = lang.id = lang._id
           for card in cards
-            if card._id == id
+            if card._id == lang._id
               $.extend(lang, card)
               break
-          lang
+
+          card_type = []
+          i=0
+          while lang.type
+            if lang.type & 1
+              card_type.push @card_types[i]
+            lang.type >>= 1
+            i++
+
+          {
+            id: card._id,
+            name: lang.name,
+            card_type: card_type,
+            type: (i=0; (i++ until lang.race >> i & 1); @types[i]) if lang.race
+            attribute: (i = 0; (i++ until lang.attribute >> i & 1); @_attributes[i]) if lang.attribute
+            level: card.level
+            atk: card.atk
+            def: card.def
+            description: lang.desc
+          }
         )
         @refresh cards
         callback(cards)
@@ -61,6 +57,13 @@ class Deck extends Spine.Controller
     card = $(e.target).tmplItem().data.card()
     $("#card_image").attr 'src', "https://raw.github.com/zh99998/ygopro-images/master/#{card.id}.jpg"
     $("#card_name").html card.name
+    $("#card_card_type").html card.card_type.join('·')
+    $("#card_type").html card.type
+    $("#card_attribute").html card.attribute
+    $("#card_level").html card.level
+    $("#card_atk").html card.atk
+    $("#card_def").html card.def
+    $("#card_description").html card.description
 decode = (str)->
 	key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
 	result = 0

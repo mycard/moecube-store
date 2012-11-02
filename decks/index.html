@@ -26,7 +26,7 @@
 
     <script id="card_template" type="text/x-jquery-tmpl">
         <p id="deck_{{if side}}side{{else}}main{{/if}}_${card_id}">
-            <span class="card">${$data.card().name}</span>
+            <span class="card ${$data.card().card_type.join(' ')}">${$data.card().name}</span>
             <i>${count}</i>
         </p>
     </script>
@@ -42,20 +42,21 @@
         </div>
         <div class="card_info floatleft">
             <div class="attr_name floatleft">卡片种族：</div>
-            <div class="attr_real floatleft">鸟兽</div>
+            <div id="card_type" class="attr_real floatleft">鸟兽</div>
             <div class="attr_name floatleft">卡片属性：</div>
-            <div class="attr_real floatleft">暗</div>
+            <div id="card_attribute" class="attr_real floatleft">暗</div>
             <div class="attr_name floatleft">卡片类别：</div>
-            <div class="attr_real floatleft">效果·调整</div>
+            <div id="card_card_type" class="attr_real floatleft">效果·调整</div>
             <div class="attr_name floatleft">攻击力：</div>
-            <div class="attr_real floatleft">1300</div>
+            <div id="card_atk" class="attr_real floatleft">1300</div>
             <div class="attr_name floatleft">防御力：</div>
-            <div class="attr_real floatleft">400</div>
+            <div id="card_def" class="attr_real floatleft">400</div>
             <div class="attr_name floatleft">星级等阶：</div>
-            <div class="attr_real floatleft">3 ☆</div>
+            <div id="card_level" class="attr_real floatleft">3 ☆</div>
         </div>
         <div class="card_frame floatleft">
             <div id="more_info" class="more_info floatleft frame_element card_frame_focus">
+                <div id="card_description">
                 [黑羽-疾风之盖尔]BF－疾风のゲイル[10/08/07]<br/><br/><br/>
 
                 ●自己场上有「黑羽-疾风之盖尔/BF－疾风のゲイル」以外的名字带有「黑羽/BF」的怪兽存在的场合，这张卡可以从手卡特殊召唤。<br/>
@@ -80,6 +81,7 @@
                 ◇被这次效果把攻守变成一半的怪兽用新发动（进入连锁）的「电子魔术师/サイバネティック·マジシャン」「收缩/収缩」等暂时系『变成～』效果再次影响攻守的场合，受影响部分的『变成一半数值』消失，等其效果不适用后也不会自动变回刚被这次效果变成一半时的数值<br/>
                 例：「神海龙
                 基希尔诺顿/神海竜ギシルノドン」2300/1800被这次效果把攻守『变成一半数值』1150/900后，场上表侧表示存在的3星以下的怪兽被送去墓地时自身效果发动，把攻击力『变成3000』3000/900，结束阶段时自身效果不再适用后是2300/900<br/>
+                </div>
             </div>
             <div class="statistics floatleft frame_element">
                 <div><label for="">卡片种族：</label>鸟兽</div>
