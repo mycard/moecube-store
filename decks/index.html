@@ -10,8 +10,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>mycard deck</title>
-    <meta name="description" content="mycard卡组编辑器">
+    <title>mycard deck builder</title>
+    <meta name="description" content="mycard卡组编辑">
     <!--<meta name="viewport" content="width=device-width">-->
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -25,97 +25,113 @@
     <script src="/vendor/javascripts/less-1.3.1.min.js"></script>
 
     <script id="card_template" type="text/x-jquery-tmpl">
+        <div id="card_name" class="card_name">${name}</div>
+        <div class="card_img line floatleft">
+            <img id="card_image" height="187px" width="130px" src="http://images.my-card.in/${id}.jpg" alt="card_name"/>
+        </div>
+        <div class="card_info floatleft">
+            <div id="card_card_type_title" class="attr_name floatleft">${$.i18n.prop('card_type')}</div>
+            <div id="card_card_type" class="attr_real floatleft">${card_type}</div>
+            {{if type}}
+            <div id="card_type_title" class="attr_name floatleft">${$.i18n.prop('type')}</div>
+            <div id="card_type" class="attr_real floatleft">${$.i18n.prop('type.'+type)}</div>
+            <div id="card_attribute_title" class="attr_name floatleft">${$.i18n.prop('attribute')}</div>
+            <div id="card_attribute" class="attr_real floatleft">${$.i18n.prop('attribute.'+attribute)}</div>
+            <div id="card_level_title" class="attr_name floatleft">${$.i18n.prop('level')}</div>
+            <div id="card_level" class="attr_real floatleft">${level}</div>
+            <div id="card_atk_title" class="attr_name floatleft">${$.i18n.prop('atk')}</div>
+            <div id="card_atk" class="attr_real floatleft">${atk}</div>
+            <div id="card_def_title" class="attr_name floatleft">${$.i18n.prop('def')}</div>
+            <div id="card_def" class="attr_real floatleft">${def}</div>
+            {{/if}}
+        </div>
+        <div class="card_frame floatleft">
+            <div id="card_description" class="more_info floatleft frame_element">
+                ${description}
+            </div>
+            <div id="card_adjustment" class="adjustment floatleft frame_element">
+                建设中
+                under construction
+            </div>
+            <div id="card_statistics" class="card_statistics floatleft frame_element">
+                建设中
+                under construction
+            </div>
+        </div>
+        <div class="floatleft bottom_area">
+            <div id="card_description_title" class="bottom_button floatleft">效果</div>
+            <div id="card_adjustment_title" class="bottom_button floatleft">调整</div>
+            <div id="card_statistics_title" class="bottom_button floatleft">统计</div>
+        </div>
+    </script>
+
+    <script id="card_usage_template" type="text/x-jquery-tmpl">
         <p id="deck_{{if side}}side{{else}}main{{/if}}_${card_id}">
             <span class="card ${$data.card().card_type.join(' ')}">${$data.card().name}</span>
             <i>${count}</i>
         </p>
     </script>
 
-
+    <script id="deck_template" type="text/x-jquery-tmpl">
+        <fieldset id="deck_main">
+            <legend id="deck_main_title" class="deck_title main">主卡组
+                <small>(${main_count}:
+                    {{each category_count}}
+                    <span class="deck_category_count ${$index}">${$value}</span>{{/each}})
+                </small>
+            </legend>
+            {{tmpl(main) "#card_usage_template"}}
+        </fieldset>
+        <fieldset id="deck_side">
+            <legend id="deck_side_title" class="deck_title main">副卡组
+                <small>(${side_count})</small>
+            </legend>
+            {{tmpl(side) "#card_usage_template"}}
+        </fieldset>
+        <fieldset id="deck_extra">
+            <legend id="deck_extra_title" class="deck_title main">额外卡组
+                <small>(${extra_count})</small>
+            </legend>
+            {{tmpl(extra) "#card_usage_template"}}
+        </fieldset>
+    </script>
 </head>
 <body>
 <div class="main_div line">
     <div id="card" class="main_left floatleft line">
-        <div id="card_name" class="card_name">第二型カトレア</div>
+        <div class="card_name">Mycard 卡组编辑器</div>
         <div class="card_img line floatleft">
-            <img id="card_image" height="187px" width="130px" src="/assets/images/decks/24.jpg" alt="card_name"/>
+            <img height="187px" width="130px" src="/assets/images/decks/card.jpg" alt="card_name"/>
         </div>
         <div class="card_info floatleft">
-            <div class="attr_name floatleft">卡片种族：</div>
-            <div id="card_type" class="attr_real floatleft">鸟兽</div>
-            <div class="attr_name floatleft">卡片属性：</div>
-            <div id="card_attribute" class="attr_real floatleft">暗</div>
-            <div class="attr_name floatleft">卡片类别：</div>
-            <div id="card_card_type" class="attr_real floatleft">效果·调整</div>
-            <div class="attr_name floatleft">攻击力：</div>
-            <div id="card_atk" class="attr_real floatleft">1300</div>
-            <div class="attr_name floatleft">防御力：</div>
-            <div id="card_def" class="attr_real floatleft">400</div>
-            <div class="attr_name floatleft">星级等阶：</div>
-            <div id="card_level" class="attr_real floatleft">3 ☆</div>
+            <div class="attr_real floatleft">(」・ω・)」</div>
+            <div class="attr_name floatleft">呜！</div>
+            <div class="attr_real floatleft">(／・ω・)／</div>
+            <div class="attr_name floatleft">喵！</div>
+            <div class="attr_real floatleft">(」・ω・)」</div>
+            <div class="attr_name floatleft">呜！</div>
+            <div class="attr_real floatleft">(／・ω・)／</div>
+            <div class="attr_name floatleft">喵！</div>
+            <div class="attr_name floatleft"></div>
+            <div class="attr_real floatleft">世界已完蛋</div>
         </div>
         <div class="card_frame floatleft">
-            <div id="more_info" class="more_info floatleft frame_element card_frame_focus">
-                <div id="card_description">
-                [黑羽-疾风之盖尔]BF－疾风のゲイル[10/08/07]<br/><br/><br/>
-
-                ●自己场上有「黑羽-疾风之盖尔/BF－疾风のゲイル」以外的名字带有「黑羽/BF」的怪兽存在的场合，这张卡可以从手卡特殊召唤。<br/>
-                ◇无种类效果（不进入连锁）<br/>
-                ◇自己场上有「黑羽-疾风之盖尔/BF－疾风のゲイル」和「黑羽-疾风之盖尔/BF－疾风のゲイル」以外的名字带有「黑羽/BF」的怪兽同时存在的场合，这张卡可以从手卡特殊召唤。<br/>
-                ●1回合1次，可以把1只对方怪兽的攻击力·守备力变成一半数值。<br/>
-                ◇起动效果（进入连锁）<br/>
-                ◇发动时选择对方场上表侧表示存在的1只怪兽（取对象）<br/>
-                ◇可以选择攻击力或者守备力为0的怪兽为对象<br/>
-                ◇变化的数值无时间限制<br/>
-                ◇被这次效果变成一半前已存在的效果无法再影响那只怪兽的攻守（「魔导战士 破坏者/魔导戦士
-                ブレイカー」「白骨王/ワイトキング」「无限恐龙/ディノインフィニティ」「变形斗士·无线电/D·ラジオン」「团结之力/団结の力」「两件套工具D&C/ダブルツールD&C」等）<br/>
-                ◇被这次效果变成一半前已存在的效果失效后攻守仍保持刚被这次效果变成一半时的数值<br/>
-                ◇「邪神 神之化身/邪神アバター」的永续效果改变自身攻守后，被这次效果把攻守变成一半的场合，「邪神 神之化身/邪神アバター」的永续效果会再影响自身攻守<br/>
-                ◇「邪神 恐惧之源/邪神ドレッド·ルート」适用中，攻守先被「邪神 恐惧之源/邪神ドレッド·ルート」变成一半，变成一半的数值被「黑色花园/ブラック·ガーデン」再变成一半，变成一半的一半的数值最后被「邪神
-                恐惧之源/邪神ドレッド·ルート」再再变成一半，结果是原来的八分之一<br/>
-                ◇被这次效果把攻守变成一半的怪兽用新发动（进入连锁）的「巨大化/巨大化」等永续系『变成～』效果再次影响攻守的场合，攻守仍是被这次效果变成一半时的数值<br/>
-                ◇被这次效果把攻守变成一半的怪兽用新发动（进入连锁）的「进化的人类/进化する人类」等影响原本攻守的场合，攻击力会由于「进化的人类/进化する人类」的效果变成1000或者2400<br/>
-                ◇「进化的人类/进化する人类」适用后把攻击力变成2400，被这个效果变成一半后，「进化的人类/进化する人类」的效果无法再影响那只怪兽的攻守<br/>
-                ◇「暗黑地带/ダークゾーン」效果适用时，这张卡将「混沌幻影/ファントム·オブ·カオス」攻击力·守备力变成一半数值后，下个回合中「混沌幻影/ファントム·オブ·カオス」效果发动的场合，攻击力变成复制怪兽攻击力+250的数值<br/>
-                ◇因这张卡攻击力变成了一半的怪兽进行战斗伤害计算时，那只怪兽的控制者从手卡发动「守卫竹篱/ガード·ヘッジ」的场合，那只怪兽攻击力变成四分之一，其效果不适用后变回一半<br/>
-                ◇被这次效果把攻守变成一半的怪兽用新发动（进入连锁）的「电子魔术师/サイバネティック·マジシャン」「收缩/収缩」等暂时系『变成～』效果再次影响攻守的场合，受影响部分的『变成一半数值』消失，等其效果不适用后也不会自动变回刚被这次效果变成一半时的数值<br/>
-                例：「神海龙
-                基希尔诺顿/神海竜ギシルノドン」2300/1800被这次效果把攻守『变成一半数值』1150/900后，场上表侧表示存在的3星以下的怪兽被送去墓地时自身效果发动，把攻击力『变成3000』3000/900，结束阶段时自身效果不再适用后是2300/900<br/>
+            <div class="more_info floatleft frame_element card_frame_focus">
+                <div>
+                    这是一个卡组编辑器<br/>
+                    this is a deck builder
                 </div>
             </div>
             <div class="statistics floatleft frame_element">
-            </div>
-            <div id="adjustment" class="adjustment floatleft frame_element card_frame_focus">
-                [第二型カトレア]BF－疾风のゲイル[10/08/07]<br/><br/><br/>
-
-                ●自己场上有「黑羽-疾风之盖尔/BF－疾风のゲイル」以外的名字带有「黑羽/BF」的怪兽存在的场合，这张卡可以从手卡特殊召唤。<br/>
-                ◇无种类效果（不进入连锁）<br/>
-                ◇自己场上有「黑羽-疾风之盖尔/BF－疾风のゲイル」和「黑羽-疾风之盖尔/BF－疾风のゲイル」以外的名字带有「黑羽/BF」的怪兽同时存在的场合，这张卡可以从手卡特殊召唤。<br/>
-                ●1回合1次，可以把1只对方怪兽的攻击力·守备力变成一半数值。<br/>
-                ◇起动效果（进入连锁）<br/>
-                ◇发动时选择对方场上表侧表示存在的1只怪兽（取对象）<br/>
-                ◇可以选择攻击力或者守备力为0的怪兽为对象<br/>
-                ◇变化的数值无时间限制<br/>
-                ◇被这次效果变成一半前已存在的效果无法再影响那只怪兽的攻守（「魔导战士 破坏者/魔导戦士
-                ブレイカー」「白骨王/ワイトキング」「无限恐龙/ディノインフィニティ」「变形斗士·无线电/D·ラジオン」「团结之力/団结の力」「两件套工具D&C/ダブルツールD&C」等）<br/>
-                ◇被这次效果变成一半前已存在的效果失效后攻守仍保持刚被这次效果变成一半时的数值<br/>
-                ◇「邪神 神之化身/邪神アバター」的永续效果改变自身攻守后，被这次效果把攻守变成一半的场合，「邪神 神之化身/邪神アバター」的永续效果会再影响自身攻守<br/>
-                ◇「邪神 恐惧之源/邪神ドレッド·ルート」适用中，攻守先被「邪神 恐惧之源/邪神ドレッド·ルート」变成一半，变成一半的数值被「黑色花园/ブラック·ガーデン」再变成一半，变成一半的一半的数值最后被「邪神
-                恐惧之源/邪神ドレッド·ルート」再再变成一半，结果是原来的八分之一<br/>
-                ◇被这次效果把攻守变成一半的怪兽用新发动（进入连锁）的「巨大化/巨大化」等永续系『变成～』效果再次影响攻守的场合，攻守仍是被这次效果变成一半时的数值<br/>
-                ◇被这次效果把攻守变成一半的怪兽用新发动（进入连锁）的「进化的人类/进化する人类」等影响原本攻守的场合，攻击力会由于「进化的人类/进化する人类」的效果变成1000或者2400<br/>
-                ◇「进化的人类/进化する人类」适用后把攻击力变成2400，被这个效果变成一半后，「进化的人类/进化する人类」的效果无法再影响那只怪兽的攻守<br/>
-                ◇「暗黑地带/ダークゾーン」效果适用时，这张卡将「混沌幻影/ファントム·オブ·カオス」攻击力·守备力变成一半数值后，下个回合中「混沌幻影/ファントム·オブ·カオス」效果发动的场合，攻击力变成复制怪兽攻击力+250的数值<br/>
-                ◇因这张卡攻击力变成了一半的怪兽进行战斗伤害计算时，那只怪兽的控制者从手卡发动「守卫竹篱/ガード·ヘッジ」的场合，那只怪兽攻击力变成四分之一，其效果不适用后变回一半<br/>
-                ◇被这次效果把攻守变成一半的怪兽用新发动（进入连锁）的「电子魔术师/サイバネティック·マジシャン」「收缩/収缩」等暂时系『变成～』效果再次影响攻守的场合，受影响部分的『变成一半数值』消失，等其效果不适用后也不会自动变回刚被这次效果变成一半时的数值<br/>
-                例：「神海龙
-                基希尔诺顿/神海竜ギシルノドン」2300/1800被这次效果把攻守『变成一半数值』1150/900后，场上表侧表示存在的3星以下的怪兽被送去墓地时自身效果发动，把攻击力『变成3000』3000/900，结束阶段时自身效果不再适用后是2300/900<br/>
+                数据来源: ygopro<br/>
+                内容许可: CC-BY-SA-NC<br/>
+                源码许可: GNU GPL v3<br/>
+                项目主页: github.com/zh99998/mycard
             </div>
         </div>
         <div class="floatleft bottom_area">
-            <div class="bottom_button_active floatleft">效果</div>
-            <div class="bottom_button floatleft">统计</div>
-            <div class="bottom_button floatleft">调整</div>
+            <div class="bottom_button_active floatleft">简介</div>
+            <div class="bottom_button floatleft">关于</div>
         </div>
     </div>
     <div class="main_right floatleft line">
@@ -142,38 +158,12 @@
                     <img class="save_ope" src="/assets/images/decks/save.png" alt="" title="保存"/>
                 </div>
             </div>
-            <fieldset>
-                <legend>卡组信息</legend>
-                <div id="card_group" class="card_group">
-                    <div id="deck">
-                        <h4>主卡组（10）</h4>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <h4>主卡组（10）</h4>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                        <p><span>第二型カトレア</span><i>5</i></p>
-                    </div>
+
+            <div id="card_group" class="card_group">
+                <div id="deck">
+                    <p>Loading...</p>
                 </div>
-            </fieldset>
+            </div>
         </div>
     </div>
 </div>
@@ -195,10 +185,10 @@
 <script src="/assets/javascripts/public.js"></script>
 <script type="text/javascript">
     jQuery.i18n.properties({
-        name: 'card',
-        path: '/locales/',
-        mode: 'map',
-        cache: true
+        name:'card',
+        path:'/locales/',
+        mode:'map',
+        cache:true
     });
 
     $(document).ready(function () {
@@ -206,17 +196,17 @@
         $("#adjustment").jscroll({W:"12px", Btn:{btn:false}}).removeClass("card_frame_focus");
         $("#card_group").jscroll({W:"12px", Btn:{btn:false}});
 
-        $(".main_area").hScrollPane({
+        /*$(".main_area").hScrollPane({
 
-            mover:".press", //指定container对象下的哪个元素需要滚动位置 | 必传项;
-            //showArrow:true, //指定是否显示左右箭头，默认不显示 | 可选项;
-            //moverW:function(){return $(".press").width();}(), //传入水平滚动对象的长度值,不传入的话默认直接获取mover的宽度值 | 可选项;
-            //handleMinWidth:100,//指定handle的最小宽度,要固定handle的宽度请在css中设定handle的width属性（如 width:28px!important;），不传入则不设定最小宽度 | 可选项;
-            //dragable:true, //指定是否要支持拖动效果，默认可以拖动 | 可选项;
-            //easing:true, //滚动是否需要滑动效果,默认有滑动效果 | 可选项;
-            handleCssAlter:"draghandlealter", //指定拖动鼠标时滚动条的样式，不传入该参数则没有变化效果 | 可选项;
-            mousewheel:{bind:false, moveLength:500} //mousewheel: bind->'true',绑定mousewheel事件; ->'false',不绑定mousewheel事件；moveLength是指定鼠标滚动一次移动的距离,默认值：{bind:true,moveLength:300} | 可选项;
-        });
+         mover:".press", //指定container对象下的哪个元素需要滚动位置 | 必传项;
+         //showArrow:true, //指定是否显示左右箭头，默认不显示 | 可选项;
+         //moverW:function(){return $(".press").width();}(), //传入水平滚动对象的长度值,不传入的话默认直接获取mover的宽度值 | 可选项;
+         //handleMinWidth:100,//指定handle的最小宽度,要固定handle的宽度请在css中设定handle的width属性（如 width:28px!important;），不传入则不设定最小宽度 | 可选项;
+         //dragable:true, //指定是否要支持拖动效果，默认可以拖动 | 可选项;
+         //easing:true, //滚动是否需要滑动效果,默认有滑动效果 | 可选项;
+         handleCssAlter:"draghandlealter", //指定拖动鼠标时滚动条的样式，不传入该参数则没有变化效果 | 可选项;
+         mousewheel:{bind:false, moveLength:500} //mousewheel: bind->'true',绑定mousewheel事件; ->'false',不绑定mousewheel事件；moveLength是指定鼠标滚动一次移动的距离,默认值：{bind:true,moveLength:300} | 可选项;
+         });*/
     });
 
 

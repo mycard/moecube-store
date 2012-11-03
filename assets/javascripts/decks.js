@@ -3,7 +3,8 @@
   var Card, CardUsage, Deck, locale,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   locale = 'zh';
 
@@ -20,6 +21,10 @@
     Card._attributes = ['EARTH', 'WATER', 'FIRE', 'WIND', 'LIGHT', 'DARK', 'DIVINE'];
 
     Card.card_types = ['Monster', 'Spell', 'Trap', null, 'Normal', 'Effect', 'Fusion', 'Ritual', null, 'Spirit', 'Union', 'Gemini', 'Tuner', 'Synchro', null, null, 'Quick-Play', 'Continuous', 'Equip', 'Field', 'Counter', 'Flip', 'Toon', 'Xyz'];
+
+    Card.categories = ['Monster', 'Spell', 'Trap'];
+
+    Card.card_types_extra = ['Fusion', 'Synchro', 'Xyz'];
 
     Card.configure('Card', 'id', 'name', 'card_type', 'type', 'attribute', 'level', 'atk', 'def', 'description');
 
@@ -142,32 +147,73 @@
     }
 
     Deck.prototype.render = function() {
-      return this.html($("#card_template").tmpl(CardUsage.all()));
+      var category, category_count, extra, extra_count, main, main_count, side, side_count, _i, _len, _ref;
+      main = [];
+      side = [];
+      extra = [];
+      main_count = 0;
+      side_count = 0;
+      extra_count = 0;
+      category_count = {};
+      _ref = Card.categories;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        category = _ref[_i];
+        category_count[category] = 0;
+      }
+      CardUsage.each(function(card_usage) {
+        var card, card_type;
+        card = card_usage.card();
+        if (card_usage.side) {
+          side.push(card_usage);
+          return side_count += card_usage.count;
+        } else if (((function() {
+          var _j, _len1, _ref1, _results;
+          _ref1 = card.card_type;
+          _results = [];
+          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+            card_type = _ref1[_j];
+            if (__indexOf.call(Card.card_types_extra, card_type) >= 0) {
+              _results.push(card_type);
+            }
+          }
+          return _results;
+        })()).length) {
+          extra.push(card_usage);
+          return extra_count += card_usage.count;
+        } else {
+          main.push(card_usage);
+          main_count += card_usage.count;
+          return category_count[((function() {
+            var _j, _len1, _ref1, _results;
+            _ref1 = card.card_type;
+            _results = [];
+            for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+              category = _ref1[_j];
+              if (__indexOf.call(Card.categories, category) >= 0) {
+                _results.push(category);
+              }
+            }
+            return _results;
+          })()).pop()] += card_usage.count;
+        }
+      });
+      return this.html($("#deck_template").tmpl({
+        main: main,
+        side: side,
+        extra: extra,
+        main_count: main_count,
+        side_count: side_count,
+        extra_count: extra_count,
+        category_count: category_count
+      }));
     };
 
     Deck.prototype.show = function(e) {
-      var card, card_type;
+      var card;
       card = $(e.target).tmplItem().data.card();
-      $("#card_image").attr('src', "http://images.my-card.in/" + card.id + ".jpg");
-      $("#card_name").html(card.name);
-      $("#card_card_type").html(((function() {
-        var _i, _len, _ref, _results;
-        _ref = card.card_type;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          card_type = _ref[_i];
-          _results.push($.i18n.prop('card_type.' + card_type));
-        }
-        return _results;
-      })()).join('·'));
-      $("#card_type").html(card.type ? $.i18n.prop('type.' + card.type) : "");
-      $("#card_attribute").html(card.attribute ? $.i18n.prop('attribute.' + card.attribute) : "");
-      if (card.level) {
-        $("#card_level").html(card.level);
-      }
-      $("#card_atk").html(card.atk || "");
-      $("#card_def").html(card.def || "");
-      return $("#card_description").html(card.description);
+      $('#card').removeClass(Card.card_types.join(' '));
+      $('#card').html($("#card_template").tmpl(card));
+      return $('#card').addClass(card.card_type.join(' '));
     };
 
     Deck.prototype.parse = function(str) {

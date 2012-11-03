@@ -3,6 +3,8 @@ class Card extends Spine.Model
   @types = ['Warrior','Spellcaster','Fairy','Fiend','Zombie','Machine','Aqua','Pyro','Rock','Winged_Beast','Plant','Insect','Thunder','Dragon','Beast','Beast-Warrior','Dinosaur','Fish','Sea_Serpent','Reptile','Psychic','Divine-Beast','Creator_God']
   @_attributes = ['EARTH','WATER','FIRE','WIND','LIGHT','DARK','DIVINE']
   @card_types = ['Monster', 'Spell','Trap',null,'Normal','Effect','Fusion','Ritual',null, 'Spirit','Union','Gemini','Tuner','Synchro',null,null,'Quick-Play','Continuous','Equip','Field','Counter','Flip','Toon','Xyz']
+  @categories = ['Monster', 'Spell','Trap']
+  @card_types_extra = ['Fusion','Synchro','Xyz']
   @configure 'Card', 'id', 'name', 'card_type', 'type','attribute','level','atk','def','description'
   @extend Spine.Model.Ajax
   @extend Spine.Events
@@ -52,18 +54,40 @@ class Deck extends Spine.Controller
     super
     CardUsage.bind("refresh change", @render)
   render: =>
-    @html $("#card_template").tmpl(CardUsage.all())
+    main = []
+    side = []
+    extra = []
+    main_count = 0
+    side_count = 0
+    extra_count = 0
+    category_count = {}
+    for category in Card.categories
+      category_count[category] = 0
+    CardUsage.each (card_usage)->
+      card = card_usage.card()
+      if card_usage.side
+        side.push card_usage
+        side_count += card_usage.count
+      else if (card_type for card_type in card.card_type when card_type in Card.card_types_extra).length
+        extra.push card_usage
+        extra_count += card_usage.count
+      else
+        main.push card_usage
+        main_count += card_usage.count
+        category_count[(category for category in card.card_type when category in Card.categories).pop()] += card_usage.count
+    @html $("#deck_template").tmpl({main: main, side: side, extra: extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
+    $(".bottom_area div").click ->
+    $(this).addClass("bottom_button_active").removeClass("bottom_button");
+      $(this).siblings().addClass("bottom_button").removeClass("bottom_button_active");
+      $dangqian = $(".card_frame .frame_element").eq($(".bottom_area div").index(this));
+      $dangqian.addClass("card_frame_focus");
+      $dangqian.siblings().removeClass("card_frame_focus");
+    });
   show: (e) ->
     card = $(e.target).tmplItem().data.card()
-    $("#card_image").attr 'src', "http://images.my-card.in/#{card.id}.jpg"
-    $("#card_name").html card.name
-    $("#card_card_type").html ($.i18n.prop 'card_type.' + card_type for card_type in card.card_type).join('·')
-    $("#card_type").html if card.type then $.i18n.prop 'type.'+ card.type else ""
-    $("#card_attribute").html if card.attribute then $.i18n.prop 'attribute.' + card.attribute else ""
-    $("#card_level").html card.level if card.level
-    $("#card_atk").html card.atk || ""
-    $("#card_def").html card.def || ""
-    $("#card_description").html card.description
+    $('#card').removeClass(Card.card_types.join(' '))
+    $('#card').html $("#card_template").tmpl(card)
+    $('#card').addClass(card.card_type.join(' '))
   parse: (str)->
     card_usages = (for i in [0...str.length] by 5
       decoded = 0
