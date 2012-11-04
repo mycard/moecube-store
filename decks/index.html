@@ -6,7 +6,7 @@
 <!--[if IE 8]>
 <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
+<html class="no-js" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -46,15 +46,15 @@
             {{/if}}
         </div>
         <div class="card_frame floatleft">
-            <div id="card_description" class="more_info floatleft frame_element">
+            <div id="card_description" class="card_description floatleft frame_element">
                 ${description}
             </div>
-            <div id="card_adjustment" class="adjustment floatleft frame_element">
-                建设中
-                under construction
+            <div id="card_adjustment" class="card_adjustment floatleft frame_element">
+                建设中 <br/>
+                under construction<br/>
             </div>
             <div id="card_statistics" class="card_statistics floatleft frame_element">
-                建设中
+                建设中<br/>
                 under construction
             </div>
         </div>
@@ -116,17 +116,33 @@
             <div class="attr_real floatleft">世界已完蛋</div>
         </div>
         <div class="card_frame floatleft">
-            <div class="more_info floatleft frame_element card_frame_focus">
+            <div class="card_description floatleft frame_element card_frame_focus">
                 <div>
-                    这是一个卡组编辑器<br/>
-                    this is a deck builder
+                    这是一个卡组编辑/分享系统<br/>
+                    this is a deck editing & sharing system<br/>
                 </div>
             </div>
-            <div class="statistics floatleft frame_element">
-                数据来源: ygopro<br/>
-                内容许可: CC-BY-SA-NC<br/>
-                源码许可: GNU GPL v3<br/>
-                项目主页: github.com/zh99998/mycard
+            <div class="card_adjustment floatleft frame_element">
+                <ruby>数据来源
+                    <rt>Database</rt>
+                </ruby>
+                : <a href="https://github.com/Fluorohydride/ygopro/">Ygopro</a><br/>
+                <ruby>许可协议
+                    <rt>License</rt>
+                </ruby>
+                : <a href="http://www.gnu.org/licenses/gpl.html">GPLv3 or later</a><br/>
+                <ruby>项目主页
+                    <rt>Github</rt>
+                </ruby>
+                : <a href="https://github.com/zh99998/mycard">github.com/zh99998/mycard</a><br/>
+                <ruby>开发成员
+                    <rt>Authors</rt>
+                </ruby>
+                : <a href="https://plus.google.com/101873829070855379840">zh99998</a>&lt;<a
+                    href="mailto:zh99998@gmail.com">zh99998@gmail.com</a>&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+                    href="https://plus.google.com/u/0/102725466404235496819">Mesiade</a>&lt;<a
+                    href="mailto:Mesiade746@hotmail.com">Mesiade746@hotmail.com</a>&gt;
             </div>
         </div>
         <div class="floatleft bottom_area">
@@ -159,10 +175,8 @@
                 </div>
             </div>
 
-            <div id="card_group" class="card_group">
-                <div id="deck">
-                    <p>Loading...</p>
-                </div>
+            <div id="deck" class="card_group">
+                <p>Loading...</p>
             </div>
         </div>
     </div>
@@ -192,9 +206,7 @@
     });
 
     $(document).ready(function () {
-        $("#more_info").jscroll({W:"12px", Btn:{btn:false}});
-        $("#adjustment").jscroll({W:"12px", Btn:{btn:false}}).removeClass("card_frame_focus");
-        $("#card_group").jscroll({W:"12px", Btn:{btn:false}});
+
 
         /*$(".main_area").hScrollPane({
 

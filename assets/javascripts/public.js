@@ -20,13 +20,6 @@ $(function() {
   //       $(this).next().show();    
   // });
 
-   $(".bottom_area div").click(function() {
-        $(this).addClass("bottom_button_active").removeClass("bottom_button"); 
-        $(this).siblings().addClass("bottom_button").removeClass("bottom_button_active");
-        var $dangqian = $(".card_frame .frame_element").eq($(".bottom_area div").index(this));
-        $dangqian.addClass("card_frame_focus");
-        $dangqian.siblings().removeClass("card_frame_focus");
-    });
 
 });
 

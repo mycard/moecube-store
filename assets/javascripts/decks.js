@@ -32,6 +32,8 @@
 
     Card.extend(Spine.Events);
 
+    Card.hasMany('card_usages', CardUsage);
+
     Card.url = "https://api.mongolab.com/api/1/databases/mycard/collections/cards?apiKey=508e5726e4b0c54ca4492ead";
 
     Card.locale_url = "https://api.mongolab.com/api/1/databases/mycard/collections/lang_" + locale + "?apiKey=508e5726e4b0c54ca4492ead";
@@ -78,6 +80,7 @@
               }
               _results.push({
                 id: card._id,
+                alias: card.alias,
                 name: lang.name,
                 card_type: card_type,
                 type: lang.race ? (i = 0, (function() {
@@ -122,7 +125,7 @@
       return CardUsage.__super__.constructor.apply(this, arguments);
     }
 
-    CardUsage.configure("CardUsage", "card_id", "count", "side");
+    CardUsage.configure('CardUsage', 'card_id', 'count', 'side');
 
     CardUsage.belongsTo('card', Card);
 
@@ -135,7 +138,9 @@
     __extends(Deck, _super);
 
     Deck.prototype.events = {
-      "mouseenter .card": "show"
+      'mouseenter .card': 'show',
+      'click .card': 'add',
+      'contextmenu .card': 'minus'
     };
 
     Deck.prototype.key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-=";
@@ -197,7 +202,7 @@
           })()).pop()] += card_usage.count;
         }
       });
-      return this.html($("#deck_template").tmpl({
+      this.html($('#deck_template').tmpl({
         main: main,
         side: side,
         extra: extra,
@@ -206,14 +211,68 @@
         extra_count: extra_count,
         category_count: category_count
       }));
+      return this.el.jscroll({
+        W: "12px",
+        Btn: {
+          btn: false
+        }
+      });
+    };
+
+    Deck.prototype.tab_control = function() {
+      $(".bottom_area div").click(function() {
+        var $dangqian;
+        $(this).addClass("bottom_button_active").removeClass("bottom_button");
+        $(this).siblings().addClass("bottom_button").removeClass("bottom_button_active");
+        $dangqian = $(".card_frame .frame_element").eq($(".bottom_area div").index(this));
+        $dangqian.addClass("card_frame_focus");
+        return $dangqian.siblings().removeClass("card_frame_focus");
+      });
+      return $('.card_frame .frame_element').jscroll({
+        W: "12px",
+        Btn: {
+          btn: false
+        }
+      });
     };
 
     Deck.prototype.show = function(e) {
-      var card;
+      var active_page_index, card;
       card = $(e.target).tmplItem().data.card();
       $('#card').removeClass(Card.card_types.join(' '));
+      active_page_index = $('.bottom_area div').index($(".bottom_button_active"));
       $('#card').html($("#card_template").tmpl(card));
-      return $('#card').addClass(card.card_type.join(' '));
+      $('#card').addClass(card.card_type.join(' '));
+      $('.card_frame .frame_element').eq(active_page_index).addClass('card_frame_focus');
+      $('.bottom_area div').eq(active_page_index).addClass('bottom_button_active').removeClass("bottom_button");
+      return this.tab_control();
+    };
+
+    Deck.prototype.add = function(e) {
+      var c, card_usage, count, _i, _len, _ref;
+      card_usage = $(e.target).tmplItem().data;
+      count = 0;
+      _ref = CardUsage.findAllByAttribute('card_id', card_usage.card_id);
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        c = _ref[_i];
+        count += c.count;
+      }
+      if (count < 3) {
+        card_usage.count++;
+        return card_usage.save();
+      }
+    };
+
+    Deck.prototype.minus = function(e) {
+      var card_usage;
+      card_usage = $(e.target).tmplItem().data;
+      card_usage.count--;
+      if (card_usage.count) {
+        card_usage.save();
+      } else {
+        card_usage.destroy();
+      }
+      return false;
     };
 
     Deck.prototype.parse = function(str) {
@@ -270,6 +329,7 @@
     deck = new Deck({
       el: $("#deck")
     });
+    deck.tab_control();
     return deck.parse(cards_encoded);
   });
 
