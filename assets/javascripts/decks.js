@@ -321,16 +321,25 @@
   })(Spine.Controller);
 
   $(document).ready(function() {
-    var cards_encoded, deck, name;
+    var cards_encoded, name;
     name = $.url().param('name');
     cards_encoded = $.url().param('cards');
     $('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent("http://my-card.in/decks/?name=" + name + "&cards=" + cards_encoded));
     $('#name').html(name);
-    deck = new Deck({
-      el: $("#deck")
+    return $.i18n.properties({
+      name: 'card',
+      path: '/locales/',
+      mode: 'map',
+      cache: true,
+      callback: function() {
+        var deck;
+        deck = new Deck({
+          el: $("#deck")
+        });
+        deck.tab_control();
+        return deck.parse(cards_encoded);
+      }
     });
-    deck.tab_control();
-    return deck.parse(cards_encoded);
   });
 
 }).call(this);
