@@ -51,9 +51,9 @@ class CardUsage extends Spine.Model
 
 class Deck extends Spine.Controller
   events:
-    'mouseenter .card': 'show',
-    'click .card': 'add',
-    'contextmenu .card': 'minus'
+    'mouseover .card_usage': 'show',
+    'click .card_usage': 'add',
+    'contextmenu .card_usage': 'minus'
 
   key: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
   constructor: ->
