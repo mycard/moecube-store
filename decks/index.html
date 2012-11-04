@@ -16,11 +16,13 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="stylesheet" href="/assets/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
     <script src="/vendor/javascripts/modernizr-2.6.2.min.js"></script>
 
     <link rel="stylesheet" href="/vendor/stylesheets/css_clear.css"/>
     <link rel="stylesheet" href="/vendor/stylesheets/PIE.css"/>
     <link rel="stylesheet" href="/vendor/stylesheets/hScrollPane.css"/>
+    <link rel="stylesheet" href="/vendor/stylesheets/smoothness/jquery-ui-1.9.1.custom.min.css"/>
     <link rel="stylesheet/less" href="/assets/stylesheets/decks.less"/>
     <script src="/vendor/javascripts/less-1.3.1.min.js"></script>
 
@@ -97,320 +99,364 @@
     </script>
 </head>
 <body>
+<!--[if lt IE 10]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
 <div class="main_div line">
-    <div id="card" class="main_left floatleft line">
-        <div class="card_name">Mycard 卡组编辑器</div>
-        <div class="card_img line floatleft">
-            <img height="187px" width="130px" src="/assets/images/decks/card.jpg" alt="card_name"/>
-        </div>
-        <div class="card_info floatleft">
-            <div class="attr_real floatleft">(」・ω・)」</div>
-            <div class="attr_name floatleft">呜！</div>
-            <div class="attr_real floatleft">(／・ω・)／</div>
-            <div class="attr_name floatleft">喵！</div>
-            <div class="attr_real floatleft">(」・ω・)」</div>
-            <div class="attr_name floatleft">呜！</div>
-            <div class="attr_real floatleft">(／・ω・)／</div>
-            <div class="attr_name floatleft">喵！</div>
-            <div class="attr_name floatleft"></div>
-            <div class="attr_real floatleft">世界已完蛋</div>
-        </div>
-        <div class="card_frame floatleft">
-            <div class="card_description floatleft frame_element card_frame_focus">
-                <div>
-                    这是一个卡组编辑/分享系统<br/>
-                    this is a deck editing & sharing system<br/>
-                </div>
-            </div>
-            <div class="card_adjustment floatleft frame_element">
-                <ruby>数据来源
-                    <rt>Database</rt>
-                </ruby>
-                : <a href="https://github.com/Fluorohydride/ygopro/">Ygopro</a><br/>
-                <ruby>许可协议
-                    <rt>License</rt>
-                </ruby>
-                : <a href="http://www.gnu.org/licenses/gpl.html">GPLv3 or later</a><br/>
-                <ruby>项目主页
-                    <rt>Github</rt>
-                </ruby>
-                : <a href="https://github.com/zh99998/mycard">github.com/zh99998/mycard</a><br/>
-                <ruby>开发成员
-                    <rt>Authors</rt>
-                </ruby>
-                : <a href="https://plus.google.com/101873829070855379840">zh99998</a>&lt;<a
-                    href="mailto:zh99998@gmail.com">zh99998@gmail.com</a>&gt;<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
-                    href="https://plus.google.com/u/0/102725466404235496819">Mesiade</a>&lt;<a
-                    href="mailto:Mesiade746@hotmail.com">Mesiade746@hotmail.com</a>&gt;
+<div id="card" class="main_left floatleft line">
+    <div class="card_name">Mycard 卡组编辑器</div>
+    <div class="card_img line floatleft">
+        <img height="187px" width="130px" src="/assets/images/decks/card.jpg" alt="card_name"/>
+    </div>
+    <div class="card_info floatleft">
+        <div class="attr_real floatleft">(」・ω・)」</div>
+        <div class="attr_name floatleft">呜！</div>
+        <div class="attr_real floatleft">(／・ω・)／</div>
+        <div class="attr_name floatleft">喵！</div>
+        <div class="attr_real floatleft">(」・ω・)」</div>
+        <div class="attr_name floatleft">呜！</div>
+        <div class="attr_real floatleft">(／・ω・)／</div>
+        <div class="attr_name floatleft">喵！</div>
+        <div class="attr_name floatleft"></div>
+        <div class="attr_real floatleft">世界已完蛋</div>
+    </div>
+    <div class="card_frame floatleft">
+        <div class="card_description floatleft frame_element card_frame_focus">
+            <div>
+                这是一个卡组编辑/分享系统<br/>
+                this is a deck editing & sharing system<br/>
             </div>
         </div>
-        <div class="floatleft bottom_area">
-            <div class="bottom_button_active floatleft">简介</div>
-            <div class="bottom_button floatleft">关于</div>
+        <div class="card_adjustment floatleft frame_element">
+            <ruby>数据来源
+                <rt>Database</rt>
+            </ruby>
+            : <a href="https://github.com/Fluorohydride/ygopro/">Ygopro</a><br/>
+            <ruby>许可协议
+                <rt>License</rt>
+            </ruby>
+            : <a href="http://www.gnu.org/licenses/gpl.html">GPLv3 or later</a><br/>
+            <ruby>项目主页
+                <rt>Github</rt>
+            </ruby>
+            : <a href="https://github.com/zh99998/mycard">github.com/zh99998/mycard</a><br/>
+            <ruby>开发成员
+                <rt>Authors</rt>
+            </ruby>
+            : <a href="https://plus.google.com/101873829070855379840">zh99998</a>&lt;<a
+                href="mailto:zh99998@gmail.com">zh99998@gmail.com</a>&gt;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+                href="https://plus.google.com/u/0/102725466404235496819">Mesiade</a>&lt;<a
+                href="mailto:Mesiade746@hotmail.com">Mesiade746@hotmail.com</a>&gt;
         </div>
     </div>
-    <div class="main_right floatleft line">
-    <div class="floatleft search_data">
-    <div class="floatleft" style="width:508px;height:80px;">
-        <div class="floatleft search_frame">
-            <input type="text" id="" name="" style="width:350px;margin:2px 0 0 0;border:none;background:none;height:20px;"class="floatleft" value=""/>
-            <input type="submit" class="serach_button" value="" />
-        </div>
-        <div class="floatright advanced_search_father">
-            <div class="advanced_search" onclick="showMe(this,'submenu');">高级搜索</div>
-        </div>
-        <!-- 修改										 -->
-        <div class="submenu">
-            <div class="floatright submenu_mask"></div>
-            <div class="submenu_main">
-                <div class="submenu_mainLeft">
-                    <div class="submenu_unit">
-                        <label for="">种类：</label>
-                        <select class="select_half" name="" id="">
-                            <option>(无)</option>
-                        </select>
-                        <select class="select_half" name="" id="">
-                            <option>(无)</option>
-                            <option></option>
-                        </select>
-                    </div>
-                    <div class="submenu_unit">
-                        <label for="">种类：</label>
-                        <select class="select_full" name="" id="">
-                            <option>(无)</option>
-                        </select>
-                    </div>
-                    <div class="submenu_unit">
-                        <label for="">种类：</label>
-                        <select class="select_full" name="" id="">
-                            <option>(无)</option>
-                        </select>
-                    </div>
-                    <div class="submenu_unit">
-                        <label for="">种类：</label>
-                        <input style="width:137px;margin:-2px 0 0 5px;" type="text" name="" id="" />
-                    </div>
-                </div>
-                <div class="submenu_mainRight">
-                    <div class="submenu_unit">
-                        <label for="">种类：</label>
-                        <select class="select_full" name="" id="">
-                            <option>(无)</option>
-                        </select>
-                    </div>
-                    <div class="submenu_unitLarge">
-                        <label for="">种类：</label>
-                        <input style="width:83px;margin:-2px 0 0 5px;" type="text" name="" id="" />
-
-                        <label style="margin:10px 0 0 0;"for="">种类：</label>
-                        <input style="width:83px;margin:10px 0 0 5px;" type="text" name="" id="" />
-                    </div>
-                    <input type="button" value="效果" />
-                    <div class="submenu_unit">
-                        <label for="">种类：</label>
-                        <input style="width:137px;margin:-2px 0 0 5px;" type="text" name="" id="" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 修改										 -->
-        <div class="floatleft search_results">
-            <span style="color:#3399FF;font-weight:bold;">结果数</span>
-            魔法：<span style="color:#FFAD6E;">XXX</span>
-            陷阱：<span style="color:#FFAD6E;">XXX</span>
-            怪兽：<span style="color:#FFAD6E;">XXX</span>
-        </div>
+    <div class="floatleft bottom_area">
+        <div class="bottom_button_active floatleft">简介</div>
+        <div class="bottom_button floatleft">关于</div>
     </div>
-    <div class="floatleft main_area">
-        <table class="press">
-            <thead>
-            <tr>
-                <th>
-                    <div class="thead_bg">
-                        <span>卡名</span>
-                        <div class="arrow" onclick="showMe(this,'filter_name');"><img src="image/arrow.png" alt="" /></div>
-                        <div id="filter_name" class="filter_float" style="display:none;">
-                            <!-- 修改 -->
-                            <div>
-                                <input type="checkbox" name="" id="" />
-                                <label for="">按照名称排序</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="" id="" />
-                                <label for="">按照名称排序</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="" id="" />
-                                <label for="">按照名称排序</label>
-                            </div>
-                            <!-- 修改 -->
-                        </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="thead_bg">
-                        <span>卡类</span>
-                        <div class="arrow" onclick="showMe(this,'filter_cate');"><img src="image/arrow.png" alt="" /></div>
-                        <div id="filter_cate" class="filter_float" style="display:none;"></div>
-                    </div>
-                </th>
-                <th><div class="thead_bg"><span>攻击</span></div></th>
-                <th><div class="thead_bg"><span>守备</span></div></th>
-                <th><div class="thead_bg"><span>星级</span></div></th>
-                <th><div class="thead_bg"><span>属性</span></div></th>
-                <th><div class="thead_bg"><span>测试</span></div></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-            <tr>
-                <td>黑羽-疾风之</td>
-                <td>效果·调整</td>
-                <td>1300</td>
-                <td>400</td>
-                <td>3 ☆</td>
-                <td>暗</td>
-                <td>测试</td>
-            </tr>
-            </tbody>
-        </table>
+</div>
+<div class="main_right floatleft line">
+<div class="floatleft search_data">
+<div class="floatleft" style="width:508px;height:80px;">
+    <div class="floatleft search_frame">
+        <input type="text" id="" name="" style="width:350px;margin:2px 0 0 0;border:none;background:none;height:20px;"
+               class="floatleft" value=""/>
+        <input type="submit" class="serach_button" value=""/>
     </div>
-    <div class="floatright page">
-        <a class="page_home" href=""></a>
-        <a class="page_pre" href=""></a>
-        <a class="page_num" href="">9</a>
-        <a class="page_num" href="">10</a>
-        <a class="page_num" href="">11</a>
-        <a class="page_next" href=""></a>
-        <a class="page_last" href=""></a>
+    <div class="floatright advanced_search_father">
+        <div class="advanced_search" onclick="showMe(this,'submenu');">高级搜索</div>
     </div>
-    <!--{"archetypes":"","card_type":"\u6548\u679c\u602a\u517d","id":2067,"lore":"\u8fd9\u5f20\u5361\u653b\u51fb\u7684\u573a\u5408\uff0c\u5bf9\u65b9\u76f4\u5230\u4f24\u5bb3\u6b65\u9aa4\u7ed3\u675f\u65f6\u4e0d\u80fd\u53d1\u52a8\u9b54\u6cd5\u00b7\u9677\u9631\u5361\u3002\u7528\u4ee5\u4e0b\u7684\u602a\u517d\u4e3a\u796d\u54c1\u4f5c\u796d\u54c1\u53ec\u5524\u7684\u573a\u5408\uff0c\u8fd9\u5f20\u5361\u5f97\u5230\u5404\u81ea\u7684\u6548\u679c\u3002\u25cf\u7eff\u9f7f\u8f6e\uff1a\u8fd9\u5f20\u5361\u653b\u51fb\u5b88\u5907\u8868\u793a\u602a\u517d\u65f6\uff0c\u82e5\u8fd9\u5f20\u5361\u7684\u653b\u51fb\u529b\u8d85\u8fc7\u5b88\u5907\u8868\u793a\u602a\u517d\u7684\u5b88\u5907\u529b\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206\u90a3\u4e2a\u6570\u503c\u7684\u6218\u6597\u4f24\u5bb3\u3002\u25cf\u7ea2\u9f7f\u8f6e\uff1a\u7ed9\u4e88\u5bf9\u65b9\u73a9\u5bb6\u6218\u6597\u4f24\u5bb3\u65f6\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206400\u5206\u4f24\u5bb3\u3002\u25cf\u9ec4\u9f7f\u8f6e\uff1a\u6218\u6597\u7834\u574f\u5bf9\u65b9\u602a\u517d\u7684\u573a\u5408\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206600\u5206\u4f24\u5bb3\u3002","mediums":"OCG\tTCG","monster_atk":3000,"monster_attribute":"\u5730","monster_def":2000,"monster_level":8,"monster_type":null,"name":"\u53e4\u4ee3\u7684\u673a\u68b0\u5de8\u9f99","number":50933533,"stats":"21,26,37","status":3,"tokens":0,"type":"\u673a\u68b0"}	-->
-    </div>
-
-    <div class="floatleft operate_area">
-            <div class="select_card">
-                <div class="select_cardOn">
-                    <select name="">
-                        <option id="name" value="">卡组</option>
+    <!-- 修改										 -->
+    <div class="submenu">
+        <div class="floatright submenu_mask"></div>
+        <div class="submenu_main">
+            <div class="submenu_mainLeft">
+                <div class="submenu_unit">
+                    <label for="">种类：</label>
+                    <select class="select_half" name="" id="">
+                        <option>(无)</option>
                     </select>
-                    <img class="add_ope" src="/assets/images/decks/add.png" alt="" title="新建"/>
-                    <img class="rename_ope" src="/assets/images/decks/rename.png" alt="" title="重命名"/>
+                    <select class="select_half" name="" id="">
+                        <option>(无)</option>
+                        <option></option>
+                    </select>
                 </div>
-                <div class="select_cardUnder">
-                    <div class="donwload_out" title="下载">
-                        <div class="download_inner"></div>
-                    </div>
-                    <div class="donwload_out" title="下载">
-                        <div class="upload_inner"></div>
-                    </div>
-                    <!-- <img class="donwload_ope" src="/assets/images/decks/download.png" alt="" title="上传" />			 -->
-                    <a href="#" id="deck_url"><img class="save_ope" src="/assets/images/decks/save.png" alt="" title="保存"/></a>
+                <div class="submenu_unit">
+                    <label for="">种类：</label>
+                    <select class="select_full" name="" id="">
+                        <option>(无)</option>
+                    </select>
+                </div>
+                <div class="submenu_unit">
+                    <label for="">种类：</label>
+                    <select class="select_full" name="" id="">
+                        <option>(无)</option>
+                    </select>
+                </div>
+                <div class="submenu_unit">
+                    <label for="">种类：</label>
+                    <input style="width:137px;margin:-2px 0 0 5px;" type="text" name="" id=""/>
                 </div>
             </div>
+            <div class="submenu_mainRight">
+                <div class="submenu_unit">
+                    <label for="">种类：</label>
+                    <select class="select_full" name="" id="">
+                        <option>(无)</option>
+                    </select>
+                </div>
+                <div class="submenu_unitLarge">
+                    <label for="">种类：</label>
+                    <input style="width:83px;margin:-2px 0 0 5px;" type="text" name="" id=""/>
 
-            <div id="deck" class="card_group">
-                <p>Loading...</p>
+                    <label style="margin:10px 0 0 0;" for="">种类：</label>
+                    <input style="width:83px;margin:10px 0 0 5px;" type="text" name="" id=""/>
+                </div>
+                <input type="button" value="效果"/>
+
+                <div class="submenu_unit">
+                    <label for="">种类：</label>
+                    <input style="width:137px;margin:-2px 0 0 5px;" type="text" name="" id=""/>
+                </div>
             </div>
         </div>
     </div>
+    <!-- 修改										 -->
+    <div class="floatleft search_results">
+        <span style="color:#3399FF;font-weight:bold;">结果数</span>
+        魔法：<span style="color:#FFAD6E;">XXX</span>
+        陷阱：<span style="color:#FFAD6E;">XXX</span>
+        怪兽：<span style="color:#FFAD6E;">XXX</span>
+    </div>
+</div>
+<div class="floatleft main_area">
+    <table class="press">
+        <thead>
+        <tr>
+            <th>
+                <div class="thead_bg">
+                    <span>卡名</span>
+
+                    <div class="arrow" onclick="showMe(this,'filter_name');"><img src="image/arrow.png" alt=""/></div>
+                    <div id="filter_name" class="filter_float" style="display:none;">
+                        <!-- 修改 -->
+                        <div>
+                            <input type="checkbox" name="" id=""/>
+                            <label for="">按照名称排序</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="" id=""/>
+                            <label for="">按照名称排序</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="" id=""/>
+                            <label for="">按照名称排序</label>
+                        </div>
+                        <!-- 修改 -->
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="thead_bg">
+                    <span>卡类</span>
+
+                    <div class="arrow" onclick="showMe(this,'filter_cate');"><img src="image/arrow.png" alt=""/></div>
+                    <div id="filter_cate" class="filter_float" style="display:none;"></div>
+                </div>
+            </th>
+            <th>
+                <div class="thead_bg"><span>攻击</span></div>
+            </th>
+            <th>
+                <div class="thead_bg"><span>守备</span></div>
+            </th>
+            <th>
+                <div class="thead_bg"><span>星级</span></div>
+            </th>
+            <th>
+                <div class="thead_bg"><span>属性</span></div>
+            </th>
+            <th>
+                <div class="thead_bg"><span>测试</span></div>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+        <tr>
+            <td>黑羽-疾风之</td>
+            <td>效果·调整</td>
+            <td>1300</td>
+            <td>400</td>
+            <td>3 ☆</td>
+            <td>暗</td>
+            <td>测试</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="floatright page">
+    <a class="page_home" href=""></a>
+    <a class="page_pre" href=""></a>
+    <a class="page_num" href="">9</a>
+    <a class="page_num" href="">10</a>
+    <a class="page_num" href="">11</a>
+    <a class="page_next" href=""></a>
+    <a class="page_last" href=""></a>
+</div>
+<!--{"archetypes":"","card_type":"\u6548\u679c\u602a\u517d","id":2067,"lore":"\u8fd9\u5f20\u5361\u653b\u51fb\u7684\u573a\u5408\uff0c\u5bf9\u65b9\u76f4\u5230\u4f24\u5bb3\u6b65\u9aa4\u7ed3\u675f\u65f6\u4e0d\u80fd\u53d1\u52a8\u9b54\u6cd5\u00b7\u9677\u9631\u5361\u3002\u7528\u4ee5\u4e0b\u7684\u602a\u517d\u4e3a\u796d\u54c1\u4f5c\u796d\u54c1\u53ec\u5524\u7684\u573a\u5408\uff0c\u8fd9\u5f20\u5361\u5f97\u5230\u5404\u81ea\u7684\u6548\u679c\u3002\u25cf\u7eff\u9f7f\u8f6e\uff1a\u8fd9\u5f20\u5361\u653b\u51fb\u5b88\u5907\u8868\u793a\u602a\u517d\u65f6\uff0c\u82e5\u8fd9\u5f20\u5361\u7684\u653b\u51fb\u529b\u8d85\u8fc7\u5b88\u5907\u8868\u793a\u602a\u517d\u7684\u5b88\u5907\u529b\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206\u90a3\u4e2a\u6570\u503c\u7684\u6218\u6597\u4f24\u5bb3\u3002\u25cf\u7ea2\u9f7f\u8f6e\uff1a\u7ed9\u4e88\u5bf9\u65b9\u73a9\u5bb6\u6218\u6597\u4f24\u5bb3\u65f6\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206400\u5206\u4f24\u5bb3\u3002\u25cf\u9ec4\u9f7f\u8f6e\uff1a\u6218\u6597\u7834\u574f\u5bf9\u65b9\u602a\u517d\u7684\u573a\u5408\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206600\u5206\u4f24\u5bb3\u3002","mediums":"OCG\tTCG","monster_atk":3000,"monster_attribute":"\u5730","monster_def":2000,"monster_level":8,"monster_type":null,"name":"\u53e4\u4ee3\u7684\u673a\u68b0\u5de8\u9f99","number":50933533,"stats":"21,26,37","status":3,"tokens":0,"type":"\u673a\u68b0"}	-->
+</div>
+
+<div class="floatleft operate_area">
+    <div class="select_card">
+        <div class="select_cardOn">
+            <select name="">
+                <option id="name" value="">卡组</option>
+            </select>
+            <img class="add_ope" src="/assets/images/decks/add.png" alt="" title="新建"/>
+            <img class="rename_ope" src="/assets/images/decks/rename.png" alt="" title="重命名"/>
+        </div>
+        <div class="select_cardUnder">
+            <div class="donwload_out" title="下载">
+                <div class="download_inner"></div>
+            </div>
+            <div class="donwload_out" title="分享" id="deck_share">
+                <div class="upload_inner"></div>
+            </div>
+            <!-- <img class="donwload_ope" src="/assets/images/decks/download.png" alt="" title="上传" />			 -->
+            <a href="#" id="deck_url_ydk"><img class="save_ope" src="/assets/images/decks/save.png" alt="" title="保存"/></a>
+        </div>
+    </div>
+
+    <div id="deck" class="card_group">
+        <p>Loading...</p>
+    </div>
+</div>
+</div>
+<div id="deck_share_dialog" title="share">
+    <fieldset>
+        <legend>URL</legend>
+        <input id="deck_url" readonly="readonly"/><br/>
+        <button id="deck_url_shorten">shorten</button>
+        <input id="deck_url_short" readonly="readonly"/><br/>
+    </fieldset>
+    <fieldset>
+        <legend>share</legend>
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_compact"></a>
+            <a class="addthis_counter addthis_bubble_style"></a>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>QR Code</legend>
+        <img id="qrcode"/>
+    </fieldset>
+    <script type="text/javascript"
+            src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-504b398d148616ce"></script>
+    <!-- AddThis Button END -->
+</div>
 </div>
 
 <script src="/vendor/javascripts/jquery-1.8.2.min.js"></script>
@@ -418,6 +464,7 @@
 <script src="/vendor/javascripts/jquery.tmpl.min.js"></script>
 <script src="/vendor/javascripts/jquery.mousewheel.js"></script>
 <script src="/vendor/javascripts/jquery.i18n.properties-min-1.0.9.js"></script>
+<script src="/vendor/javascripts/jquery-ui-1.9.1.custom.min.js"></script>
 <script src="/vendor/javascripts/jquery.base64.min.js"></script>
 <script src="/vendor/javascripts/hScrollPane.js"></script>
 <script src="/vendor/javascripts/jscroll.js"></script>
@@ -431,17 +478,17 @@
 <script src="/assets/javascripts/public.js"></script>
 <script type="text/javascript">
     /*$(document).ready(function () {
-        $(".main_area").hScrollPane({
-         mover:".press", //指定container对象下的哪个元素需要滚动位置 | 必传项;
-         //showArrow:true, //指定是否显示左右箭头，默认不显示 | 可选项;
-         //moverW:function(){return $(".press").width();}(), //传入水平滚动对象的长度值,不传入的话默认直接获取mover的宽度值 | 可选项;
-         //handleMinWidth:100,//指定handle的最小宽度,要固定handle的宽度请在css中设定handle的width属性（如 width:28px!important;），不传入则不设定最小宽度 | 可选项;
-         //dragable:true, //指定是否要支持拖动效果，默认可以拖动 | 可选项;
-         //easing:true, //滚动是否需要滑动效果,默认有滑动效果 | 可选项;
-         handleCssAlter:"draghandlealter", //指定拖动鼠标时滚动条的样式，不传入该参数则没有变化效果 | 可选项;
-         mousewheel:{bind:false, moveLength:500} //mousewheel: bind->'true',绑定mousewheel事件; ->'false',不绑定mousewheel事件；moveLength是指定鼠标滚动一次移动的距离,默认值：{bind:true,moveLength:300} | 可选项;
-         })
-    });;*/
+     $(".main_area").hScrollPane({
+     mover:".press", //指定container对象下的哪个元素需要滚动位置 | 必传项;
+     //showArrow:true, //指定是否显示左右箭头，默认不显示 | 可选项;
+     //moverW:function(){return $(".press").width();}(), //传入水平滚动对象的长度值,不传入的话默认直接获取mover的宽度值 | 可选项;
+     //handleMinWidth:100,//指定handle的最小宽度,要固定handle的宽度请在css中设定handle的width属性（如 width:28px!important;），不传入则不设定最小宽度 | 可选项;
+     //dragable:true, //指定是否要支持拖动效果，默认可以拖动 | 可选项;
+     //easing:true, //滚动是否需要滑动效果,默认有滑动效果 | 可选项;
+     handleCssAlter:"draghandlealter", //指定拖动鼠标时滚动条的样式，不传入该参数则没有变化效果 | 可选项;
+     mousewheel:{bind:false, moveLength:500} //mousewheel: bind->'true',绑定mousewheel事件; ->'false',不绑定mousewheel事件；moveLength是指定鼠标滚动一次移动的距离,默认值：{bind:true,moveLength:300} | 可选项;
+     })
+     });;*/
 </script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <!--<script>

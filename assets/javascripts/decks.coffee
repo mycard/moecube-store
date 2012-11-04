@@ -55,37 +55,61 @@ class Deck extends Spine.Controller
     'mouseover .card_usage': 'show',
     'click .card_usage': 'add',
     'contextmenu .card_usage': 'minus'
+
   key: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
   constructor: ->
     super
     CardUsage.bind("refresh change", @render)
+  encode: ->
+    result = ''
+    for card_usage in @main.concat @extra, @side
+      c = card_usage.side << 29 | card_usage.count << 27 | card_usage.card_id
+      for i in [4..0]
+        result += @key.charAt((c >> i*6) & 0x3F)
+    result
+  decode: (str)->
+    card_usages = for i in [0...str.length] by 5
+      decoded = 0
+      for char in str.substr(i, 5)
+        decoded = (decoded << 6) + @key.indexOf(char)
+      card_id = decoded & 0x07FFFFFF
+      side = decoded >> 29
+      count = decoded >> 27 & 0x3
+      {card_id: card_id, side: side, count: count}
+    Card.query {_id:
+      { $in: card_usage.card_id for card_usage in card_usages}}, =>
+      CardUsage.refresh card_usages, clear: true
+
   render: =>
-    main = []
-    side = []
-    extra = []
+    @main = []
+    @side = []
+    @extra = []
     main_count = 0
     side_count = 0
     extra_count = 0
     category_count = {}
     for category in Card.categories
       category_count[category] = 0
-    CardUsage.each (card_usage)->
+    CardUsage.each (card_usage)=>
       card = card_usage.card()
       if card_usage.side
-        side.push card_usage
+        @side.push card_usage
         side_count += card_usage.count
       else if (card_type for card_type in card.card_type when card_type in Card.card_types_extra).length
-        extra.push card_usage
+        @extra.push card_usage
         extra_count += card_usage.count
       else
-        main.push card_usage
+        @main.push card_usage
         main_count += card_usage.count
         category_count[(category for category in card.card_type when category in Card.categories).pop()] += card_usage.count
-    @html $('#deck_template').tmpl({main: main, side: side, extra: extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
+    @html $('#deck_template').tmpl({main: @main, side: @side, extra: @extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
     @el.jscroll({W: "12px", Btn:
       {btn: false}});
-    $('#deck_url').attr 'download', Deck.deck_name + '.ydk'
-    $('#deck_url').attr 'href', 'data:application/octet-stream,' +  (card_usage.card_id for card_usage in main).concat((card_usage.card_id for card_usage in extra), ["!side"], (card_usage.card_id for card_usage in side)).join("%0a")
+
+    @url = "http://my-card.in/decks/?name=#{@deck_name}&cards=#{@encode()}"
+    #alert @url
+    #$('#deck_url_ydk').attr 'download', Deck.deck_name + '.ydk'
+    #$('#deck_url_ydk').attr 'href', 'data:application/octet-stream,' +  (card_usage.card_id for i in  ).concat((card_usage.card_id for i in [0...card_usage.count] for card_usage in @extra), ["!side"], (card_usage.card_id for i in [0...card_usage.count] for card_usage in @side)).join("%0a")
   tab_control: ->
     $(".bottom_area div").click ->
       $(this).addClass("bottom_button_active").removeClass("bottom_button")
@@ -112,6 +136,7 @@ class Deck extends Spine.Controller
     if count < 3 #TODO: lflist
       card_usage.count++
       card_usage.save()
+    history.pushState(null,@deck_name, @url)
   minus: (e)->
     card_usage = $(e.target).tmplItem().data
     card_usage.count--
@@ -119,26 +144,20 @@ class Deck extends Spine.Controller
       card_usage.save()
     else
       card_usage.destroy()
+    history.pushState(null,@deck_name, @url)
     return false #TODO: prevent showing menu
-  parse: (str)->
-    card_usages = (for i in [0...str.length] by 5
-      decoded = 0
-      for char in str.substr(i, 5)
-        decoded = (decoded << 6) + @key.indexOf(char)
-      card_id = decoded & 0x07FFFFFF
-      side = decoded >> 29
-      count = decoded >> 27 & 0x3
-      {card_id: card_id, side: side, count: count}
-    )
-    Card.query {_id:
-      { $in: card_usage.card_id for card_usage in card_usages}}, =>
-        CardUsage.refresh card_usages
 
 $(document).ready ->
-  name = $.url().param('name')
-  cards_encoded = $.url().param('cards')
-  $('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent("http://my-card.in/decks/?name=#{name}&cards=#{cards_encoded}"))
-  $('#name').html(name)
+  $('#name').html $.url().param('name')
+  $( "#deck_share_dialog" ).dialog
+    modal: true
+    autoOpen: false
+
+  $('#deck_share').click ->
+    $("#deck_url").val
+    $( "#deck_share_dialog" ).dialog('open')
+
+  #$.ajax({url: 'https://www.googleapis.com/urlshortener/v1/url', type: 'POST', data:JSON.stringify({longUrl: 'http://my-card.in/'}), contentType: 'application/json; charset=utf-8', success: function(data){alert(data)} })"
   $.i18n.properties
     name: 'card'
     path: '/locales/'
@@ -146,6 +165,10 @@ $(document).ready ->
     cache: true
     callback: ->
       deck = new Deck(el: $("#deck"))
-      Deck.deck_name = name
+      deck.deck_name = $.url().param('name')
       deck.tab_control()
-      deck.parse cards_encoded
+      deck.decode $.url().param('cards')
+      #window.addEventListener 'popstate', (ev)->
+      #  alert ev.state
+        #if ev.state
+        #  CardUsage.refresh ev.state, clear: true

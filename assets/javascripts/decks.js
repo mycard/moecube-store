@@ -153,11 +153,69 @@
       CardUsage.bind("refresh change", this.render);
     }
 
+    Deck.prototype.encode = function() {
+      var c, card_usage, i, result, _i, _j, _len, _ref;
+      result = '';
+      _ref = this.main.concat(this.extra, this.side);
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        card_usage = _ref[_i];
+        c = card_usage.side << 29 | card_usage.count << 27 | card_usage.card_id;
+        for (i = _j = 4; _j >= 0; i = --_j) {
+          result += this.key.charAt((c >> i * 6) & 0x3F);
+        }
+      }
+      return result;
+    };
+
+    Deck.prototype.decode = function(str) {
+      var card_id, card_usage, card_usages, char, count, decoded, i, side,
+        _this = this;
+      card_usages = (function() {
+        var _i, _j, _len, _ref, _ref1, _results;
+        _results = [];
+        for (i = _i = 0, _ref = str.length; _i < _ref; i = _i += 5) {
+          decoded = 0;
+          _ref1 = str.substr(i, 5);
+          for (_j = 0, _len = _ref1.length; _j < _len; _j++) {
+            char = _ref1[_j];
+            decoded = (decoded << 6) + this.key.indexOf(char);
+          }
+          card_id = decoded & 0x07FFFFFF;
+          side = decoded >> 29;
+          count = decoded >> 27 & 0x3;
+          _results.push({
+            card_id: card_id,
+            side: side,
+            count: count
+          });
+        }
+        return _results;
+      }).call(this);
+      return Card.query({
+        _id: {
+          $in: (function() {
+            var _i, _len, _results;
+            _results = [];
+            for (_i = 0, _len = card_usages.length; _i < _len; _i++) {
+              card_usage = card_usages[_i];
+              _results.push(card_usage.card_id);
+            }
+            return _results;
+          })()
+        }
+      }, function() {
+        return CardUsage.refresh(card_usages, {
+          clear: true
+        });
+      });
+    };
+
     Deck.prototype.render = function() {
-      var card_usage, category, category_count, extra, extra_count, main, main_count, side, side_count, _i, _len, _ref;
-      main = [];
-      side = [];
-      extra = [];
+      var category, category_count, extra_count, main_count, side_count, _i, _len, _ref,
+        _this = this;
+      this.main = [];
+      this.side = [];
+      this.extra = [];
       main_count = 0;
       side_count = 0;
       extra_count = 0;
@@ -171,7 +229,7 @@
         var card, card_type;
         card = card_usage.card();
         if (card_usage.side) {
-          side.push(card_usage);
+          _this.side.push(card_usage);
           return side_count += card_usage.count;
         } else if (((function() {
           var _j, _len1, _ref1, _results;
@@ -185,10 +243,10 @@
           }
           return _results;
         })()).length) {
-          extra.push(card_usage);
+          _this.extra.push(card_usage);
           return extra_count += card_usage.count;
         } else {
-          main.push(card_usage);
+          _this.main.push(card_usage);
           main_count += card_usage.count;
           return category_count[((function() {
             var _j, _len1, _ref1, _results;
@@ -205,9 +263,9 @@
         }
       });
       this.html($('#deck_template').tmpl({
-        main: main,
-        side: side,
-        extra: extra,
+        main: this.main,
+        side: this.side,
+        extra: this.extra,
         main_count: main_count,
         side_count: side_count,
         extra_count: extra_count,
@@ -219,32 +277,7 @@
           btn: false
         }
       });
-      $('#deck_url').attr('download', Deck.deck_name + '.ydk');
-      return $('#deck_url').attr('href', 'data:application/octet-stream,' + ((function() {
-        var _j, _len1, _results;
-        _results = [];
-        for (_j = 0, _len1 = main.length; _j < _len1; _j++) {
-          card_usage = main[_j];
-          _results.push(card_usage.card_id);
-        }
-        return _results;
-      })()).concat((function() {
-        var _j, _len1, _results;
-        _results = [];
-        for (_j = 0, _len1 = extra.length; _j < _len1; _j++) {
-          card_usage = extra[_j];
-          _results.push(card_usage.card_id);
-        }
-        return _results;
-      })(), ["!side"], (function() {
-        var _j, _len1, _results;
-        _results = [];
-        for (_j = 0, _len1 = side.length; _j < _len1; _j++) {
-          card_usage = side[_j];
-          _results.push(card_usage.card_id);
-        }
-        return _results;
-      })()).join("%0a"));
+      return this.url = "http://my-card.in/decks/?name=" + this.deck_name + "&cards=" + (this.encode());
     };
 
     Deck.prototype.tab_control = function() {
@@ -287,8 +320,9 @@
       }
       if (count < 3) {
         card_usage.count++;
-        return card_usage.save();
+        card_usage.save();
       }
+      return history.pushState(null, this.deck_name, this.url);
     };
 
     Deck.prototype.minus = function(e) {
@@ -300,48 +334,8 @@
       } else {
         card_usage.destroy();
       }
+      history.pushState(null, this.deck_name, this.url);
       return false;
-    };
-
-    Deck.prototype.parse = function(str) {
-      var card_id, card_usage, card_usages, char, count, decoded, i, side,
-        _this = this;
-      card_usages = (function() {
-        var _i, _j, _len, _ref, _ref1, _results;
-        _results = [];
-        for (i = _i = 0, _ref = str.length; _i < _ref; i = _i += 5) {
-          decoded = 0;
-          _ref1 = str.substr(i, 5);
-          for (_j = 0, _len = _ref1.length; _j < _len; _j++) {
-            char = _ref1[_j];
-            decoded = (decoded << 6) + this.key.indexOf(char);
-          }
-          card_id = decoded & 0x07FFFFFF;
-          side = decoded >> 29;
-          count = decoded >> 27 & 0x3;
-          _results.push({
-            card_id: card_id,
-            side: side,
-            count: count
-          });
-        }
-        return _results;
-      }).call(this);
-      return Card.query({
-        _id: {
-          $in: (function() {
-            var _i, _len, _results;
-            _results = [];
-            for (_i = 0, _len = card_usages.length; _i < _len; _i++) {
-              card_usage = card_usages[_i];
-              _results.push(card_usage.card_id);
-            }
-            return _results;
-          })()
-        }
-      }, function() {
-        return CardUsage.refresh(card_usages);
-      });
     };
 
     return Deck;
@@ -349,11 +343,15 @@
   })(Spine.Controller);
 
   $(document).ready(function() {
-    var cards_encoded, name;
-    name = $.url().param('name');
-    cards_encoded = $.url().param('cards');
-    $('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent("http://my-card.in/decks/?name=" + name + "&cards=" + cards_encoded));
-    $('#name').html(name);
+    $('#name').html($.url().param('name'));
+    $("#deck_share_dialog").dialog({
+      modal: true,
+      autoOpen: false
+    });
+    $('#deck_share').click(function() {
+      $("#deck_url").val;
+      return $("#deck_share_dialog").dialog('open');
+    });
     return $.i18n.properties({
       name: 'card',
       path: '/locales/',
@@ -364,9 +362,9 @@
         deck = new Deck({
           el: $("#deck")
         });
-        Deck.deck_name = name;
+        deck.deck_name = $.url().param('name');
         deck.tab_control();
-        return deck.parse(cards_encoded);
+        return deck.decode($.url().param('cards'));
       }
     });
   });
