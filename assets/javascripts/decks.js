@@ -137,6 +137,8 @@
 
     __extends(Deck, _super);
 
+    Deck.prototype.deck_name = "";
+
     Deck.prototype.events = {
       'mouseover .card_usage': 'show',
       'click .card_usage': 'add',
@@ -152,7 +154,7 @@
     }
 
     Deck.prototype.render = function() {
-      var category, category_count, extra, extra_count, main, main_count, side, side_count, _i, _len, _ref;
+      var card_usage, category, category_count, extra, extra_count, main, main_count, side, side_count, _i, _len, _ref;
       main = [];
       side = [];
       extra = [];
@@ -211,12 +213,38 @@
         extra_count: extra_count,
         category_count: category_count
       }));
-      return this.el.jscroll({
+      this.el.jscroll({
         W: "12px",
         Btn: {
           btn: false
         }
       });
+      $('#deck_url').attr('download', Deck.deck_name + '.ydk');
+      return $('#deck_url').attr('href', 'data:application/octet-stream,' + ((function() {
+        var _j, _len1, _results;
+        _results = [];
+        for (_j = 0, _len1 = main.length; _j < _len1; _j++) {
+          card_usage = main[_j];
+          _results.push(card_usage.card_id);
+        }
+        return _results;
+      })()).concat((function() {
+        var _j, _len1, _results;
+        _results = [];
+        for (_j = 0, _len1 = extra.length; _j < _len1; _j++) {
+          card_usage = extra[_j];
+          _results.push(card_usage.card_id);
+        }
+        return _results;
+      })(), ["!side"], (function() {
+        var _j, _len1, _results;
+        _results = [];
+        for (_j = 0, _len1 = side.length; _j < _len1; _j++) {
+          card_usage = side[_j];
+          _results.push(card_usage.card_id);
+        }
+        return _results;
+      })()).join("%0a"));
     };
 
     Deck.prototype.tab_control = function() {
@@ -336,6 +364,7 @@
         deck = new Deck({
           el: $("#deck")
         });
+        Deck.deck_name = name;
         deck.tab_control();
         return deck.parse(cards_encoded);
       }

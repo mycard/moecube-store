@@ -50,11 +50,11 @@ class CardUsage extends Spine.Model
   @belongsTo 'card', Card
 
 class Deck extends Spine.Controller
+  deck_name: ""
   events:
     'mouseover .card_usage': 'show',
     'click .card_usage': 'add',
     'contextmenu .card_usage': 'minus'
-
   key: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
   constructor: ->
     super
@@ -84,6 +84,8 @@ class Deck extends Spine.Controller
     @html $('#deck_template').tmpl({main: main, side: side, extra: extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
     @el.jscroll({W: "12px", Btn:
       {btn: false}});
+    $('#deck_url').attr 'download', Deck.deck_name + '.ydk'
+    $('#deck_url').attr 'href', 'data:application/octet-stream,' +  (card_usage.card_id for card_usage in main).concat((card_usage.card_id for card_usage in extra), ["!side"], (card_usage.card_id for card_usage in side)).join("%0a")
   tab_control: ->
     $(".bottom_area div").click ->
       $(this).addClass("bottom_button_active").removeClass("bottom_button")
@@ -144,5 +146,6 @@ $(document).ready ->
     cache: true
     callback: ->
       deck = new Deck(el: $("#deck"))
+      Deck.deck_name = name
       deck.tab_control()
       deck.parse cards_encoded
