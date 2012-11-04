@@ -138,10 +138,10 @@ $(document).ready ->
   $('img#qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent("http://my-card.in/decks/?name=#{name}&cards=#{cards_encoded}"))
   $('#name').html(name)
   $.i18n.properties
-    name:'card'
-    path:'/locales/'
-    mode:'map'
-    cache:true
+    name: 'card'
+    path: '/locales/'
+    mode: 'map'
+    cache: true
     callback: ->
       deck = new Deck(el: $("#deck"))
       deck.tab_control()
