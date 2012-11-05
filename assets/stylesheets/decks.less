@@ -35,7 +35,7 @@ body{margin:0;padding:0;background:#eee;}
 /*右边区域*/
 
 /*搜索*/
-.search_data{height:700px;width:518px;margin:0;padding:0;}
+.search_data.text{height:700px;width:518px;margin:0;padding:0;}
 .advanced_search{font-size:12px;margin:0;width:48px;height:12px;padding:10px 12px;background:#ffffff;}
 .advanced_search:hover{cursor:pointer;}
 .advanced_search_father{width:80px;height:36px;overflow:hidden;margin:18px 0 0 0;padding:4px 0 0 4px;}
@@ -123,7 +123,7 @@ body{margin:0;padding:0;background:#eee;}
 
 
 /*操作区域*/
-.operate_area{
+.operate_area.text{
   width:162px;height:700px;padding:0 0 0 10px;
   fieldset{
     border:1px solid #cccccc;padding:5px;margin:14px 0 0 0;background:#F9F9F9;border-radius:6px;font-size:12px;color:#666666;//height:586px;
@@ -162,6 +162,19 @@ body{margin:0;padding:0;background:#eee;}
 }
 .upload_ope{float:left;height:25px;padding:5px 0 0 5px;cursor:pointer;}
 .save_ope{float:left;height:25px;padding:5px 0 0 6px;cursor:pointer;}
+
+/* 文字版 */
+.search_data.text{
+  .search_bar{width:508px;height:80px;}
+  .search_input{width:350px;margin:2px 0 0 0;border:none;background:none;height:20px;}
+}
+
+/* 图文版 */
+.operate_area.graphic{height:700px;width:518px;}
+.search_data.graphic{width:162px;height:700px;float:right;
+  overflow: hidden;
+
+}
 
 
 .card.Spell{color:green}

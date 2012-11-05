@@ -67,13 +67,17 @@
         </div>
     </script>
 
-    <script id="card_usage_template" type="text/x-jquery-tmpl">
+    <script id="card_usage_text_template" type="text/x-jquery-tmpl">
         <p class="card_usage">
             <span class="card ${$data.card().card_type.join(' ')}">${$data.card().name}</span>
             <i>${count}</i>
         </p>
     </script>
-
+    <script id="card_usage_graphic_template" type="text/x-jquery-tmpl">
+        {{each Array(count)}}
+        <img class="card_usage" width="44" height="64" src="${$data.card().image_thumbnail_url()}"/>
+        {{/each}}
+    </script>
     <script id="deck_template" type="text/x-jquery-tmpl">
         <fieldset id="deck_main">
             <legend id="deck_main_title" class="deck_title main">主卡组
@@ -82,25 +86,27 @@
                     <span class="deck_category_count ${$index}">${$value}</span>{{/each}})
                 </small>
             </legend>
-            {{tmpl(main) "#card_usage_template"}}
+            {{tmpl(main) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
         </fieldset>
         <fieldset id="deck_side">
             <legend id="deck_side_title" class="deck_title main">副卡组
                 <small>(${side_count})</small>
             </legend>
-            {{tmpl(side) "#card_usage_template"}}
+            {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
         </fieldset>
         <fieldset id="deck_extra">
             <legend id="deck_extra_title" class="deck_title main">额外卡组
                 <small>(${extra_count})</small>
             </legend>
-            {{tmpl(extra) "#card_usage_template"}}
+            {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
         </fieldset>
     </script>
 </head>
 <body>
 <!--[if lt IE 10]>
-<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
+    improve your experience.</p>
 <![endif]-->
 <div class="main_div line">
 <div id="card" class="main_left floatleft line">
@@ -156,11 +162,10 @@
     </div>
 </div>
 <div class="main_right floatleft line">
-<div class="floatleft search_data">
-<div class="floatleft" style="width:508px;height:80px;">
+<div class="floatleft search_data graphic">
+<div class="floatleft search_bar">
     <div class="floatleft search_frame">
-        <input type="text" id="" name="" style="width:350px;margin:2px 0 0 0;border:none;background:none;height:20px;"
-               class="floatleft" value=""/>
+        <input type="text" name="" class="search_input floatleft" value=""/>
         <input type="submit" class="serach_button" value=""/>
     </div>
     <div class="floatright advanced_search_father">
@@ -172,51 +177,51 @@
         <div class="submenu_main">
             <div class="submenu_mainLeft">
                 <div class="submenu_unit">
-                    <label for="">种类：</label>
-                    <select class="select_half" name="" id="">
+                    <label>种类：</label>
+                    <select class="select_half" name="">
                         <option>(无)</option>
                     </select>
-                    <select class="select_half" name="" id="">
+                    <select class="select_half" name="">
                         <option>(无)</option>
                         <option></option>
                     </select>
                 </div>
                 <div class="submenu_unit">
-                    <label for="">种类：</label>
-                    <select class="select_full" name="" id="">
+                    <label>种类：</label>
+                    <select class="select_full" name="">
                         <option>(无)</option>
                     </select>
                 </div>
                 <div class="submenu_unit">
-                    <label for="">种类：</label>
-                    <select class="select_full" name="" id="">
+                    <label>种类：</label>
+                    <select class="select_full" name="">
                         <option>(无)</option>
                     </select>
                 </div>
                 <div class="submenu_unit">
-                    <label for="">种类：</label>
-                    <input style="width:137px;margin:-2px 0 0 5px;" type="text" name="" id=""/>
+                    <label>种类：</label>
+                    <input style="width:137px;margin:-2px 0 0 5px;" type="text" name=""/>
                 </div>
             </div>
             <div class="submenu_mainRight">
                 <div class="submenu_unit">
-                    <label for="">种类：</label>
-                    <select class="select_full" name="" id="">
+                    <label>种类：</label>
+                    <select class="select_full" name="">
                         <option>(无)</option>
                     </select>
                 </div>
                 <div class="submenu_unitLarge">
-                    <label for="">种类：</label>
-                    <input style="width:83px;margin:-2px 0 0 5px;" type="text" name="" id=""/>
+                    <label>种类：</label>
+                    <input style="width:83px;margin:-2px 0 0 5px;" type="text" name=""/>
 
-                    <label style="margin:10px 0 0 0;" for="">种类：</label>
-                    <input style="width:83px;margin:10px 0 0 5px;" type="text" name="" id=""/>
+                    <label style="margin:10px 0 0 0;">种类：</label>
+                    <input style="width:83px;margin:10px 0 0 5px;" type="text" name=""/>
                 </div>
                 <input type="button" value="效果"/>
 
                 <div class="submenu_unit">
-                    <label for="">种类：</label>
-                    <input style="width:137px;margin:-2px 0 0 5px;" type="text" name="" id=""/>
+                    <label>种类：</label>
+                    <input style="width:137px;margin:-2px 0 0 5px;" type="text" name=""/>
                 </div>
             </div>
         </div>
@@ -241,16 +246,16 @@
                     <div id="filter_name" class="filter_float" style="display:none;">
                         <!-- 修改 -->
                         <div>
-                            <input type="checkbox" name="" id=""/>
-                            <label for="">按照名称排序</label>
+                            <input type="checkbox" name=""/>
+                            <label>按照名称排序</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="" id=""/>
-                            <label for="">按照名称排序</label>
+                            <input type="checkbox" name=""/>
+                            <label>按照名称排序</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="" id=""/>
-                            <label for="">按照名称排序</label>
+                            <input type="checkbox" name=""/>
+                            <label>按照名称排序</label>
                         </div>
                         <!-- 修改 -->
                     </div>
@@ -404,7 +409,7 @@
 <!--{"archetypes":"","card_type":"\u6548\u679c\u602a\u517d","id":2067,"lore":"\u8fd9\u5f20\u5361\u653b\u51fb\u7684\u573a\u5408\uff0c\u5bf9\u65b9\u76f4\u5230\u4f24\u5bb3\u6b65\u9aa4\u7ed3\u675f\u65f6\u4e0d\u80fd\u53d1\u52a8\u9b54\u6cd5\u00b7\u9677\u9631\u5361\u3002\u7528\u4ee5\u4e0b\u7684\u602a\u517d\u4e3a\u796d\u54c1\u4f5c\u796d\u54c1\u53ec\u5524\u7684\u573a\u5408\uff0c\u8fd9\u5f20\u5361\u5f97\u5230\u5404\u81ea\u7684\u6548\u679c\u3002\u25cf\u7eff\u9f7f\u8f6e\uff1a\u8fd9\u5f20\u5361\u653b\u51fb\u5b88\u5907\u8868\u793a\u602a\u517d\u65f6\uff0c\u82e5\u8fd9\u5f20\u5361\u7684\u653b\u51fb\u529b\u8d85\u8fc7\u5b88\u5907\u8868\u793a\u602a\u517d\u7684\u5b88\u5907\u529b\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206\u90a3\u4e2a\u6570\u503c\u7684\u6218\u6597\u4f24\u5bb3\u3002\u25cf\u7ea2\u9f7f\u8f6e\uff1a\u7ed9\u4e88\u5bf9\u65b9\u73a9\u5bb6\u6218\u6597\u4f24\u5bb3\u65f6\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206400\u5206\u4f24\u5bb3\u3002\u25cf\u9ec4\u9f7f\u8f6e\uff1a\u6218\u6597\u7834\u574f\u5bf9\u65b9\u602a\u517d\u7684\u573a\u5408\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206600\u5206\u4f24\u5bb3\u3002","mediums":"OCG\tTCG","monster_atk":3000,"monster_attribute":"\u5730","monster_def":2000,"monster_level":8,"monster_type":null,"name":"\u53e4\u4ee3\u7684\u673a\u68b0\u5de8\u9f99","number":50933533,"stats":"21,26,37","status":3,"tokens":0,"type":"\u673a\u68b0"}	-->
 </div>
 
-<div class="floatleft operate_area">
+<div class="floatleft operate_area graphic">
     <div class="select_card">
         <div class="select_cardOn">
             <select name="">

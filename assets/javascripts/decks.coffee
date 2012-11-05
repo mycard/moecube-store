@@ -11,6 +11,10 @@ class Card extends Spine.Model
   @hasMany 'card_usages', CardUsage
   @url: "https://api.mongolab.com/api/1/databases/mycard/collections/cards?apiKey=508e5726e4b0c54ca4492ead"
   @locale_url: "https://api.mongolab.com/api/1/databases/mycard/collections/lang_#{locale}?apiKey=508e5726e4b0c54ca4492ead"
+  image_url: ->
+    "http://images.my-card.in/#{@id}.jpg"
+  image_thumbnail_url: ->
+    "http://images.my-card.in/thumbnail/#{@id}.jpg"
   @query: (q, callback)->
     $.getJSON "#{@url}&q=#{JSON.stringify(q)}", (cards) =>
       cards_id = (card._id for card in cards)
@@ -103,10 +107,16 @@ class Deck extends Spine.Controller
         main_count += card_usage.count
         category_count[(category for category in card.card_type when category in Card.categories).pop()] += card_usage.count
     @html $('#deck_template').tmpl({main: @main, side: @side, extra: @extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
-    @el.jscroll({W: "12px", Btn:
-      {btn: false}});
+    $('.card_usage').draggable()
+    if $('.operate_area').hasClass('text')
+      @el.jscroll({W: "12px", Btn:
+        {btn: false}});
+
+
+
 
     @url = "http://my-card.in/decks/?name=#{@deck_name}&cards=#{@encode()}"
+
     #alert @url
     #$('#deck_url_ydk').attr 'download', Deck.deck_name + '.ydk'
     #$('#deck_url_ydk').attr 'href', 'data:application/octet-stream,' +  (card_usage.card_id for i in  ).concat((card_usage.card_id for i in [0...card_usage.count] for card_usage in @extra), ["!side"], (card_usage.card_id for i in [0...card_usage.count] for card_usage in @side)).join("%0a")

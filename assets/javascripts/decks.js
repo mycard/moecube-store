@@ -38,6 +38,14 @@
 
     Card.locale_url = "https://api.mongolab.com/api/1/databases/mycard/collections/lang_" + locale + "?apiKey=508e5726e4b0c54ca4492ead";
 
+    Card.prototype.image_url = function() {
+      return "http://images.my-card.in/" + this.id + ".jpg";
+    };
+
+    Card.prototype.image_thumbnail_url = function() {
+      return "http://images.my-card.in/thumbnail/" + this.id + ".jpg";
+    };
+
     Card.query = function(q, callback) {
       var _this = this;
       return $.getJSON("" + this.url + "&q=" + (JSON.stringify(q)), function(cards) {
@@ -271,12 +279,15 @@
         extra_count: extra_count,
         category_count: category_count
       }));
-      this.el.jscroll({
-        W: "12px",
-        Btn: {
-          btn: false
-        }
-      });
+      $('.card_usage').draggable();
+      if ($('.operate_area').hasClass('text')) {
+        this.el.jscroll({
+          W: "12px",
+          Btn: {
+            btn: false
+          }
+        });
+      }
       return this.url = "http://my-card.in/decks/?name=" + this.deck_name + "&cards=" + (this.encode());
     };
 
