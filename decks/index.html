@@ -81,7 +81,7 @@
     <script id="deck_template" type="text/x-jquery-tmpl">
         <fieldset id="deck_main">
             <legend id="deck_main_title" class="deck_title main">主卡组
-                <small>(${main_count}:
+                <small>(${main.length}:
                     {{each category_count}}
                     <span class="deck_category_count ${$index}">${$value}</span>{{/each}})
                 </small>
@@ -92,7 +92,7 @@
         </fieldset>
         <fieldset id="deck_side">
             <legend id="deck_side_title" class="deck_title main">副卡组
-                <small>(${side_count})</small>
+                <small>(${side.length})</small>
             </legend>
             <div class="deck_part side">
                 {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
@@ -100,7 +100,7 @@
         </fieldset>
         <fieldset id="deck_extra">
             <legend id="deck_extra_title" class="deck_title main">额外卡组
-                <small>(${extra_count})</small>
+                <small>(${extra.length})</small>
             </legend>
             <div class="deck_part extra">
                 {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}

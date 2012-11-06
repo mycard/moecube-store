@@ -108,6 +108,22 @@ class Deck extends Spine.Controller
     @html $('#deck_template').tmpl({main: @main, side: @side, extra: @extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
     $( ".deck_part" ).sortable(
       connectWith: ".deck_part"
+      stop: ->
+        card_usages = []
+
+        last_item = null
+        for el in $('.card_usage')
+          item = $(el).tmplItem().data
+          if last_item
+            if last_item.card_id == item.card_id and last_item.side == item.side
+              last_item.count++
+            else
+              card_usages.push last_item
+              last_item = {card_id: item.card_id, side: item.side, count: 1}
+          else
+            last_item = {card_id: item.card_id, side: item.side, count: 1}
+        card_usages.push last_item
+        CardUsage.refresh card_usages, clear: true
     ).disableSelection();
     if $('.operate_area').hasClass('text')
       @el.jscroll({W: "12px", Btn:

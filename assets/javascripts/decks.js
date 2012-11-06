@@ -280,7 +280,39 @@
         category_count: category_count
       }));
       $(".deck_part").sortable({
-        connectWith: ".deck_part"
+        connectWith: ".deck_part",
+        stop: function() {
+          var card_usages, el, item, last_item, _j, _len1, _ref1;
+          card_usages = [];
+          last_item = null;
+          _ref1 = $('.card_usage');
+          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+            el = _ref1[_j];
+            item = $(el).tmplItem().data;
+            if (last_item) {
+              if (last_item.card_id === item.card_id && last_item.side === item.side) {
+                last_item.count++;
+              } else {
+                card_usages.push(last_item);
+                last_item = {
+                  card_id: item.card_id,
+                  side: item.side,
+                  count: 1
+                };
+              }
+            } else {
+              last_item = {
+                card_id: item.card_id,
+                side: item.side,
+                count: 1
+              };
+            }
+          }
+          card_usages.push(last_item);
+          return CardUsage.refresh(card_usages, {
+            clear: true
+          });
+        }
       }).disableSelection();
       if ($('.operate_area').hasClass('text')) {
         this.el.jscroll({
