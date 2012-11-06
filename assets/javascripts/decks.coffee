@@ -130,7 +130,6 @@ class Deck extends Spine.Controller
     if $('.operate_area').hasClass('text')
       @el.jscroll({W: "12px", Btn:
         {btn: false}})
-    else
 
     @url = "http://my-card.in/decks/?name=#{@deck_name}&cards=#{@encode()}"
 
@@ -196,6 +195,9 @@ $(document).ready ->
       deck.deck_name = $.url().param('name')
       deck.tab_control()
       deck.decode $.url().param('cards')
+      $(".rename_ope").click ->
+        $(".text,.graphic").toggleClass("graphic text")
+        deck.render()
 #window.addEventListener 'popstate', (ev)->
 #  alert ev.state
 #if ev.state

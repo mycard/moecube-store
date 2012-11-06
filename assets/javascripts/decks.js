@@ -322,8 +322,6 @@
             btn: false
           }
         });
-      } else {
-
       }
       return this.url = "http://my-card.in/decks/?name=" + this.deck_name + "&cards=" + (this.encode());
     };
@@ -412,7 +410,11 @@
         });
         deck.deck_name = $.url().param('name');
         deck.tab_control();
-        return deck.decode($.url().param('cards'));
+        deck.decode($.url().param('cards'));
+        return $(".rename_ope").click(function() {
+          $(".text,.graphic").toggleClass("graphic text");
+          return deck.render();
+        });
       }
     });
   });
