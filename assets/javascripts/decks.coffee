@@ -113,22 +113,24 @@ class Deck extends Spine.Controller
 
         last_item = null
         for el in $('.card_usage')
-          item = $(el).tmplItem().data
+          card_id = $(el).tmplItem().data.card_id
+          side = $(el).parent().hasClass('side')
+
           if last_item
-            if last_item.card_id == item.card_id and last_item.side == item.side
+            if last_item.card_id == card_id and last_item.side == side
               last_item.count++
             else
               card_usages.push last_item
-              last_item = {card_id: item.card_id, side: item.side, count: 1}
+              last_item = {card_id: card_id, side: side, count: 1}
           else
-            last_item = {card_id: item.card_id, side: item.side, count: 1}
+            last_item = {card_id: card_id, side: side, count: 1}
         card_usages.push last_item
         CardUsage.refresh card_usages, clear: true
     ).disableSelection();
     if $('.operate_area').hasClass('text')
       @el.jscroll({W: "12px", Btn:
-        {btn: false}});
-
+        {btn: false}})
+    else
 
     @url = "http://my-card.in/decks/?name=#{@deck_name}&cards=#{@encode()}"
 

@@ -282,28 +282,29 @@
       $(".deck_part").sortable({
         connectWith: ".deck_part",
         stop: function() {
-          var card_usages, el, item, last_item, _j, _len1, _ref1;
+          var card_id, card_usages, el, last_item, side, _j, _len1, _ref1;
           card_usages = [];
           last_item = null;
           _ref1 = $('.card_usage');
           for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
             el = _ref1[_j];
-            item = $(el).tmplItem().data;
+            card_id = $(el).tmplItem().data.card_id;
+            side = $(el).parent().hasClass('side');
             if (last_item) {
-              if (last_item.card_id === item.card_id && last_item.side === item.side) {
+              if (last_item.card_id === card_id && last_item.side === side) {
                 last_item.count++;
               } else {
                 card_usages.push(last_item);
                 last_item = {
-                  card_id: item.card_id,
-                  side: item.side,
+                  card_id: card_id,
+                  side: side,
                   count: 1
                 };
               }
             } else {
               last_item = {
-                card_id: item.card_id,
-                side: item.side,
+                card_id: card_id,
+                side: side,
                 count: 1
               };
             }
@@ -321,6 +322,8 @@
             btn: false
           }
         });
+      } else {
+
       }
       return this.url = "http://my-card.in/decks/?name=" + this.deck_name + "&cards=" + (this.encode());
     };
