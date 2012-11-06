@@ -86,7 +86,7 @@
                     <span class="deck_category_count ${$index}">${$value}</span>{{/each}})
                 </small>
             </legend>
-            <div class="deck_part main" style="width:${main_count}px">
+            <div class="deck_part main"{{if $('.operate_area').hasClass('graphic')}} style="width:${main_count}px"{{/if}}>
                 {{tmpl(main) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
@@ -94,7 +94,7 @@
             <legend id="deck_side_title" class="deck_title main">副卡组
                 <small>(${side_count})</small>
             </legend>
-            <div class="deck_part side" style="width:${main_count}px">
+            <div class="deck_part side"{{if $('.operate_area').hasClass('graphic')}} style="width:${main_count}px"{{/if}}>
                 {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
@@ -102,7 +102,7 @@
             <legend id="deck_extra_title" class="deck_title main">额外卡组
                 <small>(${extra_count})</small>
             </legend>
-            <div class="deck_part extra" style="width:${main_count}px">
+            <div class="deck_part extra"{{if $('.operate_area').hasClass('graphic')}} style="width:${extra_extra}px"{{/if}}>
                 {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
