@@ -279,7 +279,9 @@
         extra_count: extra_count,
         category_count: category_count
       }));
-      $('.card_usage').draggable();
+      $(".deck_part").sortable({
+        connectWith: ".deck_part"
+      }).disableSelection();
       if ($('.operate_area').hasClass('text')) {
         this.el.jscroll({
           W: "12px",

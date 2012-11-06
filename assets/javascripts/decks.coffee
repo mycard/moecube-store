@@ -106,7 +106,9 @@ class Deck extends Spine.Controller
         main_count += card_usage.count
         category_count[(category for category in card.card_type when category in Card.categories).pop()] += card_usage.count
     @html $('#deck_template').tmpl({main: @main, side: @side, extra: @extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
-    $('.card_usage').draggable()
+    $( ".deck_part" ).sortable(
+      connectWith: ".deck_part"
+    ).disableSelection();
     if $('.operate_area').hasClass('text')
       @el.jscroll({W: "12px", Btn:
         {btn: false}});
