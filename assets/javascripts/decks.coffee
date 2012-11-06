@@ -34,16 +34,16 @@ class Card extends Spine.Model
             i++
 
           {
-            id: card._id
-            alias: card.alias
-            name: lang.name
-            card_type: card_type
-            type: (i = 0; (i++ until lang.race >> i & 1); @types[i]) if lang.race
-            attribute: (i = 0; (i++ until lang.attribute >> i & 1); @_attributes[i]) if lang.attribute
-            level: card.level
-            atk: card.atk
-            def: card.def
-            description: lang.desc
+          id: card._id
+          alias: card.alias
+          name: lang.name
+          card_type: card_type
+          type: (i = 0; (i++ until lang.race >> i & 1); @types[i]) if lang.race
+          attribute: (i = 0; (i++ until lang.attribute >> i & 1); @_attributes[i]) if lang.attribute
+          level: card.level
+          atk: card.atk
+          def: card.def
+          description: lang.desc
           }
         )
         @refresh cards
@@ -69,7 +69,7 @@ class Deck extends Spine.Controller
     for card_usage in @main.concat @extra, @side
       c = card_usage.side << 29 | card_usage.count << 27 | card_usage.card_id
       for i in [4..0]
-        result += @key.charAt((c >> i*6) & 0x3F)
+        result += @key.charAt((c >> i * 6) & 0x3F)
     result
   decode: (str)->
     card_usages = for i in [0...str.length] by 5
@@ -80,8 +80,7 @@ class Deck extends Spine.Controller
       side = decoded >> 29
       count = decoded >> 27 & 0x3
       {card_id: card_id, side: side, count: count}
-    Card.query {_id:
-      { $in: card_usage.card_id for card_usage in card_usages}}, =>
+    Card.query {_id: { $in: card_usage.card_id for card_usage in card_usages}}, =>
       CardUsage.refresh card_usages, clear: true
 
   render: =>
@@ -113,13 +112,11 @@ class Deck extends Spine.Controller
         {btn: false}});
 
 
-
-
     @url = "http://my-card.in/decks/?name=#{@deck_name}&cards=#{@encode()}"
 
-    #alert @url
-    #$('#deck_url_ydk').attr 'download', Deck.deck_name + '.ydk'
-    #$('#deck_url_ydk').attr 'href', 'data:application/octet-stream,' +  (card_usage.card_id for i in  ).concat((card_usage.card_id for i in [0...card_usage.count] for card_usage in @extra), ["!side"], (card_usage.card_id for i in [0...card_usage.count] for card_usage in @side)).join("%0a")
+  #alert @url
+  #$('#deck_url_ydk').attr 'download', Deck.deck_name + '.ydk'
+  #$('#deck_url_ydk').attr 'href', 'data:application/octet-stream,' +  (card_usage.card_id for i in  ).concat((card_usage.card_id for i in [0...card_usage.count] for card_usage in @extra), ["!side"], (card_usage.card_id for i in [0...card_usage.count] for card_usage in @side)).join("%0a")
   tab_control: ->
     $(".bottom_area div").click ->
       $(this).addClass("bottom_button_active").removeClass("bottom_button")
@@ -146,26 +143,27 @@ class Deck extends Spine.Controller
     if count < 3 #TODO: lflist
       card_usage.count++
       card_usage.save()
-    history.pushState(null,@deck_name, @url)
+    history.pushState(null, @deck_name, @url)
   minus: (e)->
+    e.preventDefault()
     card_usage = $(e.target).tmplItem().data
     card_usage.count--
     if card_usage.count
       card_usage.save()
     else
       card_usage.destroy()
-    history.pushState(null,@deck_name, @url)
-    return false #TODO: prevent showing menu
+    history.pushState(null, @deck_name, @url)
+
 
 $(document).ready ->
   $('#name').html $.url().param('name')
-  $( "#deck_share_dialog" ).dialog
+  $("#deck_share_dialog").dialog
     modal: true
     autoOpen: false
 
   $('#deck_share').click ->
     $("#deck_url").val
-    $( "#deck_share_dialog" ).dialog('open')
+    $("#deck_share_dialog").dialog('open')
 
   #$.ajax({url: 'https://www.googleapis.com/urlshortener/v1/url', type: 'POST', data:JSON.stringify({longUrl: 'http://my-card.in/'}), contentType: 'application/json; charset=utf-8', success: function(data){alert(data)} })"
   $.i18n.properties
@@ -178,7 +176,7 @@ $(document).ready ->
       deck.deck_name = $.url().param('name')
       deck.tab_control()
       deck.decode $.url().param('cards')
-      #window.addEventListener 'popstate', (ev)->
-      #  alert ev.state
-        #if ev.state
-        #  CardUsage.refresh ev.state, clear: true
+#window.addEventListener 'popstate', (ev)->
+#  alert ev.state
+#if ev.state
+#  CardUsage.refresh ev.state, clear: true

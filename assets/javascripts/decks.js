@@ -338,6 +338,7 @@
 
     Deck.prototype.minus = function(e) {
       var card_usage;
+      e.preventDefault();
       card_usage = $(e.target).tmplItem().data;
       card_usage.count--;
       if (card_usage.count) {
@@ -345,8 +346,7 @@
       } else {
         card_usage.destroy();
       }
-      history.pushState(null, this.deck_name, this.url);
-      return false;
+      return history.pushState(null, this.deck_name, this.url);
     };
 
     return Deck;
