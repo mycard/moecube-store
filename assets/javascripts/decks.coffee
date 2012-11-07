@@ -214,6 +214,8 @@ $(document).ready ->
   $('#deck_load').change ->
     file = @files[0]
     reader = new FileReader()
+    $('#deck_load').attr 'disabled', true
+    $('#name').html deck.deck_name = file.name
     reader.readAsText(file)
     reader.onload = (ev)->
       result = []
@@ -237,6 +239,7 @@ $(document).ready ->
               last_id = card_id
               count = 1
       result.push {card_id: last_id, side: side, count: count} if last_id
+      $('#deck_load').attr 'disabled', false
       deck.refresh result
 
   $.i18n.properties

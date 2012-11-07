@@ -501,6 +501,8 @@
       var file, reader;
       file = this.files[0];
       reader = new FileReader();
+      $('#deck_load').attr('disabled', true);
+      $('#name').html(deck.deck_name = file.name);
       reader.readAsText(file);
       return reader.onload = function(ev) {
         var card_id, count, last_id, line, lines, result, side, _i, _len;
@@ -548,6 +550,7 @@
             count: count
           });
         }
+        $('#deck_load').attr('disabled', false);
         return deck.refresh(result);
       };
     });
