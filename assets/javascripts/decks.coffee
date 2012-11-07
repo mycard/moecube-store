@@ -6,7 +6,7 @@ class Card extends Spine.Model
   @categories = ['Monster', 'Spell', 'Trap']
   @card_types_extra = ['Fusion', 'Synchro', 'Xyz']
   @configure 'Card', 'id', 'name', 'card_type', 'type', 'attribute', 'level', 'atk', 'def', 'description'
-  @extend Spine.Model.Ajax
+  @extend Spine.Model.Local
   @extend Spine.Events
   @hasMany 'card_usages', CardUsage
   @url: "https://api.mongolab.com/api/1/databases/mycard/collections/cards?apiKey=508e5726e4b0c54ca4492ead"
@@ -80,8 +80,16 @@ class Deck extends Spine.Controller
       side = decoded >> 29
       count = decoded >> 27 & 0x3
       {card_id: card_id, side: side, count: count}
-    Card.query {_id: { $in: card_usage.card_id for card_usage in card_usages}}, =>
-      CardUsage.refresh card_usages, clear: true
+    @refresh card_usages
+  refresh: (card_usages, modify_url=true)->
+    cards_need_load = (card_usage.card_id for card_usage in card_usages when !Card.exists(card_usage.card_id))
+    if cards_need_load.length
+      Card.query {_id: { $in: cards_need_load}}, =>
+        CardUsage.refresh card_usages, clear: true
+        history.pushState(CardUsage.toJSON(), @deck_name, @location()) if modify_url
+     else
+        CardUsage.refresh card_usages, clear: true
+        history.pushState(CardUsage.toJSON(), @deck_name, @location()) if modify_url
 
   render: =>
     @main = []
@@ -106,11 +114,14 @@ class Deck extends Spine.Controller
         main_count += card_usage.count
         category_count[(category for category in card.card_type when category in Card.categories).pop()] += card_usage.count
     @html $('#deck_template').tmpl({main: @main, side: @side, extra: @extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
+
+    $('#deck_url_ydk').attr 'download', @deck_name + '.ydk'
+    $('#deck_url_ydk').attr 'href', 'data:application/octet-stream;headers=' + encodeURIComponent('Content-Disposition: attachment; filename=' + @deck_name + '.ydk') + ',' + (card_usage.card_id for i in [0...card_usage.count] for card_usage in @main).concat((card_usage.card_id for i in [0...card_usage.count] for card_usage in @extra), ["!side"], (card_usage.card_id for i in [0...card_usage.count] for card_usage in @side)).join("%0a")
+    #$('#deck_url_ydk').attr 'href', 'data:application/octet-stream;headers=' + encodeURIComponent('Content-Disposition: attachment; filename=' + @deck_name + '.ydk') + ',' + (card_usage.card_id for i in [0...card_usage.count] for card_usage in @main).concat((card_usage.card_id for i in [0...card_usage.count] for card_usage in @extra), ["!side"], (card_usage.card_id for i in [0...card_usage.count] for card_usage in @side)).join("%0a")
     $( ".deck_part" ).sortable(
       connectWith: ".deck_part"
-      stop: ->
+      stop: =>
         card_usages = []
-
         last_item = null
         for el in $('.card_usage')
           card_id = $(el).tmplItem().data.card_id
@@ -125,17 +136,17 @@ class Deck extends Spine.Controller
           else
             last_item = {card_id: card_id, side: side, count: 1}
         card_usages.push last_item
-        CardUsage.refresh card_usages, clear: true
+        @refresh card_usages
     ).disableSelection();
     if $('.operate_area').hasClass('text')
       @el.jscroll({W: "12px", Btn:
         {btn: false}})
+  location: ->
+    "/decks/?name=#{@deck_name}&cards=#{@encode()}"
+  url: ->
+    "http://my-card.in" + @location()
 
-    @url = "http://my-card.in/decks/?name=#{@deck_name}&cards=#{@encode()}"
 
-  #alert @url
-  #$('#deck_url_ydk').attr 'download', Deck.deck_name + '.ydk'
-  #$('#deck_url_ydk').attr 'href', 'data:application/octet-stream,' +  (card_usage.card_id for i in  ).concat((card_usage.card_id for i in [0...card_usage.count] for card_usage in @extra), ["!side"], (card_usage.card_id for i in [0...card_usage.count] for card_usage in @side)).join("%0a")
   tab_control: ->
     $(".bottom_area div").click ->
       $(this).addClass("bottom_button_active").removeClass("bottom_button")
@@ -162,7 +173,7 @@ class Deck extends Spine.Controller
     if count < 3 #TODO: lflist
       card_usage.count++
       card_usage.save()
-    history.pushState(null, @deck_name, @url)
+
   minus: (e)->
     e.preventDefault()
     card_usage = $(e.target).tmplItem().data
@@ -171,7 +182,7 @@ class Deck extends Spine.Controller
       card_usage.save()
     else
       card_usage.destroy()
-    history.pushState(null, @deck_name, @url)
+    history.pushState(CardUsage.toJSON(), @deck_name, @location())
 
 
 $(document).ready ->
@@ -180,25 +191,66 @@ $(document).ready ->
     modal: true
     autoOpen: false
 
-  $('#deck_share').click ->
-    $("#deck_url").val
-    $("#deck_share_dialog").dialog('open')
 
-  #$.ajax({url: 'https://www.googleapis.com/urlshortener/v1/url', type: 'POST', data:JSON.stringify({longUrl: 'http://my-card.in/'}), contentType: 'application/json; charset=utf-8', success: function(data){alert(data)} })"
+
+  deck = new Deck(el: $("#deck"))
+  deck.deck_name = $.url().param('name')
+  deck.tab_control()
+
+  $('#deck_share').click ->
+    $("#deck_url").val deck.url()
+    $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(deck.url())
+    $("#deck_share_dialog").dialog('open')
+  $('#deck_url_shorten').click ->
+    $('#deck_url_shorten').attr "disabled",true
+    $.ajax
+      url: 'https://www.googleapis.com/urlshortener/v1/url'
+      type: 'POST'
+      data: JSON.stringify {longUrl: deck.url()}
+      contentType: 'application/json; charset=utf-8'
+      success: (data)->
+        $("#deck_url").val data.id
+        $('#deck_url_shorten').attr "disabled", false
+  $('#deck_load').change ->
+    file = @files[0]
+    reader = new FileReader()
+    reader.readAsText(file)
+    reader.onload = (ev)->
+      result = []
+      lines = ev.target.result.split("\n")
+      side = false
+      last_id = 0
+      count = 0
+      for line in lines
+        if line.charAt(0) == '#'
+          continue
+        else if line.substr(0,5) == '!side'
+          result.push {card_id: last_id, side: side, count: count} if last_id
+          side = true
+        else
+          card_id = parseInt(line)
+          if card_id
+            if card_id == last_id
+              count++
+            else
+              result.push {card_id: last_id, side: side, count: count} if last_id
+              last_id = card_id
+              count = 1
+      result.push {card_id: last_id, side: side, count: count} if last_id
+      deck.refresh result
+
   $.i18n.properties
     name: 'card'
     path: '/locales/'
     mode: 'map'
     cache: true
     callback: ->
-      deck = new Deck(el: $("#deck"))
-      deck.deck_name = $.url().param('name')
-      deck.tab_control()
-      deck.decode $.url().param('cards')
+      Card.fetch ->
+        deck.decode $.url().param('cards')
+        window.addEventListener 'popstate', (ev)->
+          if ev.state
+            deck.refresh ev.state, false
+      Card.fetch()
       $(".rename_ope").click ->
         $(".text,.graphic").toggleClass("graphic text")
         deck.render()
-#window.addEventListener 'popstate', (ev)->
-#  alert ev.state
-#if ev.state
-#  CardUsage.refresh ev.state, clear: true

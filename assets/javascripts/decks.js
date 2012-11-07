@@ -28,7 +28,7 @@
 
     Card.configure('Card', 'id', 'name', 'card_type', 'type', 'attribute', 'level', 'atk', 'def', 'description');
 
-    Card.extend(Spine.Model.Ajax);
+    Card.extend(Spine.Model.Local);
 
     Card.extend(Spine.Events);
 
@@ -176,8 +176,7 @@
     };
 
     Deck.prototype.decode = function(str) {
-      var card_id, card_usage, card_usages, char, count, decoded, i, side,
-        _this = this;
+      var card_id, card_usages, char, count, decoded, i, side;
       card_usages = (function() {
         var _i, _j, _len, _ref, _ref1, _results;
         _results = [];
@@ -199,27 +198,51 @@
         }
         return _results;
       }).call(this);
-      return Card.query({
-        _id: {
-          $in: (function() {
-            var _i, _len, _results;
-            _results = [];
-            for (_i = 0, _len = card_usages.length; _i < _len; _i++) {
-              card_usage = card_usages[_i];
-              _results.push(card_usage.card_id);
-            }
-            return _results;
-          })()
+      return this.refresh(card_usages);
+    };
+
+    Deck.prototype.refresh = function(card_usages, modify_url) {
+      var card_usage, cards_need_load,
+        _this = this;
+      if (modify_url == null) {
+        modify_url = true;
+      }
+      cards_need_load = (function() {
+        var _i, _len, _results;
+        _results = [];
+        for (_i = 0, _len = card_usages.length; _i < _len; _i++) {
+          card_usage = card_usages[_i];
+          if (!Card.exists(card_usage.card_id)) {
+            _results.push(card_usage.card_id);
+          }
         }
-      }, function() {
-        return CardUsage.refresh(card_usages, {
+        return _results;
+      })();
+      if (cards_need_load.length) {
+        return Card.query({
+          _id: {
+            $in: cards_need_load
+          }
+        }, function() {
+          CardUsage.refresh(card_usages, {
+            clear: true
+          });
+          if (modify_url) {
+            return history.pushState(CardUsage.toJSON(), _this.deck_name, _this.location());
+          }
+        });
+      } else {
+        CardUsage.refresh(card_usages, {
           clear: true
         });
-      });
+        if (modify_url) {
+          return history.pushState(CardUsage.toJSON(), this.deck_name, this.location());
+        }
+      }
     };
 
     Deck.prototype.render = function() {
-      var category, category_count, extra_count, main_count, side_count, _i, _len, _ref,
+      var card_usage, category, category_count, extra_count, i, main_count, side_count, _i, _len, _ref,
         _this = this;
       this.main = [];
       this.side = [];
@@ -279,6 +302,56 @@
         extra_count: extra_count,
         category_count: category_count
       }));
+      $('#deck_url_ydk').attr('download', this.deck_name + '.ydk');
+      $('#deck_url_ydk').attr('href', 'data:application/octet-stream;headers=' + encodeURIComponent('Content-Disposition: attachment; filename=' + this.deck_name + '.ydk') + ',' + ((function() {
+        var _j, _len1, _ref1, _results;
+        _ref1 = this.main;
+        _results = [];
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          card_usage = _ref1[_j];
+          _results.push((function() {
+            var _k, _ref2, _results1;
+            _results1 = [];
+            for (i = _k = 0, _ref2 = card_usage.count; 0 <= _ref2 ? _k < _ref2 : _k > _ref2; i = 0 <= _ref2 ? ++_k : --_k) {
+              _results1.push(card_usage.card_id);
+            }
+            return _results1;
+          })());
+        }
+        return _results;
+      }).call(this)).concat((function() {
+        var _j, _len1, _ref1, _results;
+        _ref1 = this.extra;
+        _results = [];
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          card_usage = _ref1[_j];
+          _results.push((function() {
+            var _k, _ref2, _results1;
+            _results1 = [];
+            for (i = _k = 0, _ref2 = card_usage.count; 0 <= _ref2 ? _k < _ref2 : _k > _ref2; i = 0 <= _ref2 ? ++_k : --_k) {
+              _results1.push(card_usage.card_id);
+            }
+            return _results1;
+          })());
+        }
+        return _results;
+      }).call(this), ["!side"], (function() {
+        var _j, _len1, _ref1, _results;
+        _ref1 = this.side;
+        _results = [];
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          card_usage = _ref1[_j];
+          _results.push((function() {
+            var _k, _ref2, _results1;
+            _results1 = [];
+            for (i = _k = 0, _ref2 = card_usage.count; 0 <= _ref2 ? _k < _ref2 : _k > _ref2; i = 0 <= _ref2 ? ++_k : --_k) {
+              _results1.push(card_usage.card_id);
+            }
+            return _results1;
+          })());
+        }
+        return _results;
+      }).call(this)).join("%0a"));
       $(".deck_part").sortable({
         connectWith: ".deck_part",
         stop: function() {
@@ -310,20 +383,25 @@
             }
           }
           card_usages.push(last_item);
-          return CardUsage.refresh(card_usages, {
-            clear: true
-          });
+          return _this.refresh(card_usages);
         }
       }).disableSelection();
       if ($('.operate_area').hasClass('text')) {
-        this.el.jscroll({
+        return this.el.jscroll({
           W: "12px",
           Btn: {
             btn: false
           }
         });
       }
-      return this.url = "http://my-card.in/decks/?name=" + this.deck_name + "&cards=" + (this.encode());
+    };
+
+    Deck.prototype.location = function() {
+      return "/decks/?name=" + this.deck_name + "&cards=" + (this.encode());
+    };
+
+    Deck.prototype.url = function() {
+      return "http://my-card.in" + this.location();
     };
 
     Deck.prototype.tab_control = function() {
@@ -366,9 +444,8 @@
       }
       if (count < 3) {
         card_usage.count++;
-        card_usage.save();
+        return card_usage.save();
       }
-      return history.pushState(null, this.deck_name, this.url);
     };
 
     Deck.prototype.minus = function(e) {
@@ -381,7 +458,7 @@
       } else {
         card_usage.destroy();
       }
-      return history.pushState(null, this.deck_name, this.url);
+      return history.pushState(CardUsage.toJSON(), this.deck_name, this.location());
     };
 
     return Deck;
@@ -389,14 +466,90 @@
   })(Spine.Controller);
 
   $(document).ready(function() {
+    var deck;
     $('#name').html($.url().param('name'));
     $("#deck_share_dialog").dialog({
       modal: true,
       autoOpen: false
     });
+    deck = new Deck({
+      el: $("#deck")
+    });
+    deck.deck_name = $.url().param('name');
+    deck.tab_control();
     $('#deck_share').click(function() {
-      $("#deck_url").val;
+      $("#deck_url").val(deck.url());
+      $("#deck_url_qrcode").attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(deck.url()));
       return $("#deck_share_dialog").dialog('open');
+    });
+    $('#deck_url_shorten').click(function() {
+      $('#deck_url_shorten').attr("disabled", true);
+      return $.ajax({
+        url: 'https://www.googleapis.com/urlshortener/v1/url',
+        type: 'POST',
+        data: JSON.stringify({
+          longUrl: deck.url()
+        }),
+        contentType: 'application/json; charset=utf-8',
+        success: function(data) {
+          $("#deck_url").val(data.id);
+          return $('#deck_url_shorten').attr("disabled", false);
+        }
+      });
+    });
+    $('#deck_load').change(function() {
+      var file, reader;
+      file = this.files[0];
+      reader = new FileReader();
+      reader.readAsText(file);
+      return reader.onload = function(ev) {
+        var card_id, count, last_id, line, lines, result, side, _i, _len;
+        result = [];
+        lines = ev.target.result.split("\n");
+        side = false;
+        last_id = 0;
+        count = 0;
+        for (_i = 0, _len = lines.length; _i < _len; _i++) {
+          line = lines[_i];
+          if (line.charAt(0) === '#') {
+            continue;
+          } else if (line.substr(0, 5) === '!side') {
+            if (last_id) {
+              result.push({
+                card_id: last_id,
+                side: side,
+                count: count
+              });
+            }
+            side = true;
+          } else {
+            card_id = parseInt(line);
+            if (card_id) {
+              if (card_id === last_id) {
+                count++;
+              } else {
+                if (last_id) {
+                  result.push({
+                    card_id: last_id,
+                    side: side,
+                    count: count
+                  });
+                }
+                last_id = card_id;
+                count = 1;
+              }
+            }
+          }
+        }
+        if (last_id) {
+          result.push({
+            card_id: last_id,
+            side: side,
+            count: count
+          });
+        }
+        return deck.refresh(result);
+      };
     });
     return $.i18n.properties({
       name: 'card',
@@ -404,13 +557,15 @@
       mode: 'map',
       cache: true,
       callback: function() {
-        var deck;
-        deck = new Deck({
-          el: $("#deck")
+        Card.fetch(function() {
+          deck.decode($.url().param('cards'));
+          return window.addEventListener('popstate', function(ev) {
+            if (ev.state) {
+              return deck.refresh(ev.state, false);
+            }
+          });
         });
-        deck.deck_name = $.url().param('name');
-        deck.tab_control();
-        deck.decode($.url().param('cards'));
+        Card.fetch();
         return $(".rename_ope").click(function() {
           $(".text,.graphic").toggleClass("graphic text");
           return deck.render();

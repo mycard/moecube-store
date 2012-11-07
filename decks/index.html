@@ -425,11 +425,11 @@
             <img class="rename_ope" src="/assets/images/decks/rename.png" alt="" title="重命名"/>
         </div>
         <div class="select_cardUnder">
-            <div class="donwload_out" title="下载">
-                <div class="download_inner"></div>
+            <div class="donwload_out" title="上传">
+                <input id="deck_load" class="upload_inner" type="file" />
             </div>
             <div class="donwload_out" title="分享" id="deck_share">
-                <div class="upload_inner"></div>
+                <div class="download_inner"></div>
             </div>
             <!-- <img class="donwload_ope" src="/assets/images/decks/download.png" alt="" title="上传" />			 -->
             <a href="#" id="deck_url_ydk"><img class="save_ope" src="/assets/images/decks/save.png" alt="" title="保存"/></a>
@@ -441,12 +441,12 @@
     </div>
 </div>
 </div>
+</div>
 <div id="deck_share_dialog" title="share">
     <fieldset>
         <legend>URL</legend>
         <input id="deck_url" readonly="readonly"/><br/>
         <button id="deck_url_shorten">shorten</button>
-        <input id="deck_url_short" readonly="readonly"/><br/>
     </fieldset>
     <fieldset>
         <legend>share</legend>
@@ -462,14 +462,12 @@
     </fieldset>
     <fieldset>
         <legend>QR Code</legend>
-        <img id="qrcode"/>
+        <img id="deck_url_qrcode"/>
     </fieldset>
     <script type="text/javascript"
             src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-504b398d148616ce"></script>
     <!-- AddThis Button END -->
 </div>
-</div>
-
 <script src="/vendor/javascripts/jquery-1.8.2.min.js"></script>
 <script src="/vendor/javascripts/jQuery-URL-Parser.js"></script>
 <script src="/vendor/javascripts/jquery.tmpl.min.js"></script>
@@ -482,6 +480,7 @@
 <script src="/vendor/javascripts/json2.js"></script>
 <script src="/vendor/javascripts/spine/spine.js"></script>
 <script src="/vendor/javascripts/spine/ajax.js"></script>
+<script src="/vendor/javascripts/spine/local.js"></script>
 <script src="/vendor/javascripts/spine/relation.js"></script>
 
 <script src="/assets/javascripts/public.js"></script>
