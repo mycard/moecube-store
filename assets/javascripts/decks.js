@@ -201,12 +201,9 @@
       return this.refresh(card_usages);
     };
 
-    Deck.prototype.refresh = function(card_usages, modify_url) {
+    Deck.prototype.refresh = function(card_usages) {
       var card_usage, cards_need_load,
         _this = this;
-      if (modify_url == null) {
-        modify_url = true;
-      }
       cards_need_load = (function() {
         var _i, _len, _results;
         _results = [];
@@ -224,20 +221,14 @@
             $in: cards_need_load
           }
         }, function() {
-          CardUsage.refresh(card_usages, {
+          return CardUsage.refresh(card_usages, {
             clear: true
           });
-          if (modify_url) {
-            return history.pushState(CardUsage.toJSON(), _this.deck_name, _this.location());
-          }
         });
       } else {
-        CardUsage.refresh(card_usages, {
+        return CardUsage.refresh(card_usages, {
           clear: true
         });
-        if (modify_url) {
-          return history.pushState(CardUsage.toJSON(), this.deck_name, this.location());
-        }
       }
     };
 
@@ -383,7 +374,8 @@
             }
           }
           card_usages.push(last_item);
-          return _this.refresh(card_usages);
+          _this.refresh(card_usages);
+          return _this.set_history();
         }
       }).disableSelection();
       if ($('.operate_area').hasClass('text')) {
@@ -402,6 +394,10 @@
 
     Deck.prototype.url = function() {
       return "http://my-card.in" + this.location();
+    };
+
+    Deck.prototype.set_history = function() {
+      return history.pushState(CardUsage.toJSON(), this.deck_name, this.location());
     };
 
     Deck.prototype.tab_control = function() {
@@ -446,7 +442,7 @@
         card_usage.count++;
         card_usage.save();
       }
-      return history.pushState(CardUsage.toJSON(), this.deck_name, this.location());
+      return this.set_history();
     };
 
     Deck.prototype.minus = function(e) {
@@ -459,7 +455,7 @@
       } else {
         card_usage.destroy();
       }
-      return history.pushState(CardUsage.toJSON(), this.deck_name, this.location());
+      return this.set_history();
     };
 
     return Deck;
@@ -551,7 +547,8 @@
           });
         }
         $('#deck_load').attr('disabled', false);
-        return deck.refresh(result);
+        deck.refresh(result);
+        return deck.set_history();
       };
       return reader.readAsText(file);
     });

@@ -81,15 +81,13 @@ class Deck extends Spine.Controller
       count = decoded >> 27 & 0x3
       {card_id: card_id, side: side, count: count}
     @refresh card_usages
-  refresh: (card_usages, modify_url=true)->
+  refresh: (card_usages)->
     cards_need_load = (card_usage.card_id for card_usage in card_usages when !Card.exists(card_usage.card_id))
     if cards_need_load.length
       Card.query {_id: { $in: cards_need_load}}, =>
         CardUsage.refresh card_usages, clear: true
-        history.pushState(CardUsage.toJSON(), @deck_name, @location()) if modify_url
-     else
-        CardUsage.refresh card_usages, clear: true
-        history.pushState(CardUsage.toJSON(), @deck_name, @location()) if modify_url
+    else
+      CardUsage.refresh card_usages, clear: true
 
   render: =>
     @main = []
@@ -137,6 +135,7 @@ class Deck extends Spine.Controller
             last_item = {card_id: card_id, side: side, count: 1}
         card_usages.push last_item
         @refresh card_usages
+        @set_history()
     ).disableSelection();
     if $('.operate_area').hasClass('text')
       @el.jscroll({W: "12px", Btn:
@@ -145,7 +144,8 @@ class Deck extends Spine.Controller
     "/decks/?name=#{@deck_name}&cards=#{@encode()}"
   url: ->
     "http://my-card.in" + @location()
-
+  set_history: ->
+    history.pushState(CardUsage.toJSON(), @deck_name, @location())
 
   tab_control: ->
     $(".bottom_area div").click ->
@@ -173,7 +173,7 @@ class Deck extends Spine.Controller
     if count < 3 #TODO: lflist
       card_usage.count++
       card_usage.save()
-    history.pushState(CardUsage.toJSON(), @deck_name, @location())
+    @set_history()
   minus: (e)->
     e.preventDefault()
     card_usage = $(e.target).tmplItem().data
@@ -182,7 +182,7 @@ class Deck extends Spine.Controller
       card_usage.save()
     else
       card_usage.destroy()
-    history.pushState(CardUsage.toJSON(), @deck_name, @location())
+    @set_history()
 
 $(document).ready ->
   $('#name').html $.url().param('name')
@@ -237,6 +237,7 @@ $(document).ready ->
       result.push {card_id: last_id, side: side, count: count} if last_id
       $('#deck_load').attr 'disabled', false
       deck.refresh result
+      deck.set_history()
     reader.readAsText(file)
 
   $.i18n.properties
