@@ -303,20 +303,20 @@
         category_count: category_count
       }));
       $('#deck_url_ydk').attr('download', this.deck_name + '.ydk');
-      $('#deck_url_ydk').attr('href', 'data:application/octet-stream;headers=' + encodeURIComponent('Content-Disposition: attachment; filename=' + this.deck_name + '.ydk') + ',' + ((function() {
+      $('#deck_url_ydk').attr('href', 'data:application/octet-stream,' + ((function() {
         var _j, _len1, _ref1, _results;
         _ref1 = this.main;
         _results = [];
         for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
           card_usage = _ref1[_j];
-          _results.push((function() {
+          _results.push(((function() {
             var _k, _ref2, _results1;
             _results1 = [];
             for (i = _k = 0, _ref2 = card_usage.count; 0 <= _ref2 ? _k < _ref2 : _k > _ref2; i = 0 <= _ref2 ? ++_k : --_k) {
               _results1.push(card_usage.card_id);
             }
             return _results1;
-          })());
+          })()).join("%0a"));
         }
         return _results;
       }).call(this)).concat((function() {
@@ -325,14 +325,14 @@
         _results = [];
         for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
           card_usage = _ref1[_j];
-          _results.push((function() {
+          _results.push(((function() {
             var _k, _ref2, _results1;
             _results1 = [];
             for (i = _k = 0, _ref2 = card_usage.count; 0 <= _ref2 ? _k < _ref2 : _k > _ref2; i = 0 <= _ref2 ? ++_k : --_k) {
               _results1.push(card_usage.card_id);
             }
             return _results1;
-          })());
+          })()).join("%0a"));
         }
         return _results;
       }).call(this), ["!side"], (function() {
@@ -341,14 +341,14 @@
         _results = [];
         for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
           card_usage = _ref1[_j];
-          _results.push((function() {
+          _results.push(((function() {
             var _k, _ref2, _results1;
             _results1 = [];
             for (i = _k = 0, _ref2 = card_usage.count; 0 <= _ref2 ? _k < _ref2 : _k > _ref2; i = 0 <= _ref2 ? ++_k : --_k) {
               _results1.push(card_usage.card_id);
             }
             return _results1;
-          })());
+          })()).join("%0a"));
         }
         return _results;
       }).call(this)).join("%0a"));
@@ -502,9 +502,8 @@
       file = this.files[0];
       reader = new FileReader();
       $('#deck_load').attr('disabled', true);
-      $('#name').html(deck.deck_name = file.name);
-      reader.readAsText(file);
-      return reader.onload = function(ev) {
+      $('#name').html(deck.deck_name = file.name.split('.')[0]);
+      reader.onload = function(ev) {
         var card_id, count, last_id, line, lines, result, side, _i, _len;
         result = [];
         lines = ev.target.result.split("\n");
@@ -553,6 +552,7 @@
         $('#deck_load').attr('disabled', false);
         return deck.refresh(result);
       };
+      return reader.readAsText(file);
     });
     return $.i18n.properties({
       name: 'card',

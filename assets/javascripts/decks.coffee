@@ -116,7 +116,7 @@ class Deck extends Spine.Controller
     @html $('#deck_template').tmpl({main: @main, side: @side, extra: @extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
 
     $('#deck_url_ydk').attr 'download', @deck_name + '.ydk'
-    $('#deck_url_ydk').attr 'href', 'data:application/octet-stream;headers=' + encodeURIComponent('Content-Disposition: attachment; filename=' + @deck_name + '.ydk') + ',' + (card_usage.card_id for i in [0...card_usage.count] for card_usage in @main).concat((card_usage.card_id for i in [0...card_usage.count] for card_usage in @extra), ["!side"], (card_usage.card_id for i in [0...card_usage.count] for card_usage in @side)).join("%0a")
+    $('#deck_url_ydk').attr 'href', 'data:application/octet-stream,' + ((card_usage.card_id for i in [0...card_usage.count]).join("%0a") for card_usage in @main).concat(((card_usage.card_id for i in [0...card_usage.count]).join("%0a") for card_usage in @extra), ["!side"], ((card_usage.card_id for i in [0...card_usage.count]).join("%0a") for card_usage in @side)).join("%0a")
     #$('#deck_url_ydk').attr 'href', 'data:application/octet-stream;headers=' + encodeURIComponent('Content-Disposition: attachment; filename=' + @deck_name + '.ydk') + ',' + (card_usage.card_id for i in [0...card_usage.count] for card_usage in @main).concat((card_usage.card_id for i in [0...card_usage.count] for card_usage in @extra), ["!side"], (card_usage.card_id for i in [0...card_usage.count] for card_usage in @side)).join("%0a")
     $( ".deck_part" ).sortable(
       connectWith: ".deck_part"
@@ -191,8 +191,6 @@ $(document).ready ->
     modal: true
     autoOpen: false
 
-
-
   deck = new Deck(el: $("#deck"))
   deck.deck_name = $.url().param('name')
   deck.tab_control()
@@ -215,8 +213,7 @@ $(document).ready ->
     file = @files[0]
     reader = new FileReader()
     $('#deck_load').attr 'disabled', true
-    $('#name').html deck.deck_name = file.name
-    reader.readAsText(file)
+    $('#name').html deck.deck_name = file.name.split('.')[0]
     reader.onload = (ev)->
       result = []
       lines = ev.target.result.split("\n")
@@ -241,6 +238,7 @@ $(document).ready ->
       result.push {card_id: last_id, side: side, count: count} if last_id
       $('#deck_load').attr 'disabled', false
       deck.refresh result
+    reader.readAsText(file)
 
   $.i18n.properties
     name: 'card'
