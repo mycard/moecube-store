@@ -173,7 +173,7 @@ class Deck extends Spine.Controller
     if count < 3 #TODO: lflist
       card_usage.count++
       card_usage.save()
-
+    history.pushState(CardUsage.toJSON(), @deck_name, @location())
   minus: (e)->
     e.preventDefault()
     card_usage = $(e.target).tmplItem().data
@@ -183,7 +183,6 @@ class Deck extends Spine.Controller
     else
       card_usage.destroy()
     history.pushState(CardUsage.toJSON(), @deck_name, @location())
-
 
 $(document).ready ->
   $('#name').html $.url().param('name')

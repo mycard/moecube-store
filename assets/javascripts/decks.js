@@ -444,8 +444,9 @@
       }
       if (count < 3) {
         card_usage.count++;
-        return card_usage.save();
+        card_usage.save();
       }
+      return history.pushState(CardUsage.toJSON(), this.deck_name, this.location());
     };
 
     Deck.prototype.minus = function(e) {
