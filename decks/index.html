@@ -86,24 +86,27 @@
                     <span class="deck_category_count ${$index}">${$value}</span>{{/each}})
                 </small>
             </legend>
-            <div class="deck_part main"{{if $('.operate_area').hasClass('graphic')}} style="width:${main_count}px"{{/if}}>
-                {{tmpl(main) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
+            <div class="deck_part main"
+            {{if $('.operate_area').hasClass('graphic')}} style="width:${main_count}px"{{/if}}>
+            {{tmpl(main) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
         <fieldset id="deck_side">
             <legend id="deck_side_title" class="deck_title main">副卡组
                 <small>(${side_count})</small>
             </legend>
-            <div class="deck_part side"{{if $('.operate_area').hasClass('graphic')}} style="width:${main_count}px"{{/if}}>
-                {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
+            <div class="deck_part side"
+            {{if $('.operate_area').hasClass('graphic')}} style="width:${main_count}px"{{/if}}>
+            {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
         <fieldset id="deck_extra">
             <legend id="deck_extra_title" class="deck_title main">额外卡组
                 <small>(${extra_count})</small>
             </legend>
-            <div class="deck_part extra"{{if $('.operate_area').hasClass('graphic')}} style="width:${extra_extra}px"{{/if}}>
-                {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
+            <div class="deck_part extra"
+            {{if $('.operate_area').hasClass('graphic')}} style="width:${extra_extra}px"{{/if}}>
+            {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
     </script>
@@ -170,13 +173,15 @@
 <div class="main_right floatleft line">
 <div class="floatleft search_data graphic">
 <div class="floatleft search_bar">
-    <div class="floatleft search_frame">
-        <input type="text" name="" class="search_input floatleft" value=""/>
-        <input type="submit" class="serach_button" value=""/>
-    </div>
-    <div class="floatright advanced_search_father">
-        <div class="advanced_search" onclick="showMe(this,'submenu');">高级搜索</div>
-    </div>
+    <form id="search">
+        <div class="floatleft search_frame">
+            <input type="text" name="" class="search_input floatleft" value=""/>
+            <input type="submit" class="serach_button" value=""/>
+        </div>
+        <div class="floatright advanced_search_father">
+            <div class="advanced_search" onclick="showMe(this,'submenu');">高级搜索</div>
+        </div>
+    </form>
     <!-- 修改										 -->
     <div class="submenu">
         <div class="floatright submenu_mask"></div>
@@ -426,7 +431,7 @@
         </div>
         <div class="select_cardUnder">
             <div class="donwload_out" title="上传">
-                <input id="deck_load" class="upload_inner" type="file" />
+                <input id="deck_load" class="upload_inner" type="file"/>
             </div>
             <div class="donwload_out" title="分享" id="deck_share">
                 <div class="download_inner"></div>

@@ -46,6 +46,18 @@
       return "http://images.my-card.in/thumbnail/" + this.id + ".jpg";
     };
 
+    Card.fetch_by_name = function(name, callback) {
+      var _this = this;
+      return $.getJSON("" + this.locale_url + "&q=" + (JSON.stringify({
+        name: {
+          $regex: name.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1'),
+          $options: 'i'
+        }
+      })), function(langs) {
+        return alert(langs);
+      });
+    };
+
     Card.query = function(q, callback) {
       var _this = this;
       return $.getJSON("" + this.url + "&q=" + (JSON.stringify(q)), function(cards) {
@@ -559,6 +571,10 @@
       cache: true,
       callback: function() {
         Card.fetch(function() {
+          $('#search').submit(function() {
+            Card.fetch_by_name($('.search_input').val());
+            return false;
+          });
           deck.decode($.url().param('cards'));
           return window.addEventListener('popstate', function(ev) {
             if (ev.state) {

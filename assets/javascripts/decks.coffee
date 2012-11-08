@@ -15,6 +15,9 @@ class Card extends Spine.Model
     "http://images.my-card.in/#{@id}.jpg"
   image_thumbnail_url: ->
     "http://images.my-card.in/thumbnail/#{@id}.jpg"
+  @fetch_by_name: (name, callback)->
+    $.getJSON "#{@locale_url}&q=#{JSON.stringify {name: {$regex: name.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1'), $options: 'i'}}}", (langs) =>
+      alert langs
   @query: (q, callback)->
     $.getJSON "#{@url}&q=#{JSON.stringify(q)}", (cards) =>
       cards_id = (card._id for card in cards)
@@ -247,6 +250,10 @@ $(document).ready ->
     cache: true
     callback: ->
       Card.fetch ->
+        $('#search').submit ->
+          Card.fetch_by_name $('.search_input').val()
+          return false
+
         deck.decode $.url().param('cards')
         window.addEventListener 'popstate', (ev)->
           if ev.state
