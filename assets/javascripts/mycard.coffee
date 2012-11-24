@@ -6,7 +6,7 @@ $(document).ready ->
     timeout:7200
     random:1
 
-  $.getJSON 'https://api.github.com/repos/zh99998/mycard/downloads?callbak=?', (data)->
+  $.getJSON 'https://api.github.com/repos/zh99998/mycard/downloads?callback=?', (data)->
     for download in data
       if v = download.name.match(/mycard-(.*)-win32\.7z/)
         if !version or v[1] > version
