@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Nunito-Bold'), url(/vendor/fonts/nunito.woff) format('woff');
+}
