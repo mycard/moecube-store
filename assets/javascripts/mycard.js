@@ -7,7 +7,7 @@
       timeout: 7200,
       random: 1
     });
-    return $.get('https://api.github.com/repos/zh99998/mycard/downloads?callbak=?', function(data) {
+    return $.getJSON('https://api.github.com/repos/zh99998/mycard/downloads?callbak=?', function(data) {
       var download, url, v, version, _i, _len;
       for (_i = 0, _len = data.length; _i < _len; _i++) {
         download = data[_i];
