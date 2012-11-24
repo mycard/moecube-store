@@ -7,7 +7,7 @@ $(document).ready ->
     random:1
 
   $.getJSON 'https://api.github.com/repos/zh99998/mycard/downloads?callback=?', (data)->
-    for download in data
+    for download in data.data
       if v = download.name.match(/mycard-(.*)-win32\.7z/)
         if !version or v[1] > version
           version = v[1]

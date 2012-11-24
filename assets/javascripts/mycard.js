@@ -8,9 +8,10 @@
       random: 1
     });
     return $.getJSON('https://api.github.com/repos/zh99998/mycard/downloads?callback=?', function(data) {
-      var download, url, v, version, _i, _len;
-      for (_i = 0, _len = data.length; _i < _len; _i++) {
-        download = data[_i];
+      var download, url, v, version, _i, _len, _ref;
+      _ref = data.data;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        download = _ref[_i];
         if (v = download.name.match(/mycard-(.*)-win32\.7z/)) {
           if (!version || v[1] > version) {
             version = v[1];
