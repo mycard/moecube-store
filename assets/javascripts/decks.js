@@ -397,6 +397,10 @@
             btn: false
           }
         });
+      } else {
+        window.main_count = main_count > 40 ? main_count : 'auto';
+        window.side_count = side_count > 10 ? side_count : 'auto';
+        return window.extra_count = extra_count > 10 ? extra_count : 'auto';
       }
     };
 

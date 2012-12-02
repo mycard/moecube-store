@@ -141,8 +141,14 @@ class Deck extends Spine.Controller
         @set_history()
     ).disableSelection();
     if $('.operate_area').hasClass('text')
+      #文字版
       @el.jscroll({W: "12px", Btn:
         {btn: false}})
+    else
+      window.main_count = if main_count > 40 then main_count else 'auto'
+      window.side_count = if side_count > 10 then side_count else 'auto'
+      window.extra_count = if extra_count > 10 then extra_count else 'auto'
+
   location: ->
     "/decks/?name=#{@deck_name}&cards=#{@encode()}"
   url: ->

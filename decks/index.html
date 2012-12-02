@@ -86,8 +86,8 @@
                     <span class="deck_category_count ${$index}">${$value}</span>{{/each}})
                 </small>
             </legend>
-            <div class="deck_part main"
-            {{if $('.operate_area').hasClass('graphic')}} style="width:${main_count}px"{{/if}}>
+            <div class="deck_part main">
+           
             {{tmpl(main) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
@@ -95,8 +95,8 @@
             <legend id="deck_side_title" class="deck_title main">副卡组
                 <small>(${side_count})</small>
             </legend>
-            <div class="deck_part side"
-            {{if $('.operate_area').hasClass('graphic')}} style="width:${main_count}px"{{/if}}>
+            <div class="deck_part side">
+            
             {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
@@ -104,8 +104,8 @@
             <legend id="deck_extra_title" class="deck_title main">额外卡组
                 <small>(${extra_count})</small>
             </legend>
-            <div class="deck_part extra"
-            {{if $('.operate_area').hasClass('graphic')}} style="width:${extra_extra}px"{{/if}}>
+            <div class="deck_part extra">
+            
             {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
@@ -431,7 +431,9 @@
         </div>
         <div class="select_cardUnder">
             <div class="donwload_out" title="上传">
-                <input id="deck_load" class="upload_inner" type="file"/>
+                <div class="upload_inner" >                
+                <input id="deck_load" type="file" tabindex="-1"/>
+            </div>
             </div>
             <div class="donwload_out" title="分享" id="deck_share">
                 <div class="download_inner"></div>
