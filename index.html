@@ -97,7 +97,19 @@
         <a rel="license" href="http://www.gnu.org/licenses/gpl-3.0.html"><img alt="GNU GPL" style="border-width:0" src="http://gplv3.fsf.org/gplv3-88x31.png"/></a>
     </div>
 </footer>
-<script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29582484-1']);
+  _gaq.push(['_trackPageview']);
+  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
 
 </script>
 </body>
