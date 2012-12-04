@@ -296,6 +296,11 @@
           })()).pop()] += card_usage.count;
         }
       });
+      if ($('.operate_area').hasClass('graphic')) {
+        window.main_count = main_count > 40 ? main_count : 'auto';
+        window.side_count = side_count > 10 ? side_count : 'auto';
+        window.extra_count = extra_count > 10 ? extra_count : 'auto';
+      }
       this.html($('#deck_template').tmpl({
         main: this.main,
         side: this.side,
@@ -304,6 +309,9 @@
         side_count: side_count,
         extra_count: extra_count,
         category_count: category_count
+      }));
+      $('#search_card').html($('#search_card_template').tmpl({
+        test: 'test'
       }));
       $('#deck_url_ydk').attr('download', this.deck_name + '.ydk');
       $('#deck_url_ydk').attr('href', 'data:application/octet-stream,' + ((function() {
@@ -397,10 +405,6 @@
             btn: false
           }
         });
-      } else {
-        window.main_count = main_count > 40 ? main_count : 'auto';
-        window.side_count = side_count > 10 ? side_count : 'auto';
-        return window.extra_count = extra_count > 10 ? extra_count : 'auto';
       }
     };
 

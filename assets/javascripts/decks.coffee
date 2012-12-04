@@ -114,7 +114,14 @@ class Deck extends Spine.Controller
         @main.push card_usage
         main_count += card_usage.count
         category_count[(category for category in card.card_type when category in Card.categories).pop()] += card_usage.count
+
+    if $('.operate_area').hasClass('graphic')
+      window.main_count = if main_count > 40 then main_count else 'auto'
+      window.side_count = if side_count > 10 then side_count else 'auto'
+      window.extra_count = if extra_count > 10 then extra_count else 'auto'
+
     @html $('#deck_template').tmpl({main: @main, side: @side, extra: @extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
+    $('#search_card').html $('#search_card_template').tmpl({test: 'test'})
 
     $('#deck_url_ydk').attr 'download', @deck_name + '.ydk'
     $('#deck_url_ydk').attr 'href', 'data:application/octet-stream,' + ((card_usage.card_id for i in [0...card_usage.count]).join("%0a") for card_usage in @main).concat(((card_usage.card_id for i in [0...card_usage.count]).join("%0a") for card_usage in @extra), ["!side"], ((card_usage.card_id for i in [0...card_usage.count]).join("%0a") for card_usage in @side)).join("%0a")
@@ -144,10 +151,6 @@ class Deck extends Spine.Controller
       #文字版
       @el.jscroll({W: "12px", Btn:
         {btn: false}})
-    else
-      window.main_count = if main_count > 40 then main_count else 'auto'
-      window.side_count = if side_count > 10 then side_count else 'auto'
-      window.extra_count = if extra_count > 10 then extra_count else 'auto'
 
   location: ->
     "/decks/?name=#{@deck_name}&cards=#{@encode()}"
