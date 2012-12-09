@@ -39,11 +39,11 @@
     Card.locale_url = "https://api.mongolab.com/api/1/databases/mycard/collections/lang_" + locale + "?apiKey=508e5726e4b0c54ca4492ead";
 
     Card.prototype.image_url = function() {
-      return "http://images.my-card.in/" + this.id + ".jpg";
+      return "http://my-card.in/images/cards/ygocore/" + this.id + ".jpg";
     };
 
     Card.prototype.image_thumbnail_url = function() {
-      return "http://images.my-card.in/thumbnail/" + this.id + ".jpg";
+      return "http://my-card.in/images/cards/ygocore/thumbnail/" + this.id + ".jpg";
     };
 
     Card.fetch_by_name = function(name, callback) {

@@ -12,9 +12,9 @@ class Card extends Spine.Model
   @url: "https://api.mongolab.com/api/1/databases/mycard/collections/cards?apiKey=508e5726e4b0c54ca4492ead"
   @locale_url: "https://api.mongolab.com/api/1/databases/mycard/collections/lang_#{locale}?apiKey=508e5726e4b0c54ca4492ead"
   image_url: ->
-    "http://images.my-card.in/#{@id}.jpg"
+    "http://my-card.in/images/cards/ygocore/#{@id}.jpg"
   image_thumbnail_url: ->
-    "http://images.my-card.in/thumbnail/#{@id}.jpg"
+    "http://my-card.in/images/cards/ygocore/thumbnail/#{@id}.jpg"
   @fetch_by_name: (name, callback)->
     $.getJSON "#{@locale_url}&q=#{JSON.stringify {name: {$regex: name.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1'), $options: 'i'}}}", (langs) =>
       alert langs
