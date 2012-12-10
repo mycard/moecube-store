@@ -151,13 +151,13 @@ body{margin:0;padding:0;background:#eee;}
   &:hover{-moz-transition: all 0.5s ease-in-out;-moz-transform: translate(0px) rotate(180deg);-webkit-transition: all 0.5s ease-in-out;-webkit-transform: translate(0px) rotate(180deg);}
 }
 
-.donwload_out{float:left;height:25px;width:25px;cursor:pointer;background-image:url(/assets/images/decks/download_out.png);margin:6px 0 0 6px;}
+.donwload_out{float:left;height:25px;width:25px;cursor:pointer;background-image:url(/assets/images/decks/download_out.png);margin:6px 0 0 6px;overflow:hidden;cursor:pointer;}
 .download_inner{
   width:11px;height:18px;background:url(/assets/images/decks/download_inner.png);margin:3px 0 0 7px;
   &:hover{-moz-transition: all 0.5s ease-in-out;-webkit-transition: all 0.5s ease-in-out;background-position:0 18px;}
 }
 .upload_inner{
-  width:11px;height:18px;background:url(/assets/images/decks/upload_inner.png);margin:3px 0 0 7px;
+  width:11px;height:18px;background:url(/assets/images/decks/upload_inner.png);margin:3px 0 0 7px;cursor:pointer;
   &:hover{-moz-transition: all 0.5s ease-in-out;-webkit-transition: all 0.5s ease-in-out;background-position:0 -18px;}
 }
 .upload_ope{float:left;height:25px;padding:5px 0 0 5px;cursor:pointer;}
@@ -180,9 +180,47 @@ body{margin:0;padding:0;background:#eee;}
     //.card_usage{margin: 0; float: left; width: 44px; height: 64px; }
     /* 一个很神奇的现象，float: left不加的话，Jquery-UI的拖拽不好用，加上去之后没法拖到另一个卡组里... */
   }
+
+  .select_card{
+    width:498px;height:35px;padding:5px;border:1px solid #cccccc;background:#F9F9F9;border-radius:6px;margin:10px 0 0 8px;
+    select{width:100px;float:left;border:1px solid #ccc;padding:1px;}
+  }
+  .select_cardOn{float:left;width:150px;height:23px;font-size:12px;margin:6px 0 0 5px;}  
+  .select_cardUnder{float:right;height:32px;width:105px;}
+  .card_group{
+    height:565px;margin:0 0 0 8px;
+    h4{margin:8px 0;}
+    .jscroll-e{
+      .jscroll-h{border:none;}
+    }
+  }
+   .load_img{margin:25px auto;width:32px;height:32px;display:block;}
 }
-.search_data.graphic{width:162px;height:700px;float:right;
-  overflow: hidden;
+.search_data.graphic{width:162px;height:700px;float:right;overflow: hidden;
+  .search_frame{
+    width:130px;    
+    .search_input{width:100px;margin:2px 0 0 0;border:none;background:none;height:20px;}
+  }
+  .search_results{line-height:16px;}
+  .main_area{
+    padding:8px 0 0 8px;width:144px;background:#fbfbfb;
+    &:hover
+    {
+        .search_out_textTitle{color:#3366CC;transition:color 0.218s ease 0s;}
+    }
+  }
+  .advanced_search_father{display:none;}
+  .graphic_search_out
+  {
+      float:left;width:144px;height:66px;clear:left;border-bottom:1px solid #eeeeee;padding:5px 0;
+      .search_out_img{float:left;margin:0 5px 0 0;}
+      .search_out_text{float:left;padding:2px;}
+      span{font-size:12px;}      
+  }
+  .page{
+    padding:20px 5px 0 0;
+    a{margin:0 2px;}
+  }
 }
 
 
@@ -200,3 +238,6 @@ body{margin:0;padding:0;background:#eee;}
 .deck_category_count.Spell{color:green}
 .deck_category_count.Trap{color:purple}
 .deck_title small {font-size: 10px}
+
+#deck_load{opacity:0;cursor:pointer;}
+.ui-sortable{padding:5px 0 5px 10px;}
