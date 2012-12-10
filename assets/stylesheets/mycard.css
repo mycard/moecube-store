@@ -290,3 +290,5 @@ footer h2 {
 
 #footer2 img{border:0;}
 #footer2 a {margin: 5px 3px 3px 5px;}
+
+#menu sup {position: absolute; top: 5px;}
