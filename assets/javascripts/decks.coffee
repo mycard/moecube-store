@@ -152,7 +152,7 @@ class Deck extends Spine.Controller
       @el.jscroll({W: "12px", Btn:
         {btn: false}})
     else
-      main_margin = Math.floor(($('.deck_part').width() - $('.card_usage').width() * Math.max(((main_count-1) / 4)+1,10)) / (Math.max(((main_count-1) / 4)+1,10)-1) / 2)
+      main_margin = Math.floor(($('.deck_part').width() - $('.card_usage').width() * Math.max(Math.ceil(main_count/4),10)) / (Math.max(Math.ceil(main_count/4),10)-1) / 2)
       $('.deck_part.main').css {'margin-left': -main_margin, 'margin-right': -main_margin}
       $('.deck_part.main .card_usage').css {'margin-left': main_margin, 'margin-right': main_margin}
 
