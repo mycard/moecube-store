@@ -153,15 +153,15 @@ class Deck extends Spine.Controller
         {btn: false}})
     else
       main_margin = Math.floor(($('.deck_part').width() - $('.card_usage').width() * Math.max(Math.ceil(main_count/4),10)) / (Math.max(Math.ceil(main_count/4),10)-1) / 2)
-      $('.deck_part.main').css {'margin-left': -main_margin, 'margin-right': -main_margin-1}
+      $('.deck_part.main').css {'margin-left': -main_margin, 'margin-right': -main_margin}
       $('.deck_part.main .card_usage').css {'margin-left': main_margin, 'margin-right': main_margin}
 
       side_margin = Math.floor(($('.deck_part').width() - $('.card_usage').width() * Math.max(side_count,10)) / (Math.max(side_count,10)-1) / 2)
-      $('.deck_part.side').css {'margin-left': -side_margin, 'margin-right': -side_margin-1}
+      $('.deck_part.side').css {'margin-left': -side_margin, 'margin-right': -side_margin}
       $('.deck_part.side .card_usage').css {'margin-left': side_margin, 'margin-right': side_margin}
 
       extra_margin = Math.floor(($('.deck_part').width() - $('.card_usage').width() * Math.max(extra_count,10)) / (Math.max(extra_count,10)-1) / 2)
-      $('.deck_part.extra').css {'margin-left': -extra_margin, 'margin-right': -extra_margin-1}
+      $('.deck_part.extra').css {'margin-left': -extra_margin, 'margin-right': -extra_margin}
       $('.deck_part.extra .card_usage').css {'margin-left': extra_margin, 'margin-right': extra_margin}
   location: ->
     "/decks/?name=#{@deck_name}&cards=#{@encode()}"
