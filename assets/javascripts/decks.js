@@ -548,10 +548,12 @@
       var file, reader;
       file = this.files[0];
       reader = new FileReader();
-      $('#deck_load').attr('disabled', true);
-      $('#name').html(deck.deck_name = file.name.split('.')[0]);
+      if (file) {
+        $('#deck_load').attr('disabled', true);
+      }
       reader.onload = function(ev) {
         var card_id, count, last_id, line, lines, result, side, _i, _len;
+        $('#deck_load').attr('disabled', false);
         result = [];
         lines = ev.target.result.split("\n");
         side = false;
@@ -559,7 +561,7 @@
         count = 0;
         for (_i = 0, _len = lines.length; _i < _len; _i++) {
           line = lines[_i];
-          if (line.charAt(0) === '#') {
+          if (!line || line.charAt(0) === '#') {
             continue;
           } else if (line.substr(0, 5) === '!side') {
             if (last_id) {
@@ -586,6 +588,9 @@
                 last_id = card_id;
                 count = 1;
               }
+            } else {
+              alert('无效卡组');
+              return;
             }
           }
         }
@@ -596,7 +601,7 @@
             count: count
           });
         }
-        $('#deck_load').attr('disabled', false);
+        $('#name').html(deck.deck_name = file.name.split('.')[0]);
         deck.refresh(result);
         return deck.set_history();
       };

@@ -237,16 +237,16 @@ $(document).ready ->
   $('#deck_load').change ->
     file = @files[0]
     reader = new FileReader()
-    $('#deck_load').attr 'disabled', true
-    $('#name').html deck.deck_name = file.name.split('.')[0]
+    $('#deck_load').attr 'disabled', true if file
     reader.onload = (ev)->
+      $('#deck_load').attr 'disabled', false
       result = []
       lines = ev.target.result.split("\n")
       side = false
       last_id = 0
       count = 0
       for line in lines
-        if line.charAt(0) == '#'
+        if !line or line.charAt(0) == '#'
           continue
         else if line.substr(0,5) == '!side'
           result.push {card_id: last_id, side: side, count: count} if last_id
@@ -260,8 +260,11 @@ $(document).ready ->
               result.push {card_id: last_id, side: side, count: count} if last_id
               last_id = card_id
               count = 1
+          else
+            alert('无效卡组')
+            return
       result.push {card_id: last_id, side: side, count: count} if last_id
-      $('#deck_load').attr 'disabled', false
+      $('#name').html deck.deck_name = file.name.split('.')[0]
       deck.refresh result
       deck.set_history()
     reader.readAsText(file)
