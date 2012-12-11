@@ -73,25 +73,9 @@
             <i>${count}</i>
         </p>
     </script>
-    <script id="card_usage_graphic_main_template" type="text/x-jquery-tmpl">
+    <script id="card_usage_graphic_template" type="text/x-jquery-tmpl">
         {{each Array(count)}}
-        <div style="float:left;width:31px;overflow:visible;">
-            <img class="card_usage" width="44" height="64" src="${$data.card().image_thumbnail_url()}"/>
-        </div>
-        {{/each}}
-    </script>
-    <script id="card_usage_graphic_side_template" type="text/x-jquery-tmpl">
-        {{each Array(count)}}
-        <div style="float:left;width:${side_count+((465/side_count)-side_count)}px;overflow:visible;">
-            <img class="card_usage" width="44" height="64" src="${$data.card().image_thumbnail_url()}"/>
-        </div>
-        {{/each}}
-    </script>
-    <script id="card_usage_graphic_extra_template" type="text/x-jquery-tmpl">
-        {{each Array(count)}}
-        <div style="float:left;width:${extra_count+((465/extra_count)-extra_count)}px;overflow:visible;">
-            <img class="card_usage" width="44" height="64" src="${$data.card().image_thumbnail_url()}"/>
-        </div>
+            <img class="card_usage" width="44" height="64" style="float:left;overflow:visible;" src="${$data.card().image_thumbnail_url()}"/>
         {{/each}}
     </script>
     <script id="deck_template" type="text/x-jquery-tmpl">
@@ -104,7 +88,7 @@
             </legend>
             <div class="deck_part main">
 
-            {{tmpl(main) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic_main') + '_template'}}
+            {{tmpl(main) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
         <fieldset id="deck_side">
@@ -113,7 +97,7 @@
             </legend>
             <div class="deck_part side">
 
-            {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic_side') + '_template'}}
+            {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
         <fieldset id="deck_extra">
@@ -122,7 +106,7 @@
             </legend>
             <div class="deck_part extra">
 
-            {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic_extra') + '_template'}}
+            {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
 </script>

@@ -245,7 +245,7 @@
     };
 
     Deck.prototype.render = function() {
-      var card_usage, category, category_count, extra_count, i, main_count, side_count, _i, _len, _ref,
+      var card_usage, category, category_count, extra_count, extra_margin, i, main_count, main_margin, side_count, side_margin, _i, _len, _ref,
         _this = this;
       this.main = [];
       this.side = [];
@@ -404,6 +404,34 @@
           Btn: {
             btn: false
           }
+        });
+      } else {
+        main_margin = Math.floor(($('.deck_part').width() - $('.card_usage').width() * Math.max(((main_count - 1) / 4) + 1, 10)) / (Math.max(((main_count - 1) / 4) + 1, 10) - 1) / 2);
+        $('.deck_part.main').css({
+          'margin-left': -main_margin,
+          'margin-right': -main_margin
+        });
+        $('.deck_part.main .card_usage').css({
+          'margin-left': main_margin,
+          'margin-right': main_margin
+        });
+        side_margin = Math.floor(($('.deck_part').width() - $('.card_usage').width() * Math.max(side_count, 10)) / (Math.max(side_count, 10) - 1) / 2);
+        $('.deck_part.side').css({
+          'margin-left': -side_margin,
+          'margin-right': -side_margin
+        });
+        $('.deck_part.side .card_usage').css({
+          'margin-left': side_margin,
+          'margin-right': side_margin
+        });
+        extra_margin = Math.floor(($('.deck_part').width() - $('.card_usage').width() * Math.max(extra_count, 10)) / (Math.max(extra_count, 10) - 1) / 2);
+        $('.deck_part.extra').css({
+          'margin-left': -extra_margin,
+          'margin-right': -extra_margin
+        });
+        return $('.deck_part.extra .card_usage').css({
+          'margin-left': extra_margin,
+          'margin-right': extra_margin
         });
       }
     };
