@@ -116,11 +116,6 @@ class Deck extends Spine.Controller
         main_count += card_usage.count
         category_count[(category for category in card.card_type when category in Card.categories).pop()] += card_usage.count
 
-    if $('.operate_area').hasClass('graphic')
-      window.main_count = if main_count > 40 then main_count else 'auto'
-      window.side_count = if side_count > 10 then side_count else 'auto'
-      window.extra_count = if extra_count > 10 then extra_count else 'auto'
-
     @html $('#deck_template').tmpl({main: @main, side: @side, extra: @extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
     $('#search_card').html $('#search_card_template').tmpl({test: 'test'})
 
@@ -133,7 +128,7 @@ class Deck extends Spine.Controller
         (card_usage.card_id for i in [0...card_usage.count]).join("\r\n") for card_usage in @side
       ).join("\r\n")
     else
-      $('#deck_url_ydk').attr 'href', ydk_url()
+      $('#deck_url_ydk').attr 'href', @ydk_url()
 
     $( ".deck_part" ).sortable(
       connectWith: ".deck_part"
