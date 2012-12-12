@@ -128,7 +128,7 @@ class Deck extends Spine.Controller
         (card_usage.card_id for i in [0...card_usage.count]).join("\r\n") for card_usage in @side
       ).join("\r\n")
     else
-      $('#deck_url_ydk').attr 'href', @ydk_url()
+      $('#deck_url_ydk').attr 'href', @url_ydk()
 
     $( ".deck_part" ).sortable(
       connectWith: ".deck_part"

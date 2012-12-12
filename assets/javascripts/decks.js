@@ -369,7 +369,7 @@
           return _results;
         }).call(this)).join("\r\n")));
       } else {
-        $('#deck_url_ydk').attr('href', this.ydk_url());
+        $('#deck_url_ydk').attr('href', this.url_ydk());
       }
       $(".deck_part").sortable({
         connectWith: ".deck_part",
