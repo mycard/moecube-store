@@ -110,7 +110,9 @@
             </div>
         </fieldset>
 </script>
-
+<script id="loading_template"  type="text/x-jquery-tmpl">
+    <img class="load_img" src="/assets/images/decks/loading.gif" alt="" title=""/>
+</script>
 <script id="search_card_template" type="text/x-jquery-tmpl">
     {{tmpl({test: 'test'}) '#search_card_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
 </script>
@@ -420,7 +422,7 @@
 </div>
 </div>
 </div>
-<div id="deck_share_dialog" title="share">
+<div id="deck_share_dialog" title="share" style="display: none">
     <fieldset>
         <legend>URL</legend>
         <input id="deck_url" readonly="readonly"/><br/>
@@ -446,6 +448,10 @@
             src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-504b398d148616ce&async=1"></script>
     <!-- AddThis Button END -->
 </div>
+<div id="drop_upload_dialog">
+    上传
+</div>
+
 <script src="/vendor/javascripts/jquery-1.8.2.min.js"></script>
 <script src="/vendor/javascripts/jQuery-URL-Parser.js"></script>
 <script src="/vendor/javascripts/jquery.tmpl.min.js"></script>

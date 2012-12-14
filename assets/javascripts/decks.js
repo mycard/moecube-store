@@ -139,7 +139,7 @@
       });
     };
 
-    Card.fetch_by_id = function(cards_id, callback) {
+    Card.fetch_by_id = function(cards_id, callback, before, after) {
       var card_id,
         _this = this;
       cards_id = (function() {
@@ -154,6 +154,9 @@
         return _results;
       })();
       if (cards_id.length) {
+        if (before) {
+          before();
+        }
         return $.when($.getJSON("" + this.url + "?q=" + (JSON.stringify({
           _id: {
             $in: cards_id
@@ -164,7 +167,10 @@
           }
         })))).done(function(cards, langs) {
           _this.load(cards[0], langs[0]);
-          return callback();
+          callback();
+          if (after) {
+            return after();
+          }
         });
       } else {
         return callback();
@@ -512,6 +518,8 @@
       }).call(this), function() {
         _this.deck().sort();
         return _this.render();
+      }, function() {
+        return _this.html($('#loading_template').tmpl());
       });
     };
 
@@ -785,7 +793,7 @@
           return false;
         });
         $('#deck_share').click(function() {
-          $("#deck_url").val(deck.url());
+          $("#deck_url").val(decks.deck().url());
           $("#deck_url_qrcode").attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url()));
           return $("#deck_share_dialog").dialog('open');
         });
@@ -812,7 +820,12 @@
             return deck.refresh(ev.state, false);
           }
         });
-        $('.main_div').bind('drop', function(ev) {
+        $('.main_div').bind('dragover', function(ev) {
+          $("#drop_upload_dialog").dialog('open');
+          return false;
+        });
+        $("#drop_upload_dialog").bind('drop', function(ev) {
+          $("#drop_upload_dialog").dialog('close');
           decks.upload(event.dataTransfer.files);
           return false;
         });
@@ -823,6 +836,13 @@
       }
     });
     $("#deck_share_dialog").dialog({
+      modal: true,
+      autoOpen: false
+    });
+    $("#drop_upload_dialog").dialog({
+      dialogClass: 'drop_upload',
+      draggable: false,
+      resizable: false,
       modal: true,
       autoOpen: false
     });

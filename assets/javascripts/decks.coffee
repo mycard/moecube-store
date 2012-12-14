@@ -30,16 +30,16 @@ class Card extends Spine.Model
         lang.type >>= 1
         i++
       {
-        id: card._id
-        alias: card.alias
-        name: lang.name
-        card_type: card_type
-        type: (i = 0; (i++ until lang.race >> i & 1); @types[i]) if lang.race
-        attribute: (i = 0; (i++ until lang.attribute >> i & 1); @_attributes[i]) if lang.attribute
-        level: card.level
-        atk: card.atk
-        def: card.def
-        description: lang.desc
+      id: card._id
+      alias: card.alias
+      name: lang.name
+      card_type: card_type
+      type: (i = 0; (i++ until lang.race >> i & 1); @types[i]) if lang.race
+      attribute: (i = 0; (i++ until lang.attribute >> i & 1); @_attributes[i]) if lang.attribute
+      level: card.level
+      atk: card.atk
+      def: card.def
+      description: lang.desc
       }
     )
 
@@ -54,7 +54,7 @@ class Card extends Spine.Model
         catch e
           cards_id.push lang._id
       if cards_id.length
-        $.getJSON "#{@url}?q=#{JSON.stringify({_id:{ $in: cards_id}})}", (cards) =>
+        $.getJSON "#{@url}?q=#{JSON.stringify({_id: { $in: cards_id}})}", (cards) =>
           @load cards, langs
           for card in cards
             result.push Card.find card._id
@@ -62,12 +62,15 @@ class Card extends Spine.Model
       else
         callback(result)
 
-  @fetch_by_id: (cards_id, callback)->
+  @fetch_by_id: (cards_id, callback, before, after)->
     cards_id = (card_id for card_id in cards_id when !Card.exists(card_id))
     if cards_id.length
-      $.when($.getJSON("#{@url}?q=#{JSON.stringify({_id: {$in: cards_id}})}"), $.getJSON("#{@locale_url}?q=#{JSON.stringify({_id:{ $in: cards_id}})}")).done (cards, langs)=>
-        @load(cards[0], langs[0])
-        callback()
+      before() if before
+      $.when($.getJSON("#{@url}?q=#{JSON.stringify({_id:
+        {$in: cards_id}})}"), $.getJSON("#{@locale_url}?q=#{JSON.stringify({_id: { $in: cards_id}})}")).done (cards, langs)=>
+          @load(cards[0], langs[0])
+          callback()
+          after() if after
     else
       callback()
 
@@ -157,7 +160,7 @@ class Deck extends Spine.Model
     for line in lines
       if !line or line.charAt(0) == '#'
         continue
-      else if line.substr(0,5) == '!side'
+      else if line.substr(0, 5) == '!side'
         card_usages.push {card_id: last_id, side: side, count: count} if last_id
         side = true
         last_id = null
@@ -218,10 +221,12 @@ class DecksController extends Spine.Controller
     @_deck
 
   refresh: =>
-    Card.fetch_by_id (card_usage.card_id for card_usage in @deck().card_usages().all()), =>
-      @deck().sort()
-      @render()
-
+    Card.fetch_by_id((card_usage.card_id for card_usage in @deck().card_usages().all()), =>
+        @deck().sort()
+        @render()
+      , =>
+        @html $('#loading_template').tmpl()
+    )
   render: =>
     @html $('#deck_template').tmpl({main: @deck().main(), side: @deck().side(), extra: @deck().extra(), main_count: @deck().main_count(), side_count: @deck().side_count(), extra_count: @deck().extra_count(), category_count: @deck().category_count()})
     @set_history()
@@ -257,20 +262,17 @@ class DecksController extends Spine.Controller
       deck_width = $('.deck_part').width()
       card_width = $('.card_usage').width()
 
-      main_margin = Math.floor((deck_width - card_width * Math.max(Math.ceil(@deck().main_count() / 4),10)) / (Math.max(Math.ceil(@deck().main_count() / 4),10)-1) / 2)
+      main_margin = Math.floor((deck_width - card_width * Math.max(Math.ceil(@deck().main_count() / 4), 10)) / (Math.max(Math.ceil(@deck().main_count() / 4), 10) - 1) / 2)
       $('.deck_part.main').css {'margin-left': -main_margin, 'margin-right': -main_margin}
       $('.deck_part.main .card_usage').css {'margin-left': main_margin, 'margin-right': main_margin}
 
-      side_margin = Math.floor((deck_width - card_width * Math.max(@deck().side_count(),10)) / (Math.max(@deck().side_count(),10)-1) / 2)
+      side_margin = Math.floor((deck_width - card_width * Math.max(@deck().side_count(), 10)) / (Math.max(@deck().side_count(), 10) - 1) / 2)
       $('.deck_part.side').css {'margin-left': -side_margin, 'padding-right': -side_margin}
       $('.deck_part.side .card_usage').css {'margin-left': side_margin, 'margin-right': side_margin}
 
-      extra_margin = Math.floor((deck_width - card_width * Math.max(@deck().extra_count(),10)) / (Math.max(@deck().extra_count(),10)-1) / 2)
+      extra_margin = Math.floor((deck_width - card_width * Math.max(@deck().extra_count(), 10)) / (Math.max(@deck().extra_count(), 10) - 1) / 2)
       $('.deck_part.extra').css {'margin-left': -extra_margin, 'padding-right': -extra_margin}
       $('.deck_part.extra .card_usage').css {'margin-left': extra_margin, 'margin-right': extra_margin}
-
-
-
 
   upload: (files)->
     file = files[0]
@@ -309,11 +311,15 @@ class DecksController extends Spine.Controller
     $(".bottom_area div").click ->
       $(this).addClass("bottom_button_active").removeClass("bottom_button")
       $(this).siblings().addClass("bottom_button").removeClass("bottom_button_active")
-      $dangqian = $(".card_frame .frame_element").eq($(".bottom_area div").index(this));
-      $dangqian.addClass("card_frame_focus");
-      $dangqian.siblings().removeClass("card_frame_focus");
+      $dangqian = $(".card_frame .frame_element").eq($(".bottom_area div").index(this))
+      ;
+      $dangqian.addClass("card_frame_focus")
+      ;
+      $dangqian.siblings().removeClass("card_frame_focus")
+      ;
     $('.card_frame .frame_element').jscroll({W: "12px", Btn:
-      {btn: false}});
+      {btn: false}})
+    ;
   show: (e) ->
     card = $(e.target).tmplItem().data.card()
     @show_card(card)
@@ -365,12 +371,12 @@ $(document).ready ->
 
       #share
       $('#deck_share').click ->
-        $("#deck_url").val deck.url()
+        $("#deck_url").val decks.deck().url()
         $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url())
         $("#deck_share_dialog").dialog('open')
 
       $('#deck_url_shorten').click ->
-        $('#deck_url_shorten').attr "disabled",true
+        $('#deck_url_shorten').attr "disabled", true
         $.ajax
           url: 'https://www.googleapis.com/urlshortener/v1/url'
           type: 'POST'
@@ -389,7 +395,12 @@ $(document).ready ->
         if ev.state
           deck.refresh ev.state, false
 
-      $('.main_div').bind 'drop', (ev)->
+      $('.main_div').bind 'dragover', (ev)->
+        $("#drop_upload_dialog").dialog('open')
+        false
+
+      $("#drop_upload_dialog").bind 'drop', (ev)->
+        $("#drop_upload_dialog").dialog('close')
         decks.upload event.dataTransfer.files
         false
 
@@ -400,4 +411,12 @@ $(document).ready ->
   $("#deck_share_dialog").dialog
     modal: true
     autoOpen: false
+
+  $("#drop_upload_dialog").dialog
+    dialogClass: 'drop_upload'
+    draggable: false
+    resizable: false
+    modal: true
+    autoOpen: false
+
   addthis.init()
