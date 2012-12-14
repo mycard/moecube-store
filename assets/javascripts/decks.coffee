@@ -408,15 +408,15 @@ $(document).ready ->
         $(".text,.graphic").toggleClass("graphic text")
         decks.render()
 
-  $("#deck_share_dialog").dialog
-    modal: true
-    autoOpen: false
+  addthis.init()
 
-  $("#drop_upload_dialog").dialog
+$("#deck_share_dialog").dialog
+  modal: true
+  autoOpen: false
+
+$("#drop_upload_dialog").dialog
     dialogClass: 'drop_upload'
     draggable: false
     resizable: false
     modal: true
     autoOpen: false
-
-  addthis.init()
