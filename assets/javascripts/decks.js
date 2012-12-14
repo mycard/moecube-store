@@ -684,7 +684,7 @@
           return _results;
         }).call(this)).join("\r\n")));
       } else {
-        return $('#deck_url_ydk').attr('href', this.url_ydk());
+        return $('#deck_url_ydk').attr('href', this.deck().url_ydk());
       }
     };
 
@@ -781,63 +781,19 @@
   });
 
   $(document).ready(function() {
-    $.i18n.properties({
-      name: 'card',
-      path: '/locales/',
-      mode: 'map',
-      cache: true,
-      callback: function() {
-        decks.load_from_url();
-        $('#search').submit(function() {
-          cards.search($('.search_input').val());
-          return false;
-        });
-        $('#deck_share').click(function() {
-          $("#deck_url").val(decks.deck().url());
-          $("#deck_url_qrcode").attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url()));
-          return $("#deck_share_dialog").dialog('open');
-        });
-        $('#deck_url_shorten').click(function() {
-          $('#deck_url_shorten').attr("disabled", true);
-          return $.ajax({
-            url: 'https://www.googleapis.com/urlshortener/v1/url',
-            type: 'POST',
-            data: JSON.stringify({
-              longUrl: decks.deck().url()
-            }),
-            contentType: 'application/json; charset=utf-8',
-            success: function(data) {
-              $("#deck_url").val(data.id);
-              return $('#deck_url_shorten').attr("disabled", false);
-            }
-          });
-        });
-        $('#deck_load').change(function() {
-          return decks.upload(this.files);
-        });
-        window.addEventListener('popstate', function(ev) {
-          if (ev.state) {
-            return deck.refresh(ev.state, false);
-          }
-        });
-        $('.main_div').bind('dragover', function(ev) {
-          $("#drop_upload_dialog").dialog('open');
-          return false;
-        });
-        $("#drop_upload_dialog").bind('drop', function(ev) {
-          $("#drop_upload_dialog").dialog('close');
-          decks.upload(event.dataTransfer.files);
-          return false;
-        });
-        return $(".rename_ope").click(function() {
-          $(".text,.graphic").toggleClass("graphic text");
-          return decks.render();
-        });
-      }
+    decks.load_from_url();
+    $('#search').submit(function() {
+      cards.search($('.search_input').val());
+      return false;
     });
     $("#deck_share_dialog").dialog({
       modal: true,
-      autoOpen: false
+      autoOpen: false,
+      open: function() {
+        $("#deck_url").val(decks.deck().url());
+        $("#deck_url")[0].select();
+        return $("#deck_url_qrcode").attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url()));
+      }
     });
     $("#drop_upload_dialog").dialog({
       dialogClass: 'drop_upload',
@@ -845,6 +801,52 @@
       resizable: false,
       modal: true,
       autoOpen: false
+    });
+    $('#deck_share').click(function() {
+      return $("#deck_share_dialog").dialog('open');
+    });
+    $('#deck_url_shorten').click(function() {
+      $('#deck_url_shorten').attr("disabled", true);
+      return $.ajax({
+        url: 'https://www.googleapis.com/urlshortener/v1/url',
+        type: 'POST',
+        data: JSON.stringify({
+          longUrl: decks.deck().url()
+        }),
+        contentType: 'application/json; charset=utf-8',
+        success: function(data) {
+          $("#deck_url").val(data.id);
+          $("#deck_url")[0].select();
+          return $('#deck_url_shorten').attr("disabled", false);
+        }
+      });
+    });
+    $('#deck_load').change(function() {
+      return decks.upload(this.files);
+    });
+    window.addEventListener('popstate', function(ev) {
+      if (ev.state) {
+        return deck.refresh(ev.state, false);
+      }
+    });
+    $('.main_div').bind('dragover', function(ev) {
+      $("#drop_upload_dialog").dialog('open');
+      return false;
+    });
+    $("#drop_upload_dialog").bind('drop', function(ev) {
+      $("#drop_upload_dialog").dialog('close');
+      decks.upload(event.dataTransfer.files);
+      return false;
+    });
+    $(".rename_ope").click(function() {
+      $(".text,.graphic").toggleClass("graphic text");
+      return decks.render();
+    });
+    $.i18n.properties({
+      name: 'card',
+      path: '/locales/',
+      mode: 'map',
+      cache: true
     });
     return addthis.init();
   });

@@ -305,7 +305,7 @@ class DecksController extends Spine.Controller
         (card_usage.card_id for i in [0...card_usage.count]).join("\r\n") for card_usage in @deck().side()
       ).join("\r\n")
     else
-      $('#deck_url_ydk').attr 'href', @url_ydk()
+      $('#deck_url_ydk').attr 'href', @deck().url_ydk()
 
   @tab_control: ->
     $(".bottom_area div").click ->
@@ -357,66 +357,70 @@ decks = new DecksController(el: $("#deck"))
 cards = new CardsController(el: $("#cards_search"))
 
 $(document).ready ->
-  $.i18n.properties
-    name: 'card'
-    path: '/locales/'
-    mode: 'map'
-    cache: true
-    callback: ->
-      decks.load_from_url()
+  decks.load_from_url()
 
-      $('#search').submit ->
-        cards.search $('.search_input').val()
-        return false
+  $('#search').submit ->
+    cards.search $('.search_input').val()
+    return false
 
-      #share
-      $('#deck_share').click ->
-        $("#deck_url").val decks.deck().url()
-        $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url())
-        $("#deck_share_dialog").dialog('open')
+  #dialog
+  $("#deck_share_dialog").dialog
+    modal: true
+    autoOpen: false
+    open: ->
+      $("#deck_url").val decks.deck().url()
+      $("#deck_url")[0].select()
+      $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url())
 
-      $('#deck_url_shorten').click ->
-        $('#deck_url_shorten').attr "disabled", true
-        $.ajax
-          url: 'https://www.googleapis.com/urlshortener/v1/url'
-          type: 'POST'
-          data: JSON.stringify {longUrl: decks.deck().url()}
-          contentType: 'application/json; charset=utf-8'
-          success: (data)->
-            $("#deck_url").val data.id
-            $('#deck_url_shorten').attr "disabled", false
-
-      #upload
-      $('#deck_load').change ->
-        decks.upload(@files)
-
-
-      window.addEventListener 'popstate', (ev)->
-        if ev.state
-          deck.refresh ev.state, false
-
-      $('.main_div').bind 'dragover', (ev)->
-        $("#drop_upload_dialog").dialog('open')
-        false
-
-      $("#drop_upload_dialog").bind 'drop', (ev)->
-        $("#drop_upload_dialog").dialog('close')
-        decks.upload event.dataTransfer.files
-        false
-
-      $(".rename_ope").click ->
-        $(".text,.graphic").toggleClass("graphic text")
-        decks.render()
-
-  addthis.init()
-
-$("#deck_share_dialog").dialog
-  modal: true
-  autoOpen: false
-
-$("#drop_upload_dialog").dialog
+  $("#drop_upload_dialog").dialog
     dialogClass: 'drop_upload'
     draggable: false
     resizable: false
     modal: true
     autoOpen: false
+
+  #share
+  $('#deck_share').click ->
+    $("#deck_share_dialog").dialog('open')
+
+  $('#deck_url_shorten').click ->
+    $('#deck_url_shorten').attr "disabled", true
+    $.ajax
+      url: 'https://www.googleapis.com/urlshortener/v1/url'
+      type: 'POST'
+      data: JSON.stringify {longUrl: decks.deck().url()}
+      contentType: 'application/json; charset=utf-8'
+      success: (data)->
+        $("#deck_url").val data.id
+        $("#deck_url")[0].select()
+        $('#deck_url_shorten').attr "disabled", false
+
+  #upload
+  $('#deck_load').change ->
+    decks.upload(@files)
+
+  window.addEventListener 'popstate', (ev)->
+    if ev.state
+      deck.refresh ev.state, false
+
+  $('.main_div').bind 'dragover', (ev)->
+    $("#drop_upload_dialog").dialog('open')
+    false
+
+  $("#drop_upload_dialog").bind 'drop', (ev)->
+    $("#drop_upload_dialog").dialog('close')
+    decks.upload event.dataTransfer.files
+    false
+
+  $(".rename_ope").click ->
+    $(".text,.graphic").toggleClass("graphic text")
+    decks.render()
+
+
+  $.i18n.properties
+    name: 'card'
+    path: '/locales/'
+    mode: 'map'
+    cache: true
+
+  addthis.init()
