@@ -75,7 +75,7 @@
     </script>
     <script id="card_usage_graphic_template" type="text/x-jquery-tmpl">
         {{each Array(count)}}
-            <img class="card_usage" width="44" height="64" style="float:left;overflow:visible;" src="${$data.card().image_thumbnail_url()}"/>
+        <img class="card_usage" width="44" height="64" style="float:left;overflow:visible;" src="${$data.card().image_thumbnail_url()}"/>
         {{/each}}
     </script>
     <script id="deck_template" type="text/x-jquery-tmpl">
@@ -88,7 +88,7 @@
             </legend>
             <div class="deck_part main">
 
-            {{tmpl(main) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
+                {{tmpl(main) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
         <fieldset id="deck_side">
@@ -97,7 +97,7 @@
             </legend>
             <div class="deck_part side">
 
-            {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
+                {{tmpl(side) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
         <fieldset id="deck_extra">
@@ -106,321 +106,282 @@
             </legend>
             <div class="deck_part extra">
 
-            {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
+                {{tmpl(extra) '#card_usage_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
             </div>
         </fieldset>
-</script>
-<script id="loading_template"  type="text/x-jquery-tmpl">
-    <img class="load_img" src="/assets/images/decks/loading.gif" alt="" title=""/>
-</script>
-<script id="search_card_template" type="text/x-jquery-tmpl">
-    {{tmpl({test: 'test'}) '#search_card_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template'}}
-</script>
-<script id="search_card_text_template" type="text/x-jquery-tmpl">
-    <table class="press">
-        <thead>
-        <tr>
-            <th>
-                <div class="thead_bg">
-                    <span>卡名</span>
+    </script>
+    <script id="loading_template" type="text/x-jquery-tmpl">
+        <img class="load_img" src="/assets/images/decks/loading.gif" alt="" title=""/>
+    </script>
+    <script id="search_cards_text_template" type="text/x-jquery-tmpl">
+        <table class="press">
+            <thead>
+            <tr>
+                <th>
+                    <div class="thead_bg">
+                        <span>卡名</span>
 
-                    <div class="arrow" onclick="showMe(this,'filter_name');"><img src="image/arrow.png" alt=""/></div>
-                    <div id="filter_name" class="filter_float" style="display:none;">
-                        <!-- 修改 -->
-                        <div>
-                            <input type="checkbox" name=""/>
-                            <label>按照名称排序</label>
+                        <div class="arrow" onclick="showMe(this,'filter_name');"><img src="image/arrow.png" alt=""/>
                         </div>
-                        <div>
-                            <input type="checkbox" name=""/>
-                            <label>按照名称排序</label>
+                        <div id="filter_name" class="filter_float" style="display:none;">
+                            <!-- 修改 -->
+                            <div>
+                                <input type="checkbox" name=""/>
+                                <label>按照名称排序</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name=""/>
+                                <label>按照名称排序</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name=""/>
+                                <label>按照名称排序</label>
+                            </div>
+                            <!-- 修改 -->
                         </div>
-                        <div>
-                            <input type="checkbox" name=""/>
-                            <label>按照名称排序</label>
-                        </div>
-                        <!-- 修改 -->
                     </div>
-                </div>
-            </th>
-            <th>
-                <div class="thead_bg">
-                    <span>卡类</span>
+                </th>
+                <th>
+                    <div class="thead_bg">
+                        <span>卡类</span>
 
-                    <div class="arrow" onclick="showMe(this,'filter_cate');"><img src="image/arrow.png" alt=""/></div>
-                    <div id="filter_cate" class="filter_float" style="display:none;"></div>
-                </div>
-            </th>
-            <th>
-                <div class="thead_bg"><span>攻击</span></div>
-            </th>
-            <th>
-                <div class="thead_bg"><span>守备</span></div>
-            </th>
-            <th>
-                <div class="thead_bg"><span>星级</span></div>
-            </th>
-            <th>
-                <div class="thead_bg"><span>属性</span></div>
-            </th>
-            <th>
-                <div class="thead_bg"><span>测试</span></div>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>黑羽-疾风之</td>
-            <td>效果·调整</td>
-            <td>1300</td>
-            <td>400</td>
-            <td>3 ☆</td>
-            <td>暗</td>
-            <td>测试</td>
-        </tr>
-        <tr>
-            <td>黑羽-疾风之</td>
-            <td>效果·调整</td>
-            <td>1300</td>
-            <td>400</td>
-            <td>3 ☆</td>
-            <td>暗</td>
-            <td>测试</td>
-        </tr>
-        </tbody>
-    </table>
-</script>
-<script id="search_card_graphic_template" type="text/x-jquery-tmpl">
-    <div>
-        <div class="graphic_search_out">
+                        <div class="arrow" onclick="showMe(this,'filter_cate');"><img src="image/arrow.png" alt=""/>
+                        </div>
+                        <div id="filter_cate" class="filter_float" style="display:none;"></div>
+                    </div>
+                </th>
+                <th>
+                    <div class="thead_bg"><span>攻击</span></div>
+                </th>
+                <th>
+                    <div class="thead_bg"><span>守备</span></div>
+                </th>
+                <th>
+                    <div class="thead_bg"><span>星级</span></div>
+                </th>
+                <th>
+                    <div class="thead_bg"><span>属性</span></div>
+                </th>
+                <th>
+                    <div class="thead_bg"><span>测试</span></div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            </tbody>
+        </table>
+    </script>
+    <script id="search_cards_graphic_template" type="text/x-jquery-tmpl">
+        <div class="graphic_search_out search_card">
             <div class="search_out_img">
-                <img src="http://my-card.in/images/cards/ygocore/thumbnail/2009101.jpg" width="44" height="64"/>
+                <img src="${$data.image_thumbnail_url()}" width="44" height="64"/>
             </div>
             <div class="search_out_text">
-                <span class="search_out_textTitle">黑羽-疾风之盖尔</span><br/>
-                <span>暗</span>
-                <span>鸟兽</span>
-                <span>☆ 3</span>
-                <br />
-                <span>1300</span>/<span>400</span>                
+                <span class="search_out_textTitle">${$data.name}</span><br/>
+                {{if type}}
+                <span>${$.i18n.prop('attribute.'+attribute)}</span>
+                <span>${$.i18n.prop('type.'+type)}</span>
+                <span>☆ ${level}</span>
+                <br/>
+                <span>${atk}</span>/<span>${def}</span>
+                {{/if}}
             </div>
         </div>
-        <div class="graphic_search_out">
-            <div class="search_out_img">
-                <img src="http://my-card.in/images/cards/ygocore/thumbnail/2009101.jpg" width="44" height="64"/>
-            </div>
-            <div class="search_out_text">
-                <span class="search_out_textTitle">黑羽-疾风之盖尔</span><br/>
-                <span>暗</span>
-                <span>鸟兽</span>
-                <span>☆ 3</span>
-                <br />
-                <span>1300</span>/<span>400</span>                
-            </div>
-        </div>
-        <div class="graphic_search_out">
-            <div class="search_out_img">
-                <img src="http://my-card.in/images/cards/ygocore/thumbnail/2009101.jpg" width="44" height="64"/>
-            </div>
-            <div class="search_out_text">
-                <span class="search_out_textTitle">黑羽-疾风之盖尔</span><br/>
-                <span>暗</span>
-                <span>鸟兽</span>
-                <span>☆ 3</span>
-                <br />
-                <span>1300</span>/<span>400</span>                
-            </div>
-        </div>
-        <div class="graphic_search_out">
-            <div class="search_out_img">
-                <img src="http://my-card.in/images/cards/ygocore/thumbnail/2009101.jpg" width="44" height="64"/>
-            </div>
-            <div class="search_out_text">
-                <span class="search_out_textTitle">黑羽-疾风之盖尔</span><br/>
-                <span>暗</span>
-                <span>鸟兽</span>
-                <span>☆ 3</span>
-                <br />
-                <span>1300</span>/<span>400</span>                
-            </div>
-        </div>
-    </div>
     </script>
 </head>
 <body>
 <!--[if lt IE 9]>
-<p class="chromeframe">浏览器太旧了亲~. 请 <a href="http://browsehappy.com/">升级/更换您的浏览器</a> 或者 <a href="http://www.google.com/chromeframe/?redirect=true">激活 Google Chrome 浏览器内嵌框架</a>.</p>
+<p class="chromeframe">浏览器太旧了亲~. 请 <a href="http://browsehappy.com/">升级/更换您的浏览器</a> 或者
+    <a href="http://www.google.com/chromeframe/?redirect=true">激活 Google Chrome 浏览器内嵌框架</a>.</p>
 <![endif]-->
 <div class="main_div line">
-<div id="card" class="main_left floatleft line">
-    <div class="card_name">Mycard 卡组编辑器</div>
-    <div class="card_img line floatleft">
-        <img height="187px" width="130px" src="/assets/images/decks/card.jpg" alt="card_name"/>
-    </div>
-    <div class="card_info floatleft">
-        <div class="attr_real floatleft">(」・ω・)」</div>
-        <div class="attr_name floatleft">呜！</div>
-        <div class="attr_real floatleft">(／・ω・)／</div>
-        <div class="attr_name floatleft">喵！</div>
-        <div class="attr_real floatleft">(」・ω・)」</div>
-        <div class="attr_name floatleft">呜！</div>
-        <div class="attr_real floatleft">(／・ω・)／</div>
-        <div class="attr_name floatleft">喵！</div>
-        <div class="attr_name floatleft"></div>
-        <div class="attr_real floatleft">世界已完蛋</div>
-    </div>
-    <div class="card_frame floatleft">
-        <div class="card_description floatleft frame_element card_frame_focus">
-            <div>
-                这是一个卡组编辑/分享系统<br/>
-                this is a deck editing & sharing system<br/>
-            </div>
+    <div id="card" class="main_left floatleft line">
+        <div class="card_name">Mycard 卡组编辑器</div>
+        <div class="card_img line floatleft">
+            <img height="187px" width="130px" src="/assets/images/decks/card.jpg" alt="card_name"/>
         </div>
-        <div class="card_adjustment floatleft frame_element">
-            <ruby>数据来源
-                <rt>Database</rt>
-            </ruby>
-            : <a href="https://github.com/Fluorohydride/ygopro/">Ygopro</a><br/>
-            <ruby>许可协议
-                <rt>License</rt>
-            </ruby>
-            : <a href="http://www.gnu.org/licenses/gpl.html">GPLv3 or later</a><br/>
-            <ruby>项目主页
-                <rt>Github</rt>
-            </ruby>
-            : <a href="https://github.com/zh99998/mycard">github.com/zh99998/mycard</a><br/>
-            <ruby>开发成员
-                <rt>Authors</rt>
-            </ruby>
-            : <a href="https://plus.google.com/101873829070855379840">zh99998</a>&lt;<a
-                href="mailto:zh99998@gmail.com">zh99998@gmail.com</a>&gt;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
-                href="https://plus.google.com/u/0/102725466404235496819">Mesiade</a>&lt;<a
-                href="mailto:Mesiade746@hotmail.com">Mesiade746@hotmail.com</a>&gt;
+        <div class="card_info floatleft">
+            <div class="attr_real floatleft">(」・ω・)」</div>
+            <div class="attr_name floatleft">呜！</div>
+            <div class="attr_real floatleft">(／・ω・)／</div>
+            <div class="attr_name floatleft">喵！</div>
+            <div class="attr_real floatleft">(」・ω・)」</div>
+            <div class="attr_name floatleft">呜！</div>
+            <div class="attr_real floatleft">(／・ω・)／</div>
+            <div class="attr_name floatleft">喵！</div>
+            <div class="attr_name floatleft"></div>
+            <div class="attr_real floatleft">世界已完蛋</div>
         </div>
-    </div>
-    <div class="floatleft bottom_area">
-        <div class="bottom_button_active floatleft">简介</div>
-        <div class="bottom_button floatleft">关于</div>
-    </div>
-</div>
-<div class="main_right floatleft line">
-<div class="floatleft search_data graphic">
-<div class="floatleft search_bar">
-    <form id="search">
-        <div class="floatleft search_frame">
-            <input type="text" name="" class="search_input floatleft" value=""/>
-            <input type="submit" class="serach_button" value=""/>
-        </div>
-        <div class="floatright advanced_search_father">
-            <div class="advanced_search" onclick="showMe(this,'submenu');">高级搜索</div>
-        </div>
-    </form>
-    <!-- 修改										 -->
-    <div class="submenu">
-        <div class="floatright submenu_mask"></div>
-        <div class="submenu_main">
-            <div class="submenu_mainLeft">
-                <div class="submenu_unit">
-                    <label>种类：</label>
-                    <select class="select_half" name="">
-                        <option>(无)</option>
-                    </select>
-                    <select class="select_half" name="">
-                        <option>(无)</option>
-                        <option></option>
-                    </select>
-                </div>
-                <div class="submenu_unit">
-                    <label>种类：</label>
-                    <select class="select_full" name="">
-                        <option>(无)</option>
-                    </select>
-                </div>
-                <div class="submenu_unit">
-                    <label>种类：</label>
-                    <select class="select_full" name="">
-                        <option>(无)</option>
-                    </select>
-                </div>
-                <div class="submenu_unit">
-                    <label>种类：</label>
-                    <input style="width:137px;margin:-2px 0 0 5px;" type="text" name=""/>
+        <div class="card_frame floatleft">
+            <div class="card_description floatleft frame_element card_frame_focus">
+                <div>
+                    这是一个卡组编辑/分享系统<br/>
+                    this is a deck editing & sharing system<br/>
                 </div>
             </div>
-            <div class="submenu_mainRight">
-                <div class="submenu_unit">
-                    <label>种类：</label>
-                    <select class="select_full" name="">
-                        <option>(无)</option>
-                    </select>
-                </div>
-                <div class="submenu_unitLarge">
-                    <label>种类：</label>
-                    <input style="width:83px;margin:-2px 0 0 5px;" type="text" name=""/>
+            <div class="card_adjustment floatleft frame_element">
+                <ruby>数据来源
+                    <rt>Database</rt>
+                </ruby>
+                : <a href="https://github.com/Fluorohydride/ygopro/">Ygopro</a><br/>
+                <ruby>许可协议
+                    <rt>License</rt>
+                </ruby>
+                : <a href="http://www.gnu.org/licenses/gpl.html">GPLv3 or later</a><br/>
+                <ruby>项目主页
+                    <rt>Github</rt>
+                </ruby>
+                : <a href="https://github.com/zh99998/mycard">github.com/zh99998/mycard</a><br/>
+                <ruby>开发成员
+                    <rt>Authors</rt>
+                </ruby>
+                : <a href="https://plus.google.com/101873829070855379840">zh99998</a>&lt;<a
+                    href="mailto:zh99998@gmail.com">zh99998@gmail.com</a>&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+                    href="https://plus.google.com/u/0/102725466404235496819">Mesiade</a>&lt;<a
+                    href="mailto:Mesiade746@hotmail.com">Mesiade746@hotmail.com</a>&gt;
+            </div>
+        </div>
+        <div class="floatleft bottom_area">
+            <div class="bottom_button_active floatleft">简介</div>
+            <div class="bottom_button floatleft">关于</div>
+        </div>
+    </div>
+    <div class="main_right floatleft line">
+        <div class="floatleft search_data graphic">
+            <div class="floatleft search_bar">
+                <form id="search">
+                    <div class="floatleft search_frame">
+                        <input type="text" name="" class="search_input floatleft" value=""/>
+                        <input type="submit" class="serach_button" value=""/>
+                    </div>
+                    <div class="floatright advanced_search_father">
+                        <div class="advanced_search" onclick="showMe(this,'submenu');">高级搜索</div>
+                    </div>
+                </form>
+                <!-- 修改										 -->
+                <div class="submenu">
+                    <div class="floatright submenu_mask"></div>
+                    <div class="submenu_main">
+                        <div class="submenu_mainLeft">
+                            <div class="submenu_unit">
+                                <label>种类：</label>
+                                <select class="select_half" name="">
+                                    <option>(无)</option>
+                                </select>
+                                <select class="select_half" name="">
+                                    <option>(无)</option>
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="submenu_unit">
+                                <label>种类：</label>
+                                <select class="select_full" name="">
+                                    <option>(无)</option>
+                                </select>
+                            </div>
+                            <div class="submenu_unit">
+                                <label>种类：</label>
+                                <select class="select_full" name="">
+                                    <option>(无)</option>
+                                </select>
+                            </div>
+                            <div class="submenu_unit">
+                                <label>种类：</label>
+                                <input style="width:137px;margin:-2px 0 0 5px;" type="text" name=""/>
+                            </div>
+                        </div>
+                        <div class="submenu_mainRight">
+                            <div class="submenu_unit">
+                                <label>种类：</label>
+                                <select class="select_full" name="">
+                                    <option>(无)</option>
+                                </select>
+                            </div>
+                            <div class="submenu_unitLarge">
+                                <label>种类：</label>
+                                <input style="width:83px;margin:-2px 0 0 5px;" type="text" name=""/>
 
-                    <label style="margin:10px 0 0 0;">种类：</label>
-                    <input style="width:83px;margin:10px 0 0 5px;" type="text" name=""/>
+                                <label style="margin:10px 0 0 0;">种类：</label>
+                                <input style="width:83px;margin:10px 0 0 5px;" type="text" name=""/>
+                            </div>
+                            <input type="button" value="效果"/>
+
+                            <div class="submenu_unit">
+                                <label>种类：</label>
+                                <input style="width:137px;margin:-2px 0 0 5px;" type="text" name=""/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <input type="button" value="效果"/>
-
-                <div class="submenu_unit">
-                    <label>种类：</label>
-                    <input style="width:137px;margin:-2px 0 0 5px;" type="text" name=""/>
+                <!-- 修改										 -->
+                <div class="floatleft search_results">
+                    <span style="color:#3366CC;font-weight:bold;">结果数</span>
+                    魔法：<span style="color:#FFAD6E;">XXX</span>
+                    陷阱：<span style="color:#FFAD6E;">XXX</span>
+                    怪兽：<span style="color:#FFAD6E;">XXX</span>
                 </div>
             </div>
+            <div class="floatleft main_area" id="search_cards"></div>
+
+            <div class="floatright page">
+                <a class="page_home" href=""></a>
+                <a class="page_pre" href=""></a>
+                <a class="page_num" href="">9</a>
+                <a class="page_num" href="">10</a>
+                <a class="page_num" href="">11</a>
+                <a class="page_next" href=""></a>
+                <a class="page_last" href=""></a>
+            </div>
+            <!--{"archetypes":"","card_type":"\u6548\u679c\u602a\u517d","id":2067,"lore":"\u8fd9\u5f20\u5361\u653b\u51fb\u7684\u573a\u5408\uff0c\u5bf9\u65b9\u76f4\u5230\u4f24\u5bb3\u6b65\u9aa4\u7ed3\u675f\u65f6\u4e0d\u80fd\u53d1\u52a8\u9b54\u6cd5\u00b7\u9677\u9631\u5361\u3002\u7528\u4ee5\u4e0b\u7684\u602a\u517d\u4e3a\u796d\u54c1\u4f5c\u796d\u54c1\u53ec\u5524\u7684\u573a\u5408\uff0c\u8fd9\u5f20\u5361\u5f97\u5230\u5404\u81ea\u7684\u6548\u679c\u3002\u25cf\u7eff\u9f7f\u8f6e\uff1a\u8fd9\u5f20\u5361\u653b\u51fb\u5b88\u5907\u8868\u793a\u602a\u517d\u65f6\uff0c\u82e5\u8fd9\u5f20\u5361\u7684\u653b\u51fb\u529b\u8d85\u8fc7\u5b88\u5907\u8868\u793a\u602a\u517d\u7684\u5b88\u5907\u529b\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206\u90a3\u4e2a\u6570\u503c\u7684\u6218\u6597\u4f24\u5bb3\u3002\u25cf\u7ea2\u9f7f\u8f6e\uff1a\u7ed9\u4e88\u5bf9\u65b9\u73a9\u5bb6\u6218\u6597\u4f24\u5bb3\u65f6\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206400\u5206\u4f24\u5bb3\u3002\u25cf\u9ec4\u9f7f\u8f6e\uff1a\u6218\u6597\u7834\u574f\u5bf9\u65b9\u602a\u517d\u7684\u573a\u5408\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206600\u5206\u4f24\u5bb3\u3002","mediums":"OCG\tTCG","monster_atk":3000,"monster_attribute":"\u5730","monster_def":2000,"monster_level":8,"monster_type":null,"name":"\u53e4\u4ee3\u7684\u673a\u68b0\u5de8\u9f99","number":50933533,"stats":"21,26,37","status":3,"tokens":0,"type":"\u673a\u68b0"}	-->
+        </div>
+
+        <div class="floatleft operate_area graphic">
+            <div class="select_card">
+                <div class="select_cardOn">
+                    <select name="">
+                        <option id="name" value="">卡组</option>
+                    </select>
+                    <img class="add_ope" src="/assets/images/decks/add.png" alt="" title="新建"/>
+                    <img class="rename_ope" src="/assets/images/decks/rename.png" alt="" title="重命名"/>
+                </div>
+                <div class="select_cardUnder">
+                    <div class="donwload_out" title="上传">
+                        <div class="upload_inner">
+                            <input id="deck_load" type="file" tabindex="-1"/>
+                        </div>
+                    </div>
+                    <div class="donwload_out" title="分享" id="deck_share">
+                        <div class="download_inner"></div>
+                    </div>
+                    <!-- <img class="donwload_ope" src="/assets/images/decks/download.png" alt="" title="上传" />			 -->
+                    <a href="#" id="deck_url_ydk"><img class="save_ope" src="/assets/images/decks/save.png" alt="" title="保存"/></a>
+                </div>
+            </div>
+
+            <div id="deck" class="card_group">
+                <img class="load_img" src="/assets/images/decks/loading.gif" alt="" title=""/>
+            </div>
         </div>
     </div>
-    <!-- 修改										 -->
-    <div class="floatleft search_results">
-        <span style="color:#3366CC;font-weight:bold;">结果数</span>
-        魔法：<span style="color:#FFAD6E;">XXX</span>
-        陷阱：<span style="color:#FFAD6E;">XXX</span>
-        怪兽：<span style="color:#FFAD6E;">XXX</span>
-    </div>
-</div>
-            <div class="floatleft main_area" id="search_card"></div>
-
-<div class="floatright page">
-    <a class="page_home" href=""></a>
-    <a class="page_pre" href=""></a>
-    <a class="page_num" href="">9</a>
-    <a class="page_num" href="">10</a>
-    <a class="page_num" href="">11</a>
-    <a class="page_next" href=""></a>
-    <a class="page_last" href=""></a>
-</div>
-<!--{"archetypes":"","card_type":"\u6548\u679c\u602a\u517d","id":2067,"lore":"\u8fd9\u5f20\u5361\u653b\u51fb\u7684\u573a\u5408\uff0c\u5bf9\u65b9\u76f4\u5230\u4f24\u5bb3\u6b65\u9aa4\u7ed3\u675f\u65f6\u4e0d\u80fd\u53d1\u52a8\u9b54\u6cd5\u00b7\u9677\u9631\u5361\u3002\u7528\u4ee5\u4e0b\u7684\u602a\u517d\u4e3a\u796d\u54c1\u4f5c\u796d\u54c1\u53ec\u5524\u7684\u573a\u5408\uff0c\u8fd9\u5f20\u5361\u5f97\u5230\u5404\u81ea\u7684\u6548\u679c\u3002\u25cf\u7eff\u9f7f\u8f6e\uff1a\u8fd9\u5f20\u5361\u653b\u51fb\u5b88\u5907\u8868\u793a\u602a\u517d\u65f6\uff0c\u82e5\u8fd9\u5f20\u5361\u7684\u653b\u51fb\u529b\u8d85\u8fc7\u5b88\u5907\u8868\u793a\u602a\u517d\u7684\u5b88\u5907\u529b\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206\u90a3\u4e2a\u6570\u503c\u7684\u6218\u6597\u4f24\u5bb3\u3002\u25cf\u7ea2\u9f7f\u8f6e\uff1a\u7ed9\u4e88\u5bf9\u65b9\u73a9\u5bb6\u6218\u6597\u4f24\u5bb3\u65f6\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206400\u5206\u4f24\u5bb3\u3002\u25cf\u9ec4\u9f7f\u8f6e\uff1a\u6218\u6597\u7834\u574f\u5bf9\u65b9\u602a\u517d\u7684\u573a\u5408\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206600\u5206\u4f24\u5bb3\u3002","mediums":"OCG\tTCG","monster_atk":3000,"monster_attribute":"\u5730","monster_def":2000,"monster_level":8,"monster_type":null,"name":"\u53e4\u4ee3\u7684\u673a\u68b0\u5de8\u9f99","number":50933533,"stats":"21,26,37","status":3,"tokens":0,"type":"\u673a\u68b0"}	-->
-</div>
-
-<div class="floatleft operate_area graphic">
-    <div class="select_card">
-        <div class="select_cardOn">
-            <select name="">
-                <option id="name" value="">卡组</option>
-            </select>
-            <img class="add_ope" src="/assets/images/decks/add.png" alt="" title="新建"/>
-            <img class="rename_ope" src="/assets/images/decks/rename.png" alt="" title="重命名"/>
-        </div>
-        <div class="select_cardUnder">
-            <div class="donwload_out" title="上传">
-                <div class="upload_inner" >                
-                <input id="deck_load" type="file" tabindex="-1"/>
-            </div>
-            </div>
-            <div class="donwload_out" title="分享" id="deck_share">
-                <div class="download_inner"></div>
-            </div>
-            <!-- <img class="donwload_ope" src="/assets/images/decks/download.png" alt="" title="上传" />			 -->
-            <a href="#" id="deck_url_ydk"><img class="save_ope" src="/assets/images/decks/save.png" alt="" title="保存"/></a>
-        </div>
-    </div>
-
-    <div id="deck" class="card_group">
-        <img class="load_img" src="/assets/images/decks/loading.gif" alt="" title=""/>
-    </div>
-</div>
-</div>
 </div>
 <div id="deck_share_dialog" title="share" style="display: none">
     <fieldset>

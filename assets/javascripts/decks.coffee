@@ -8,7 +8,6 @@ class Card extends Spine.Model
   @configure 'Card', 'id', 'name', 'card_type', 'type', 'attribute', 'level', 'atk', 'def', 'description'
   @extend Spine.Model.Local
   @extend Spine.Events
-  @hasMany 'card_usages', CardUsage
   @url: "http://my-card.in/cards"
   @locale_url: "http://my-card.in/cards_#{locale}"
   image_url: ->
@@ -50,14 +49,14 @@ class Card extends Spine.Model
       cards_id = []
       for lang in langs
         try
-          result.push Card.find lang._id
+          result.push Card.find(lang._id)
         catch e
           cards_id.push lang._id
       if cards_id.length
         $.getJSON "#{@url}?q=#{JSON.stringify({_id: { $in: cards_id}})}", (cards) =>
           @load cards, langs
           for card in cards
-            result.push Card.find card._id
+            result.push Card.find(card._id)
           callback(result)
       else
         callback(result)
@@ -176,7 +175,6 @@ class Deck extends Spine.Model
         else
           throw '无效卡组'
     card_usages.push {id: "#{result.cid}_#{side}_#{last_id}", card_id: last_id, side: side, count: count} if last_id
-    alert card_usages
     result.card_usages card_usages
     result
 
@@ -190,7 +188,7 @@ class Deck extends Spine.Model
     "http://my-card.in" + @location_ydk()
   add: (card_usage)->
     if !card_usage.card_id #card
-      card_usage = @card_usages().findByAttribute('card_id', card.id) || new CardUsage(card_id: card.id, deck_id: deck.id, main: true, count: 0)
+      card_usage = @card_usages().findByAttribute('card_id', card.id) || new CardUsage(card_id: card_usage.id, deck_id: @id, main: true, count: 0)
     count = 0
     for c in @card_usages().findAllByAttribute('card_id', card_usage.card_id)  #TODO: alias
       count += c.count
@@ -199,7 +197,7 @@ class Deck extends Spine.Model
       card_usage.save()
   minus: (card_usage)->
     if !card_usage.card_id #card
-      card_usage = @card_usages().findByAttribute('card_id', card.id)
+      card_usage = @card_usages().findByAttribute('card_id', card_usage.id)
     return if !card_usage
     card_usage.count--
     if card_usage.count
@@ -308,7 +306,7 @@ class DecksController extends Spine.Controller
     else
       $('#deck_url_ydk').attr 'href', @deck().url_ydk()
 
-  @tab_control: ->
+  tab_control: ->
     $(".bottom_area div").click ->
       $(this).addClass("bottom_button_active").removeClass("bottom_button")
       $(this).siblings().addClass("bottom_button").removeClass("bottom_button_active")
@@ -322,16 +320,15 @@ class DecksController extends Spine.Controller
       {btn: false}})
     ;
   show: (e) ->
-    card = $(e.target).tmplItem().data.card()
-    @show_card(card)
-  show_card: (card)->
+    card = $(e.target).tmplItem().data
+    card = card.card() if card.card_id
     $('#card').removeClass(Card.card_types.join(' '))
     active_page_index = $('.bottom_area div').index $(".bottom_button_active")
     $('#card').html $("#card_template").tmpl(card)
     $('#card').addClass(card.card_type.join(' '))
     $('.card_frame .frame_element').eq(active_page_index).addClass('card_frame_focus')
     $('.bottom_area div').eq(active_page_index).addClass('bottom_button_active').removeClass("bottom_button")
-    DecksController.tab_control()
+    @tab_control()
   add: (e)->
     @deck().add $(e.target).tmplItem().data
   minus: (e)->
@@ -340,22 +337,25 @@ class DecksController extends Spine.Controller
 
 class CardsController extends Spine.Controller
   events:
-    'mouseover .card_search_result': 'show',
-    'click .card_search_result': 'add',
-    'contextmenu .card_search_result': 'minus'
+    'mouseover .search_card': 'show',
+    'click .search_card': 'add',
+    'contextmenu .search_card': 'minus'
   add: (e)->
-    decks.deck().add($(this).tmplItem().data)
+    decks.deck().add($(e.target).tmplItem().data)
   minus: (e)->
-    decks.deck().minus($(this).tmplItem().data)
+    e.preventDefault()
+    decks.deck().minus($(e.target).tmplItem().data)
   show: (e)->
-    decks.show_card($(this).tmplItem().data)
+    decks.show(e)
+  template: ->
+    $('#search_cards_' + if $('.operate_area').hasClass('text') then 'text' else 'graphic' + '_template')
   search: (name)->
     Card.fetch_by_name name, (cards)=>
-      @html $('#cards_search_result_template').tmpl cards
+      @html @template().tmpl cards
 
 
 decks = new DecksController(el: $("#deck"))
-cards = new CardsController(el: $("#cards_search"))
+cards = new CardsController(el: $("#search_cards"))
 
 $(document).ready ->
   decks.load_from_url()
@@ -400,18 +400,18 @@ $(document).ready ->
   $('#deck_load').change ->
     decks.upload(@files)
 
-  window.addEventListener 'popstate', (ev)->
+  $(window).bind 'popstate', (ev)->
     if ev.state
       deck.refresh ev.state, false
 
   $('.main_div').bind 'dragover', (ev)->
-    $("#drop_upload_dialog").dialog('open')
-    false
+    ev.preventDefault();
+    #$("#drop_upload_dialog").dialog('open')
 
-  $("#drop_upload_dialog").bind 'drop', (ev)->
+  $('.main_div').bind 'drop', (ev)->
+    ev.preventDefault();
     $("#drop_upload_dialog").dialog('close')
     decks.upload event.dataTransfer.files
-    false
 
   $(".rename_ope").click ->
     $(".text,.graphic").toggleClass("graphic text")

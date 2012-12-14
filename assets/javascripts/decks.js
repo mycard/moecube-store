@@ -32,8 +32,6 @@
 
     Card.extend(Spine.Events);
 
-    Card.hasMany('card_usages', CardUsage);
-
     Card.url = "http://my-card.in/cards";
 
     Card.locale_url = "http://my-card.in/cards_" + locale;
@@ -415,7 +413,6 @@
           count: count
         });
       }
-      alert(card_usages);
       result.card_usages(card_usages);
       return result;
     };
@@ -440,8 +437,8 @@
       var c, count, _i, _len, _ref;
       if (!card_usage.card_id) {
         card_usage = this.card_usages().findByAttribute('card_id', card.id) || new CardUsage({
-          card_id: card.id,
-          deck_id: deck.id,
+          card_id: card_usage.id,
+          deck_id: this.id,
           main: true,
           count: 0
         });
@@ -460,7 +457,7 @@
 
     Deck.prototype.minus = function(card_usage) {
       if (!card_usage.card_id) {
-        card_usage = this.card_usages().findByAttribute('card_id', card.id);
+        card_usage = this.card_usages().findByAttribute('card_id', card_usage.id);
       }
       if (!card_usage) {
         return;
@@ -689,7 +686,7 @@
       }
     };
 
-    DecksController.tab_control = function() {
+    DecksController.prototype.tab_control = function() {
       $(".bottom_area div").click(function() {
         var $dangqian;
         $(this).addClass("bottom_button_active").removeClass("bottom_button");
@@ -707,20 +704,18 @@
     };
 
     DecksController.prototype.show = function(e) {
-      var card;
-      card = $(e.target).tmplItem().data.card();
-      return this.show_card(card);
-    };
-
-    DecksController.prototype.show_card = function(card) {
-      var active_page_index;
+      var active_page_index, card;
+      card = $(e.target).tmplItem().data;
+      if (card.card_id) {
+        card = card.card();
+      }
       $('#card').removeClass(Card.card_types.join(' '));
       active_page_index = $('.bottom_area div').index($(".bottom_button_active"));
       $('#card').html($("#card_template").tmpl(card));
       $('#card').addClass(card.card_type.join(' '));
       $('.card_frame .frame_element').eq(active_page_index).addClass('card_frame_focus');
       $('.bottom_area div').eq(active_page_index).addClass('bottom_button_active').removeClass("bottom_button");
-      return DecksController.tab_control();
+      return this.tab_control();
     };
 
     DecksController.prototype.add = function(e) {
@@ -745,27 +740,32 @@
     }
 
     CardsController.prototype.events = {
-      'mouseover .card_search_result': 'show',
-      'click .card_search_result': 'add',
-      'contextmenu .card_search_result': 'minus'
+      'mouseover .search_card': 'show',
+      'click .search_card': 'add',
+      'contextmenu .search_card': 'minus'
     };
 
     CardsController.prototype.add = function(e) {
-      return decks.deck().add($(this).tmplItem().data);
+      return decks.deck().add($(e.target).tmplItem().data);
     };
 
     CardsController.prototype.minus = function(e) {
-      return decks.deck().minus($(this).tmplItem().data);
+      e.preventDefault();
+      return decks.deck().minus($(e.target).tmplItem().data);
     };
 
     CardsController.prototype.show = function(e) {
-      return decks.show_card($(this).tmplItem().data);
+      return decks.show(e);
+    };
+
+    CardsController.prototype.template = function() {
+      return $('#search_cards_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic' + '_template'));
     };
 
     CardsController.prototype.search = function(name) {
       var _this = this;
       return Card.fetch_by_name(name, function(cards) {
-        return _this.html($('#cards_search_result_template').tmpl(cards));
+        return _this.html(_this.template().tmpl(cards));
       });
     };
 
@@ -778,7 +778,7 @@
   });
 
   cards = new CardsController({
-    el: $("#cards_search")
+    el: $("#search_cards")
   });
 
   $(document).ready(function() {
@@ -825,19 +825,18 @@
     $('#deck_load').change(function() {
       return decks.upload(this.files);
     });
-    window.addEventListener('popstate', function(ev) {
+    $(window).bind('popstate', function(ev) {
       if (ev.state) {
         return deck.refresh(ev.state, false);
       }
     });
     $('.main_div').bind('dragover', function(ev) {
-      $("#drop_upload_dialog").dialog('open');
-      return false;
+      return ev.preventDefault();
     });
-    $("#drop_upload_dialog").bind('drop', function(ev) {
+    $('.main_div').bind('drop', function(ev) {
+      ev.preventDefault();
       $("#drop_upload_dialog").dialog('close');
-      decks.upload(event.dataTransfer.files);
-      return false;
+      return decks.upload(event.dataTransfer.files);
     });
     $(".rename_ope").click(function() {
       $(".text,.graphic").toggleClass("graphic text");
