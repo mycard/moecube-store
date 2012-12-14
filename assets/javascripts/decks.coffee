@@ -170,12 +170,13 @@ class Deck extends Spine.Model
           if card_id == last_id
             count++
           else
-            card_usages.push {id: "#{result.cid}_#{side}_#{card_id}", card_id: last_id, side: side, count: count} if last_id
+            card_usages.push {id: "#{result.cid}_#{side}_#{last_id}", card_id: last_id, side: side, count: count} if last_id
             last_id = card_id
             count = 1
         else
           throw '无效卡组'
-    card_usages.push {id: "#{result.cid}_#{side}_#{card_id}", card_id: last_id, side: side, count: count} if last_id
+    card_usages.push {id: "#{result.cid}_#{side}_#{last_id}", card_id: last_id, side: side, count: count} if last_id
+    alert card_usages
     result.card_usages card_usages
     result
 

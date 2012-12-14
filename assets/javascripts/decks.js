@@ -393,7 +393,7 @@
             } else {
               if (last_id) {
                 card_usages.push({
-                  id: "" + result.cid + "_" + side + "_" + card_id,
+                  id: "" + result.cid + "_" + side + "_" + last_id,
                   card_id: last_id,
                   side: side,
                   count: count
@@ -409,12 +409,13 @@
       }
       if (last_id) {
         card_usages.push({
-          id: "" + result.cid + "_" + side + "_" + card_id,
+          id: "" + result.cid + "_" + side + "_" + last_id,
           card_id: last_id,
           side: side,
           count: count
         });
       }
+      alert(card_usages);
       result.card_usages(card_usages);
       return result;
     };
