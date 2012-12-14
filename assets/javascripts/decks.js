@@ -510,6 +510,7 @@
         }
         return _results;
       }).call(this), function() {
+        _this.deck().sort();
         return _this.render();
       });
     };

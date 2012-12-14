@@ -219,6 +219,7 @@ class DecksController extends Spine.Controller
 
   refresh: =>
     Card.fetch_by_id (card_usage.card_id for card_usage in @deck().card_usages().all()), =>
+      @deck().sort()
       @render()
 
   render: =>
