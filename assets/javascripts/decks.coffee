@@ -45,7 +45,7 @@ class Card extends Spine.Model
 
 
   @fetch_by_name: (name, callback)->
-    $.getJSON "#{@locale_url}&q=#{JSON.stringify {name: {$regex: name.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1'), $options: 'i'}}}", (langs) =>
+    $.getJSON "#{@locale_url}?q=#{JSON.stringify {name: {$regex: name.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1'), $options: 'i'}}}", (langs) =>
       result = []
       cards_id = []
       for lang in langs
@@ -54,7 +54,7 @@ class Card extends Spine.Model
         catch e
           cards_id.push lang._id
       if cards_id.length
-        $.getJSON "#{@url}&q=#{JSON.stringify({_id:{ $in: cards_id}})}", (cards) =>
+        $.getJSON "#{@url}?q=#{JSON.stringify({_id:{ $in: cards_id}})}", (cards) =>
           @load cards, langs
           for card in cards
             result.push Card.find card._id
@@ -65,7 +65,7 @@ class Card extends Spine.Model
   @fetch_by_id: (cards_id, callback)->
     cards_id = (card_id for card_id in cards_id when !Card.exists(card_id))
     if cards_id.length
-      $.when($.getJSON("#{@url}&q=#{JSON.stringify({_id: {$in: cards_id}})}"), $.getJSON("#{@locale_url}&q=#{JSON.stringify({_id:{ $in: cards_id}})}")).done (cards, langs)=>
+      $.when($.getJSON("#{@url}?q=#{JSON.stringify({_id: {$in: cards_id}})}"), $.getJSON("#{@locale_url}?q=#{JSON.stringify({_id:{ $in: cards_id}})}")).done (cards, langs)=>
         @load(cards[0], langs[0])
         callback()
     else
@@ -84,15 +84,58 @@ class Deck extends Spine.Model
   @key: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
   encode: ->
     result = ''
-    for card_usage in @main.concat @extra, @side
+    for card_usage in @card_usages().all()
       c = card_usage.side << 29 | card_usage.count << 27 | card_usage.card_id
       for i in [4..0]
-        result += @key.charAt((c >> i * 6) & 0x3F)
+        result += Deck.key.charAt((c >> i * 6) & 0x3F)
     result
+  sort: ->
+    @_main = []
+    @_side = []
+    @_extra = []
+    @_main_count = 0
+    @_side_count = 0
+    @_extra_count = 0
+    @_category_count = {}
+    for category in Card.categories
+      @_category_count[category] = 0
+    for card_usage in @card_usages().all()
+      card = card_usage.card()
+      if card_usage.side
+        @_side.push card_usage
+        @_side_count += card_usage.count
+      else if (card_type for card_type in card.card_type when card_type in Card.card_types_extra).length
+        @_extra.push card_usage
+        @_extra_count += card_usage.count
+      else
+        @_main.push card_usage
+        @_main_count += card_usage.count
+        @_category_count[(category for category in card.card_type when category in Card.categories).pop()] += card_usage.count
+  main: ->
+    @sort() if !@_main?
+    @_main
+  side: ->
+    @sort() if !@_side?
+    @_side
+  extra: ->
+    @sort() if !@_extra?
+    @_extra
+  main_count: ->
+    @sort() if !@_main_count?
+    @_main_count
+  side_count: ->
+    @sort() if !@_side_count
+    @_side_count
+  extra_count: ->
+    @sort() if !@_extra_count
+    @_extra_count
+  category_count: ->
+    @sort() if !@_category_count?
+    @_category_count
   @decode: (str, name)->
-    card_usages = []
     result = new Deck(name: name)
     result.save()
+    card_usages = []
     for i in [0...str.length] by 5
       decoded = 0
       for char in str.substr(i, 5)
@@ -103,25 +146,64 @@ class Deck extends Spine.Model
       card_usages.push {id: "#{result.cid}_#{side}_#{card_id}", card_id: card_id, side: side, count: count}
     result.card_usages card_usages
     result
+  @load: (str, name)->
+    result = new Deck(name: name)
+    result.save()
+    card_usages = []
+    lines = str.split("\n")
+    side = false
+    last_id = 0
+    count = 0
+    for line in lines
+      if !line or line.charAt(0) == '#'
+        continue
+      else if line.substr(0,5) == '!side'
+        card_usages.push {card_id: last_id, side: side, count: count} if last_id
+        side = true
+        last_id = null
+      else
+        card_id = parseInt(line)
+        if card_id
+          if card_id == last_id
+            count++
+          else
+            card_usages.push {id: "#{result.cid}_#{side}_#{card_id}", card_id: last_id, side: side, count: count} if last_id
+            last_id = card_id
+            count = 1
+        else
+          throw '无效卡组'
+    card_usages.push {id: "#{result.cid}_#{side}_#{card_id}", card_id: last_id, side: side, count: count} if last_id
+    result.card_usages card_usages
+    result
 
-class CardsController extends Spine.Controller
-  events:
-    'mouseover .card_search_result': 'show',
-    'click .card_search_result': 'add',
-    'contextmenu .card_search_result': 'minus'
-  add: (e)->
-    Deck.current.add_card($(this).tmplItem().data)
-  minus: (e)->
-    Deck.current.minus_card($(this).tmplItem().data)
-  show: (e)->
-    Deck.current.show_card($(this).tmplItem().data)
-  search: (name)->
-    Card.fetch_by_name name, (cards)=>
-      @html $('#cards_search_result_template').tmpl cards
-
+  location: ->
+    "/decks/new?name=#{@name}&cards=#{@encode()}"
+  location_ydk: ->
+    "/decks/new.ydk?name=#{@name}&cards=#{@encode()}"
+  url: ->
+    "http://my-card.in" + @location()
+  url_ydk: ->
+    "http://my-card.in" + @location_ydk()
+  add: (card_usage)->
+    if !card_usage.card_id #card
+      card_usage = @card_usages().findByAttribute('card_id', card.id) || new CardUsage(card_id: card.id, deck_id: deck.id, main: true, count: 0)
+    count = 0
+    for c in @card_usages().findAllByAttribute('card_id', card_usage.card_id)  #TODO: alias
+      count += c.count
+    if count < 3 #TODO: lflist
+      card_usage.count++
+      card_usage.save()
+  minus: (card_usage)->
+    if !card_usage.card_id #card
+      card_usage = @card_usages().findByAttribute('card_id', card.id)
+    return if !card_usage
+    card_usage.count--
+    if card_usage.count
+      card_usage.save()
+    else
+      card_usage.destroy()
 
 class DecksController extends Spine.Controller
-
   events:
     'mouseover .card_usage': 'show',
     'click .card_usage': 'add',
@@ -130,56 +212,21 @@ class DecksController extends Spine.Controller
   deck: (deck) ->
     if deck
       @_deck = deck
-      @_deck.bind('change', @refresh)
-      @refresh(deck)
+      CardUsage.bind('change refresh', @refresh)
+      @refresh()
+      $('#name').html deck.name
     @_deck
 
-  #constructor: ->
-  #  super
-  #  CardUsage.bind("refresh change", @refresh)
-
-  refresh: (deck)=>
-    Card.fetch_by_id (card_usage.card_id for card_usage in deck.card_usages().all()), =>
+  refresh: =>
+    Card.fetch_by_id (card_usage.card_id for card_usage in @deck().card_usages().all()), =>
       @render()
 
   render: =>
-    @main = []
-    @side = []
-    @extra = []
-    main_count = 0
-    side_count = 0
-    extra_count = 0
-    category_count = {}
-    for category in Card.categories
-      category_count[category] = 0
-    #alert @deck().card_usages()
-    for card_usage in @deck().card_usages().all()
-      card = card_usage.card()
-      if card_usage.side
-        @side.push card_usage
-        side_count += card_usage.count
-      else if (card_type for card_type in card.card_type when card_type in Card.card_types_extra).length
-        @extra.push card_usage
-        extra_count += card_usage.count
-      else
-        @main.push card_usage
-        main_count += card_usage.count
-        category_count[(category for category in card.card_type when category in Card.categories).pop()] += card_usage.count
+    @html $('#deck_template').tmpl({main: @deck().main(), side: @deck().side(), extra: @deck().extra(), main_count: @deck().main_count(), side_count: @deck().side_count(), extra_count: @deck().extra_count(), category_count: @deck().category_count()})
+    @set_history()
+    @set_download()
 
-    @html $('#deck_template').tmpl({main: @main, side: @side, extra: @extra, main_count: main_count, side_count: side_count, extra_count: extra_count, category_count: category_count})
-    $('#search_card').html $('#search_card_template').tmpl({test: 'test'})
-
-    if $.browser.chrome
-      $('#deck_url_ydk').attr 'download', @deck_name + '.ydk'
-      $('#deck_url_ydk').attr 'href', 'data:application/x-ygopro-deck,' + encodeURI ["#generated by mycard/web"].concat(
-        (card_usage.card_id for i in [0...card_usage.count]).join("\r\n") for card_usage in @main,
-        (card_usage.card_id for i in [0...card_usage.count]).join("\r\n") for card_usage in @extra,
-        ["!side"],
-        (card_usage.card_id for i in [0...card_usage.count]).join("\r\n") for card_usage in @side
-      ).join("\r\n")
-    else
-      $('#deck_url_ydk').attr 'href', @url_ydk()
-
+    ###
     $( ".deck_part" ).sortable(
       connectWith: ".deck_part"
       stop: =>
@@ -188,7 +235,6 @@ class DecksController extends Spine.Controller
         for el in $('.card_usage')
           card_id = $(el).tmplItem().data.card_id
           side = $(el).parent().hasClass('side')
-
           if last_item
             if last_item.card_id == card_id and last_item.side == side
               last_item.count++
@@ -198,9 +244,10 @@ class DecksController extends Spine.Controller
           else
             last_item = {card_id: card_id, side: side, count: 1}
         card_usages.push last_item
-        @refresh card_usages
-        @set_history()
+        @deck().card_usages card_usages, clear: true
     ).disableSelection();
+    ###
+
     if $('.operate_area').hasClass('text')
       #文字版
       @el.jscroll({W: "12px", Btn:
@@ -209,29 +256,53 @@ class DecksController extends Spine.Controller
       deck_width = $('.deck_part').width()
       card_width = $('.card_usage').width()
 
-      main_margin = Math.floor((deck_width - card_width * Math.max(Math.ceil(main_count/4),10)) / (Math.max(Math.ceil(main_count/4),10)-1) / 2)
+      main_margin = Math.floor((deck_width - card_width * Math.max(Math.ceil(@deck().main_count() / 4),10)) / (Math.max(Math.ceil(@deck().main_count() / 4),10)-1) / 2)
       $('.deck_part.main').css {'margin-left': -main_margin, 'margin-right': -main_margin}
       $('.deck_part.main .card_usage').css {'margin-left': main_margin, 'margin-right': main_margin}
 
-      side_margin = Math.floor((deck_width - card_width * Math.max(side_count,10)) / (Math.max(side_count,10)-1) / 2)
+      side_margin = Math.floor((deck_width - card_width * Math.max(@deck().side_count(),10)) / (Math.max(@deck().side_count(),10)-1) / 2)
       $('.deck_part.side').css {'margin-left': -side_margin, 'padding-right': -side_margin}
       $('.deck_part.side .card_usage').css {'margin-left': side_margin, 'margin-right': side_margin}
 
-      extra_margin = Math.floor((deck_width - card_width * Math.max(extra_count,10)) / (Math.max(extra_count,10)-1) / 2)
+      extra_margin = Math.floor((deck_width - card_width * Math.max(@deck().extra_count(),10)) / (Math.max(@deck().extra_count(),10)-1) / 2)
       $('.deck_part.extra').css {'margin-left': -extra_margin, 'padding-right': -extra_margin}
       $('.deck_part.extra .card_usage').css {'margin-left': extra_margin, 'margin-right': extra_margin}
 
 
-  location: ->
-    "/decks/new?name=#{@deck_name}&cards=#{@encode()}"
-  location_ydk: ->
-    "/decks/new.ydk?name=#{@deck_name}&cards=#{@encode()}"
-  url: ->
-    "http://my-card.in" + @location()
-  url_ydk: ->
-    "http://my-card.in" + @location_ydk()
+
+
+  upload: (files)->
+    file = files[0]
+    reader = new FileReader()
+    $('#deck_load').attr 'disabled', true if file
+    reader.onload = (ev)->
+      $('#deck_load').attr 'disabled', false
+      try
+        decks.deck Deck.load(ev.target.result, file.name.split('.')[0])
+      catch error
+        alert error
+
+    reader.readAsText(file)
+
+  load_from_url: (url)->
+    try
+      decks.deck Deck.decode $.url(url).param('cards'), $.url().param('name')
+    catch error
+      alert error
+
   set_history: ->
-    history.pushState(CardUsage.toJSON(), @deck_name, @location())
+    history.pushState(CardUsage.toJSON(), @deck().name, @deck().location()) unless @deck().location() == $.url().attr('relative')
+  set_download: ->
+    if $.browser.chrome
+      $('#deck_url_ydk').attr 'download', @deck().name + '.ydk'
+      $('#deck_url_ydk').attr 'href', 'data:application/x-ygopro-deck,' + encodeURI ["#generated by mycard/web"].concat(
+        (card_usage.card_id for i in [0...card_usage.count]).join("\r\n") for card_usage in @deck().main(),
+        (card_usage.card_id for i in [0...card_usage.count]).join("\r\n") for card_usage in @deck().extra(),
+        ["!side"],
+        (card_usage.card_id for i in [0...card_usage.count]).join("\r\n") for card_usage in @deck().side()
+      ).join("\r\n")
+    else
+      $('#deck_url_ydk').attr 'href', @url_ydk()
 
   @tab_control: ->
     $(".bottom_area div").click ->
@@ -254,86 +325,55 @@ class DecksController extends Spine.Controller
     $('.bottom_area div').eq(active_page_index).addClass('bottom_button_active').removeClass("bottom_button")
     DecksController.tab_control()
   add: (e)->
-    card_usage = $(e.target).tmplItem().data
-    count = 0
-    for c in CardUsage.findAllByAttribute('card_id', card_usage.card_id)  #TODO: alias
-      count += c.count
-    if count < 3 #TODO: lflist
-      card_usage.count++
-      card_usage.save()
-    @set_history()
-  add_card: (card)->
-    card_usage = CardUsage.findByAttribute('card_id', card.id) || new CardUsage(card_id: card.id, main: true, count: 0)
-    count = 0
-    for c in CardUsage.findAllByAttribute('card_id', card_usage.card_id)  #TODO: alias
-      count += c.count
-    if count < 3 #TODO: lflist
-      card_usage.count++
-      card_usage.save()
-    @set_history()
+    @deck().add $(e.target).tmplItem().data
   minus: (e)->
     e.preventDefault()
-    card_usage = $(e.target).tmplItem().data
-    card_usage.count--
-    if card_usage.count
-      card_usage.save()
-    else
-      card_usage.destroy()
-    @set_history()
-  minus_card: (card)->
-    e.preventDefault()
-    card_usage = CardUsage.findByAttribute('card_id', card.id)
-    return unless card_usage
-    card_usage.count--
-    if card_usage.count
-      card_usage.save()
-    else
-      card_usage.destroy()
-    @set_history()
+    @deck().minus $(e.target).tmplItem().data
+
+class CardsController extends Spine.Controller
+  events:
+    'mouseover .card_search_result': 'show',
+    'click .card_search_result': 'add',
+    'contextmenu .card_search_result': 'minus'
+  add: (e)->
+    decks.deck().add($(this).tmplItem().data)
+  minus: (e)->
+    decks.deck().minus($(this).tmplItem().data)
+  show: (e)->
+    decks.show_card($(this).tmplItem().data)
+  search: (name)->
+    Card.fetch_by_name name, (cards)=>
+      @html $('#cards_search_result_template').tmpl cards
 
 
-class CardsSearchController extends Spine.Controller
-
+decks = new DecksController(el: $("#deck"))
+cards = new CardsController(el: $("#cards_search"))
 
 $(document).ready ->
-  $('#name').html $.url().param('name')
-  $("#deck_share_dialog").dialog
-    modal: true
-    autoOpen: false
-  addthis.init()
-
-
   $.i18n.properties
     name: 'card'
     path: '/locales/'
     mode: 'map'
     cache: true
     callback: ->
+      decks.load_from_url()
 
-
-
-      @decks = new DecksController(el: $("#deck"))
-      #@decks.tab_control()
-      @cards_search = new CardsSearchController(el: $("#cards_search"))
-
-      @decks.deck Deck.decode $.url().param('cards'), $.url().param('name')
-
-      #search
       $('#search').submit ->
-        cards_search.search $('.search_input').val()
+        cards.search $('.search_input').val()
         return false
 
       #share
       $('#deck_share').click ->
         $("#deck_url").val deck.url()
-        $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(deck.url())
+        $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url())
         $("#deck_share_dialog").dialog('open')
+
       $('#deck_url_shorten').click ->
         $('#deck_url_shorten').attr "disabled",true
         $.ajax
           url: 'https://www.googleapis.com/urlshortener/v1/url'
           type: 'POST'
-          data: JSON.stringify {longUrl: deck.url()}
+          data: JSON.stringify {longUrl: decks.deck().url()}
           contentType: 'application/json; charset=utf-8'
           success: (data)->
             $("#deck_url").val data.id
@@ -341,46 +381,22 @@ $(document).ready ->
 
       #upload
       $('#deck_load').change ->
-        file = @files[0]
-        reader = new FileReader()
-        $('#deck_load').attr 'disabled', true if file
-        reader.onload = (ev)->
-          $('#deck_load').attr 'disabled', false
-          result = []
-          lines = ev.target.result.split("\n")
-          side = false
-          last_id = 0
-          count = 0
-          for line in lines
-            if !line or line.charAt(0) == '#'
-              continue
-            else if line.substr(0,5) == '!side'
-              result.push {card_id: last_id, side: side, count: count} if last_id
-              side = true
-              last_id = null
-            else
-              card_id = parseInt(line)
-              if card_id
-                if card_id == last_id
-                  count++
-                else
-                  result.push {card_id: last_id, side: side, count: count} if last_id
-                  last_id = card_id
-                  count = 1
-              else
-                alert('无效卡组')
-                return
-          result.push {card_id: last_id, side: side, count: count} if last_id
-          $('#name').html deck.deck_name = file.name.split('.')[0]
-          deck.refresh result
-          deck.set_history()
-        reader.readAsText(file)
+        decks.upload(@files)
 
 
       window.addEventListener 'popstate', (ev)->
         if ev.state
           deck.refresh ev.state, false
 
+      $('.main_div').bind 'drop', (ev)->
+        decks.upload event.dataTransfer.files
+        false
+
       $(".rename_ope").click ->
         $(".text,.graphic").toggleClass("graphic text")
-        deck.render()
+        decks.render()
+
+  $("#deck_share_dialog").dialog
+    modal: true
+    autoOpen: false
+  addthis.init()
