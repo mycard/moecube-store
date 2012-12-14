@@ -186,6 +186,9 @@ class Deck extends Spine.Model
     "http://my-card.in" + @location()
   url_ydk: ->
     "http://my-card.in" + @location_ydk()
+  url_mycard: ->
+    "mycard://my-card.in" + @location_ydk() + "&filename=#{@name}.ydk"
+
   add: (card_usage)->
     if !card_usage.card_id #card
       card_usage = @card_usages().findByAttribute('card_id', card.id) || new CardUsage(card_id: card_usage.id, deck_id: @id, main: true, count: 0)
@@ -305,7 +308,7 @@ class DecksController extends Spine.Controller
       ).join("\r\n")
     else
       $('#deck_url_ydk').attr 'href', @deck().url_ydk()
-
+    $('#deck_url_mycard').attr 'href', @deck().url_mycard()
   tab_control: ->
     $(".bottom_area div").click ->
       $(this).addClass("bottom_button_active").removeClass("bottom_button")
