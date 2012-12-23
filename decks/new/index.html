@@ -194,7 +194,7 @@
                 <img src="${$data.image_thumbnail_url()}" width="44" height="64"/>
             </div>
             <div class="search_out_text">
-                <span class="search_out_textTitle">${$data.name}</span><br/>
+                <span class="search_out_textTitle">${$data.name}</span>
                 {{if type}}
                 <span>${$.i18n.prop('attribute.'+attribute)}</span>
                 <span>${$.i18n.prop('type.'+type)}</span>
@@ -371,7 +371,6 @@
                     <div class="donwload_out" title="分享" id="deck_share">
                         <div class="download_inner"></div>
                     </div>
-                    <!-- <img class="donwload_ope" src="/assets/images/decks/download.png" alt="" title="上传" />			 -->
                     <a href="#" id="deck_url_ydk"><img class="save_ope" src="/assets/images/decks/save.png" alt="" title="保存"/></a>
                     <a href="#" id="deck_url_mycard"><img class="mycard_ope" src="/assets/images/decks/ygopro.png" alt="" title="在ygopro中打开 (需要安装mycard)"/></a>
                 </div>

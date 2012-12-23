@@ -10,7 +10,10 @@ body{margin:0;padding:0;background:#eee;}
 /*左边区域*/
 .card_img{margin:10px 0 0 10px;height:auto;width:auto;}
 .card_info{width:135px;height:180px;padding:15px 5px 5px 5px;margin:7px 0 0 10px;}
-.card_name{width:300px;height:auto;padding:8px 0;margin:0;font-weight:bold;color:#999999;text-shadow:1px 1px 2px #cccccc;font-size:24px;text-align:center;background:#eeeeee;border:1px solid #cccccc;border-radius:5px 0 0 0;margin:0 0 0 -1px;}
+.card_name{
+  width:300px;height:auto;padding:8px 0;margin:0;font-weight:bold;text-shadow:1px 1px 2px #cccccc;font-size:24px;text-align:center;background:#eeeeee;border:1px solid #cccccc;border-radius:5px 0 0 0;margin:0 0 0 -1px;
+  a{color:#999999;text-decoration:none;}
+}
 .attr_name{width:60px;height:14px;padding:0 0 5px 0;margin:0 0 10px 0;color:#FFAD6E;font-size:12px;text-shadow:1px 1px 2px #eeeeee;border-bottom:1px dashed #cccccc;}//text-align:right;
 .attr_real{width:75px;height:14px;padding:0 0 5px 0;margin:0 0 10px 0;color:thead_bg#999999;font-size:12px;text-shadow:1px 1px 2px #eeeeee;border-bottom:1px dashed #cccccc;}
 .bottom_button_active{height:auto;width:auto;padding:8px 10px;margin:-1px 0 0 10px; border-left:1px solid #CCCCCC;border-top:1px solid #ffffff;border-right:1px solid #CCCCCC;border-bottom:1px solid #CCCCCC; font-size:12px;border-radius:0 0 5px 5px;background:#ffffff;}
@@ -196,6 +199,12 @@ body{margin:0;padding:0;background:#eee;}
     }
   }
    .load_img{margin:25px auto;width:32px;height:32px;display:block;}
+   #deck_main{
+    height:295px;
+    .card_usage{margin-bottom:8px;}
+  }
+   #deck_side{height:78px;}
+   #deck_extra{height:78px;}
 }
 .search_data.graphic{width:162px;height:700px;float:right;overflow: hidden;
   .search_frame{
@@ -215,7 +224,10 @@ body{margin:0;padding:0;background:#eee;}
   {
       float:left;width:144px;height:66px;clear:left;border-bottom:1px solid #eeeeee;padding:5px 0;
       .search_out_img{float:left;margin:0 5px 0 0;}
-      .search_out_text{float:left;padding:2px;}
+      .search_out_text{
+        float:left;padding:2px;
+        .search_out_textTitle{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:88px;height:14px;}
+      }
       span{font-size:12px;}      
   }
   .page{
