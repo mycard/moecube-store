@@ -7,9 +7,10 @@
       timeout: 7200,
       random: 1
     });
-    return $.get('http://my-card.in/mycard/download.url', function(data) {
-      if (data.match(/mycard-(.*)-win32\.7z/)) {
-        return $('#download_version').html(v[1]);
+    return $.get('/mycard/download.url', function(data) {
+      var matched;
+      if (matched = data.match(/mycard-(.*)-win32\.7z/)) {
+        return $('#download_version').html(matched[1]);
       } else {
         return $('#download_version').html('读取失败');
       }

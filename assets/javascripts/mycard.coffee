@@ -7,7 +7,7 @@ $(document).ready ->
     random:1
 
   $.get '/mycard/download.url', (data)->
-    if data.match(/mycard-(.*)-win32\.7z/)
-      $('#download_version').html v[1]
+    if matched = data.match(/mycard-(.*)-win32\.7z/)
+      $('#download_version').html matched[1]
     else
       $('#download_version').html '读取失败'
