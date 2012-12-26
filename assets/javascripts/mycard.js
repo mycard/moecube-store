@@ -7,21 +7,9 @@
       timeout: 7200,
       random: 1
     });
-    return $.getJSON('https://api.github.com/repos/zh99998/mycard/downloads?callback=?', function(data) {
-      var download, url, v, version, _i, _len, _ref;
-      _ref = data.data;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        download = _ref[_i];
-        if (v = download.name.match(/mycard-(.*)-win32\.7z/)) {
-          if (!version || v[1] > version) {
-            version = v[1];
-            url = download.html_url;
-          }
-        }
-      }
-      if (version) {
-        $('#download_url').attr('href', url);
-        return $('#download_version').html(version);
+    return $.get('http://my-card.in/mycard/download.url', function(data) {
+      if (data.match(/mycard-(.*)-win32\.7z/)) {
+        return $('#download_version').html(v[1]);
       } else {
         return $('#download_version').html('读取失败');
       }
