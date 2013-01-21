@@ -21,7 +21,8 @@
       for (_i = 0, _len = data.length; _i < _len; _i++) {
         link = data[_i];
         _results.push($('<a />', {
-          href: link.url
+          href: link.url,
+          rel: "nofollow"
         }).append($('<img />', {
           title: link.name,
           alt: link.name,

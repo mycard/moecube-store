@@ -18,6 +18,7 @@ $(document).ready ->
     for link in data
       $('<a />', 
         href: link.url
+        rel: "nofollow"
       ).append($('<img />',
         title: link.name
         alt: link.name
