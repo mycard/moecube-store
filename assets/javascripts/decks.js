@@ -764,7 +764,7 @@
     };
 
     CardsController.prototype.template = function() {
-      return $('#search_cards_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic' + '_template'));
+      return $('#search_cards_' + ($('.operate_area').hasClass('text') ? 'text' : 'graphic') + '_template');
     };
 
     CardsController.prototype.search = function(name) {
@@ -795,6 +795,7 @@
     $("#deck_share_dialog").dialog({
       modal: true,
       autoOpen: false,
+      width: 600,
       open: function() {
         $("#deck_url").val(decks.deck().url());
         $("#deck_url")[0].select();
@@ -843,7 +844,7 @@
       $("#drop_upload_dialog").dialog('close');
       return decks.upload(event.dataTransfer.files);
     });
-    $(".rename_ope").click(function() {
+    $(".swith").click(function() {
       $(".text,.graphic").toggleClass("graphic text");
       return decks.render();
     });

@@ -4,7 +4,7 @@ body{margin:0;padding:0;background:#eee;}
 .floatleft{float:left;} .floatright{float:right;}
 .main_div{width:1000px;height:700px;margin:20px auto;border-radius:5px;}
 .main_left{width:300px;height:700px;border-radius:5px;}
-.main_right{width:700px;height:700px;border-radius:0 5px 5px 0;}
+.main_right{width:700px;height:700px;border-radius:0 5px 5px 0;position:relative;}
 
 
 /*左边区域*/
@@ -15,7 +15,7 @@ body{margin:0;padding:0;background:#eee;}
   a{color:#999999;text-decoration:none;}
 }
 .attr_name{width:60px;height:14px;padding:0 0 5px 0;margin:0 0 10px 0;color:#FFAD6E;font-size:12px;text-shadow:1px 1px 2px #eeeeee;border-bottom:1px dashed #cccccc;}//text-align:right;
-.attr_real{width:75px;height:14px;padding:0 0 5px 0;margin:0 0 10px 0;color:thead_bg#999999;font-size:12px;text-shadow:1px 1px 2px #eeeeee;border-bottom:1px dashed #cccccc;}
+.attr_real{width:75px;height:14px;padding:0 0 5px 0;margin:0 0 10px 0;color:thead_bg#999999;font-size:12px;text-shadow:1px 1px 2px #eeeeee;border-bottom:1px dashed #cccccc;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
 .bottom_button_active{height:auto;width:auto;padding:8px 10px;margin:-1px 0 0 10px; border-left:1px solid #CCCCCC;border-top:1px solid #ffffff;border-right:1px solid #CCCCCC;border-bottom:1px solid #CCCCCC; font-size:12px;border-radius:0 0 5px 5px;background:#ffffff;}
 .bottom_button{height:auto;width:auto;padding:8px 10px;margin:-1px 0 0 10px;font-size:12px;border-radius:0 0 5px 5px;cursor:pointer;color:#999999;}
 .bottom_button:hover{color:#ffffff;background:#CCCCCC;}
@@ -64,7 +64,7 @@ body{margin:0;padding:0;background:#eee;}
 
 /*表格*/
 .main_area{
-  width:508px;height:518px;margin:20px 0 0 10px;box-shadow:-2px 3px 5px #eeeeee inset;border-bottom:1px solid #eeeeee;position:relative;overflow:hidden;
+  width:508px;height:443px;margin:20px 0 0 10px;box-shadow:-2px 3px 5px #eeeeee inset;border-bottom:1px solid #eeeeee;position:relative;overflow:hidden;
   table{position:absolute;
     thead{
       tr{
@@ -138,6 +138,9 @@ body{margin:0;padding:0;background:#eee;}
       &:hover{cursor:pointer;background:#eee;}
     }
   }
+
+  .swith{display:block;height:12px;width:14px;float:left;background:url(/assets/images/decks/switch.png) -25px 0 no-repeat;margin:5px 0 0 5px;cursor:pointer;}
+
 }
 .select_card{
   width:150px;height:55px;padding:5px;border:1px solid #cccccc;background:#F9F9F9;border-radius:6px;margin:12px 0 0 0;
@@ -149,6 +152,7 @@ body{margin:0;padding:0;background:#eee;}
   float:left;height:17px;padding:3px 0 0 3px;cursor:pointer;margin:-1px 0 0 3px;-moz-transition: all 0.5s ease-in;-webkit-transition: all 0.5s ease-in;
   &:hover{height:23px;padding:0;-moz-transition: all 0.5s ease-in-out;-webkit-transition: all 0.5s ease-in-out;}
 }
+/*重命名*/
 .rename_ope{
   float:right;height:17px;cursor:pointer;margin:1px 2px 0 0;-moz-transition: all 0.5s ease-in;-moz-transform: translate(0px) rotate(-180deg);-webkit-transition: all 0.5s ease-in;-webkit-transform: translate(0px) rotate(-180deg);
   &:hover{-moz-transition: all 0.5s ease-in-out;-moz-transform: translate(0px) rotate(180deg);-webkit-transition: all 0.5s ease-in-out;-webkit-transform: translate(0px) rotate(180deg);}
@@ -164,8 +168,9 @@ body{margin:0;padding:0;background:#eee;}
   &:hover{-moz-transition: all 0.5s ease-in-out;-webkit-transition: all 0.5s ease-in-out;background-position:0 -18px;}
 }
 .upload_ope{float:left;height:25px;padding:5px 0 0 5px;cursor:pointer;}
-.save_ope{float:left;height:25px;padding:5px 0 0 6px;cursor:pointer;}
-.mycard_ope{float:left;height:25px;padding:5px 0 0 6px;cursor:pointer;}
+.save_ope{float:left;height:24spx;padding:6px 0 0 6px;cursor:pointer;}
+.mycard_ope{float:left;height:24px;padding:6px 0 0 6px;cursor:pointer; 
+  -webkit-filter: grayscale(100%);-moz-filter: grayscale(100%);-ms-filter: grayscale(100%);-o-filter: grayscale(100%);filter: grayscale(100%);filter: gray;}
 
 /* 文字版 */
 .search_data.text{
@@ -185,6 +190,7 @@ body{margin:0;padding:0;background:#eee;}
     /* 一个很神奇的现象，float: left不加的话，Jquery-UI的拖拽不好用，加上去之后没法拖到另一个卡组里... */
   }
 
+  .swith{display:block;height:12px;width:12px;float:left;background:url(/assets/images/decks/switch.png);margin:5px 0 0 5px;cursor:pointer;}
   .select_card{
     width:498px;height:35px;padding:5px;border:1px solid #cccccc;background:#F9F9F9;border-radius:6px;margin:10px 0 0 8px;
     select{width:100px;float:left;border:1px solid #ccc;padding:1px;}
@@ -205,6 +211,7 @@ body{margin:0;padding:0;background:#eee;}
   }
    #deck_side{height:78px;}
    #deck_extra{height:78px;}
+
 }
 .search_data.graphic{width:162px;height:700px;float:right;overflow: hidden;
   .search_frame{
@@ -213,7 +220,7 @@ body{margin:0;padding:0;background:#eee;}
   }
   .search_results{line-height:16px;}
   .main_area{
-    padding:8px 0 0 8px;width:144px;background:#fbfbfb;
+    padding:8px 0 0 8px;width:144px;background:#fbfbfb;height:518px;
     &:hover
     {
         .search_out_textTitle{color:#3366CC;transition:color 0.218s ease 0s;}
@@ -256,3 +263,27 @@ body{margin:0;padding:0;background:#eee;}
 .ui-sortable{padding:5px 0 5px 10px;}
 
 .drop_upload .ui-dialog-titlebar{ display:none; }
+
+
+
+/*浮层*/
+/*.ui-dialog{width:800px;height:800px;}*/
+#deck_share_dialog{
+  position:relative;z-index:99999;font-size:12px;
+  .float_left{display:block;overflow:hidden;height:200px;width:250px;float:left;padding:20px 0 0 15px;}
+  .float_right{display:block;overflow:hidden;height:200px;width:250px;float:left;padding:20px 0 0 0;margin:0 0 0 30px;}
+  fieldset{
+    height:72px;border-top:1px solid #dddddd;padding:25px 0 0 0;
+    legend{text-align:center;padding:0 15px;margin:-3px 0 0 0;}
+  }
+  img{margin:-10px 0 0 50px;width:150px;height:150px;}
+}
+
+
+/*广告*/
+.advertisement{position:absolute;display:block;z-index:999;width:468px;height:60px;border:1px solid #dddddd;bottom:25px;left:8px;background:#F9F9F9;border-radius:6px;text-align:center;line-height:60px;font-weight:bold;color:#999999;font-size:16px;letter-spacing:2px;cursor:pointer;}
+
+
+
+
+

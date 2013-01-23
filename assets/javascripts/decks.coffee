@@ -351,7 +351,7 @@ class CardsController extends Spine.Controller
   show: (e)->
     decks.show(e)
   template: ->
-    $('#search_cards_' + if $('.operate_area').hasClass('text') then 'text' else 'graphic' + '_template')
+    $('#search_cards_' + (if $('.operate_area').hasClass('text') then 'text' else 'graphic') + '_template')
   search: (name)->
     Card.fetch_by_name name, (cards)=>
       @html @template().tmpl cards

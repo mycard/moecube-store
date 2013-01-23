@@ -68,7 +68,7 @@ $.fn.extend({
 			var sl = dw - sw
 			var bw = j.Btn.btn==true ? sw : 0;
 			if($(_self).children(".jscroll-c").height()==null){//´æÔÚĞÔ¼ì²â
-		$(_self).wrapInner("<div class='jscroll-c' style='top:0px;z-index:9999;zoom:1;position:relative'></div>");
+		$(_self).wrapInner("<div class='jscroll-c' style='top:0px;z-index:9;zoom:1;position:relative'></div>");
 			$(_self).children(".jscroll-c").prepend("<div style='height:0px;overflow:hidden'></div>");
 			$(_self).append("<div class='jscroll-e' unselectable='on' style=' height:100%;top:0px;right:0;-moz-user-select:none;position:absolute;overflow:hidden;z-index:10000;'><div class='jscroll-u' style='position:absolute;top:0px;width:100%;left:0;background:blue;overflow:hidden'></div><div class='jscroll-h'  unselectable='on' style='background:green;position:absolute;left:0;-moz-user-select:none;border:1px solid'></div><div class='jscroll-d' style='position:absolute;bottom:0px;width:100%;left:0;background:blue;overflow:hidden'></div></div>");
 			}

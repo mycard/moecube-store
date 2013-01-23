@@ -185,6 +185,114 @@
                 <td>暗</td>
                 <td>测试</td>
             </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
+            <tr>
+                <td>黑羽-疾风之</td>
+                <td>效果·调整</td>
+                <td>1300</td>
+                <td>400</td>
+                <td>3 ☆</td>
+                <td>暗</td>
+                <td>测试</td>
+            </tr>
             </tbody>
         </table>
     </script>
@@ -265,6 +373,7 @@
         </div>
     </div>
     <div class="main_right floatleft line">
+        <div class="advertisement" onclick="window.open('https://docs.google.com/spreadsheet/viewform?formkey=dHg2aWdqb0dJczBRRVBtenZXX24zcEE6MQ')">关于是否在此处添加广告的用户调查</div>
         <div class="floatleft search_data graphic">
             <div class="floatleft search_bar">
                 <form id="search">
@@ -360,7 +469,8 @@
                         <option id="name" value="">卡组</option>
                     </select>
                     <img class="add_ope" src="/assets/images/decks/add.png" alt="" title="新建"/>
-                    <img class="rename_ope" src="/assets/images/decks/rename.png" alt="" title="重命名"/>
+                    <!-- <img class="rename_ope" src="/assets/images/decks/rename.png" alt="" title="重命名"/> -->
+                    <div class="swith" style=""></div>
                 </div>
                 <div class="select_cardUnder">
                     <div class="donwload_out" title="上传">
@@ -368,10 +478,11 @@
                             <input id="deck_load" type="file" tabindex="-1"/>
                         </div>
                     </div>
-                    <div class="donwload_out" title="分享" id="deck_share">
+                    <a href="#" class="donwload_out" title="下载" id="deck_url_ydk">
                         <div class="download_inner"></div>
-                    </div>
-                    <a href="#" id="deck_url_ydk"><img class="save_ope" src="/assets/images/decks/save.png" alt="" title="保存"/></a>
+                    </a>
+                    <!-- <a href="#" id="deck_url_ydk"><img class="save_ope" src="/assets/images/decks/save.png" alt="" title="保存"/></a>                     -->
+                    <a href="#" id="deck_share"><img class="save_ope" src="/assets/images/decks/share.png" alt="" title="分享"/></a>
                     <a href="#" id="deck_url_mycard"><img class="mycard_ope" src="/assets/images/decks/ygopro.png" alt="" title="在ygopro中打开 (需要安装mycard)"/></a>
                 </div>
             </div>
@@ -383,27 +494,31 @@
     </div>
 </div>
 <div id="deck_share_dialog" title="share" style="display: none">
-    <fieldset>
-        <legend>URL</legend>
-        <input id="deck_url" readonly="readonly"/><br/>
-        <button id="deck_url_shorten">shorten</button>
-    </fieldset>
-    <fieldset>
-        <legend>share</legend>
-        <!-- AddThis Button BEGIN -->
-        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-            <a class="addthis_button_preferred_1"></a>
-            <a class="addthis_button_preferred_2"></a>
-            <a class="addthis_button_preferred_3"></a>
-            <a class="addthis_button_preferred_4"></a>
-            <a class="addthis_button_compact"></a>
-            <a class="addthis_counter addthis_bubble_style"></a>
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend>QR Code</legend>
-        <img id="deck_url_qrcode"/>
-    </fieldset>
+    <div class="float_left">
+        <fieldset>
+            <legend align="center">URL</legend>
+            <input id="deck_url" readonly="readonly"/>
+            <button id="deck_url_shorten" style="margin:0 0 0 5px;">shorten</button>
+        </fieldset>
+        <fieldset>
+            <legend align="center">share</legend>
+            <!-- AddThis Button BEGIN -->
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_preferred_1"></a>
+                <a class="addthis_button_preferred_2"></a>
+                <a class="addthis_button_preferred_3"></a>
+                <a class="addthis_button_preferred_4"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+        </fieldset>
+    </div>
+    <div class="float_right">
+        <fieldset>
+            <legend align="center">QR Code</legend>
+            <img id="deck_url_qrcode"/>
+        </fieldset>
+    </div>
     <script type="text/javascript"
             src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-504b398d148616ce&async=1"></script>
     <!-- AddThis Button END -->
