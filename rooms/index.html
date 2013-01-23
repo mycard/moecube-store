@@ -142,15 +142,27 @@
         <input type="text" id="name"/><br/>
         <label>房间密码</label>
         <input type="password" name="password" id="password" value=""/><br/>
-        <input type="checkbox" name="pvp" id="pvp" value="pvp"/><label>竞技场</label>
-        <input type="checkbox" name="match" id="match" value="match" checked="checked"/><label>比赛模式</label>
+        <input type="checkbox" name="pvp" id="pvp" value="pvp"/><label for="pvp">竞技场</label>
+
         <hr/>
-        <h3>自定义模式</h3>
-        <input type="checkbox" name="tag" id="tag" value="tag"/><label>TAG双打</label>
-        <input type="checkbox" name="ocg" id="ocg" value="ocg" checked="checked"/><label>OCG</label>
-        <input type="checkbox" name="tcg" id="tcg" value="tcg"/><label>TCG</label><br/>
-        <label>初始LP</label>
-        <input type="number" name="lp" id="lp" min="0" max="99999" value="8000" step="1000"/><br/>
+        <label for="rule">卡片允许</label>
+        <select id="rule" name="rule">
+            <option value ="0" selected="selected">ＯＣＧ</option>
+            <option value ="1">ＴＣＧ</option>
+            <option value="2">ＯＣＧ＆ＴＣＧ</option>
+            <option value="3">专有卡禁止</option>
+        </select><br />
+        <label for="mode">决斗模式</label>
+        <select id="mode" name="mode">
+            <option value ="0">单局模式</option>
+            <option value ="1" selected="selected">比赛模式</option>
+            <option value="2">ＴＡＧ</option>
+        </select>
+        <hr/>
+        <h3>额外选项</h3>
+
+        <label for="start_lp">初始LP</label>
+        <input type="number" name="start_lp" id="start_lp" min="0" max="99999" value="8000"/><br/>
         <input type="submit" value="确定"/>
     </form>
 </div>

@@ -4,10 +4,10 @@ class Server extends Spine.Model
   @url: "/servers.json"
 
 class Room extends Spine.Model
-  @configure "Room", "name", "status", "private"
+  @configure "Room", "name", "status", "private", "rule", "mode", "start_lp"
   @belongsTo 'server', Server
-class Rooms extends Spine.Controller
 
+class Rooms extends Spine.Controller
   events:
     'click .room': 'clicked'
   constructor: ->
@@ -27,7 +27,8 @@ class Rooms extends Spine.Controller
       $('#join_private_room').data('room_id', room.id)
       $('#join_private_room_dialog').dialog('open')
     else
-      mycard.join(room.server().ip, room.server().port, room.name)
+      alert room
+      mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp))
 
 
 $(document).ready ->
@@ -56,53 +57,27 @@ $(document).ready ->
     title:"加入私密房间"
 
   new_room = $('#new_room')[0]
-  new_room.tag.onchange = ->
-    if @checked
-      new_room.pvp.checked = false
-      new_room.match.checked = false
-  new_room.match.onchange = ->
-    if @checked
-      new_room.tag.checked = false
   new_room.pvp.onchange = ->
     if @checked
-      new_room.tag.checked = false
-      new_room.tcg.checked = false
-      new_room.ocg.checked = true
-      new_room.lp.value = 8000
-  new_room.ocg.onchange = ->
-    if !@checked
-      new_room.tcg.checked = true
-  new_room.tcg.onchange = ->
-    if @checked
+      new_room.mode.value = 1 if new_room.mode.value == '2'
+      new_room.rule.value = 0
+      new_room.start_lp.value = 8000
+  new_room.mode.onchange = ->
+    if @value == '2'
       new_room.pvp.checked = false
-    else
-      new_room.ocg.checked = true
-
+  new_room.rule.onchange = ->
+    if @value != '0'
+      new_room.pvp.checked = false
+  new_room.start_lp.onchange = ->
+    if @value != '8000'
+      new_room.pvp.checked = false
   new_room.onsubmit = (ev)->
     ev.preventDefault()
     $('#new_room_dialog').dialog('close')
 
-    rule = if @tcg.checked then (if @ocg.checked then 2 else 1) else 0
-    mode = if @tag.checked then 2 else if @match.checked then 1 else 0
-    if rule != 0 or @lp.value != '8000'
-      result = "#{rule}#{mode}FFF#{@lp.value},5,1,"
-    else if @tag.checked
-      result = "T#"
-    else if @pvp.checked and @match.checked
-      result = "PM#"
-    else if @pvp.checked
-      result = "P#"
-    else if @match.checked
-      result = "M#"
-    result += @name.value
-    if @password.value
-      result += '$' + @password.value
-
     servers = Server.all()
     server = servers[Math.floor Math.random() * servers.length]
-    mycard.join(server.ip, server.port, result)
-
-
+    mycard.join server.ip, server.port, mycard.room_name(@name.value, @password.value, @pvp.checked, parseInt(@rule.value), parseInt(@mode.value), parseInt(@start_lp.value))
 
   $('#join_private_room').submit (ev)->
     ev.preventDefault()
@@ -112,8 +87,7 @@ $(document).ready ->
       room_id = $(this).data('room_id')
       if Room.exists room_id
         room = Room.find(room_id)
-        server = room.server()
-        mycard.join(server.ip, server.port, "#{room.name}$#{@password.value}")
+        mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp))
       else
         alert '房间已经关闭'
 
@@ -121,7 +95,6 @@ $(document).ready ->
     new_room.reset()
     new_room.name.value = Math.floor Math.random() * 1000
     $('#new_room_dialog').dialog('open')
-
 
   rooms = new Rooms(el: $('#rooms'))
 
@@ -139,7 +112,6 @@ $(document).ready ->
         if room._deleted
           Room.find(room.id).destroy() if Room.exists(room.id)
       Room.refresh (room for room in rooms when !room._deleted)
-
     websocket.onerror = (evt)->
       console.log('Error occured: ' + evt.data);
   Server.fetch()

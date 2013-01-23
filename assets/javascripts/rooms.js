@@ -31,7 +31,7 @@
       return Room.__super__.constructor.apply(this, arguments);
     }
 
-    Room.configure("Room", "name", "status", "private");
+    Room.configure("Room", "name", "status", "private", "rule", "mode", "start_lp");
 
     Room.belongsTo('server', Server);
 
@@ -69,7 +69,8 @@
         $('#join_private_room').data('room_id', room.id);
         return $('#join_private_room_dialog').dialog('open');
       } else {
-        return mycard.join(room.server().ip, room.server().port, room.name);
+        alert(room);
+        return mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp));
       }
     };
 
@@ -106,72 +107,47 @@
       title: "加入私密房间"
     });
     new_room = $('#new_room')[0];
-    new_room.tag.onchange = function() {
-      if (this.checked) {
-        new_room.pvp.checked = false;
-        return new_room.match.checked = false;
-      }
-    };
-    new_room.match.onchange = function() {
-      if (this.checked) {
-        return new_room.tag.checked = false;
-      }
-    };
     new_room.pvp.onchange = function() {
       if (this.checked) {
-        new_room.tag.checked = false;
-        new_room.tcg.checked = false;
-        new_room.ocg.checked = true;
-        return new_room.lp.value = 8000;
+        if (new_room.mode.value === '2') {
+          new_room.mode.value = 1;
+        }
+        new_room.rule.value = 0;
+        return new_room.start_lp.value = 8000;
       }
     };
-    new_room.ocg.onchange = function() {
-      if (!this.checked) {
-        return new_room.tcg.checked = true;
-      }
-    };
-    new_room.tcg.onchange = function() {
-      if (this.checked) {
+    new_room.mode.onchange = function() {
+      if (this.value === '2') {
         return new_room.pvp.checked = false;
-      } else {
-        return new_room.ocg.checked = true;
+      }
+    };
+    new_room.rule.onchange = function() {
+      if (this.value !== '0') {
+        return new_room.pvp.checked = false;
+      }
+    };
+    new_room.start_lp.onchange = function() {
+      if (this.value !== '8000') {
+        return new_room.pvp.checked = false;
       }
     };
     new_room.onsubmit = function(ev) {
-      var mode, result, rule, server, servers;
+      var server, servers;
       ev.preventDefault();
       $('#new_room_dialog').dialog('close');
-      rule = this.tcg.checked ? (this.ocg.checked ? 2 : 1) : 0;
-      mode = this.tag.checked ? 2 : this.match.checked ? 1 : 0;
-      if (rule !== 0 || this.lp.value !== '8000') {
-        result = "" + rule + mode + "FFF" + this.lp.value + ",5,1,";
-      } else if (this.tag.checked) {
-        result = "T#";
-      } else if (this.pvp.checked && this.match.checked) {
-        result = "PM#";
-      } else if (this.pvp.checked) {
-        result = "P#";
-      } else if (this.match.checked) {
-        result = "M#";
-      }
-      result += this.name.value;
-      if (this.password.value) {
-        result += '$' + this.password.value;
-      }
       servers = Server.all();
       server = servers[Math.floor(Math.random() * servers.length)];
-      return mycard.join(server.ip, server.port, result);
+      return mycard.join(server.ip, server.port, mycard.room_name(this.name.value, this.password.value, this.pvp.checked, parseInt(this.rule.value), parseInt(this.mode.value), parseInt(this.start_lp.value)));
     };
     $('#join_private_room').submit(function(ev) {
-      var room, room_id, server;
+      var room, room_id;
       ev.preventDefault();
       $('#join_private_room_dialog').dialog('close');
       if (this.password.value) {
         room_id = $(this).data('room_id');
         if (Room.exists(room_id)) {
           room = Room.find(room_id);
-          server = room.server();
-          return mycard.join(server.ip, server.port, "" + room.name + "$" + this.password.value);
+          return mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp));
         } else {
           return alert('房间已经关闭');
         }
