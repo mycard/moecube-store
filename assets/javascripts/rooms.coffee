@@ -28,7 +28,8 @@ $(document).ready ->
       resources: '/vendor/stylesheets/candy/',
       language: 'cn'
   )
-  Candy.Core.connect('zh99998测试80@my-card.in', 'zh112998')
+  if window.location.href.indexOf("candy") != -1
+    Candy.Core.connect('zh99998测试80@my-card.in', 'zh112998')
   #$('#username').val '@my-card.in'
   #$('#username').focus()
   rooms = new Rooms(el: $('#rooms'))
