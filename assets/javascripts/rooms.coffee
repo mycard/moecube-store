@@ -4,11 +4,12 @@ class Server extends Spine.Model
   @url: "/servers.json"
 
 class Room extends Spine.Model
-  @configure "Room",
-    "name",
-    "status"
-
+  @configure "Room", "name", "status"
+  @belongsTo 'server', Server
 class Rooms extends Spine.Controller
+
+  events:
+    'click .room': 'clicked'
   constructor: ->
     super
     Room.bind "refresh", @render
@@ -16,7 +17,9 @@ class Rooms extends Spine.Controller
     @html $('#room_template').tmpl _.sortBy Room.all(), @sort
   sort: (room)->
     [if room.status == "wait" then 0 else 1]
-
+  clicked: (e)->
+    room = $(e.target).tmplItem().data
+    mycard.join(room.server().ip, room.server().port, room.name)
 
 
 $(document).ready ->

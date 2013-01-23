@@ -33,6 +33,8 @@
 
     Room.configure("Room", "name", "status");
 
+    Room.belongsTo('server', Server);
+
     return Room;
 
   })(Spine.Model);
@@ -40,6 +42,10 @@
   Rooms = (function(_super) {
 
     __extends(Rooms, _super);
+
+    Rooms.prototype.events = {
+      'click .room': 'clicked'
+    };
 
     function Rooms() {
       this.render = __bind(this.render, this);
@@ -53,6 +59,12 @@
 
     Rooms.prototype.sort = function(room) {
       return [room.status === "wait" ? 0 : 1];
+    };
+
+    Rooms.prototype.clicked = function(e) {
+      var room;
+      room = $(e.target).tmplItem().data;
+      return mycard.join(room.server().ip, room.server().port, room.name);
     };
 
     return Rooms;
