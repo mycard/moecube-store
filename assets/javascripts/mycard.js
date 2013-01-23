@@ -7,24 +7,29 @@
       timeout: 7200,
       random: 1
     });
-    return $.getJSON('https://api.github.com/repos/zh99998/mycard/downloads?callback=?', function(data) {
-      var download, url, v, version, _i, _len, _ref;
-      _ref = data.data;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        download = _ref[_i];
-        if (v = download.name.match(/mycard-(.*)-win32\.7z/)) {
-          if (!version || v[1] > version) {
-            version = v[1];
-            url = download.html_url;
-          }
-        }
-      }
-      if (version) {
-        $('#download_url').attr('href', url);
-        return $('#download_version').html(version);
+    $.get('/mycard/download.url', function(data) {
+      var matched;
+      if (matched = data.match(/mycard-(.*)-win32\.7z/)) {
+        return $('#download_version').html(matched[1]);
       } else {
         return $('#download_version').html('读取失败');
       }
+    });
+    return $.getJSON('/links.json', function(data) {
+      var link, _i, _len, _results;
+      _results = [];
+      for (_i = 0, _len = data.length; _i < _len; _i++) {
+        link = data[_i];
+        _results.push($('<a />', {
+          href: link.url,
+          rel: "nofollow"
+        }).append($('<img />', {
+          title: link.name,
+          alt: link.name,
+          src: link.logo
+        })).appendTo('#links'));
+      }
+      return _results;
     });
   });
 
