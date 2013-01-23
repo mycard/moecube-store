@@ -24,4 +24,7 @@ $(document).ready ->
         alt: link.name
         src: link.logo
       )).appendTo('#links')
-  
+
+  #duelist
+  #$.getJSON 'http://www.duelist.cn/api/book/list?callback=?', (data)->
+  #  alert data
