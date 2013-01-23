@@ -147,7 +147,7 @@
         room_id = $(this).data('room_id');
         if (Room.exists(room_id)) {
           room = Room.find(room_id);
-          return mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp));
+          return mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, this.password.value, room.pvp, room.rule, room.mode, room.start_lp));
         } else {
           return alert('房间已经关闭');
         }

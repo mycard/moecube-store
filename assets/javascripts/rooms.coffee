@@ -87,7 +87,7 @@ $(document).ready ->
       room_id = $(this).data('room_id')
       if Room.exists room_id
         room = Room.find(room_id)
-        mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp))
+        mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, @password.value, room.pvp, room.rule, room.mode, room.start_lp))
       else
         alert '房间已经关闭'
 
