@@ -31,7 +31,7 @@
       return Room.__super__.constructor.apply(this, arguments);
     }
 
-    Room.configure("Room", "name", "status");
+    Room.configure("Room", "name", "status", "private");
 
     Room.belongsTo('server', Server);
 
@@ -58,13 +58,19 @@
     };
 
     Rooms.prototype.sort = function(room) {
-      return [room.status === "wait" ? 0 : 1];
+      return [room.status === "wait" ? 0 : 1, room["private"]];
     };
 
     Rooms.prototype.clicked = function(e) {
       var room;
       room = $(e.target).tmplItem().data;
-      return mycard.join(room.server().ip, room.server().port, room.name);
+      if (room["private"]) {
+        $('#join_private_room')[0].reset();
+        $('#join_private_room').data('room_id', room.id);
+        return $('#join_private_room_dialog').dialog('open');
+      } else {
+        return mycard.join(room.server().ip, room.server().port, room.name);
+      }
     };
 
     return Rooms;
@@ -72,7 +78,7 @@
   })(Spine.Controller);
 
   $(document).ready(function() {
-    var rooms;
+    var new_room, rooms;
     Candy.init('/http-bind/', {
       core: {
         debug: false,
@@ -86,6 +92,93 @@
     if (window.location.href.indexOf("candy") !== -1) {
       Candy.Core.connect('zh99998测试80@my-card.in', 'zh112998');
     }
+    $('#new_room_dialog').dialog({
+      autoOpen: false,
+      resizable: false,
+      title: "建立房间"
+    });
+    $('#join_private_room_dialog').dialog({
+      autoOpen: false,
+      resizable: false,
+      title: "加入私密房间"
+    });
+    new_room = $('#new_room')[0];
+    new_room.tag.onchange = function() {
+      if (this.checked) {
+        new_room.pvp.checked = false;
+        return new_room.match.checked = false;
+      }
+    };
+    new_room.match.onchange = function() {
+      if (this.checked) {
+        return new_room.tag.checked = false;
+      }
+    };
+    new_room.pvp.onchange = function() {
+      if (this.checked) {
+        new_room.tag.checked = false;
+        new_room.tcg.checked = false;
+        new_room.ocg.checked = true;
+        return new_room.lp.value = 8000;
+      }
+    };
+    new_room.ocg.onchange = function() {
+      if (!this.checked) {
+        return new_room.tcg.checked = true;
+      }
+    };
+    new_room.tcg.onchange = function() {
+      if (this.checked) {
+        return new_room.pvp.checked = false;
+      } else {
+        return new_room.ocg.checked = true;
+      }
+    };
+    new_room.onsubmit = function(ev) {
+      var mode, result, rule, server, servers;
+      ev.preventDefault();
+      $('#new_room_dialog').dialog('close');
+      rule = this.tcg.checked ? (this.ocg.checked ? 2 : 1) : 0;
+      mode = this.tag.checked ? 2 : this.match.checked ? 1 : 0;
+      if (rule !== 0 || this.lp.value !== '8000') {
+        result = "" + rule + mode + "FFF" + this.lp.value + ",5,1,";
+      } else if (this.tag.checked) {
+        result = "T#";
+      } else if (this.pvp.checked && this.match.checked) {
+        result = "PM#";
+      } else if (this.pvp.checked) {
+        result = "P#";
+      } else if (this.match.checked) {
+        result = "M#";
+      }
+      result += this.name.value;
+      if (this.password.value) {
+        result += '$' + this.password.value;
+      }
+      servers = Server.all();
+      server = servers[Math.floor(Math.random() * servers.length)];
+      return mycard.join(server.ip, server.port, result);
+    };
+    $('#join_private_room').submit(function(ev) {
+      var room, room_id, server;
+      ev.preventDefault();
+      $('#join_private_room_dialog').dialog('close');
+      if (this.password.value) {
+        room_id = $(this).data('room_id');
+        if (Room.exists(room_id)) {
+          room = Room.find(room_id);
+          server = room.server();
+          return mycard.join(server.ip, server.port, "" + room.name + "$" + this.password.value);
+        } else {
+          return alert('房间已经关闭');
+        }
+      }
+    });
+    $('#new_room_button').click(function() {
+      new_room.reset();
+      new_room.name.value = Math.floor(Math.random() * 1000);
+      return $('#new_room_dialog').dialog('open');
+    });
     rooms = new Rooms({
       el: $('#rooms')
     });
