@@ -23,6 +23,26 @@
 
     <link rel="stylesheet" href="/vendor/stylesheets/smoothness/jquery-ui-1.9.1.custom.min.css"/>
 
+    <link rel="canonical" href="http://my-card.in/rooms">
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29582484-1']);
+        _gaq.push(['_trackPageview']);
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+
     <script id="room_template" type="text/x-jquery-tmpl">
         <div class="room" id="room_${id}">
             <span class="room_name">${name}</span>
@@ -67,8 +87,8 @@
         <a class="login" href="">登录</a>
     </div>
 </div>
-<div class="card_center">
-    <div id="rooms"></div>
+<div class="card_center" style="height:200px;overflow: hidden;">
+    <div id="rooms" ></div>
     <div class="online_list">
         <div class="online_title">在线用户</div>
         <ul>
@@ -147,15 +167,15 @@
         <hr/>
         <label for="rule">卡片允许</label>
         <select id="rule" name="rule">
-            <option value ="0" selected="selected">ＯＣＧ</option>
-            <option value ="1">ＴＣＧ</option>
+            <option value="0" selected="selected">ＯＣＧ</option>
+            <option value="1">ＴＣＧ</option>
             <option value="2">ＯＣＧ＆ＴＣＧ</option>
             <option value="3">专有卡禁止</option>
-        </select><br />
+        </select><br/>
         <label for="mode">决斗模式</label>
         <select id="mode" name="mode">
-            <option value ="0">单局模式</option>
-            <option value ="1" selected="selected">比赛模式</option>
+            <option value="0">单局模式</option>
+            <option value="1" selected="selected">比赛模式</option>
             <option value="2">ＴＡＧ</option>
         </select>
         <hr/>
@@ -189,6 +209,7 @@
 <link rel="stylesheet" type="text/css" href="/vendor/stylesheets/candy/default.css"/>
 <script type="text/javascript" src="/vendor/javascripts/candy.libs.min.js"></script>
 <script type="text/javascript" src="/vendor/javascripts/candy.min.js"></script>
+<script type="text/javascript" src="/vendor/javascripts/candy.fix.js"></script>
 
 <script src="/assets/javascripts/rooms.js"></script>
 

@@ -42,7 +42,7 @@ $(document).ready ->
         language: 'cn'
     )
     Candy.Core.connect('zh99998测试80@my-card.in', 'zh112998') if window.location.href.indexOf("candy") != -1
-    $('#candy').show()
+    #$('#candy').show()
   #$('#username').val '@my-card.in'
   #$('#username').focus()
 
