@@ -25,10 +25,24 @@ body{background:#fbfbfb;}
 
 /*中央*/
 .card_center{padding:20px;}
-#rooms{float:left;}
+#rooms{
+  float:left;
+  height:350px;
+  width: 480px;
+  overflow-y:scroll;
+
+  .room{
+    border:#cccccc 1px solid;
+    &:hover{background:#eeeeee;}
+    float:left;
+    width:150px;
+    height:100px
+  }
+}
 .online_list{
-	float:left;max-width:210px;height:100%;border:1px solid #dddddd;padding:0 0 10px 0;
+	float:left/*zh*/;max-width:210px;height:100%;border:1px solid #dddddd;padding:0 0 10px 0;
 	ul{
+        height:300px; /*zh*/
 		background:#ffffff;overflow-y:hidden;position:relative;
 		&:hover{overflow-y:scroll;}
 		li{
@@ -41,6 +55,7 @@ body{background:#fbfbfb;}
 	}
 }
 .online_title{height:20px;background:#f9f9f9;width:190px;font-size:14px;line-height:16px;padding:10px 10px;color:#147CC3;}
+
 
 
 

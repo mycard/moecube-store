@@ -30,7 +30,6 @@ class Rooms extends Spine.Controller
       alert room
       mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp))
 
-
 $(document).ready ->
   if true #for debug
     Candy.init('/http-bind/',
@@ -41,10 +40,13 @@ $(document).ready ->
         resources: '/vendor/stylesheets/candy/',
         language: 'cn'
     )
+    Candy.View.Template.Chat.infoMessage = ''
     Candy.Core.connect('zh99998测试80@my-card.in', 'zh112998') if window.location.href.indexOf("candy") != -1
-    #$('#candy').show()
+
+    $('#candy').show()
   #$('#username').val '@my-card.in'
   #$('#username').focus()
+  #stroll.bind( '.online_list ul' );
 
   $('#new_room_dialog').dialog
     autoOpen:false,
