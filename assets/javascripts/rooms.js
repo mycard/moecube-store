@@ -87,10 +87,11 @@
           autojoin: ['mycard@conference.my-card.in']
         },
         view: {
-          resources: '/vendor/stylesheets/candy/',
+          resources: '/vendor/candy/res/',
           language: 'cn'
         }
       });
+      CandyShop.InlineImages.init();
       Candy.View.Template.Chat.infoMessage = '';
       if (window.location.href.indexOf("candy") !== -1) {
         Candy.Core.connect('zh99998测试80@my-card.in', 'zh112998');
