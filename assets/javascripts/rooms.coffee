@@ -27,31 +27,44 @@ class Rooms extends Spine.Controller
       $('#join_private_room').data('room_id', room.id)
       $('#join_private_room_dialog').dialog('open')
     else
-      alert room
       mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp))
 
+login = (username, password)->
+  Candy.init('http://s70.hebexpo.com:5280/http-bind/',
+    core:
+      debug: false,
+      autojoin: ['mycard@conference.my-card.in'],
+    view:
+      resources: '/vendor/candy/res/',
+      language: 'cn'
+  )
+  Candy.Util.getPosTopAccordingToWindowBounds = (elem, pos)->
+    windowHeight = $(document).height()
+    elemHeight   = elem.outerHeight()
+    marginDiff = elemHeight - elem.outerHeight(true)
+    backgroundPositionAlignment = 'top';
+    pos -= relative = $('#candy').offset().top
+    if (pos + elemHeight >= windowHeight - relative)
+      pos -= elemHeight - marginDiff;
+      backgroundPositionAlignment = 'bottom';
+    return { px: pos, backgroundPositionAlignment: backgroundPositionAlignment };
+
+  CandyShop.InlineImages.init();
+  Candy.View.Template.Login.form = $('#login_form_template').html()
+
+  Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
+  Candy.Core.Event.Strophe.Login = ->
+    alert 1
+  Candy.Core.connect(username, password)
+
+  #window.onunload = window.onbeforeunload
+  window.onbeforeunload = null
+  $('#candy').show()
+
 $(document).ready ->
-  if true #for debug
-    Candy.init('/http-bind/',
-      core:
-        debug: false,
-        autojoin: ['mycard@conference.my-card.in'],
-      view:
-        resources: '/vendor/candy/res/',
-        language: 'cn'
-    )
-
-    CandyShop.InlineImages.init();
-
-    Candy.View.Template.Chat.infoMessage = ''
-    Candy.Core.connect('zh99998测试80@my-card.in', 'zh112998') if window.location.href.indexOf("candy") != -1
-    #window.onunload = window.onbeforeunload
-    window.onbeforeunload = null
-
-    $('#candy').show()
-  #$('#username').val '@my-card.in'
-  #$('#username').focus()
   #stroll.bind( '.online_list ul' );
+  if jid = Candy.Util.getCookie('jid')
+    login(jid, Candy.Util.getCookie('password'))
 
   $('#new_room_dialog').dialog
     autoOpen:false,
@@ -102,6 +115,23 @@ $(document).ready ->
     new_room.reset()
     new_room.name.value = Math.floor Math.random() * 1000
     $('#new_room_dialog').dialog('open')
+
+  $('#login_domain').combobox()
+
+  $('#login_dialog').dialog
+    autoOpen:false,
+    resizable:false,
+    title:"用户登录"
+
+  $('#login_button').click ->
+    login()
+    #$('#login_dialog').dialog 'open'
+
+  #$('#login').submit ->
+  #  if @node.value and @domain.value and @password.value
+  #    login(@node.value, @password.value, @domain.value)
+  #  $('#login_dialog').dialog 'close'
+  #  false
 
   rooms = new Rooms(el: $('#rooms'))
 

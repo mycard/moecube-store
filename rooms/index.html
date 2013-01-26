@@ -21,7 +21,7 @@
     <script type="text/javascript" src="/vendor/javascripts/less-1.3.1.min.js"></script>
     <script src="/vendor/javascripts/modernizr-2.6.2.min.js"></script>
 
-    <link rel="stylesheet" href="/vendor/stylesheets/smoothness/jquery-ui-1.9.1.custom.min.css"/>
+    <link rel="stylesheet" href="/vendor/stylesheets/smoothness/jquery-ui-1.10.0.custom.min.css"/>
 
     <link rel="canonical" href="http://my-card.in/rooms">
 
@@ -60,6 +60,23 @@
         </div>
     </script>
 
+    <script id="login_form_template" type="text/x-mustache-template">
+        <form method="post" id="login-form" class="login-form" onsubmit="{{#displayUsername}}username.value = node.value + '@' + domain.value;{{/displayUsername}}Candy.Util.setCookie('jid', username.value, 365);Candy.Util.setCookie('username', node.value, 365);Candy.Util.setCookie('password', password.value, 365)">
+            {{#displayUsername}}
+                <label for="node">{{_labelUsername}}</label>
+                <input type="text" id="node" name="node"/>
+                <label for="domain">@</label>
+                <select id="domain" name="domain" tabindex="-1">
+                    <option label="my-card.in" value="my-card.in" selected="selected" />
+                    <option label="gmail.com" value="gmail.com" />
+                </select>
+
+            {{/displayUsername}}
+            <input type="hidden" id="username" name="username" value="{{presetJid}}"/>
+            {{#displayPassword}}<label for="password">{{_labelPassword}}</label><input type="password" id="password" name="password" />{{/displayPassword}}
+            <input type="submit" class="button" value="{{_loginSubmit}}" />
+        </form>
+    </script>
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -84,7 +101,7 @@
     <div class="log_reg">
         <a href="">注册</a>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-        <a class="login" href="">登录</a>
+        <a id="login_button" class="login">登录</a>
     </div>
 </div>
 <div class="card_center">
@@ -158,22 +175,22 @@
 
 <div id="new_room_dialog" style="display: none">
     <form id="new_room">
-        <label>房间名</label>
-        <input type="text" id="name"/><br/>
-        <label>房间密码</label>
-        <input type="password" name="password" id="password" value=""/><br/>
-        <input type="checkbox" name="pvp" id="pvp" value="pvp"/><label for="pvp">竞技场</label>
+        <label for="new_room_name">房间名</label>
+        <input type="text" id="new_room_name"/><br/>
+        <label for="new_room_password">房间密码</label>
+        <input type="password" name="password" id="new_room_password" value=""/><br/>
+        <input type="checkbox" name="pvp" id="new_room_pvp" value="pvp"/><label for="new_room_pvp">竞技场</label>
 
         <hr/>
-        <label for="rule">卡片允许</label>
-        <select id="rule" name="rule">
+        <label for="new_room_rule">卡片允许</label>
+        <select id="new_room_rule" name="rule">
             <option value="0" selected="selected">ＯＣＧ</option>
             <option value="1">ＴＣＧ</option>
             <option value="2">ＯＣＧ＆ＴＣＧ</option>
             <option value="3">专有卡禁止</option>
         </select><br/>
-        <label for="mode">决斗模式</label>
-        <select id="mode" name="mode">
+        <label for="new_room_mode">决斗模式</label>
+        <select id="new_room_mode" name="mode">
             <option value="0">单局模式</option>
             <option value="1" selected="selected">比赛模式</option>
             <option value="2">ＴＡＧ</option>
@@ -181,24 +198,37 @@
         <hr/>
         <h3>额外选项</h3>
 
-        <label for="start_lp">初始LP</label>
-        <input type="number" name="start_lp" id="start_lp" min="0" max="99999" value="8000"/><br/>
+        <label for="new_room_start_lp">初始LP</label>
+        <input type="number" name="start_lp" id="new_room_start_lp" min="0" max="99999" value="8000"/><br/>
         <input type="submit" value="确定"/>
     </form>
 </div>
 <div id="join_private_room_dialog" style="display: none">
     <form id="join_private_room">
-        <label>房间密码</label>
+        <label for="joinroom_password">房间密码</label>
         <input name="password" type="password" id="joinroom_password" value=""/>
         <input type="submit" value="确定"/>
     </form>
 </div>
 
+<!--<div id="login_dialog" style="display: none;">
+    <form id="login">
+        <label for="login_node">用户</label><input name="node" type="text" id="login_node" tabindex="1" />@<select name="domain" id="login_domain" style="width:50px">
+            <option value="my-card.in">my-card.in</option>
+            <option value="gmail.com">gmail.com</option>
+        </select><br />
+        <label for="login_password">密码</label><input name="password" type="password" id="login_password" tabindex="2"/>
+        <input type="submit" value="确定" tabindex="3"/>
+    </form>
+</div>-->
 
 <script src="/vendor/javascripts/jquery-1.8.2.min.js"></script>
 <script src="/vendor/javascripts/jquery.tmpl.min.js"></script>
-<script src="/vendor/javascripts/jquery-ui-1.9.1.custom.min.js"></script>
-<!--<script src="/vendor/javascripts/plugins.js"></script>-->
+<script src="/vendor/javascripts/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="/vendor/javascripts/jquery.cookie.js"></script>
+<script src="/vendor/javascripts/jquery.select.js"></script>
+<script src="/assets/javascripts/jquery-ui.cambobox.js"></script>
+
 <script src="/vendor/javascripts/spine/spine.js"></script>
 <script src="/vendor/javascripts/spine/ajax.js"></script>
 <script src="/vendor/javascripts/spine/relation.js"></script>
