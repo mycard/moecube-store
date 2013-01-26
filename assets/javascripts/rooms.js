@@ -107,9 +107,6 @@
     CandyShop.InlineImages.init();
     Candy.View.Template.Login.form = $('#login_form_template').html();
     Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
-    Candy.Core.Event.Strophe.Login = function() {
-      return alert(1);
-    };
     Candy.Core.connect(username, password);
     window.onbeforeunload = null;
     return $('#candy').show();
@@ -182,7 +179,6 @@
       new_room.name.value = Math.floor(Math.random() * 1000);
       return $('#new_room_dialog').dialog('open');
     });
-    $('#login_domain').combobox();
     $('#login_dialog').dialog({
       autoOpen: false,
       resizable: false,

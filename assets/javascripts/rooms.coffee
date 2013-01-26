@@ -51,10 +51,7 @@ login = (username, password)->
 
   CandyShop.InlineImages.init();
   Candy.View.Template.Login.form = $('#login_form_template').html()
-
   Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
-  Candy.Core.Event.Strophe.Login = ->
-    alert 1
   Candy.Core.connect(username, password)
 
   #window.onunload = window.onbeforeunload
@@ -91,6 +88,7 @@ $(document).ready ->
   new_room.start_lp.onchange = ->
     if @value != '8000'
       new_room.pvp.checked = false
+
   new_room.onsubmit = (ev)->
     ev.preventDefault()
     $('#new_room_dialog').dialog('close')
@@ -116,7 +114,7 @@ $(document).ready ->
     new_room.name.value = Math.floor Math.random() * 1000
     $('#new_room_dialog').dialog('open')
 
-  $('#login_domain').combobox()
+  #$('#login_domain').combobox()
 
   $('#login_dialog').dialog
     autoOpen:false,
