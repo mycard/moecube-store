@@ -42,6 +42,23 @@
         })();
     </script>
 
+    <script id="login_form_template" type="text/x-mustache-template">
+        <form method="post" id="login-form" class="login-form" onsubmit="{{#displayUsername}}username.value = node.value + '@' + domain.value;{{/displayUsername}}Candy.Util.setCookie('jid', username.value, 365);Candy.Util.setCookie('username', node.value, 365);Candy.Util.setCookie('password', password.value, 365)">
+            {{#displayUsername}}
+            <label for="node">{{_labelUsername}}</label>
+            <input type="text" id="node" name="node"/>
+            <label for="domain">@</label>
+            <select id="domain" name="domain" tabindex="-1">
+                <option label="my-card.in" value="my-card.in" selected="selected" />
+                <option label="gmail.com" value="gmail.com" />
+            </select>
+
+            {{/displayUsername}}
+            <input type="hidden" id="username" name="username" value="{{presetJid}}"/>
+            {{#displayPassword}}<label for="password">{{_labelPassword}}</label><input type="password" id="password" name="password" />{{/displayPassword}}
+            <input type="submit" class="button" value="{{_loginSubmit}}" />
+        </form>
+    </script>
 
     <script id="room_template" type="text/x-jquery-tmpl">
         <div class="room" id="room_${id}">
@@ -59,24 +76,11 @@
             </div>
         </div>
     </script>
-
-    <script id="login_form_template" type="text/x-mustache-template">
-        <form method="post" id="login-form" class="login-form" onsubmit="{{#displayUsername}}username.value = node.value + '@' + domain.value;{{/displayUsername}}Candy.Util.setCookie('jid', username.value, 365);Candy.Util.setCookie('username', node.value, 365);Candy.Util.setCookie('password', password.value, 365)">
-            {{#displayUsername}}
-                <label for="node">{{_labelUsername}}</label>
-                <input type="text" id="node" name="node"/>
-                <label for="domain">@</label>
-                <select id="domain" name="domain" tabindex="-1">
-                    <option label="my-card.in" value="my-card.in" selected="selected" />
-                    <option label="gmail.com" value="gmail.com" />
-                </select>
-
-            {{/displayUsername}}
-            <input type="hidden" id="username" name="username" value="{{presetJid}}"/>
-            {{#displayPassword}}<label for="password">{{_labelPassword}}</label><input type="password" id="password" name="password" />{{/displayPassword}}
-            <input type="submit" class="button" value="{{_loginSubmit}}" />
-        </form>
+    <script id="server_template" type="text/x-jquery-tmpl">
+        <option value="${id}" selected="selected">${name}</option>
     </script>
+
+
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -91,11 +95,7 @@
         <img src="/assets/images/logo.png" alt=""/>
     </div>
     <div class="card_form">
-        <select name="" id="">
-            <option value="">选择分区</option>
-            <option value=""></option>
-            <option value=""></option>
-        </select>
+        <select id="servers" multiple="multiple"></select>
         <input id="new_room_button" type="button" value="建立房间"/>
     </div>
     <div class="log_reg">
@@ -107,16 +107,16 @@
 <div class="card_center">
     <div id="rooms" ></div>
     <div class="online_list" >
-        <div class="online_title">在线用户</div>
+        <div class="online_title">好友</div>
         <ul>
             <li>
-                <img src="/assets/images/hs1.jpg" alt=""/><span>Yolua Mesiade</span>
+                <span>这是开发中好友系统喵</span>
             </li>
             <li>
-                <img src="/assets/images/hs1.jpg" alt=""/><span>Yolua Mesiade</span>
+                <span>看起来比较麻烦样子于是先坑几天</span>
             </li>
             <li>
-                <img src="/assets/images/hs1.jpg" alt=""/><span>Yolua Mesiade</span>
+                <span>下面留的是管理员</span>
             </li>
             <li>
                 <img src="/assets/images/hs1.jpg" alt=""/><span>Yolua Mesiade</span>
@@ -227,7 +227,9 @@
 <script src="/vendor/javascripts/jquery-ui-1.10.0.custom.min.js"></script>
 <script src="/vendor/javascripts/jquery.cookie.js"></script>
 <script src="/vendor/javascripts/jquery.select.js"></script>
-<script src="/assets/javascripts/jquery-ui.cambobox.js"></script>
+
+<script src="/vendor/javascripts/jquery.multiselect.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/vendor/stylesheets/jquery.multiselect.css"/>
 
 <script src="/vendor/javascripts/spine/spine.js"></script>
 <script src="/vendor/javascripts/spine/ajax.js"></script>
@@ -247,13 +249,5 @@
 <link rel="stylesheet" type="text/css" href="/vendor/candy/plugins/inline-images/candy.css" />
 
 <script src="/assets/javascripts/rooms.js"></script>
-
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-<!--<script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>-->
 </body>
 </html>

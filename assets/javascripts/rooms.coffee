@@ -3,6 +3,38 @@ class Server extends Spine.Model
   @extend Spine.Model.Ajax
   @url: "/servers.json"
 
+class Servers extends Spine.Controller
+  constructor: ->
+    super
+    Server.bind "refresh", @render
+    Server.one "refresh", @connect
+  render: =>
+    @html $('#server_template').tmpl Server.all()
+    @el.multiselect(
+      noneSelectedText: '房间筛选'
+      selectedText: '房间筛选'
+      header: false
+      minWidth: 'auto'
+      classes: 'server_filter'
+    ).bind "multiselectclick", (event, ui)->
+      Room.trigger 'refresh'
+  connect: =>
+    wsServer = 'ws://mycard-server.my-card.in:9998'
+    websocket = new WebSocket(wsServer);
+    websocket.onopen = ->
+      console.log("websocket: Connected to WebSocket server.")
+    websocket.onclose = ->
+      console.log("websocket: Disconnected");
+    websocket.onmessage = (evt)->
+      #console.log('Retrieved data from server: ' + evt.data)
+      rooms = JSON.parse(evt.data)
+      for room in rooms
+        if room._deleted
+          Room.find(room.id).destroy() if Room.exists(room.id)
+      Room.refresh (room for room in rooms when !room._deleted)
+    websocket.onerror = (evt)->
+      console.log('websocket: Error occured: ' + evt.data);
+
 class Room extends Spine.Model
   @configure "Room", "name", "status", "private", "rule", "mode", "start_lp"
   @belongsTo 'server', Server
@@ -14,7 +46,11 @@ class Rooms extends Spine.Controller
     super
     Room.bind "refresh", @render
   render: =>
-    @html $('#room_template').tmpl _.sortBy Room.all(), @sort
+    @html $('#room_template').tmpl _.sortBy(_.filter(Room.all(), @filter), @sort)
+
+  filter: (room)->
+    _.find $('#servers').multiselect('getChecked'), (e)->
+      parseInt(e.value) == room.server_id
   sort: (room)->
     [
       if room.status == "wait" then 0 else 1,
@@ -30,6 +66,17 @@ class Rooms extends Spine.Controller
       mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp))
 
 login = (username, password)->
+  #Candy.Core.Event.Jabber.Presence = (msg)->
+  #  Candy.Core.log('[Jabber] Presence');
+  #  msg = $(msg);
+  #  if(msg.children('x[xmlns^="' + Strophe.NS.MUC + '"]').length > 0)
+  #    if (msg.attr('type') == 'error')
+  #      self.Jabber.Room.PresenceError(msg);
+  #    else
+  #      self.Jabber.Room.Presence(msg);
+  #  else
+  #    alert msg
+  #  true
   Candy.init('http://s70.hebexpo.com:5280/http-bind/',
     core:
       debug: false,
@@ -116,10 +163,10 @@ $(document).ready ->
 
   #$('#login_domain').combobox()
 
-  $('#login_dialog').dialog
-    autoOpen:false,
-    resizable:false,
-    title:"用户登录"
+  #$('#login_dialog').dialog
+  #  autoOpen:false,
+  #  resizable:false,
+  #  title:"用户登录"
 
   $('#login_button').click ->
     login()
@@ -132,23 +179,7 @@ $(document).ready ->
   #  false
 
   rooms = new Rooms(el: $('#rooms'))
-
-  Server.one "refresh", ->
-    wsServer = 'ws://mycard-server.my-card.in:9998'
-    websocket = new WebSocket(wsServer);
-    websocket.onopen = ->
-      console.log("Connected to WebSocket server.")
-    websocket.onclose = ->
-      console.log("Disconnected");
-    websocket.onmessage = (evt)->
-      console.log('Retrieved data from server: ' + evt.data)
-      rooms = JSON.parse(evt.data)
-      for room in rooms
-        if room._deleted
-          Room.find(room.id).destroy() if Room.exists(room.id)
-      Room.refresh (room for room in rooms when !room._deleted)
-    websocket.onerror = (evt)->
-      console.log('Error occured: ' + evt.data);
+  servers = new Servers(el: $('#servers'))
   Server.fetch()
 
 
