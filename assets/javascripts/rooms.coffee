@@ -101,6 +101,9 @@ login = (username, password)->
   Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
   Candy.Core.connect(username, password)
 
+  $('.xmpp').click ->
+    Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true)
+
   #window.onunload = window.onbeforeunload
   window.onbeforeunload = null
   $('#candy').show()

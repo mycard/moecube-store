@@ -182,6 +182,9 @@
     Candy.View.Template.Login.form = $('#login_form_template').html();
     Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
     Candy.Core.connect(username, password);
+    $('.xmpp').click(function() {
+      return Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true);
+    });
     window.onbeforeunload = null;
     return $('#candy').show();
   };
