@@ -19,11 +19,39 @@ Candy.Util.getPosTopAccordingToWindowBounds = function(elem, pos) {
         marginDiff = elemHeight - elem.outerHeight(true),
         backgroundPositionAlignment = 'top';
 
-    pos -= relative = $('#candy').offset().top
-    if (pos + elemHeight >= windowHeight - relative) {
+    if (pos + elemHeight >= windowHeight) {
         pos -= elemHeight - marginDiff;
         backgroundPositionAlignment = 'bottom';
     }
-
+    pos -= $('#candy').offset().top
     return { px: pos, backgroundPositionAlignment: backgroundPositionAlignment };
 };
+
+
+    /** Function: update
+     * Messages received get dispatched from this method.
+     *
+     * Parameters:
+     *   (Candy.Core.Event) obj - Candy core event object
+     *   (Object) args - {message, roomJid}
+     */
+    Candy.View.Observer.Message.update = function(obj, args) {
+        if(args.message.type === 'subject') {
+            if (!Candy.View.Pane.Chat.rooms[args.roomJid]) {
+                Candy.View.Pane.Room.init(args.roomJid, args.message.name);
+                Candy.View.Pane.Room.show(args.roomJid);
+            }
+            Candy.View.Pane.Room.setSubject(args.roomJid, args.message.body);
+        } else if(args.message.type === 'info') {
+            Candy.View.Pane.Chat.infoMessage(args.roomJid, args.message.body);
+        } else {
+            // Initialize room if it's a message for a new private user chat
+            if(args.message.isNoConferenceRoomJid){
+                args.roomJid = Strophe.getBareJidFromJid(args.roomJid)
+            }
+            if(args.message.type === 'chat' && !Candy.View.Pane.Chat.rooms[args.roomJid]) {
+                Candy.View.Pane.PrivateRoom.open(args.roomJid, args.message.name, false, args.message.isNoConferenceRoomJid);
+            }
+            Candy.View.Pane.Message.show(args.roomJid, args.message.name, args.message.body, args.timestamp);
+        }
+    }
