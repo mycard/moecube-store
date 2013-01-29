@@ -101,6 +101,9 @@ login = (username, password)->
   Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
   Candy.Core.connect(username, password)
 
+  Candy.View.Pane.Roster.joinAnimation = (elementId)->
+    $('#' + elementId).show().css('opacity',1)
+
   $('.xmpp').click ->
     Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true)
 
@@ -108,6 +111,9 @@ login = (username, password)->
   window.onbeforeunload = null
   $('#candy').show()
 
+  $('.xmpp').click ->
+    Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true)
+  $('#roster').show()
 $(document).ready ->
   #stroll.bind( '.online_list ul' );
   if jid = Candy.Util.getCookie('jid')

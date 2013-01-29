@@ -1,90 +1,190 @@
-body{background:#fbfbfb;}
-
+body {
+  background: #fbfbfb;
+}
 
 /*顶部*/
-.card_top{margin:0;height:80px;width:100%;border-bottom:1px solid #dddddd;box-shadow:0px 1px 5px #dddddd;background:#ffffff;}
-.card_logo{
-	width:216px;height:69px;padding:0px 0 0 25px;float:left;
-	img{margin:10px 0 0 0;border-right:1px solid #dddddd;padding:0 15px 0 0;}
-}
-.card_form{
-	float:left;height:60px;margin:0 0 0 10px;padding:20px 0 0 0;
-	select{color:#147CC3;padding:4px 5px;width:120px;font-size:12px;margin:8px 0 0 11px;float:left;}
-	input[type=button]{background:#147CC3;border:none;border-radius:5px;width:90px;color:#ffffff;height:24px;margin:8px 0 0 25px;cursor:pointer;}
-}
-.log_reg{
-	float:right;font-size:12px;padding:34px 25px 0 0;
-	a{
-		color:#666666;text-decoration:none;
-		&.login{color:#147CC3;}
-	}
-	span{color:#cccccc;}
+.card_top {
+  margin: 0;
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  box-shadow: 0px 1px 5px #dddddd;
+  background: #ffffff;
 }
 
+.card_logo {
+  width: 216px;
+  height: 69px;
+  padding: 0px 0 0 25px; /*float:left;*/
+  img {
+    margin: 10px 0 0 0;
+    border-right: 1px solid #dddddd;
+    padding: 0 15px 0 0;
+  }
+}
 
+.card_form {
+/*float:left;*/
+  height: 60px;
+  margin: 0 0 0 10px;
+  padding: 20px 0 0 0;
+  select {
+    color: #147CC3;
+    padding: 4px 5px;
+    width: 120px;
+    font-size: 12px;
+    margin: 8px 0 0 11px;
+    float: left;
+  }
+  input[type=button] {
+    background: #147CC3;
+    border: none;
+    border-radius: 5px;
+    width: 90px;
+    color: #ffffff;
+    height: 24px;
+    margin: 8px 0 0 25px;
+    cursor: pointer;
+  }
+}
+
+.log_reg {
+/*float:right;*/
+  font-size: 12px;
+  padding: 34px 25px 0 0;
+  a {
+    color: #666666;
+    text-decoration: none;
+    &.login {
+      color: #147CC3;
+    }
+  }
+  span {
+    color: #cccccc;
+  }
+}
 
 /*中央*/
-.card_center{padding:20px;}
-#rooms{
-  float:left;
-  /*zh*/
-  height:350px;
-  width: 480px;
-  overflow-y:scroll;
+.card_center {
+  padding: 20px;
+}
 
-  .room{
-    border:#cccccc 1px solid;
-    &:hover{background:#eeeeee;}
-    float:left;
-    width:150px;
-    height:100px
+#rooms {
+/*float:left;*/
+}
+
+.online_list {
+/*float:left;*/
+  max-width: 210px;
+  height: 100%;
+  border: 1px solid #dddddd;
+  padding: 0 0 10px 0;
+  ul {
+    background: #ffffff;
+    overflow-y: hidden;
+    position: relative;
+    &:hover {
+      overflow-y: scroll;
+    }
+    li {
+      border-top: 1px solid #dddddd;
+      padding: 8px 8px;
+      height: 32px;
+      &.online_botttom {
+        background: url(../images/gradual_change.png) repeat-x;
+        height: 10px;
+        bottom: 0;
+        position: fixed;
+        width: 160px;
+        padding: 0 8px;
+        border: none;
+      }
+      img {
+        height: 32px;
+        width: 32px;
+        float: left;
+      }
+      span {
+        line-height: 32px;
+        font-size: 12px;
+        padding: 0 0 0 10px;
+        float: left;
+      }
+      &:hover {
+        background: #eeeeee;
+      }
+
+    }
   }
 }
-.online_list{
-	float:left/*zh*/;max-width:210px;height:100%;border:1px solid #dddddd;padding:0 0 10px 0;
-	ul{
-        height:300px; /*zh*/
-		background:#ffffff;overflow-y:hidden;position:relative;
-		&:hover{overflow-y:scroll;}
-		li{
-			border-top:1px solid #dddddd;padding:8px 8px;height:32px;
-			&.online_botttom{background:url(../images/gradual_change.png) repeat-x;height:10px;bottom:0;position:fixed;width:160px;padding:0 8px;border:none;}
-			img{height:32px;width:32px;float:left;}span{line-height:32px;font-size:12px;padding:0 0 0 10px;float:left;}
-			&:hover{background:#eeeeee;}
 
-		}
-	}
+.online_title {
+  height: 20px;
+  background: #f9f9f9;
+  width: 190px;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 10px 10px;
+  color: #147CC3;
 }
-.online_title{height:20px;background:#f9f9f9;width:190px;font-size:14px;line-height:16px;padding:10px 10px;color:#147CC3;}
 
 /*zh*/
-#login_button{cursor: pointer}
-/*
-#login{
-  #login_node {width:80px}
-  .ui-combobox-input {width: 100px}
-  .ui-combobox-toggle {width: auto}
-} */
-#login-form{
-  #node{
-    width: 60px;
+
+/*纵向*/
+html, body {
+  height: 100%;
+}
+
+.card_center {
+  padding-top: 300px;
+  margin-top: -300px;
+  padding-bottom: 41px;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  #rooms {
+    height: 100%;
+    overflow: hidden;
+    &:hover {
+      overflow-y: auto;
+    }
   }
-  label[for=domain]{
-    width: auto;
-    clear: none;
-    padding-right: 0px;
-  }
-  #domain{
-    width: 74px;
+  .online_list {
+    height: 100%;
+    box-sizing: border-box;
+    #roster {
+      height: 100%;
+      &:hover {
+        overflow-y: auto;
+      }
+    }
   }
 }
 
-.server_filter label{
-  font-size: 12px;
+/*横向*/
+.card_top {
+  display: -webkit-box;
+  .card_form {
+    -webkit-box-flex: 1;
+  }
 }
-.ui-widget.server_filter{
-  font-size: 100%;
-  .ui-multiselect-checkboxes{
-    overflow-y: visible
+
+.card_center {
+  display: -webkit-box;
+
+  #rooms {
+    -webkit-box-flex: 1;
+    .room {
+      border: #cccccc 1px solid;
+      &:hover {
+        background: #eeeeee;
+      }
+      float: left;
+      width: 150px;
+      height: 100px;
+      border-radius: 5px;
+      margin: 5px;
+      background-color: white;
+    }
   }
 }
