@@ -130,14 +130,14 @@ login = ->
 
   #window.onunload = window.onbeforeunload
   window.onbeforeunload = null
+  candy_height = $('#candy').outerHeight true
+  $('.card_center').css('margin-bottom', -candy_height)
+  $('.card_center').css('padding-bottom', candy_height)
   $('#candy').show()
 
   $('.xmpp').click ->
     Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true)
   $('#roster').show()
-
-  $('#username').html Candy.Util.getCookie('username')
-  $('.me').toggle()
 
 logout = ->
   Candy.Util.deleteCookie('jid')
@@ -147,8 +147,13 @@ logout = ->
 
 $(document).ready ->
   #stroll.bind( '.online_list ul' );
+
   if Candy.Util.getCookie('jid')
     login()
+    if Candy.Util.getCookie('password')
+      $('#current_username').html(Candy.Util.getCookie('username'));
+      $('.log_reg.not_logged').hide();
+      $('.log_reg.logged').show();
 
   $('#new_room_dialog').dialog
     autoOpen:false,

@@ -36,19 +36,25 @@
     </script>
 
     <script id="login_form_template" type="text/x-mustache-template">
-        <form method="post" id="login-form" class="login-form" onsubmit="{{#displayUsername}}username.value = node.value + '@' + domain.value;{{/displayUsername}}Candy.Util.setCookie('jid', username.value, 365);Candy.Util.setCookie('username', node.value, 365);Candy.Util.setCookie('password', password.value, 365)">
+        <form method="post" id="login-form" class="login-form" onsubmit="
+        {{#displayUsername}}username.value = node.value + '@' + domain.value;{{/displayUsername}}
+        Candy.Util.setCookie('jid', username.value, 365);
+        Candy.Util.setCookie('username', node.value, 365);
+        Candy.Util.setCookie('password', password.value, 365);
+        $('#current_username').html(username.value);
+        $('.log_reg.not_logged').hide();
+        $('.log_reg.logged').show();">
             {{#displayUsername}}
-            <label for="login_node">{{_labelUsername}}</label>
-            <input type="text" id="login_node" name="node"/>
-            <label for="login_domain">@</label>
-            <select id="login_domain" name="domain" tabindex="-1">
+            <label for="node">{{_labelUsername}}</label>
+            <input type="text" id="node" name="node"/>
+            <label for="domain">@</label>
+            <select id="domain" name="domain" tabindex="-1">
                 <option label="my-card.in" value="my-card.in" selected="selected"/>
                 <option label="gmail.com" value="gmail.com"/>
             </select>
-
             {{/displayUsername}}
-            <input type="hidden" id="login_username" name="username" value="{{presetJid}}"/>
-            {{#displayPassword}}<label for="login_password">{{_labelPassword}}</label><input type="password" id="login_password" name="password"/>{{/displayPassword}}
+            <input type="hidden" id="username" name="username" value="{{presetJid}}"/>
+            {{#displayPassword}}<label for="password">{{_labelPassword}}</label><input type="password" id="password" name="password"/>{{/displayPassword}}
             <input type="submit" class="button" value="{{_loginSubmit}}"/>
         </form>
     </script>
@@ -91,20 +97,20 @@
         <select id="servers" multiple="multiple"></select>
         <input id="new_room_button" type="button" value="建立房间"/>
     </div>
-    <div class="me">
+    <div class="log_reg not_logged">
         <a href="http://my-card.in/register">注册</a>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-        <a id="login_button" class="login">登录</a>
+        <a id="login_button" class="logging_button">登录</a>
     </div>
-    <div class="me" style="display: none;">
-        <a id="username"></a>
+    <div class="log_reg logged" style="display: none;">
+        <a id="current_username"></a>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-        <a id="logout_button" class="login">退出</a>
+        <a id="logout_button" class="logging_button">退出</a>
     </div>
 </div>
 <div class="card_center">
     <div id="rooms"></div>
-    <div class="online_list">
+    <div class="online_list" style="display: none;">
         <div class="online_title">聊天工具</div>
         <ul id="roster">
             <li>

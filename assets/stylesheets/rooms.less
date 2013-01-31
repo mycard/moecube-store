@@ -48,14 +48,14 @@ body {
   }
 }
 
-.me {
+.log_reg {
 /*float:right;*/
   font-size: 12px;
   padding: 34px 25px 0 0;
   a {
     color: #666666;
     text-decoration: none;
-    &.login {
+    &.logging_button {
       color: #147CC3;
     }
   }
@@ -65,9 +65,9 @@ body {
 }
 
 /*中央*/
-.card_center {
+/*.card_center {
   padding: 20px;
-}
+} */
 
 #rooms {
 /*float:left;*/
@@ -135,20 +135,20 @@ html, body {
   height: 100%;
 }
 
+.card_top{
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .card_center {
-  padding-top: 300px;
-  margin-top: -300px;
-  padding-bottom: 41px;
+  padding-top: 80px;
+  margin-top: -80px;
   height: 100%;
   overflow: hidden;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   #rooms {
     height: 100%;
-    overflow: hidden;
-    &:hover {
-      overflow-y: auto;
-    }
+    overflow-y: auto;
   }
   .online_list {
     height: 100%;
@@ -203,20 +203,23 @@ html, body {
 }
 
 /*登陆按钮*/
-#login_button {
+.logging_button {
   cursor: pointer
 }
 
 /*登陆窗*/
-/*
-#login{
- #login_node {width:80px}
+
+/*#login{
+ #node {width:80px}
  .ui-combobox-input {width: 100px}
  .ui-combobox-toggle {width: auto}
 } */
 #login-form {
   #node {
     width: 60px;
+  }
+  label{
+    width: 96px;
   }
   label[for=domain] {
     width: auto;

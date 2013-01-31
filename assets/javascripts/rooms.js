@@ -179,6 +179,7 @@
   })(Spine.Controller);
 
   login = function() {
+    var candy_height;
     Candy.init('http://s70.hebexpo.com:5280/http-bind/', {
       core: {
         debug: false,
@@ -216,13 +217,14 @@
       return Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true);
     });
     window.onbeforeunload = null;
+    candy_height = $('#candy').outerHeight(true);
+    $('.card_center').css('margin-bottom', -candy_height);
+    $('.card_center').css('padding-bottom', candy_height);
     $('#candy').show();
     $('.xmpp').click(function() {
       return Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true);
     });
-    $('#roster').show();
-    $('#username').html(Candy.Util.getCookie('username'));
-    return $('.me').toggle();
+    return $('#roster').show();
   };
 
   logout = function() {
@@ -236,6 +238,11 @@
     var new_room, rooms, servers;
     if (Candy.Util.getCookie('jid')) {
       login();
+      if (Candy.Util.getCookie('password')) {
+        $('#current_username').html(Candy.Util.getCookie('username'));
+        $('.log_reg.not_logged').hide();
+        $('.log_reg.logged').show();
+      }
     }
     $('#new_room_dialog').dialog({
       autoOpen: false,
