@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
+<html class="no-js">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -45,17 +38,17 @@
     <script id="login_form_template" type="text/x-mustache-template">
         <form method="post" id="login-form" class="login-form" onsubmit="{{#displayUsername}}username.value = node.value + '@' + domain.value;{{/displayUsername}}Candy.Util.setCookie('jid', username.value, 365);Candy.Util.setCookie('username', node.value, 365);Candy.Util.setCookie('password', password.value, 365)">
             {{#displayUsername}}
-            <label for="node">{{_labelUsername}}</label>
-            <input type="text" id="node" name="node"/>
-            <label for="domain">@</label>
-            <select id="domain" name="domain" tabindex="-1">
+            <label for="login_node">{{_labelUsername}}</label>
+            <input type="text" id="login_node" name="node"/>
+            <label for="login_domain">@</label>
+            <select id="login_domain" name="domain" tabindex="-1">
                 <option label="my-card.in" value="my-card.in" selected="selected"/>
                 <option label="gmail.com" value="gmail.com"/>
             </select>
 
             {{/displayUsername}}
-            <input type="hidden" id="username" name="username" value="{{presetJid}}"/>
-            {{#displayPassword}}<label for="password">{{_labelPassword}}</label><input type="password" id="password" name="password"/>{{/displayPassword}}
+            <input type="hidden" id="login_username" name="username" value="{{presetJid}}"/>
+            {{#displayPassword}}<label for="login_password">{{_labelPassword}}</label><input type="password" id="login_password" name="password"/>{{/displayPassword}}
             <input type="submit" class="button" value="{{_loginSubmit}}"/>
         </form>
     </script>
@@ -83,7 +76,7 @@
 
 </head>
 <body>
-<!--[if lt IE 7]>
+<!--[if lt IE 10]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
     improve your experience.</p>
@@ -98,10 +91,15 @@
         <select id="servers" multiple="multiple"></select>
         <input id="new_room_button" type="button" value="建立房间"/>
     </div>
-    <div class="log_reg">
-        <a href="">注册</a>
+    <div class="me">
+        <a href="http://my-card.in/register">注册</a>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
         <a id="login_button" class="login">登录</a>
+    </div>
+    <div class="me" style="display: none;">
+        <a id="username"></a>
+        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a id="logout_button" class="login">退出</a>
     </div>
 </div>
 <div class="card_center">
@@ -110,16 +108,10 @@
         <div class="online_title">聊天工具</div>
         <ul id="roster">
             <li>
-                <span>这是开发中好友系统喵</span>
-            </li>
-            <li>
-                <span>看起来很麻烦样子于是先坑着</span>
+                <span>这是还没写好好友系统喵</span>
             </li>
             <li>
                 <span>下面留的是管理员</span>
-            </li>
-            <li>
-                <span>登录聊天之后才能发消息哦</span>
             </li>
             <li class="xmpp" data-jid="zh99998@gmail.com" data-nick="zh99998">
                 <img src="https://lh3.googleusercontent.com/-EVHxW12CgMs/AAAAAAAAAAI/AAAAAAAAAAA/b4Rq4BiFUT4/s32-c-k/photo.jpg" alt=""/><span>zh99998</span>
@@ -143,12 +135,17 @@
 
 <div id="new_room_dialog" style="display: none">
     <form id="new_room">
-        <label for="new_room_name">房间名</label>
-        <input type="text" id="new_room_name" name="name"/><br/>
-        <label for="new_room_password">房间密码</label>
-        <input type="password" name="password" id="new_room_password" value=""/><br/>
-        <input type="checkbox" name="pvp" id="new_room_pvp" value="pvp"/><label for="new_room_pvp">竞技场</label>
-
+        <label for="new_room_name">房间名</label><input type="text" id="new_room_name" name="name"/><br/>
+        <label for="new_room_password">房间密码</label><input type="password" name="password" id="new_room_password" value=""/><br/>
+        <input type="checkbox" name="pvp" id="new_room_pvp" value="pvp"/><label for="new_room_pvp">竞技场</label><br/>
+        <label for="server">服务器</label>
+        <select id="server" name="server">
+            <option label="自定义" value="0" selected="selected"/>
+        </select>
+        <div id="server_custom" style="display: none;">
+            <input type="text" id="server_ip" name="server_ip" value="127.0.0.1"/><label for="server_port">:</label><input type="number" id="server_port" name="server_port" value="7911"/>
+            <input type="checkbox" id="server_auth" name="server_auth"/><label for="server_auth">认证</label>
+        </div>
         <hr/>
         <label for="new_room_rule">卡片允许</label>
         <select id="new_room_rule" name="rule">

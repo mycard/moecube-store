@@ -48,7 +48,7 @@ body {
   }
 }
 
-.log_reg {
+.me {
 /*float:right;*/
   font-size: 12px;
   padding: 34px 25px 0 0;
@@ -141,6 +141,7 @@ html, body {
   padding-bottom: 41px;
   height: 100%;
   overflow: hidden;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   #rooms {
     height: 100%;
@@ -151,6 +152,7 @@ html, body {
   }
   .online_list {
     height: 100%;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
     #roster {
       height: 100%;
@@ -164,16 +166,27 @@ html, body {
 /*横向*/
 .card_top {
   display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: box;
   .card_form {
     -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    box-flex: 1;
   }
 }
 
 .card_center {
   display: -webkit-box;
-
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: box;
   #rooms {
     -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    box-flex: 1;
     .room {
       border: #cccccc 1px solid;
       &:hover {
@@ -226,5 +239,10 @@ html, body {
   }
 }
 
+/*建立房间*/
+#new_room{
+  #server_ip{width: 120px}
+  #server_port{width: 60px}
+}
 
 

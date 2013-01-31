@@ -2,7 +2,17 @@ class Server extends Spine.Model
   @configure "Server", "name", "ip", "port", "index"
   @extend Spine.Model.Ajax
   @url: "/servers.json"
-
+  @choice: (auth = true, pvp = false)->
+    servers = if pvp
+      Server.findAllByAttribute('pvp', true)
+    else
+      Server.all()
+    s = _.filter servers, (server)->
+      _.find $('#servers').multiselect('getChecked'), (e)->
+        parseInt(e.value) == server.id
+    if s.length
+      servers = s
+    return servers[Math.floor Math.random() * servers.length]
 class Servers extends Spine.Controller
   constructor: ->
     super
@@ -18,6 +28,17 @@ class Servers extends Spine.Controller
       classes: 'server_filter'
     ).bind "multiselectclick", (event, ui)->
       Room.trigger 'refresh'
+
+    $('#server option[value!=0]').remove()
+    #server = Server.choice()
+    #new_room.server_ip.value = server.ip
+    #new_room.server_port.value = server.port
+    #new_room.server_auth.checked = server.auth
+    Server.each (server)->
+      $('<option />',
+        label: server.name
+        value: server.id
+      ).appendTo $('#server')
   connect: =>
     wsServer = 'ws://mycard-server.my-card.in:9998'
     websocket = new WebSocket(wsServer);
@@ -63,9 +84,9 @@ class Rooms extends Spine.Controller
       $('#join_private_room').data('room_id', room.id)
       $('#join_private_room_dialog').dialog('open')
     else
-      mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp))
+      mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if room.server().auth)
 
-login = (username, password)->
+login = ->
   #Candy.Core.Event.Jabber.Presence = (msg)->
   #  Candy.Core.log('[Jabber] Presence');
   #  msg = $(msg);
@@ -99,7 +120,7 @@ login = (username, password)->
   CandyShop.InlineImages.init();
   Candy.View.Template.Login.form = $('#login_form_template').html()
   Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
-  Candy.Core.connect(username, password)
+  Candy.Core.connect(Candy.Util.getCookie('jid'), Candy.Util.getCookie('password'))
 
   Candy.View.Pane.Roster.joinAnimation = (elementId)->
     $('#' + elementId).show().css('opacity',1)
@@ -114,15 +135,25 @@ login = (username, password)->
   $('.xmpp').click ->
     Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true)
   $('#roster').show()
+
+  $('#username').html Candy.Util.getCookie('username')
+  $('.me').toggle()
+
+logout = ->
+  Candy.Util.deleteCookie('jid')
+  Candy.Util.deleteCookie('username')
+  Candy.Util.deleteCookie('password')
+  window.location.reload()
+
 $(document).ready ->
   #stroll.bind( '.online_list ul' );
-  if jid = Candy.Util.getCookie('jid')
-    login(jid, Candy.Util.getCookie('password'))
+  if Candy.Util.getCookie('jid')
+    login()
 
   $('#new_room_dialog').dialog
     autoOpen:false,
     resizable:false,
-    title:"建立房间"
+    title:"建立/加入房间"
 
   $('#join_private_room_dialog').dialog
     autoOpen:false,
@@ -135,6 +166,8 @@ $(document).ready ->
       new_room.mode.value = 1 if new_room.mode.value == '2'
       new_room.rule.value = 0
       new_room.start_lp.value = 8000
+      if (server_id = parseInt new_room.server.value) and !Server.find(server_id).pvp
+        new_room.server.value = Server.choice(false, new_room.pvp.ckecked).id
   new_room.mode.onchange = ->
     if @value == '2'
       new_room.pvp.checked = false
@@ -144,14 +177,26 @@ $(document).ready ->
   new_room.start_lp.onchange = ->
     if @value != '8000'
       new_room.pvp.checked = false
-
+  new_room.server.onchange = ->
+    $('#server_custom').hide();
+    if server_id = parseInt new_room.server.value
+      if !Server.find(server_id).pvp
+        new_room.pvp.checked = false
+    else
+      $('#server_custom').show();
   new_room.onsubmit = (ev)->
     ev.preventDefault()
     $('#new_room_dialog').dialog('close')
-
-    servers = Server.all()
-    server = servers[Math.floor Math.random() * servers.length]
-    mycard.join server.ip, server.port, mycard.room_name(@name.value, @password.value, @pvp.checked, parseInt(@rule.value), parseInt(@mode.value), parseInt(@start_lp.value))
+    if server_id = parseInt new_room.server.value
+      server = Server.find server_id
+      server_ip = server.ip
+      server_port = server.port
+      server_auth = server.auth
+    else
+      server_ip = new_room.server_ip.value
+      server_port = parseInt new_room.server_port.value
+      server_auth = new_room.server_auth.checked
+    mycard.join(server_ip, server_port, mycard.room_name(@name.value, @password.value, @pvp.checked, parseInt(@rule.value), parseInt(@mode.value), parseInt(@start_lp.value)), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if server_auth)
 
   $('#join_private_room').submit (ev)->
     ev.preventDefault()
@@ -161,13 +206,14 @@ $(document).ready ->
       room_id = $(this).data('room_id')
       if Room.exists room_id
         room = Room.find(room_id)
-        mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, @password.value, room.pvp, room.rule, room.mode, room.start_lp))
+        mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, @password.value, room.pvp, room.rule, room.mode, room.start_lp), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if room.server().auth)
       else
         alert '房间已经关闭'
 
   $('#new_room_button').click ->
-    new_room.reset()
     new_room.name.value = Math.floor Math.random() * 1000
+    new_room.server.value = Server.choice(false, new_room.pvp.ckecked).id
+    new_room.server.onchange() #这个怎么能自动触发...
     $('#new_room_dialog').dialog('open')
 
   #$('#login_domain').combobox()
@@ -180,12 +226,13 @@ $(document).ready ->
   $('#login_button').click ->
     login()
     #$('#login_dialog').dialog 'open'
-
   #$('#login').submit ->
   #  if @node.value and @domain.value and @password.value
   #    login(@node.value, @password.value, @domain.value)
   #  $('#login_dialog').dialog 'close'
   #  false
+  $('#logout_button').click ->
+    logout()
 
   rooms = new Rooms(el: $('#rooms'))
   servers = new Servers(el: $('#servers'))
