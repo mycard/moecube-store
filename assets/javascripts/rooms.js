@@ -216,15 +216,18 @@
     $('.xmpp').click(function() {
       return Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true);
     });
-    window.onbeforeunload = null;
+    $('#candy').show();
     candy_height = $('#candy').outerHeight(true);
     $('.card_center').css('margin-bottom', -candy_height);
     $('.card_center').css('padding-bottom', candy_height);
-    $('#candy').show();
-    $('.xmpp').click(function() {
-      return Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true);
-    });
-    return $('#roster').show();
+    return window.onbeforeunload = null;
+  };
+
+  this.after_login = function() {
+    $('.online_list').show();
+    $('#current_username').html(Candy.Util.getCookie('username'));
+    $('.log_reg.not_logged').hide();
+    return $('.log_reg.logged').show();
   };
 
   logout = function() {
@@ -238,11 +241,7 @@
     var new_room, rooms, servers;
     if (Candy.Util.getCookie('jid')) {
       login();
-      if (Candy.Util.getCookie('password')) {
-        $('#current_username').html(Candy.Util.getCookie('username'));
-        $('.log_reg.not_logged').hide();
-        $('.log_reg.logged').show();
-      }
+      after_login();
     }
     $('#new_room_dialog').dialog({
       autoOpen: false,

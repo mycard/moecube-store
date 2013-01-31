@@ -41,9 +41,7 @@
         Candy.Util.setCookie('jid', username.value, 365);
         Candy.Util.setCookie('username', node.value, 365);
         Candy.Util.setCookie('password', password.value, 365);
-        $('#current_username').html(username.value);
-        $('.log_reg.not_logged').hide();
-        $('.log_reg.logged').show();">
+        after_login();">
             {{#displayUsername}}
             <label for="node">{{_labelUsername}}</label>
             <input type="text" id="node" name="node"/>

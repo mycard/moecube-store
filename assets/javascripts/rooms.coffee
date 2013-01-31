@@ -128,16 +128,19 @@ login = ->
   $('.xmpp').click ->
     Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true)
 
-  #window.onunload = window.onbeforeunload
-  window.onbeforeunload = null
+  $('#candy').show()
   candy_height = $('#candy').outerHeight true
   $('.card_center').css('margin-bottom', -candy_height)
   $('.card_center').css('padding-bottom', candy_height)
-  $('#candy').show()
+  #window.onunload = window.onbeforeunload
+  window.onbeforeunload = null
 
-  $('.xmpp').click ->
-    Candy.View.Pane.PrivateRoom.open($(this).data('jid'), $(this).data('nick'), true, true)
-  $('#roster').show()
+@after_login = ->
+  $('.online_list').show()
+
+  $('#current_username').html(Candy.Util.getCookie('username'))
+  $('.log_reg.not_logged').hide()
+  $('.log_reg.logged').show()
 
 logout = ->
   Candy.Util.deleteCookie('jid')
@@ -150,10 +153,8 @@ $(document).ready ->
 
   if Candy.Util.getCookie('jid')
     login()
-    if Candy.Util.getCookie('password')
-      $('#current_username').html(Candy.Util.getCookie('username'));
-      $('.log_reg.not_logged').hide();
-      $('.log_reg.logged').show();
+    after_login()
+
 
   $('#new_room_dialog').dialog
     autoOpen:false,
