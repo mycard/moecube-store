@@ -80,11 +80,32 @@
 
 </head>
 <body>
-<!--[if lt IE 10]>
-<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
-    improve your experience.</p>
-<![endif]-->
+
+<link rel="stylesheet" href="/assets/stylesheets/browser.css">
+<div id="bodyMask2"></div>
+<div id="browser" class="layerDiv">
+    <h2>噢，您是否知道您正在使用的浏览器无法支持我们的页面？</h2>
+
+    <h3>很抱歉，由于采用了HTML5，当前浏览器无法完美呈现该页面。</h3>
+
+    <div><span>如果你还不知道什么是HTML5标准，请看<a href="http://zh.wikipedia.org/wiki/HTML5" target="_blank">维基百科</a>。</span>建议您使用以下浏览器的最新版本：
+    </div>
+    <ul>
+        <li><a target="_blank" href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html" class="ico icoChrome"
+               title="谷歌Chrome浏览器"></a></li>
+        <li><a target="_blank" href="http://www.opera.com/" class="ico icoOpera" title="Opera浏览器"></a></li>
+        <li><a target="_blank" href="http://www.firefox.com.cn/download/" class="ico icoFirefox" title="火狐浏览器"></a></li>
+        <li>
+            <a target="_blank" href="http://www.apple.com.cn/safari/download/" class="ico icoSafar" title="Safar浏览器"></a>
+        </li>
+    </ul>
+
+    <div>或者，可以使用基本版本 <span><a href="https://github.com/zh99998/mycard/wiki/%E5%AF%B9%E6%88%98:%E7%9B%B4%E6%8E%A5%E8%BF%9E%E6%8E%A5#wiki-wrapper">使用教程</a>
+    </span>
+    </div>
+    <iframe id="basic" src="/servers" frameBorder="0"></iframe>
+</div>
+
 
 <!-- Add your site or application content here -->
 <div class="card_top">
@@ -107,7 +128,7 @@
     </div>
 </div>
 <div class="card_center">
-    <div id="rooms"></div>
+    <div id="rooms">Loading...</div>
     <div class="online_list" style="display: none;">
         <div class="online_title">聊天工具</div>
         <ul id="roster">
@@ -125,6 +146,9 @@
             </li>
             <li class="xmpp" data-jid="悼亡圣约@my-card.in" data-nick="悼亡圣约">
                 <img src="https://lh3.googleusercontent.com/-deevaHxZKmU/AAAAAAAAAAI/AAAAAAAAAAA/1AA3-swJOGg/s32-c-k/photo.jpg" alt=""/><span>悼亡圣约</span>
+            </li>
+            <li class="xmpp" data-jid="悠夏丶@my-card.in" data-nick="悠夏丶">
+                <img src="https://lh4.googleusercontent.com/-kIAfjf8dim8/AAAAAAAAAAI/AAAAAAAAAAA/BPCryxovCU8/s48-c-k/photo.jpg" alt=""/><span>悠夏丶</span>
             </li>
             <li class="xmpp" data-jid="萌の狐@my-card.in" data-nick="萌の狐">
                 <img src="https://lh3.googleusercontent.com/-oyc22EZHGvo/AAAAAAAAAAI/AAAAAAAAAAA/mXrA7Vz0NJg/s32-c-k/photo.jpg" alt=""/><span>萌の狐</span>

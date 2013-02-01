@@ -40,11 +40,16 @@ class Servers extends Spine.Controller
         value: server.id
       ).appendTo $('#server')
   connect: =>
+    $('#rooms').html '正在连接...'
     wsServer = 'ws://mycard-server.my-card.in:9998'
     websocket = new WebSocket(wsServer);
     websocket.onopen = ->
+      $('#rooms').html '正在读取房间列表...'
       console.log("websocket: Connected to WebSocket server.")
     websocket.onclose = ->
+      $('#rooms').html '大厅连接中断, '
+      $('<a />', id: 'reconnect', text: '重新连接').appendTo $('#rooms')
+      $('#reconnect').click @connect
       console.log("websocket: Disconnected");
     websocket.onmessage = (evt)->
       #console.log('Retrieved data from server: ' + evt.data)
@@ -242,6 +247,7 @@ $(document).ready ->
 
   rooms = new Rooms(el: $('#rooms'))
   servers = new Servers(el: $('#servers'))
+  $('#rooms').html '正在读取服务器列表...'
   Server.fetch()
 
 

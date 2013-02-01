@@ -1,0 +1,157 @@
+#bodyMask2 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999999999;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    filter: alpha(opacity = 90);
+    -moz-opacity: .9;
+    opacity: .9;
+}
+
+.ico {
+    background: url(http://im-img.qq.com/macqq/images/icon.png?t=20130130) no-repeat 0 0;
+}
+
+.layerDiv {
+    position: absolute;
+    position: fixed;
+    _position: absolute;
+    z-index: 9999999999999;
+    width: 730px;
+    height: 340px;
+    left: 50%;
+    top: 50%;
+    margin: -170px 0 0 -365px;
+    padding: 0;
+    background: #fff;
+    border: 2px #808080 solid;
+    -moz-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.layerDiv h2 {
+    color: #000;
+    font-size: 24px;
+    margin: 30px 25px 10px 25px;
+    line-height: 1.2em;
+    clear: both;
+}
+
+.layerDiv h3 {
+    color: #333;
+    font-size: 16px;
+    margin: 20px 25px;
+    clear: both;
+}
+
+.layerDiv div {
+    color: #333;
+    font-size: 14px;
+    margin: 0 25px;
+    padding-top: 20px;
+    border-top: 1px #ccc dotted;
+    clear: both;
+}
+
+.layerDiv div span {
+    color: #666;
+    font-size: 12px;
+    float: right;
+}
+
+.layerDiv div span a {
+    color: #369;
+}
+
+.layerDiv div span a:hover {
+    color: #0884CD;
+}
+
+.layerDiv ul {
+    height: 100px;
+    width: 540px;
+    _width: 580px;
+    margin: 20px auto 0 auto;
+    clear: both;
+}
+
+.layerDiv ul li {
+    float: left;
+    width: 105px;
+    height: 80px;
+    margin: 0 15px;
+    text-align: center;
+}
+
+.layerDiv ul li a {
+    height: 80px;
+    display: block;
+    clear: both;
+}
+
+.icoChrome {
+    background-position: 0 -228px;
+    height: 80px;
+    width: 105px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.icoOpera {
+    background-position: -115px -228px;
+    height: 80px;
+    width: 73px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.icoFirefox {
+    background-position: -197px -228px;
+    height: 80px;
+    width: 61px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.icoSafar {
+    background-position: -267px -228px;
+    height: 80px;
+    width: 69px;
+    display: inline-block;
+}
+
+.layerDiv p {
+    border-top: 1px #ccc dotted;
+    padding-top: 15px;
+    position: relative;
+    margin: 0 25px;
+}
+
+.layerDiv p a {
+    color: #666;
+    font-size: 16px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.layerDiv p a:hover {
+    color: #0884CD;
+}
+
+
+/* zh */
+.layerDiv{
+    height: 560px;
+    margin-top: -300px;
+}
+
+.layerDiv iframe {
+    width: 100%;
+    height: 100%;
+    margin: 0 25px;
+}

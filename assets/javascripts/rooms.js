@@ -78,12 +78,20 @@
 
     Servers.prototype.connect = function() {
       var websocket, wsServer;
+      $('#rooms').html('正在连接...');
       wsServer = 'ws://mycard-server.my-card.in:9998';
       websocket = new WebSocket(wsServer);
       websocket.onopen = function() {
+        $('#rooms').html('正在读取房间列表...');
         return console.log("websocket: Connected to WebSocket server.");
       };
       websocket.onclose = function() {
+        $('#rooms').html('大厅连接中断, ');
+        $('<a />', {
+          id: 'reconnect',
+          text: '重新连接'
+        }).appendTo($('#rooms'));
+        $('#reconnect').click(this.connect);
         return console.log("websocket: Disconnected");
       };
       websocket.onmessage = function(evt) {
@@ -341,6 +349,7 @@
     servers = new Servers({
       el: $('#servers')
     });
+    $('#rooms').html('正在读取服务器列表...');
     return Server.fetch();
   });
 
