@@ -46,7 +46,7 @@ class Servers extends Spine.Controller
     websocket.onopen = ->
       $('#rooms').html '正在读取房间列表...'
       console.log("websocket: Connected to WebSocket server.")
-    websocket.onclose = ->
+    websocket.onclose = (evt)=>
       $('#rooms').html '大厅连接中断, '
       $('<a />', id: 'reconnect', text: '重新连接').appendTo $('#rooms')
       $('#reconnect').click @connect
@@ -73,7 +73,7 @@ class Rooms extends Spine.Controller
     Room.bind "refresh", @render
   render: =>
     @html $('#room_template').tmpl _.sortBy(_.filter(Room.all(), @filter), @sort)
-
+    $('#status').html "房间数量: #{Room.findAllByAttribute('status', 'wait').length}/#{Room.count()}"
   filter: (room)->
     _.find $('#servers').multiselect('getChecked'), (e)->
       parseInt(e.value) == room.server_id
@@ -153,6 +153,12 @@ logout = ->
   Candy.Util.deleteCookie('password')
   window.location.reload()
 
+announcement_scroll = (obj)->
+  $('#announcements_wrapper').find("ul:first").animate
+    marginTop:"-25px"
+  ,500,->
+    $(this).css({marginTop:"0px"}).find("li:first").appendTo(this)
+announcement_scrolling = null
 $(document).ready ->
   #stroll.bind( '.online_list ul' );
 
@@ -244,6 +250,22 @@ $(document).ready ->
   #  false
   $('#logout_button').click ->
     logout()
+
+  $('#announcements li').hover (e)->
+    if e.type == 'mouseenter'
+      clearInterval announcement_scrolling if announcement_scrolling
+    else
+      announcement_scrolling = setInterval(announcement_scroll, 5000) unless announcement_scrolling
+      announcement_scrolling = null
+
+  $.getJSON '/announcements.json', (data)->
+    for announcement in data
+      $('<li />').append($('<a />',
+        href: announcement.url
+        target: '_blank'
+        text: announcement.title
+      )).appendTo $('#announcements')
+    announcement_scrolling = setInterval(announcement_scroll, 5000) if data.length
 
   rooms = new Rooms(el: $('#rooms'))
   servers = new Servers(el: $('#servers'))
