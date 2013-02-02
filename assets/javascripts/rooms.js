@@ -379,7 +379,7 @@
           text: announcement.title
         })).appendTo($('#announcements'));
       }
-      if (data.length) {
+      if (!announcement_scrolling && data.length) {
         return announcement_scrolling = setInterval(announcement_scroll, 5000);
       }
     });

@@ -255,7 +255,7 @@ $(document).ready ->
     if e.type == 'mouseenter'
       clearInterval announcement_scrolling if announcement_scrolling
     else
-      announcement_scrolling = setInterval(announcement_scroll, 5000) unless announcement_scrolling
+      announcement_scrolling = setInterval(announcement_scroll, 5000) if !announcement_scrolling
       announcement_scrolling = null
 
   $.getJSON '/announcements.json', (data)->
@@ -265,7 +265,7 @@ $(document).ready ->
         target: '_blank'
         text: announcement.title
       )).appendTo $('#announcements')
-    announcement_scrolling = setInterval(announcement_scroll, 5000) if data.length
+    announcement_scrolling = setInterval(announcement_scroll, 5000) if !announcement_scrolling and data.length
 
   rooms = new Rooms(el: $('#rooms'))
   servers = new Servers(el: $('#servers'))
