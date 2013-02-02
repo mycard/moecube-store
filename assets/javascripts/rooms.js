@@ -190,7 +190,7 @@
 
   login = function() {
     var candy_height;
-    Candy.init('http://s70.hebexpo.com:5280/http-bind/', {
+    Candy.init('http://122.0.65.70:5280/http-bind/', {
       core: {
         debug: false,
         autojoin: ['mycard@conference.my-card.in']
