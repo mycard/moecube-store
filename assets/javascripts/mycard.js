@@ -15,7 +15,7 @@
         return $('#download_version').html('读取失败');
       }
     });
-    $.getJSON('/links.json', function(data) {
+    return $.getJSON('/links.json', function(data) {
       var link, _i, _len, _results;
       _results = [];
       for (_i = 0, _len = data.length; _i < _len; _i++) {
@@ -31,7 +31,6 @@
       }
       return _results;
     });
-    return $('body').css('margin', '5px');
   });
 
 }).call(this);
