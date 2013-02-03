@@ -112,7 +112,16 @@
           for (_j = 0, _len1 = rooms.length; _j < _len1; _j++) {
             room = rooms[_j];
             if (!room._deleted) {
-              _results.push(room);
+              _results.push($.extend({
+                rule: 0,
+                mode: 0,
+                enable_priority: false,
+                no_check_deck: false,
+                no_shuffle_deck: false,
+                start_lp: 8000,
+                start_hand: 5,
+                draw_count: 1
+              }, room));
             }
           }
           return _results;

@@ -58,7 +58,17 @@
     </script>
 
     <script id="room_template" type="text/x-jquery-tmpl">
-        <div class="room" id="room_${id}">
+        <div class="room
+        {{if (rule != 0) || enable_priority || no_check_deck || no_shuffle_deck || (start_lp != 8000) || (start_hand != 5) || (draw_count != 1)}}
+          special
+        {{else}}{{if pvp}}
+          pvp
+        {{/if}}{{if mode == 1}}
+          match
+        {{/if}}{{if mode == 2}}
+          tag
+        {{/if}}{{/if}}
+        ${status}" id="room_${id}">
             <span class="room_name">${name}</span>
             <span class="room_id">${id}</span>
             {{if private}}
@@ -121,6 +131,9 @@
                 <li id="status">Loading...</li>
             </ul>
         </div>
+    </div>
+    <div class="ad_top">
+        <div class="advertisement" onclick="window.open('https://docs.google.com/forms/d/1otewQK8YfyWQH-8VABTfksbJdzYvWqW6OS89fPWh8OY/viewform')">调查: 如果在这里放置广告, 能够接受吗</div>
     </div>
     <div class="log_reg not_logged">
         <a href="http://my-card.in/register">注册</a>

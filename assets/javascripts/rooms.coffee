@@ -57,7 +57,7 @@ class Servers extends Spine.Controller
       for room in rooms
         if room._deleted
           Room.find(room.id).destroy() if Room.exists(room.id)
-      Room.refresh (room for room in rooms when !room._deleted)
+      Room.refresh ($.extend({rule: 0, mode: 0, enable_priority: false, no_check_deck: false, no_shuffle_deck: false,start_lp: 8000, start_hand: 5, draw_count: 1}, room) for room in rooms when !room._deleted)
     websocket.onerror = (evt)->
       console.log('websocket: Error occured: ' + evt.data);
 

@@ -170,6 +170,9 @@ html, body {
   display: -ms-flexbox;
   display: box;
   .card_form {
+    width: 400px;
+  }
+  .ad_top{
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
     -ms-flex: 1;
@@ -188,19 +191,15 @@ html, body {
     -ms-flex: 1;
     box-flex: 1;
     .room {
-      border: #cccccc 1px solid;
-      &:hover {
-        background: #eeeeee;
-      }
       float: left;
       width: 150px;
       height: 100px;
-      border-radius: 5px;
       margin: 5px;
-      background-color: white;
     }
   }
 }
+
+/*细节*/
 
 /*按钮*/
 .logging_button, #reconnect {
@@ -256,4 +255,67 @@ html, body {
     height:25px;line-height:25px;overflow-y:hidden;
     li{height:25px}
   }
+}
+
+
+/* 房间内部 */
+.room{
+  border: #cccccc 1px solid;
+  &:hover {
+    background: #eeeeee;
+  }
+  cursor: default;
+  border-radius: 5px;
+  background-color: white;
+  .user{
+    overflow-x:hidden;
+    white-space:nowrap;
+  }
+  .room_users{
+    line-height:20px;
+    height: 40px;
+    overflow-y: auto;
+    .user{
+      height:20px;
+      &:hover {
+        background: lightskyblue;
+      }
+    }
+  }
+}
+/*
+.room.match {
+  border-color: orange;
+}
+.room.tag {
+  border-color: green;
+}
+.room.pvp {
+  border-color: red;
+}
+.room.special {
+  border-color: purple;
+} */
+.ad_top{
+  padding-top: 8px;
+  overflow-x: hidden;
+}
+
+.advertisement{
+  display: block;
+  z-index: 999;
+  width: 468px;
+  height: 60px;
+  border: 1px solid #dddddd;
+  bottom: 25px;
+  left: 8px;
+  background: #F9F9F9;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 60px;
+  font-weight: bold;
+  color: #999999;
+  font-size: 16px;
+  letter-spacing: 2px;
+  cursor: pointer;
 }
