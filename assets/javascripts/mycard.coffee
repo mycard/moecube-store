@@ -30,5 +30,5 @@ $(document).ready ->
   #  alert data
 
   #test
-  $('body').css 'margin', '1px'
-  $('body').css 'margin', 0
+  $('body').css 'margin', '5px'
+  #$('body').css 'margin', 0

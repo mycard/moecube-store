@@ -31,8 +31,7 @@
       }
       return _results;
     });
-    $('body').css('margin', '1px');
-    return $('body').css('margin', 0);
+    return $('body').css('margin', '5px');
   });
 
 }).call(this);
