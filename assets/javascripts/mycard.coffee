@@ -28,3 +28,7 @@ $(document).ready ->
   #duelist
   #$.getJSON 'http://www.duelist.cn/api/book/list?callback=?', (data)->
   #  alert data
+
+  #test
+  $('body').css 'margin', '1px'
+  $('body').css 'margin', 0
