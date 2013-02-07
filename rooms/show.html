@@ -2,27 +2,27 @@
 <html lang="zh_cn">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Mycard - 加入房间</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="/vendor/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/stylesheets/bootstrap/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
     </style>
-    <link href="/vendor/stylesheets/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/vendor/stylesheets/bootstrap/bootstrap-responsive.min.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!--[if IE 6]>
-      <link href="/vendor/stylesheets/ie6.min.css" rel="stylesheet">
+      <link href="/vendor/stylesheets/bootstrap/ie6.min.css" rel="stylesheet">
     <![endif]-->
   </head>
 
@@ -36,9 +36,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">Mycard 在线大厅</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
+            <!--<ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
@@ -54,11 +54,11 @@
                   <li><a href="#">One more separated link</a></li>
                 </ul>
               </li>
-            </ul>
+            </ul>-->
             <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
+              <input class="span2" type="text" placeholder="用户名">
+              <input class="span2" type="password" placeholder="密码">
+              <button type="submit" class="btn">登录</button>
             </form>
           </div><!--/.nav-collapse -->
         </div>
@@ -69,34 +69,45 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        <h1>加入房间</h1>
+          <dl id="room">
+              <h2>房间信息</h2>
+              <dt>房间名称</dt><dd id="name"></dd>
+              <div id="show_password_wrapper" style="display: none;"><dt>房间密码</dt><dd id="show_password"></dd></div>
+              <div id="input_password_wrapper" style="display: none;"><dt>房间密码</dt><input id="input_password" placeholder="如果加入后只有自己，是密码错误"/></div>
+              <h2>服务器信息</h2>
+              <dt>服务器IP</dt><dd id="server_ip"></dd>
+              <dt>服务器端口</dt><dd id="server_port"></dd>
+              <dt>服务器认证</dt><dd id="server_auth"></dd>
+          </dl>
+        <p><a id="join" class="btn btn-primary btn-large">加入房间</a></p>
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>注意</h2>
+          <p>需要本地安装了mycard才能自动加入房间，如果没有安装，请手动打开ygopro点联机模式填写上面的资料。</p>
+          <p><a class="btn" href="https://github.com/zh99998/mycard/wiki/%E5%AF%B9%E6%88%98:%E7%9B%B4%E6%8E%A5%E8%BF%9E%E6%8E%A5#wiki-wrapper">手动直连教程 &raquo;</a></p>
         </div>
         <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>浏览器支持</h2>
+            <p>我们推荐使用<a href="http://www.google.com/chrome">chrome浏览器</a>访问本站以达到最佳体验，如果您不方便更换浏览器，建议安装<a href="http://www.google.com/chromeframe">谷歌浏览器内嵌框架</a>。
+                在开发阶段，我们将优先支持chrome，正式版本将会支持IE8或更高，以及chrome, firefox, opera的较新版本。
+            </p>
+            <!--<p><a class="btn" href="#">View details &raquo;</a></p>-->
        </div>
         <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>联系我们</h2>
+            <p>如果使用这个系统出现了什么问题，或者想帮助我们进行开发，请联系: <a href="mailto:zh99998@gmail.com">zh99998@gmail.com</a></p>
+          <!--<p><a class="btn" href="#">View details &raquo;</a></p>-->
         </div>
       </div>
 
       <hr>
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p>&copy; Mycard 2013</p>
       </footer>
 
     </div> <!-- /container -->
@@ -104,8 +115,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-    <script src="../assets/js/jquery.js"></script>
+
+    <!--<script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/bootstrap-transition.js"></script>
     <script src="../assets/js/bootstrap-alert.js"></script>
     <script src="../assets/js/bootstrap-modal.js"></script>
@@ -118,6 +129,16 @@
     <script src="../assets/js/bootstrap-collapse.js"></script>
     <script src="../assets/js/bootstrap-carousel.js"></script>
     <script src="../assets/js/bootstrap-typeahead.js"></script>-->
+    <script src="/vendor/javascripts/jquery-1.8.2.min.js"></script>
+    <script src="/vendor/javascripts/bootstrap.min.js"></script>
+
+    <script src="/vendor/javascripts/jQuery-URL-Parser.js"></script>
+    <script src="/vendor/javascripts/underscore-min.js"></script>
+    <script src="/vendor/javascripts/underscore.string.min.js"></script>
+
+    <script src="/vendor/javascripts/mycard.js"></script>
+
+    <script src="/assets/javascripts/room_show.js"></script>
 
   </body>
 </html>
