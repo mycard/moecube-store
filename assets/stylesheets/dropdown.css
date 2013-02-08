@@ -31,7 +31,7 @@ ul.menu li:first-child {
 /* line 19, ../../app/assets/stylesheets/dropdown.css.scss */
 ul.menu ul {
   position: absolute;
-  top: 50px;
+  top: 38px;
   left: 0;
   background-color: #263c7b;
   display: none;
