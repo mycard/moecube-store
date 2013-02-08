@@ -25,8 +25,8 @@ url = $.url 'mycard:/' + matched[0]
 room = _.string.ltrim(url.attr('path'), '/').split('$')
 
 room = {
-  name: room[0]
-  password: room[1]
+  name: decodeURIComponent room[0]
+  password: decodeURIComponent room[1]
   private: url.param('private')
   server: {
     ip: url.attr('host')
