@@ -31,7 +31,7 @@ room = {
   server: {
     ip: url.attr('host')
     port: url.attr('port')
-    auth: url.param('server_auth')
+    auth: !!url.param('server_auth')
   }
 }
 
@@ -46,7 +46,7 @@ else if room.private
 
 $('#server_ip').html room.server.ip
 $('#server_port').html room.server.port
-$('#server_auth').html room.server.auth
+$('#server_auth').html room.server.auth.toString()
 
 if room.server.auth and !($.cookie('username') && $.cookie('password'))
   $('#join').hide()
