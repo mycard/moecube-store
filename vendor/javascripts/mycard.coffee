@@ -17,12 +17,22 @@
     result += '$' + password
   result
 
-@mycard.join = (ip,port,room,username,password)->
-  result = 'mycard://'
+@mycard.room_string = (ip,port,room,username,password)->
+  result = ''
   if username
     result += encodeURIComponent(username)
     if password
       result += ':' + encodeURIComponent(password)
     result += '@'
   result += ip + ':' + port + '/' + encodeURIComponent(room)
-  window.location.href = result
+  result
+
+
+@mycard.room_url = (ip,port,room,username,password)->
+  result = 'http://my-card.in/rooms/' + room_string(ip,port,room,username,password)
+
+@mycard.room_url_mycard = (ip,port,room,username,password)->
+  result = 'mycard://' + room_string(ip,port,room,username,password)
+
+@mycard.join = (ip,port,room,username,password)->
+  window.location.href = room_url_mycard(ip,port,room,username,password)
