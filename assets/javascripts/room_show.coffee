@@ -26,8 +26,8 @@ room = _.string.ltrim(url.attr('path'), '/').split('$')
 
 room = {
   name: decodeURIComponent room[0]
-  password: decodeURIComponent room[1]
-  private: url.param('private')
+  password: decodeURIComponent room[1] if room[1]
+  _private: url.param('private')
   server: {
     ip: url.attr('host')
     port: url.attr('port')
@@ -39,7 +39,7 @@ $('#name').html room.name
 if room.password
   $('#show_password').html room.password
   $('#show_password_wrapper').show()
-else if room.private
+else if room._private
   $('#input_password').change ->
     room.password = @value
   $('#input_password_wrapper').show()

@@ -36,8 +36,8 @@
 
   room = {
     name: decodeURIComponent(room[0]),
-    password: decodeURIComponent(room[1]),
-    "private": url.param('private'),
+    password: room[1] ? decodeURIComponent(room[1]) : void 0,
+    _private: url.param('private'),
     server: {
       ip: url.attr('host'),
       port: url.attr('port'),
@@ -50,7 +50,7 @@
   if (room.password) {
     $('#show_password').html(room.password);
     $('#show_password_wrapper').show();
-  } else if (room["private"]) {
+  } else if (room._private) {
     $('#input_password').change(function() {
       return room.password = this.value;
     });

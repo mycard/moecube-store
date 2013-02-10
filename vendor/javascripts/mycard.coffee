@@ -17,6 +17,7 @@
     result += '$' + password
   result
 
+#127.0.0.1:8087/test
 @mycard.room_string = (ip,port,room,username,password)->
   result = ''
   if username
@@ -27,10 +28,11 @@
   result += ip + ':' + port + '/' + encodeURIComponent(room)
   result
 
-
+#http://my-card.in/rooms/127.0.0.1:8087/test
 @mycard.room_url = (ip,port,room,username,password)->
   result = 'http://my-card.in/rooms/' + room_string(ip,port,room,username,password)
 
+#mycard://127.0.0.1:8087/test
 @mycard.room_url_mycard = (ip,port,room,username,password)->
   result = 'mycard://' + room_string(ip,port,room,username,password)
 
