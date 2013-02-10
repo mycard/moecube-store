@@ -1,3 +1,4 @@
 {
-    "url": "http://images.my-card.in/:id.jpg"
+    "url": "http://images.my-card.in/:id.jpg",
+    "thumbnail_url": "http://images.my-card.in/thumbnails/:id.jpg"
 }
