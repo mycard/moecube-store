@@ -1,321 +1,199 @@
-body {
-  background: #fbfbfb;
-}
+body{background:#fbfbfb;}
+
 
 /*顶部*/
-.card_top {
-  margin: 0;
-  height: 80px;
-  width: 100%;
-  border-bottom: 1px solid #dddddd;
-  box-shadow: 0px 1px 5px #dddddd;
-  background: #ffffff;
+.card_top{margin:0;height:80px;width:100%;border-bottom:1px solid #dddddd;box-shadow:0px 1px 5px #dddddd;background:#ffffff;position:fixed;z-index:1;min-width:1133px;overflow:hidden;}
+.card_logo{
+  width:216px;height:69px;padding:0px 0 0 25px;float:left;
+  img{margin:10px 0 0 0;border-right:1px solid #dddddd;padding:0 15px 0 0;}
+}
+.card_form{
+  float:left;height:60px;margin:0 0 0 10px;padding:9px 0 0 0;font-size:12px;
+  select{color:#147CC3;padding:4px 5px;width:120px;margin:8px 0 0 11px;float:left;}
+  input[type=button]{background:#147CC3;border:none;border-radius:5px;width:90px;color:#ffffff;height:24px;margin:8px 0 0 25px;cursor:pointer;}
 }
 
-.card_logo {
-  width: 216px;
-  height: 69px;
-  padding: 0px 0 0 25px; /*float:left;*/
-  img {
-    margin: 10px 0 0 0;
-    border-right: 1px solid #dddddd;
-    padding: 0 15px 0 0;
-  }
+.server_filter label{font-size:12px;
+    span{margin:0 0 0 5px;}
+}
+.ui-widget.server_filter{font-size:100%;
+    .ui-multiselect-checkboxes{overflow-y:visible}
 }
 
-.card_form {
-/*float:left;*/
-  height: 60px;
-  margin: 0 0 0 10px;
-  padding: 20px 0 0 0;
-  select {
-    color: #147CC3;
-    padding: 4px 5px;
-    width: 120px;
-    font-size: 12px;
-    margin: 8px 0 0 11px;
-    float: left;
+.log_reg{
+  float:right;font-size:12px;padding:34px 25px 0 0;
+  a{
+    color:#666666;text-decoration:none;
+    &.login{color:#147CC3;}
   }
-  input[type=button] {
-    background: #147CC3;
-    border: none;
-    border-radius: 5px;
-    width: 90px;
-    color: #ffffff;
-    height: 24px;
-    margin: 8px 0 0 25px;
-    cursor: pointer;
-  }
+  span{color:#cccccc;}
 }
 
-.log_reg {
-/*float:right;*/
-  font-size: 12px;
-  padding: 34px 25px 0 0;
-  a {
-    color: #666666;
-    text-decoration: none;
-    &.logging_button {
-      color: #147CC3;
-    }
-  }
-  span {
-    color: #cccccc;
-  }
-}
+.ad_top{margin:10px 30px 0 0;overflow-x:hidden;display:block;float:right;}
+
+
 
 /*中央*/
-/*.card_center {
-  padding: 20px;
-} */
+.card_center{padding:20px;}
+#rooms{float:left;padding:80px 0px 260px 0; }
+.online_list{
+   max-width:210px;height:auto;border:1px solid #dddddd;padding:0 0 10px 0;position:fixed;right:15px;top:100px;
+    ul{
+        background:#ffffff;overflow-y:hidden;position:relative;
+        &:hover{overflow-y:scroll;}
+        li{
+          border-top:1px solid #dddddd;padding:8px 8px;height:32px;
+          &.online_botttom{background:url(../images/gradual_change.png) repeat-x;height:10px;bottom:0;position:fixed;width:160px;padding:0 8px;border:none;}
+          img{height:32px;width:32px;float:left;}span{line-height:32px;font-size:12px;padding:0 0 0 10px;float:left;}
+          &:hover{background:#eeeeee;color:#3366CC}
 
-#rooms {
-/*float:left;*/
-}
-
-.online_list {
-/*float:left;*/
-  max-width: 210px;
-  height: 100%;
-  border: 1px solid #dddddd;
-  padding: 0 0 10px 0;
-  ul {
-    background: #ffffff;
-    overflow-y: hidden;
-    position: relative;
-    &:hover {
-      overflow-y: scroll;
+        }
     }
-    li {
-      border-top: 1px solid #dddddd;
-      padding: 8px 8px;
-      height: 32px;
-      &.online_botttom {
-        background: url(../images/gradual_change.png) repeat-x;
-        height: 10px;
-        bottom: 0;
-        position: fixed;
-        width: 160px;
-        padding: 0 8px;
-        border: none;
-      }
-      img {
-        height: 32px;
-        width: 32px;
-        float: left;
-      }
-      span {
-        line-height: 32px;
-        font-size: 12px;
-        padding: 0 0 0 10px;
-        float: left;
-      }
-      &:hover {
-        background: #eeeeee;
-      }
+}
+.online_title{height:20px;background:#f9f9f9;width:190px;font-size:14px;line-height:16px;padding:10px 10px;color:#147CC3;}
+
+
+/*房间*/
+.room{border:1px solid #eeeeee;border-radius:5px;height:150px;width:200px;background:#FCFCFC;box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);position:relative;border:1px solid #cccccc;display:block;float:left;margin:0 15px 15px 0;
+    &:hover{
 
     }
-  }
-}
-
-.online_title {
-  height: 20px;
-  background: #f9f9f9;
-  width: 190px;
-  font-size: 14px;
-  line-height: 16px;
-  padding: 10px 10px;
-  color: #147CC3;
-}
-
-/*zh*/
-
-/*纵向*/
-html, body {
-  height: 100%;
-}
-
-.card_top{
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.card_center {
-  padding-top: 80px;
-  margin-top: -80px;
-  height: 100%;
-  overflow: hidden;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  #rooms {
-    height: 100%;
-    overflow-y: auto;
-  }
-  .online_list {
-    height: 100%;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    #roster {
-      height: 100%;
-      &:hover {
-        overflow-y: auto;
-      }
+    &.wait{background:#FFFFFF;}
+    &.start{background:#F9F9F9;}
+    .room_top{width:190px;height:40px;border-radius:5px 5px 0 0;font-size:14px;padding:0 5px;line-height:40px;color:#147CC3;text-align:center;font-weight:bold;
+        img{float:left;margin:5px 5px 0 5px;}
+        span{float:left;}
     }
-  }
-}
-
-/*横向*/
-.card_top {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: box;
-  .card_form {
-    width: 400px;
-  }
-  .ad_top{
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    -ms-flex: 1;
-    box-flex: 1;
-  }
-}
-
-.card_center {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: box;
-  #rooms {
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    -ms-flex: 1;
-    box-flex: 1;
-    .room {
-      float: left;
-      width: 150px;
-      height: 100px;
-      margin: 5px;
+    .room_body{width:190px;margin:0 5px;border-top:1px solid #eeeeee;height:80px;border-bottom:1px solid #eeeeee;
+        div{float:left;height:80px;}
+        &.double{
+            .players{font-size:12px;width:80px;
+                span{vertical-align:middle;display:block;width:80px;margin:16px 0 0 0;text-align:center;color:#666;}
+            }            
+        }
+        &.single{
+            .players{font-size:12px;width:80px;
+                span{vertical-align:middle;display:block;width:80px;margin:32px 0 0 0;text-align:center;color:#666;}
+            }            
+        }
+        .vs{width:30px;height:80px;line-height:80px;font-weight:bold;font-size:14px;color:#FFC405;text-align:center;text-shadow:0 1px 2px rgba(0, 0, 0, 0.1);}
     }
-  }
+    .room_member{color:#666;font-size:12px;height:30px;
+        .mode{margin:0;padding:0 0 0 10px;display:block;float:left;height:30px;line-height:30px;
+            span{color:#147CC3;}
+        }
+        img{display:block;float:right;}
+        .private{margin:6px 10px 0 0;}
+        .arena{margin:6px 10px 0 0;}
+    }
 }
 
-/*细节*/
 
 /*按钮*/
-.logging_button, #reconnect {
-  cursor: pointer
-}
+.logging_button, #reconnect{cursor:pointer}
+
 
 /*登陆窗*/
 
-/*#login{
- #node {width:80px}
- .ui-combobox-input {width: 100px}
- .ui-combobox-toggle {width: auto}
-} */
-#login-form {
-  #node {
-    width: 60px;
-  }
-  label{
-    width: 96px;
-  }
-  label[for=domain] {
-    width: auto;
-    clear: none;
-    padding-right: 0px;
-  }
-  #domain {
-    width: 74px;
-  }
+#chat-modal{
+    #login-form{margin:0 0 10px 0;
+        #node{width:60px;}
+        label{width:70px;font-size:12px;}
+        label[for=domain]{width:auto;clear:none;padding-right:0px;margin:3px 5px 0 5px;}
+        #domain{width:88px;font-size:12px;}
+        input{font-size:12px;
+            &#password{width:170px;}
+            &.button{width:218px;}
+        }
+    }  
 }
 
-/*房间筛选*/
-.server_filter label {
-  font-size: 12px;
-}
-.ui-widget.server_filter {
-  font-size: 100%;
-  .ui-multiselect-checkboxes {
-    overflow-y: visible
-  }
-}
 
 /*建立房间*/
-#new_room{
-  #server_ip{width: 120px}
-  #server_port{width: 60px}
+html .ui-dialog{font-size:12px;
+    .ui-widget-header{background:#147CC3;color:#FFFFFF;border:none;font-size:14px;}
+    label{width:60px;display:block;float:left;text-align:right;margin:2px 22px 10px 0;
+        &.new_room_pvp{margin:2px 0 0 0;width:40px;}
+    }
+    input{float:left;margin:0 0 10px 0;
+        &#new_room_password{width:90px;}
+        &#new_room_pvp{margin:5px 0 0 10px;}
+        &.newRoomSubmit{border:none;background:#147CC3;border-radius:5px;color:#FFFFFF;padding:3px 8px;display:block;margin:0 0 10px 20px;}
+        &#new_room_start_lp, &#new_room_start_hand, &#new_room_draw_count{width:139px;}
+    }
+    select{float:left;display:block;margin:0 0 10px 0;width:96px;}
+    .newRoomName{display:block;float:left;height:60px;width:280px;border-bottom:1px solid #dddddd;padding-bottom:10px;margin-bottom:15px;}
+    #server_custom{float:left;display:block;width:280px;margin:5px 0 0 0;
+        #server_ip{margin:0 0 0 23px;width:65px;}
+        .newRoomColon{width:10px;margin:2px 8px 0 5px;}
+        #server_auth{margin:5px 5px 0 14px;}
+        .newRoomApprove{margin:3px 0 0 0;width:25px;}
+    }
+    .newRoomMode{float:left;display:block;width:240px;margin:5px 0 0 0;}
+    .newRoomExtra{float:left;display:block;width:280px;border-style:solid;border-width:1px 0 1px 0;border-color:#dddddd;padding:0 0 5px;margin:5px 0 15px 0;}
 }
+#new_room{padding:10px 0 0 0;
+  #server{width:96px;}
+  #server_ip{width:120px}
+  #server_port{width:60px}
+}
+
 
 /*公告*/
-.card_form {
-  padding-top: 8px;
-  #announcements_wrapper{
-    margin-top: 4px;
-    height:25px;line-height:25px;overflow-y:hidden;
-    li{height:25px}
-  }
-}
-
-
-/* 房间内部 */
-.room{
-  border: #cccccc 1px solid;
-  &:hover {
-    background: #eeeeee;
-  }
-  cursor: default;
-  border-radius: 5px;
-  background-color: white;
-  .user{
-    overflow-x:hidden;
-    white-space:nowrap;
-  }
-  .room_users{
-    line-height:20px;
-    height: 40px;
-    overflow-y: auto;
-    .user{
-      height:20px;
-      &:hover {
-        background: lightskyblue;
-      }
+.card_form{
+    /*padding-top:8px;*/
+    #announcements_wrapper{margin-top:4px;height:25px;line-height:25px;overflow-y:hidden;
+       li{height:25px}
     }
-  }
-}
-/*
-.room.match {
-  border-color: orange;
-}
-.room.tag {
-  border-color: green;
-}
-.room.pvp {
-  border-color: red;
-}
-.room.special {
-  border-color: purple;
-} */
-.ad_top{
-  padding-top: 8px;
-  overflow-x: hidden;
 }
 
-.advertisement{
-  display: block;
-  z-index: 999;
-  width: 468px;
-  height: 60px;
-  border: 1px solid #dddddd;
-  bottom: 25px;
-  left: 8px;
-  background: #F9F9F9;
-  border-radius: 6px;
-  text-align: center;
-  line-height: 60px;
-  font-weight: bold;
-  color: #999999;
-  font-size: 16px;
-  letter-spacing: 2px;
-  cursor: pointer;
+
+/*聊天*/
+html #candy{position:fixed;bottom:0;background:#ffffff;font-size:12px;top:auto;height:260px;
+#chat-pane{background:#ECECEC;border-top:1px solid #D9D9D9;
+        ul{
+            li{margin:5px 5px 0 5px;border-radius:5px 5px 0 0;z-index:1;border-width:1px 1px 0 1px;border-style:solid;border-color:#dddddd;
+                .label{padding:3px 50px 1px 10px;}
+                .close{margin:-1px 5px 0 3px;}
+                .unread{top:2px;}
+                .active{}
+            }
+        }   
+        #chat-rooms{
+          .message-pane-wrapper{border-top:1px solid #dddddd;overflow:hidden;
+              &:hover{overflow:auto;}
+          }
+          .message-pane{padding:5px 10px 2px 0;
+              dt{width:50px;margin:0 8px 0 0;}
+              dd{.label a{color:#3366CC;font-weight:normal;}}
+          }
+          .roster-pane{overflow:hidden;
+              &:hover{overflow:auto;}
+              .user{
+                  margin:0;background:#ffffff;border-top:1px solid #dddddd;border-left:1px solid #dddddd;padding:7px 7px;
+                  &:hover{background:#eeeeee;color:#3366CC;}
+                  ul{
+                      .context{margin:0;float:left;margin:0 0 0 40px;border:none;background:url(../images/menu.png) no-repeat 0 6px;
+                          &:hover{background:url(../images/menu_hover.png) no-repeat 0 6px;}
+                      }
+                  }
+              }
+          }
+        }
+        #context-menu{
+            ul{li{border:none;border-radius:0;margin:5px;}}
+        } 
+        #chat-toolbar{
+            li{margin:0 5px 5px 5px;}
+        }
+    }
+    #chat-modal-overlay{background:url(../images/overlay_logo.png) center center #E7EAE9 no-repeat;}
 }
+
+
+
+
+
+
+
+

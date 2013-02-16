@@ -103,6 +103,7 @@ login = ->
   #  else
   #    alert msg
   #  true
+  Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
   Candy.init('http://122.0.65.70:5280/http-bind/',
     core:
       debug: false,
@@ -124,7 +125,6 @@ login = ->
 
   CandyShop.InlineImages.init();
   Candy.View.Template.Login.form = $('#login_form_template').html()
-  Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
   Candy.Core.connect(Candy.Util.getCookie('jid'), Candy.Util.getCookie('password'))
 
   Candy.View.Pane.Roster.joinAnimation = (elementId)->
@@ -137,10 +137,12 @@ login = ->
   candy_height = $('#candy').outerHeight true
   $('.card_center').css('margin-bottom', -candy_height)
   $('.card_center').css('padding-bottom', candy_height)
+
   #window.onunload = window.onbeforeunload
   window.onbeforeunload = null
 
 @after_login = ->
+  $('#rooms').css('padding-right', 225)
   $('.online_list').show()
 
   $('#current_username').html(Candy.Util.getCookie('username'))
@@ -159,8 +161,11 @@ announcement_scroll = (obj)->
   ,500,->
     $(this).css({marginTop:"0px"}).find("li:first").appendTo(this)
 announcement_scrolling = null
+
+setRosterHeight = ->
+  pageHight = (document.documentElement.clientHeight)-430
+  $("#roster").height(pageHight)
 $(document).ready ->
-  #stroll.bind( '.online_list ul' );
 
   if Candy.Util.getCookie('jid')
     login()
@@ -258,6 +263,9 @@ $(document).ready ->
       announcement_scrolling = setInterval(announcement_scroll, 5000) if !announcement_scrolling
       announcement_scrolling = null
 
+  setRosterHeight();
+  $(window).resize(setRosterHeight);
+
   $.getJSON '/announcements.json', (data)->
     for announcement in data
       $('<li />').append($('<a />',
@@ -271,5 +279,9 @@ $(document).ready ->
   servers = new Servers(el: $('#servers'))
   $('#rooms').html '正在读取服务器列表...'
   Server.fetch()
+
+
+
+
 
 

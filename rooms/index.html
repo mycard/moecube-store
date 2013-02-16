@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" xmlns="http://www.w3.org/1999/html">
+<html class="no-js">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -14,8 +14,7 @@
     <script type="text/javascript" src="/vendor/javascripts/less-1.3.1.min.js"></script>
     <script src="/vendor/javascripts/modernizr-2.6.2.min.js"></script>
 
-    <link rel="stylesheet" href="/vendor/stylesheets/smoothness/jquery-ui-1.10.0.custom.min.css"/>
-
+    <link rel="stylesheet" href="/vendor/stylesheets/smoothness/jquery-ui-1.10.0.custom.css"/>
     <link rel="canonical" href="http://my-card.in/rooms">
 
     <!-- Google Analytics -->
@@ -46,9 +45,16 @@
             <label for="node">{{_labelUsername}}</label>
             <input type="text" id="node" name="node"/>
             <label for="domain">@</label>
-            <select id="domain" name="domain" tabindex="-1">
-                <option label="my-card.in" value="my-card.in" selected="selected"/>
-                <!--<option label="gmail.com" value="gmail.com"/>-->
+            <select id="domain" name="domain">
+
+
+
+                <option label="my-card.in" value="my-card.in" selected>my-card.in</option>
+
+
+                <!-- <option value=""></option>
+
+               <option label="gmail.com" value="gmail.com"/>-->
             </select>
             {{/displayUsername}}
             <input type="hidden" id="username" name="username" value="{{presetJid}}"/>
@@ -58,37 +64,39 @@
     </script>
 
     <script id="room_template" type="text/x-jquery-tmpl">
-        <div class="room
-        {{if (rule != 0) || enable_priority || no_check_deck || no_shuffle_deck || (start_lp != 8000) || (start_hand != 5) || (draw_count != 1)}}
-          special
-        {{else}}{{if pvp}}
-          pvp
-        {{/if}}{{if mode == 1}}
-          match
-        {{/if}}{{if mode == 2}}
-          tag
-        {{/if}}{{/if}}
-        ${status}" id="room_${id}">
-            <span class="room_name">${name}</span>
-            <span class="room_id">${id}</span>
-            {{if private}}
-            [私密房]
-            {{/if}}
-            <div class="room_users">
-                {{each users}}
-                <div class="user">
-                    <span class="user_name">${name}</span>
+		<section class="room ${status}">
+            <header class="room_top">
+                <img src="/assets/images/home.png" alt="">
+                <span>${name}</span>
+            </header>
+            <div class="room_body {{if mode == 2}}double{{else}}single{{/if}}">
+                <div class="players">
+                    {{if mode == 2}}{{each _.filter(users, function(user){return (user.player==0) || (user.player==1)})}}
+                    <span>${name}</span>
+                    {{/each}}{{else}}{{each _.filter(users, function(user){return user.player==0})}}
+                    <span>${name}</span>
+                    {{/each}}{{/if}}
                 </div>
-                {{/each}}
+                <div class="vs">VS</div>
+                <div class="players">
+                    {{if mode == 2}}{{each _.filter(users, function(user){return (user.player==2) || (user.player==3)})}}
+                    <span>${name}</span>
+                    {{/each}}{{else}}{{each _.filter(users, function(user){return user.player==1})}}
+                    <span>${name}</span>
+                    {{/each}}{{/if}}
+                </div>
             </div>
-        </div>
-    </script>
+            <footer class="room_member">
+                <p class="mode"><span>{{if mode == 0}}单局模式{{else}}{{if mode == 1}}比赛模式{{else}}ＴＡＧ{{/if}}{{/if}}</span></p>
+                {{if private}}<img src="/assets/images/lock.png" alt="私密房" class="private">{{/if}}
+                <!--<img src="/assets/images/duel.png" alt="竞技场" class="arena">-->
+            </footer>
+        </section>
+   </script>
     <script id="server_template" type="text/x-jquery-tmpl">
-        <option value="${id}" selected="selected">${name}</option>
+        <option value="${id}" selected>${name}</option>
     </script>
-    <script id="test" type="text/x-jquery-tmpl">
-        <!--# include virtual="/LICENSE.txt" -->
-    </script>
+
 
 </head>
 <body>
@@ -120,7 +128,7 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="card_top">
+<header class="card_top">
     <div class="card_logo">
         <img src="/assets/images/logo.png" alt=""/>
     </div>
@@ -134,101 +142,108 @@
             </ul>
         </div>
     </div>
-    <div class="ad_top">
-        <script type="text/javascript"><!--
-google_ad_client = "ca-pub-1173264056684633";
-/* mycard网页大厅右上 */
-google_ad_slot = "2732134865";
-google_ad_width = 468;
-google_ad_height = 60;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-    </div>
     <div class="log_reg not_logged">
         <a href="http://my-card.in/register">注册</a>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
         <a id="login_button" class="logging_button">登录</a>
     </div>
-    <div class="log_reg logged" style="display: none;">
+    <div class="log_reg logged" hidden>
         <a id="current_username"></a>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
         <a id="logout_button" class="logging_button">退出</a>
     </div>
-</div>
-<div class="card_center">
-    <div id="rooms">Loading...</div>
-    <div class="online_list" style="display: none;">
-        <div class="online_title">聊天工具</div>
-        <ul id="roster">
-            <li>
-                <span>这是还没写好的好友系统喵</span>
-            </li>
-            <li>
-                <span>下面留的是管理员</span>
-            </li>
-            <li class="xmpp" data-jid="zh99998@gmail.com" data-nick="zh99998">
-                <img src="https://lh3.googleusercontent.com/-EVHxW12CgMs/AAAAAAAAAAI/AAAAAAAAAAA/b4Rq4BiFUT4/s32-c-k/photo.jpg" alt=""/><span>zh99998</span>
-            </li>
-            <li class="xmpp" data-jid="fortunemsg@gmail.com" data-nick="Trickster">
-                <img src="https://lh3.googleusercontent.com/-MAW7vCbyWdE/AAAAAAAAAAI/AAAAAAAAAAA/LzyqPKFvee8/s32-c-k/photo.jpg" alt=""/><span>Trickster</span>
-            </li>
-            <li class="xmpp" data-jid="悼亡圣约@my-card.in" data-nick="悼亡圣约">
-                <img src="https://lh3.googleusercontent.com/-deevaHxZKmU/AAAAAAAAAAI/AAAAAAAAAAA/1AA3-swJOGg/s32-c-k/photo.jpg" alt=""/><span>悼亡圣约</span>
-            </li>
-            <li class="xmpp" data-jid="悠夏丶@my-card.in" data-nick="悠夏丶">
-                <img src="https://lh4.googleusercontent.com/-kIAfjf8dim8/AAAAAAAAAAI/AAAAAAAAAAA/BPCryxovCU8/s48-c-k/photo.jpg" alt=""/><span>悠夏丶</span>
-            </li>
-            <li class="xmpp" data-jid="萌の狐@my-card.in" data-nick="萌の狐">
-                <img src="https://lh3.googleusercontent.com/-oyc22EZHGvo/AAAAAAAAAAI/AAAAAAAAAAA/mXrA7Vz0NJg/s32-c-k/photo.jpg" alt=""/><span>萌の狐</span>
-            </li>
-            <li class="xmpp" data-jid="神様と秀吉@my-card.in" data-nick="神様と秀吉">
-                <img src="https://lh6.googleusercontent.com/-zNVBxXLudFc/AAAAAAAAAAI/AAAAAAAAAAA/YH5q1jCmiDQ/s48-c-k/photo.jpg" alt=""/><span>神様と秀吉</span>
-            </li>
-        </ul>
+    <div class="ad_top">
+        <script type="text/javascript">
+            <!--
+            google_ad_client = "ca-pub-1173264056684633";
+            /* mycard网页大厅右上 */
+            google_ad_slot = "2732134865";
+            google_ad_width = 468;
+            google_ad_height = 60;
+            //-->
+        </script>
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
     </div>
+</header>
+<div class="card_center">
+    <section id="rooms">Loading...</section>
 </div>
-<div id="candy" style="top:auto;height:260px;display:none"></div>
+<aside class="online_list" hidden>
+    <div class="online_title">聊天工具</div>
+    <ul id="roster">
+        <li>
+            <span>这是还没写好的好友系统喵</span>
+        </li>
+        <li>
+            <span>下面留的是管理员</span>
+        </li>
+        <li class="xmpp" data-jid="悼亡圣约@my-card.in" data-nick="悼亡圣约">
+            <img src="https://lh3.googleusercontent.com/-deevaHxZKmU/AAAAAAAAAAI/AAAAAAAAAAA/1AA3-swJOGg/s32-c-k/photo.jpg" alt=""/><span>悼亡圣约</span>
+        </li>
+        <li class="xmpp" data-jid="悠夏丶@my-card.in" data-nick="悠夏丶">
+            <img src="https://lh4.googleusercontent.com/-kIAfjf8dim8/AAAAAAAAAAI/AAAAAAAAAAA/BPCryxovCU8/s48-c-k/photo.jpg" alt=""/><span>悠夏丶</span>
+        </li>
+        <li class="xmpp" data-jid="萌の狐@my-card.in" data-nick="萌の狐">
+            <img src="https://lh3.googleusercontent.com/-oyc22EZHGvo/AAAAAAAAAAI/AAAAAAAAAAA/mXrA7Vz0NJg/s32-c-k/photo.jpg" alt=""/><span>萌の狐</span>
+        </li>
+        <li class="xmpp" data-jid="神様と秀吉@my-card.in" data-nick="神様と秀吉">
+            <img src="https://lh6.googleusercontent.com/-zNVBxXLudFc/AAAAAAAAAAI/AAAAAAAAAAA/YH5q1jCmiDQ/s48-c-k/photo.jpg" alt=""/><span>神様と秀吉</span>
+        </li>
+    </ul>
+</aside>
+<footer id="candy" hidden></footer>
 
-<div id="new_room_dialog" style="display: none">
+<div id="new_room_dialog" hidden>
     <form id="new_room">
-        <label for="new_room_name">房间名</label><input type="text" id="new_room_name" name="name"/><br/>
-        <label for="new_room_password">房间密码</label><input type="password" name="password" id="new_room_password" value=""/><br/>
-        <input type="checkbox" name="pvp" id="new_room_pvp" value="pvp"/><label for="new_room_pvp">竞技场</label><br/>
+        <div class="newRoomName">
+            <label for="new_room_name">房间名称</label><input type="text" id="new_room_name" name="name"/>
+            <label for="new_room_password">房间密码</label><input type="password" name="password" id="new_room_password" value=""/>
+            <input type="checkbox" name="pvp" id="new_room_pvp" value="pvp"/><label for="new_room_pvp" class="new_room_pvp">竞技场</label>
+        </div>
+
         <label for="server">服务器</label>
         <select id="server" name="server">
-            <option label="自定义" value="0" selected="selected"/>
+            <option value="0" selected>自定义</option>
         </select>
 
-        <div id="server_custom" style="display: none;">
-            <input type="text" id="server_ip" name="server_ip" value="127.0.0.1"/><label for="server_port">:</label><input type="number" id="server_port" name="server_port" value="7911"/>
-            <input type="checkbox" id="server_auth" name="server_auth"/><label for="server_auth">认证</label>
+        <div id="server_custom" hidden>
+            <input type="text" id="server_ip" name="server_ip" value="127.0.0.1"/><label class="newRoomColon" for="server_port">:</label><input type="number" id="server_port" name="server_port" value="7911"/>
+            <input type="checkbox" id="server_auth" name="server_auth"/><label class="newRoomApprove" for="server_auth">认证</label>
         </div>
-        <hr/>
-        <label for="new_room_rule">卡片允许</label>
-        <select id="new_room_rule" name="rule">
-            <option value="0" selected="selected">ＯＣＧ</option>
-            <option value="1">ＴＣＧ</option>
-            <option value="2">ＯＣＧ＆ＴＣＧ</option>
-            <option value="3">专有卡禁止</option>
-        </select><br/>
-        <label for="new_room_mode">决斗模式</label>
-        <select id="new_room_mode" name="mode">
-            <option value="0">单局模式</option>
-            <option value="1" selected="selected">比赛模式</option>
-            <option value="2">ＴＡＧ</option>
-        </select>
-        <hr/>
-        <h3>额外选项</h3>
 
-        <label for="new_room_start_lp">初始LP</label>
-        <input type="number" name="start_lp" id="new_room_start_lp" min="0" max="99999" value="8000"/><br/>
-        <input type="submit" value="确定"/>
+        <div class="newRoomMode">
+            <label for="new_room_rule">卡片允许</label>
+            <select id="new_room_rule" name="rule">
+                <option value="0" selected>ＯＣＧ</option>
+                <option value="1">ＴＣＧ</option>
+                <option value="2">ＯＣＧ＆ＴＣＧ</option>
+                <option value="3">专有卡禁止</option>
+            </select>
+            <label for="new_room_mode">决斗模式</label>
+            <select id="new_room_mode" name="mode">
+                <option value="0">单局模式</option>
+                <option value="1" selected>比赛模式</option>
+                <option value="2">ＴＡＧ</option>
+            </select>
+        </div>
+
+        <div class="newRoomExtra">
+            <h4>额外选项</h4>
+            <label for="new_room_start_lp">初始LP</label>
+            <input type="number" name="start_lp" id="new_room_start_lp" min="0" max="99999" value="8000"/>
+            <label for="new_room_start_hand">初始手牌数</label>
+            <input type="number" name="start_hand" id="new_room_start_hand" min="0" max="60" value="5"/>
+            <label for="new_room_draw_count">每回合抽卡</label>
+            <input type="number" name="draw_count" id="new_room_draw_count" min="0" max="60" value="1"/>
+        </div>
+
+
+        <input class="newRoomSubmit" type="submit" value="确定"/>
     </form>
 </div>
-<div id="join_private_room_dialog" style="display: none">
+<div id="join_private_room_dialog" hidden>
     <form id="join_private_room">
         <label for="joinroom_password">房间密码</label>
         <input name="password" type="password" id="joinroom_password" value=""/>
@@ -236,7 +251,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
     </form>
 </div>
 
-<!--<div id="login_dialog" style="display: none;">
+<!--<div id="login_dialog" hidden>
     <form id="login">
         <label for="login_node">用户</label><input name="node" type="text" id="login_node" tabindex="1" />@<select name="domain" id="login_domain" style="width:50px">
             <option value="my-card.in">my-card.in</option>
@@ -272,8 +287,6 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <script type="text/javascript" src="/vendor/candy/plugins/inline-images/candy.js"></script>
 <link rel="stylesheet" type="text/css" href="/vendor/candy/plugins/inline-images/candy.css"/>
-
-<script src="/vendor/javascripts/ZeroClipboard.min.js"></script>
 
 <script src="/assets/javascripts/rooms.js"></script>
 </body>
