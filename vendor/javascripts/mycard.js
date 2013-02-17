@@ -3,7 +3,7 @@
 
   this.mycard = {};
 
-  this.mycard.room_name = function(name, password, pvp, rule, mode, start_lp) {
+  this.mycard.room_name = function(name, password, pvp, rule, mode, start_lp, start_hand, draw_count) {
     var result;
     if (pvp == null) {
       pvp = false;
@@ -17,8 +17,14 @@
     if (start_lp == null) {
       start_lp = 8000;
     }
-    if (rule !== 0 || start_lp !== 8000) {
-      result = "" + rule + mode + "FFF" + start_lp + ",5,1,";
+    if (start_hand == null) {
+      start_hand = 5;
+    }
+    if (draw_count == null) {
+      draw_count = 1;
+    }
+    if (rule !== 0 || start_lp !== 8000 || start_hand !== 5 || draw_count !== 1) {
+      result = "" + rule + mode + "FFF" + start_lp + "," + start_hand + "," + draw_count + ",";
     } else if (mode === 2) {
       result = "T#";
     } else if (pvp && mode === 1) {
@@ -37,9 +43,9 @@
     return result;
   };
 
-  this.mycard.join = function(ip, port, room, username, password) {
+  this.mycard.room_string = function(ip, port, room, username, password) {
     var result;
-    result = 'mycard://';
+    result = '';
     if (username) {
       result += encodeURIComponent(username);
       if (password) {
@@ -48,7 +54,21 @@
       result += '@';
     }
     result += ip + ':' + port + '/' + encodeURIComponent(room);
-    return window.location.href = result;
+    return result;
+  };
+
+  this.mycard.room_url = function(ip, port, room, username, password) {
+    var result;
+    return result = 'http://my-card.in/rooms/' + this.room_string(ip, port, room, username, password);
+  };
+
+  this.mycard.room_url_mycard = function(ip, port, room, username, password) {
+    var result;
+    return result = 'mycard://' + this.room_string(ip, port, room, username, password);
+  };
+
+  this.mycard.join = function(ip, port, room, username, password) {
+    return window.location.href = this.room_url_mycard(ip, port, room, username, password);
   };
 
 }).call(this);

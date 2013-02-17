@@ -1,7 +1,7 @@
 @mycard = {}
-@mycard.room_name = (name, password, pvp = false, rule = 0, mode = 0, start_lp = 8000) ->
-  if rule != 0 or start_lp != 8000
-    result = "#{rule}#{mode}FFF#{start_lp},5,1,"
+@mycard.room_name = (name, password, pvp = false, rule = 0, mode = 0, start_lp = 8000, start_hand = 5, draw_count = 1) ->
+  if rule != 0 or start_lp != 8000 or start_hand != 5 or draw_count != 1
+    result = "#{rule}#{mode}FFF#{start_lp},#{start_hand},#{draw_count},"
   else if mode == 2
     result = "T#"
   else if pvp and mode == 1
@@ -30,11 +30,11 @@
 
 #http://my-card.in/rooms/127.0.0.1:8087/test
 @mycard.room_url = (ip,port,room,username,password)->
-  result = 'http://my-card.in/rooms/' + room_string(ip,port,room,username,password)
+  result = 'http://my-card.in/rooms/' + @room_string(ip,port,room,username,password)
 
 #mycard://127.0.0.1:8087/test
 @mycard.room_url_mycard = (ip,port,room,username,password)->
-  result = 'mycard://' + room_string(ip,port,room,username,password)
+  result = 'mycard://' + @room_string(ip,port,room,username,password)
 
 @mycard.join = (ip,port,room,username,password)->
-  window.location.href = room_url_mycard(ip,port,room,username,password)
+  window.location.href = @room_url_mycard(ip,port,room,username,password)

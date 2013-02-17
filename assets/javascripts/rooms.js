@@ -190,7 +190,7 @@
         $('#join_private_room').data('room_id', room.id);
         return $('#join_private_room_dialog').dialog('open');
       } else {
-        return mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp), Candy.Util.getCookie('username'), room.server().auth ? Candy.Util.getCookie('password') : void 0);
+        return mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp, room.start_hand, room.draw_count), Candy.Util.getCookie('username'), room.server().auth ? Candy.Util.getCookie('password') : void 0);
       }
     };
 
@@ -289,6 +289,8 @@
         }
         new_room.rule.value = 0;
         new_room.start_lp.value = 8000;
+        new_room.start_hand.value = 5;
+        new_room.draw_count.value = 1;
         if ((server_id = parseInt(new_room.server.value)) && !Server.find(server_id).pvp) {
           return new_room.server.value = Server.choice(false, new_room.pvp.ckecked).id;
         }
@@ -334,7 +336,7 @@
         server_port = parseInt(new_room.server_port.value);
         server_auth = new_room.server_auth.checked;
       }
-      return mycard.join(server_ip, server_port, mycard.room_name(this.name.value, this.password.value, this.pvp.checked, parseInt(this.rule.value), parseInt(this.mode.value), parseInt(this.start_lp.value)), Candy.Util.getCookie('username'), server_auth ? Candy.Util.getCookie('password') : void 0);
+      return mycard.join(server_ip, server_port, mycard.room_name(this.name.value, this.password.value, this.pvp.checked, parseInt(this.rule.value), parseInt(this.mode.value), parseInt(this.start_lp.value), parseInt(this.start_hand.value), parseInt(this.draw_count.value)), Candy.Util.getCookie('username'), server_auth ? Candy.Util.getCookie('password') : void 0);
     };
     $('#join_private_room').submit(function(ev) {
       var room, room_id;
@@ -344,7 +346,7 @@
         room_id = $(this).data('room_id');
         if (Room.exists(room_id)) {
           room = Room.find(room_id);
-          return mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, this.password.value, room.pvp, room.rule, room.mode, room.start_lp), Candy.Util.getCookie('username'), room.server().auth ? Candy.Util.getCookie('password') : void 0);
+          return mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, this.password.value, room.pvp, room.rule, room.mode, room.start_lp, room.start_hand, room.draw_count), Candy.Util.getCookie('username'), room.server().auth ? Candy.Util.getCookie('password') : void 0);
         } else {
           return alert('房间已经关闭');
         }

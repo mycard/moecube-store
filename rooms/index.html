@@ -200,17 +200,16 @@
         <div class="newRoomName">
             <label for="new_room_name">房间名称</label><input type="text" id="new_room_name" name="name"/>
             <label for="new_room_password">房间密码</label><input type="text" name="password" id="new_room_password" value=""/>
-            <input type="checkbox" name="pvp" id="new_room_pvp" value="pvp"/><label for="new_room_pvp" class="new_room_pvp">竞技场</label>
-        </div>
 
-        <label for="server">服务器</label>
-        <select id="server" name="server">
-            <option value="0" selected>自定义</option>
-        </select>
-
-        <div id="server_custom" hidden>
-            <input type="text" id="server_ip" name="server_ip" value="127.0.0.1"/><label class="newRoomColon" for="server_port">:</label><input type="number" id="server_port" name="server_port" value="7911"/>
-            <input type="checkbox" id="server_auth" name="server_auth"/><label class="newRoomApprove" for="server_auth">认证</label>
+            <label for="server">服务器</label>
+            <select id="server" name="server">
+                <option value="0" selected>自定义</option>
+            </select>
+            <input type="checkbox" name="pvp" id="new_room_pvp"/><label for="new_room_pvp" class="new_room_pvp">竞技场</label>
+            <div id="server_custom" hidden>
+                <input type="text" id="server_ip" name="server_ip" value="127.0.0.1"/><label class="newRoomColon" for="server_port">:</label><input type="number" id="server_port" name="server_port" value="7911"/>
+                <input type="checkbox" id="server_auth" name="server_auth"/><label class="newRoomApprove" for="server_auth">认证</label>
+            </div>
         </div>
 
         <div class="newRoomMode">
@@ -223,20 +222,24 @@
             </select>
             <label for="new_room_mode">决斗模式</label>
             <select id="new_room_mode" name="mode">
-                <option value="0">单局模式</option>
-                <option value="1" selected>比赛模式</option>
+                <option value="0" selected>单局模式</option>
+                <option value="1">比赛模式</option>
                 <option value="2">ＴＡＧ</option>
             </select>
         </div>
 
         <div class="newRoomExtra">
-            <h4>额外选项</h4>
+            <h4>额外选项 (无特殊需求请勿更改)</h4>
             <label for="new_room_start_lp">初始LP</label>
             <input type="number" name="start_lp" id="new_room_start_lp" min="0" max="99999" value="8000"/>
             <label for="new_room_start_hand">初始手牌数</label>
             <input type="number" name="start_hand" id="new_room_start_hand" min="0" max="60" value="5"/>
             <label for="new_room_draw_count">每回合抽卡</label>
             <input type="number" name="draw_count" id="new_room_draw_count" min="0" max="60" value="1"/>
+            <!--<div style="clear:both"></div>
+            <input type="checkbox" name="enable_priority" id="new_room_enable_priority"><label for="new_room_enable_priority" class="new_room_enable_priority">允许启动效果优先权</label>
+            <input type="checkbox" name="enable_no_check_deck" id="new_room_no_check_deck"><label for="new_room_no_check_deck" class="new_room_no_check_deck">不检查卡组</label>
+            <input type="checkbox" name="enable_priority" id="new_room_no_shuffle_deck"><label for="new_room_pvp" class="new_room_pvp">开局不洗卡组</label>-->
         </div>
 
 

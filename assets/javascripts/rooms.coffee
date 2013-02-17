@@ -89,7 +89,7 @@ class Rooms extends Spine.Controller
       $('#join_private_room').data('room_id', room.id)
       $('#join_private_room_dialog').dialog('open')
     else
-      mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if room.server().auth)
+      mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, null, room.pvp, room.rule, room.mode, room.start_lp, room.start_hand, room.draw_count), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if room.server().auth)
 
 login = ->
   #Candy.Core.Event.Jabber.Presence = (msg)->
@@ -181,6 +181,8 @@ $(document).ready ->
       new_room.mode.value = 1 if new_room.mode.value == '2'
       new_room.rule.value = 0
       new_room.start_lp.value = 8000
+      new_room.start_hand.value = 5
+      new_room.draw_count.value = 1
       if (server_id = parseInt new_room.server.value) and !Server.find(server_id).pvp
         new_room.server.value = Server.choice(false, new_room.pvp.ckecked).id
   new_room.mode.onchange = ->
@@ -211,7 +213,7 @@ $(document).ready ->
       server_ip = new_room.server_ip.value
       server_port = parseInt new_room.server_port.value
       server_auth = new_room.server_auth.checked
-    mycard.join(server_ip, server_port, mycard.room_name(@name.value, @password.value, @pvp.checked, parseInt(@rule.value), parseInt(@mode.value), parseInt(@start_lp.value)), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if server_auth)
+    mycard.join(server_ip, server_port, mycard.room_name(@name.value, @password.value, @pvp.checked, parseInt(@rule.value), parseInt(@mode.value), parseInt(@start_lp.value), parseInt(@start_hand.value), parseInt(@draw_count.value)), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if server_auth)
 
   $('#join_private_room').submit (ev)->
     ev.preventDefault()
@@ -221,7 +223,7 @@ $(document).ready ->
       room_id = $(this).data('room_id')
       if Room.exists room_id
         room = Room.find(room_id)
-        mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, @password.value, room.pvp, room.rule, room.mode, room.start_lp), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if room.server().auth)
+        mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, @password.value, room.pvp, room.rule, room.mode, room.start_lp, room.start_hand, room.draw_count), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if room.server().auth)
       else
         alert '房间已经关闭'
 
