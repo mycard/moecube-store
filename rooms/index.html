@@ -66,7 +66,7 @@
     <script id="room_template" type="text/x-jquery-tmpl">
 		<section class="room ${status}">
             <header class="room_top">
-                <img src="/assets/images/home.png" alt="">
+                <img src="/assets/images/rooms/{{if private}}private{{else}}${status}{{/if}}.png" alt="room" title="">
                 <span>${name}</span>
             </header>
             <div class="room_body {{if mode == 2}}double{{else}}single{{/if}}">
@@ -88,7 +88,7 @@
             </div>
             <footer class="room_member">
                 <p class="mode">模式: <span>{{if mode == 0}}单局{{else}}{{if mode == 1}}比赛{{else}}TAG{{/if}}{{/if}}</span></p>
-                {{if private}}<img src="/assets/images/lock.png" alt="私密房" class="private">{{/if}}
+                <!--{{if private}}<img src="/assets/images/lock.png" alt="私密房" class="private">{{/if}}-->
                 <!--<img src="/assets/images/duel.png" alt="竞技场" class="arena">-->
             </footer>
         </section>
@@ -130,7 +130,7 @@
 <!-- Add your site or application content here -->
 <header class="card_top">
     <div class="card_logo">
-        <img src="/assets/images/logo.png" alt=""/>
+        <img src="/assets/images/rooms/logo.png" alt="mycard"/>
     </div>
     <div class="card_form">
         <select id="servers" multiple="multiple"></select>
@@ -180,16 +180,16 @@
             <span>下面留的是管理员</span>
         </li>
         <li class="xmpp" data-jid="悼亡圣约@my-card.in" data-nick="悼亡圣约">
-            <img src="https://lh3.googleusercontent.com/-deevaHxZKmU/AAAAAAAAAAI/AAAAAAAAAAA/1AA3-swJOGg/s32-c-k/photo.jpg" alt=""/><span>悼亡圣约</span>
+            <img src="https://lh3.googleusercontent.com/-deevaHxZKmU/AAAAAAAAAAI/AAAAAAAAAAA/1AA3-swJOGg/s32-c-k/photo.jpg" alt="悼亡圣约"/><span>悼亡圣约</span>
         </li>
         <li class="xmpp" data-jid="悠夏丶@my-card.in" data-nick="悠夏丶">
-            <img src="https://lh4.googleusercontent.com/-kIAfjf8dim8/AAAAAAAAAAI/AAAAAAAAAAA/BPCryxovCU8/s48-c-k/photo.jpg" alt=""/><span>悠夏丶</span>
+            <img src="https://lh4.googleusercontent.com/-kIAfjf8dim8/AAAAAAAAAAI/AAAAAAAAAAA/BPCryxovCU8/s48-c-k/photo.jpg" alt="悠夏丶"/><span>悠夏丶</span>
         </li>
         <li class="xmpp" data-jid="萌の狐@my-card.in" data-nick="萌の狐">
-            <img src="https://lh3.googleusercontent.com/-oyc22EZHGvo/AAAAAAAAAAI/AAAAAAAAAAA/mXrA7Vz0NJg/s32-c-k/photo.jpg" alt=""/><span>萌の狐</span>
+            <img src="https://lh3.googleusercontent.com/-oyc22EZHGvo/AAAAAAAAAAI/AAAAAAAAAAA/mXrA7Vz0NJg/s32-c-k/photo.jpg" alt="萌の狐"/><span>萌の狐</span>
         </li>
         <li class="xmpp" data-jid="神様と秀吉@my-card.in" data-nick="神様と秀吉">
-            <img src="https://lh6.googleusercontent.com/-zNVBxXLudFc/AAAAAAAAAAI/AAAAAAAAAAA/YH5q1jCmiDQ/s48-c-k/photo.jpg" alt=""/><span>神様と秀吉</span>
+            <img src="https://lh6.googleusercontent.com/-zNVBxXLudFc/AAAAAAAAAAI/AAAAAAAAAAA/YH5q1jCmiDQ/s48-c-k/photo.jpg" alt="神様と秀吉"/><span>神様と秀吉</span>
         </li>
     </ul>
 </aside>

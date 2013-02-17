@@ -1,13 +1,3 @@
-#window.oldSetInterval = window.setInterval;
-#window.setInterval = (func, interval)->
-#  interval = oldSetInterval(func, interval);
-#  console.log "setInteval called", func, interval
-
-#window.oldClearInterval = window.setInterval;
-#window.ClearInterval = (func, interval)->
-#  interval = oldClearInterval(func, interval);
-#  console.log "clearInteval called", func, interval
-
 class Server extends Spine.Model
   @configure "Server", "name", "ip", "port", "index"
   @extend Spine.Model.Ajax
@@ -165,18 +155,11 @@ logout = ->
   Candy.Util.deleteCookie('password')
   window.location.reload()
 
-announcement_scroll = (obj)->
-  $('#announcements_wrapper').find("ul:first").animate
-    marginTop:"-25px"
-  ,500,->
-    $(this).css({marginTop:"0px"}).find("li:first").appendTo(this)
-#console.log this
-@announcement_scrolling = null
 
 setRosterHeight = ->
   pageHight = (document.documentElement.clientHeight)-430
   $("#roster").height(pageHight)
-$(document).ready =>
+$(document).ready ->
   if Candy.Util.getCookie('jid')
     login()
     after_login()
@@ -266,25 +249,29 @@ $(document).ready =>
   $('#logout_button').click ->
     logout()
 
-  $('#announcements li').mouseover =>
-    console.log 'mouseover'
-    #clearInterval(@announcement_scrolling) if @announcement_scrolling
-    #@announcement_scrolling = null
-  $('#announcements li').mouseleave =>
-    #@announcement_scrolling = setInterval(announcement_scroll, 5000) if !@announcement_scrolling
-
-
   setRosterHeight();
   $(window).resize(setRosterHeight);
 
-  $.getJSON '/announcements.json', (data)=>
-    for announcement in data
-      $('<li />').append($('<a />',
-        href: announcement.url
-        target: '_blank'
-        text: announcement.title
-      )).appendTo $('#announcements')
-    @announcement_scrolling = setInterval(announcement_scroll, 5000) if !@announcement_scrolling and data.length
+  $.getJSON '/announcements.json', (data)->
+    if data.length
+      for announcement in data
+        $('<li />').append($('<a />',
+          href: announcement.url
+          target: '_blank'
+          text: announcement.title
+        )).appendTo $('#announcements')
+
+      announcement_scroll = (obj)->
+        $('#announcements_wrapper').find("ul:first").animate
+          marginTop:"-25px"
+        ,500,->
+          $(this).css({marginTop:"0px"}).find("li:first").appendTo(this)
+      announcement_scrolling = setInterval(announcement_scroll, 5000)
+      $('#announcements li').mouseenter ->
+        clearInterval(announcement_scrolling)
+        announcement_scrolling = null
+      $('#announcements li').mouseleave ->
+        announcement_scrolling = setInterval(announcement_scroll, 5000) if !announcement_scrolling
 
   rooms = new Rooms(el: $('#rooms'))
   servers = new Servers(el: $('#servers'))
