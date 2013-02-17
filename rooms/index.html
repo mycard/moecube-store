@@ -72,17 +72,17 @@
             <div class="room_body {{if mode == 2}}double{{else}}single{{/if}}">
                 <div class="players">
                     {{if mode == 2}}{{each _.filter(users, function(user){return (user.player==0) || (user.player==1)})}}
-                    <span>${name}</span>
+                    <span>${name.split('$')[0]}</span>
                     {{/each}}{{else}}{{each _.filter(users, function(user){return user.player==0})}}
-                    <span>${name}</span>
+                    <span>${name.split('$')[0]}</span>
                     {{/each}}{{/if}}
                 </div>
                 <div class="vs">VS</div>
                 <div class="players">
                     {{if mode == 2}}{{each _.filter(users, function(user){return (user.player==2) || (user.player==3)})}}
-                    <span>${name}</span>
+                    <span>${name.split('$')[0]}</span>
                     {{/each}}{{else}}{{each _.filter(users, function(user){return user.player==1})}}
-                    <span>${name}</span>
+                    <span>${name.split('$')[0]}</span>
                     {{/each}}{{/if}}
                 </div>
             </div>

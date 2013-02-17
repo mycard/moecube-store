@@ -46,13 +46,13 @@ class Servers extends Spine.Controller
     websocket.onopen = ->
       $('#rooms').html '正在读取房间列表...'
       console.log("websocket: Connected to WebSocket server.")
+      Room.deleteAll()
     websocket.onclose = (evt)=>
       $('#rooms').html '大厅连接中断, '
       $('<a />', id: 'reconnect', text: '重新连接').appendTo $('#rooms')
       $('#reconnect').click @connect
       console.log("websocket: Disconnected");
     websocket.onmessage = (evt)->
-      #console.log('Retrieved data from server: ' + evt.data)
       rooms = JSON.parse(evt.data)
       for room in rooms
         if room._deleted

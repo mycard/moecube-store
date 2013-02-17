@@ -84,7 +84,8 @@
       websocket = new WebSocket(wsServer);
       websocket.onopen = function() {
         $('#rooms').html('正在读取房间列表...');
-        return console.log("websocket: Connected to WebSocket server.");
+        console.log("websocket: Connected to WebSocket server.");
+        return Room.deleteAll();
       };
       websocket.onclose = function(evt) {
         $('#rooms').html('大厅连接中断, ');
