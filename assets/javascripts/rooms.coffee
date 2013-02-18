@@ -232,6 +232,40 @@ $(document).ready ->
     new_room.server.value = Server.choice(false, new_room.pvp.ckecked).id
     new_room.server.onchange() #这个怎么能自动触发...
     $('#new_room_dialog').dialog('open')
+    $('#new_room_copy_room_url').zclip('remove')
+    $('#new_room_copy_room_url').zclip
+      path:'/vendor/javascripts/ZeroClipboard.swf',
+      copy: ->
+        if server_id = parseInt new_room.server.value
+          server = Server.find server_id
+          server_ip = server.ip
+          server_port = server.port
+          server_auth = server.auth
+        else
+          server_ip = new_room.server_ip.value
+          server_port = parseInt new_room.server_port.value
+          server_auth = new_room.server_auth.checked
+        mycard.room_url server_ip, server_port, mycard.room_name(new_room.name.value, null, new_room.pvp.checked, parseInt(new_room.rule.value), parseInt(new_room.mode.value), parseInt(new_room.start_lp.value), parseInt(new_room.start_hand.value), parseInt(new_room.draw_count.value)), null, null, new_room.password.value.length, server_auth
+  new_room.password.onchange = ->
+    $('#new_room_copy_room_url_with_password').zclip('remove')
+    if new_room.password.value
+      $('#new_room_copy_room_url_with_password').show()
+      $('#new_room_copy_room_url_with_password').zclip
+        path:'/vendor/javascripts/ZeroClipboard.swf',
+        copy: ->
+          if server_id = parseInt new_room.server.value
+            server = Server.find server_id
+            server_ip = server.ip
+            server_port = server.port
+            server_auth = server.auth
+          else
+            server_ip = new_room.server_ip.value
+            server_port = parseInt new_room.server_port.value
+            server_auth = new_room.server_auth.checked
+          mycard.room_url server_ip, server_port, mycard.room_name(new_room.name.value, new_room.password.value, new_room.pvp.checked, parseInt(new_room.rule.value), parseInt(new_room.mode.value), parseInt(new_room.start_lp.value), parseInt(new_room.start_hand.value), parseInt(new_room.draw_count.value)), null, null, false, server_auth
+    else
+      $('#new_room_copy_room_url_with_password').hide()
+
 
   #$('#login_domain').combobox()
 
@@ -250,6 +284,7 @@ $(document).ready ->
   #  false
   $('#logout_button').click ->
     logout()
+
 
   setRosterHeight();
   $(window).resize(setRosterHeight);

@@ -18,7 +18,7 @@
   result
 
 #127.0.0.1:8087/test
-@mycard.room_string = (ip,port,room,username,password)->
+@mycard.room_string = (ip,port,room,username,password, _private, server_auth)->
   result = ''
   if username
     result += encodeURIComponent(username)
@@ -26,15 +26,21 @@
       result += ':' + encodeURIComponent(password)
     result += '@'
   result += ip + ':' + port + '/' + encodeURIComponent(room)
+  if _private
+    result += '?private=true'
+    if server_auth
+      result += '&server_auth=true'
+  else if server_auth
+    result += '?server_auth=true'
   result
 
 #http://my-card.in/rooms/127.0.0.1:8087/test
-@mycard.room_url = (ip,port,room,username,password)->
-  result = 'http://my-card.in/rooms/' + @room_string(ip,port,room,username,password)
+@mycard.room_url = (ip,port,room,username,password, _private, server_auth)->
+  result = 'http://my-card.in/rooms/' + @room_string(ip,port,room,username,password, _private, server_auth)
 
 #mycard://127.0.0.1:8087/test
-@mycard.room_url_mycard = (ip,port,room,username,password)->
-  result = 'mycard://' + @room_string(ip,port,room,username,password)
+@mycard.room_url_mycard = (ip,port,room,username,password, _private, server_auth)->
+  result = 'mycard://' + @room_string(ip,port,room,username,password, _private, server_auth)
 
-@mycard.join = (ip,port,room,username,password)->
-  window.location.href = @room_url_mycard(ip,port,room,username,password)
+@mycard.join = (ip,port,room,username,password, _private, server_auth)->
+  window.location.href = @room_url_mycard(ip,port,room,username,password, _private, server_auth)

@@ -356,8 +356,51 @@
       new_room.name.value = Math.floor(Math.random() * 1000);
       new_room.server.value = Server.choice(false, new_room.pvp.ckecked).id;
       new_room.server.onchange();
-      return $('#new_room_dialog').dialog('open');
+      $('#new_room_dialog').dialog('open');
+      $('#new_room_copy_room_url').zclip('remove');
+      return $('#new_room_copy_room_url').zclip({
+        path: '/vendor/javascripts/ZeroClipboard.swf',
+        copy: function() {
+          var server, server_auth, server_id, server_ip, server_port;
+          if (server_id = parseInt(new_room.server.value)) {
+            server = Server.find(server_id);
+            server_ip = server.ip;
+            server_port = server.port;
+            server_auth = server.auth;
+          } else {
+            server_ip = new_room.server_ip.value;
+            server_port = parseInt(new_room.server_port.value);
+            server_auth = new_room.server_auth.checked;
+          }
+          return mycard.room_url(server_ip, server_port, mycard.room_name(new_room.name.value, null, new_room.pvp.checked, parseInt(new_room.rule.value), parseInt(new_room.mode.value), parseInt(new_room.start_lp.value), parseInt(new_room.start_hand.value), parseInt(new_room.draw_count.value)), null, null, new_room.password.value.length, server_auth);
+        }
+      });
     });
+    new_room.password.onchange = function() {
+      $('#new_room_copy_room_url_with_password').zclip('remove');
+      if (new_room.password.value) {
+        $('#new_room_copy_room_url_with_password').show();
+        return $('#new_room_copy_room_url_with_password').zclip({
+          path: '/vendor/javascripts/ZeroClipboard.swf',
+          copy: function() {
+            var server, server_auth, server_id, server_ip, server_port;
+            if (server_id = parseInt(new_room.server.value)) {
+              server = Server.find(server_id);
+              server_ip = server.ip;
+              server_port = server.port;
+              server_auth = server.auth;
+            } else {
+              server_ip = new_room.server_ip.value;
+              server_port = parseInt(new_room.server_port.value);
+              server_auth = new_room.server_auth.checked;
+            }
+            return mycard.room_url(server_ip, server_port, mycard.room_name(new_room.name.value, new_room.password.value, new_room.pvp.checked, parseInt(new_room.rule.value), parseInt(new_room.mode.value), parseInt(new_room.start_lp.value), parseInt(new_room.start_hand.value), parseInt(new_room.draw_count.value)), null, null, false, server_auth);
+          }
+        });
+      } else {
+        return $('#new_room_copy_room_url_with_password').hide();
+      }
+    };
     $('#login_button').click(function() {
       return login();
     });

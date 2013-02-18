@@ -43,7 +43,7 @@
     return result;
   };
 
-  this.mycard.room_string = function(ip, port, room, username, password) {
+  this.mycard.room_string = function(ip, port, room, username, password, _private, server_auth) {
     var result;
     result = '';
     if (username) {
@@ -54,21 +54,29 @@
       result += '@';
     }
     result += ip + ':' + port + '/' + encodeURIComponent(room);
+    if (_private) {
+      result += '?private=true';
+      if (server_auth) {
+        result += '&server_auth=true';
+      }
+    } else if (server_auth) {
+      result += '?server_auth=true';
+    }
     return result;
   };
 
-  this.mycard.room_url = function(ip, port, room, username, password) {
+  this.mycard.room_url = function(ip, port, room, username, password, _private, server_auth) {
     var result;
-    return result = 'http://my-card.in/rooms/' + this.room_string(ip, port, room, username, password);
+    return result = 'http://my-card.in/rooms/' + this.room_string(ip, port, room, username, password, _private, server_auth);
   };
 
-  this.mycard.room_url_mycard = function(ip, port, room, username, password) {
+  this.mycard.room_url_mycard = function(ip, port, room, username, password, _private, server_auth) {
     var result;
-    return result = 'mycard://' + this.room_string(ip, port, room, username, password);
+    return result = 'mycard://' + this.room_string(ip, port, room, username, password, _private, server_auth);
   };
 
-  this.mycard.join = function(ip, port, room, username, password) {
-    return window.location.href = this.room_url_mycard(ip, port, room, username, password);
+  this.mycard.join = function(ip, port, room, username, password, _private, server_auth) {
+    return window.location.href = this.room_url_mycard(ip, port, room, username, password, _private, server_auth);
   };
 
 }).call(this);
