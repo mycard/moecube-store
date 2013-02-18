@@ -12,9 +12,9 @@
     result = "M#"
   else
     result = ""
-  result += name
+  result += encodeURIComponent(name)
   if password
-    result += '$' + password
+    result += '$' + encodeURIComponent(password)
   result
 
 #127.0.0.1:8087/test
@@ -25,7 +25,7 @@
     if password
       result += ':' + encodeURIComponent(password)
     result += '@'
-  result += ip + ':' + port + '/' + encodeURIComponent(room)
+  result += ip + ':' + port + '/' + room
   if _private
     result += '?private=true'
     if server_auth
