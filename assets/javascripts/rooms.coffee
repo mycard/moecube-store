@@ -225,7 +225,7 @@ $(document).ready ->
         room = Room.find(room_id)
         mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, @password.value, room.pvp, room.rule, room.mode, room.start_lp, room.start_hand, room.draw_count), Candy.Util.getCookie('username'), Candy.Util.getCookie('password') if room.server().auth)
       else
-        alert '房间已经关闭'
+        humane.log '房间已经关闭'
 
   $('#new_room_button').click ->
     new_room.name.value = Math.floor Math.random() * 1000
@@ -246,6 +246,8 @@ $(document).ready ->
           server_port = parseInt new_room.server_port.value
           server_auth = new_room.server_auth.checked
         mycard.room_url server_ip, server_port, mycard.room_name(new_room.name.value, null, new_room.pvp.checked, parseInt(new_room.rule.value), parseInt(new_room.mode.value), parseInt(new_room.start_lp.value), parseInt(new_room.start_hand.value), parseInt(new_room.draw_count.value)), null, null, new_room.password.value.length, server_auth
+      afterCopy: ->
+        humane.log '房间地址已复制到剪贴板'
   new_room.password.onchange = ->
     $('#new_room_copy_room_url_with_password').zclip('remove')
     if new_room.password.value

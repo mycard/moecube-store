@@ -348,7 +348,7 @@
           room = Room.find(room_id);
           return mycard.join(room.server().ip, room.server().port, mycard.room_name(room.name, this.password.value, room.pvp, room.rule, room.mode, room.start_lp, room.start_hand, room.draw_count), Candy.Util.getCookie('username'), room.server().auth ? Candy.Util.getCookie('password') : void 0);
         } else {
-          return alert('房间已经关闭');
+          return humane.log('房间已经关闭');
         }
       }
     });
@@ -373,6 +373,9 @@
             server_auth = new_room.server_auth.checked;
           }
           return mycard.room_url(server_ip, server_port, mycard.room_name(new_room.name.value, null, new_room.pvp.checked, parseInt(new_room.rule.value), parseInt(new_room.mode.value), parseInt(new_room.start_lp.value), parseInt(new_room.start_hand.value), parseInt(new_room.draw_count.value)), null, null, new_room.password.value.length, server_auth);
+        },
+        afterCopy: function() {
+          return humane.log('房间地址已复制到剪贴板');
         }
       });
     });
