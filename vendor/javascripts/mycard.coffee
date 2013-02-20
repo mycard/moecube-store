@@ -12,7 +12,8 @@
     result = "M#"
   else
     result = ""
-  result += encodeURIComponent(name)
+  result += name
+  result = encodeURIComponent(result)
   if password
     result += '$' + encodeURIComponent(password)
   result
