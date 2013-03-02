@@ -164,7 +164,7 @@ CandyShop.InlineImages = (function(self, Candy, $) {
 	 *   (String)
 	 */
 	var buildImageLoaderSource = function(url) {
-		return '<img class="inlineimages-loader" longdesc="' + url + '" src="candy-plugins/inline-images/spinner.gif" />'
+		return '<img class="inlineimages-loader" longdesc="' + url + '" src="/vendor/candy/plugins/inline-images/spinner.gif" />'
 	}
 	
 	/** Function: buildImageSource
