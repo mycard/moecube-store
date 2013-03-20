@@ -201,7 +201,7 @@
   login = function() {
     var candy_height;
     Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
-    Candy.init('http://122.0.65.70:5280/http-bind/', {
+    Candy.init('http://chat.my-card.in:5280/http-bind/', {
       core: {
         debug: false,
         autojoin: ['mycard@conference.my-card.in']
