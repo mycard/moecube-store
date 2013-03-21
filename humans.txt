@@ -1,0 +1,121 @@
+/* TEAM */
+
+Founder: zh99998
+Contact: zh99998 [at] gmail.com
+Google+: +神楽坂玲奈
+From: China
+Date: 2010.1.1
+
+Web UI developer: 華胥の羽
+Contact: feather746 [at] hotmail.com
+Google+: ﻿+Yolua Mesiade
+From: China
+Data: 2010.1.1
+
+Rails adviser: David07
+Contact: kuo_david [at] msn.com
+Google+: +Davy Kuo
+From: Taiwan
+Date: 2010.12.1
+
+UI designer: liqunsz
+Contact: liqunsz [at] 126.com
+From: China
+Date: 2011.6.26
+
+UI designer: 溪谷子
+Contact: 1017171492 [at] qq.com
+From: China
+Date: 2011.12.26
+
+Web UI Developer: yuyuhaso
+Contact: yuyuhaso [at] 10mov.com
+From: China
+Date: 2012.3.6
+
+UI designer: Losses
+Contact: losses.don [at] gmail.com
+Twitter: @Losses_don
+Google+: +Losses Don
+From: China
+Date: 2012.3.11
+
+Maid: Trickster
+Contact: nekokun [at] lolidaisuki.net
+Google+: +松岡修造
+From: China
+Date: 2012.4.9
+
+UI designer: 睙狐丸
+Contact: sakuyadesune [at] gmail.com
+Google+: +Lei Yakumo
+From: China
+Date: 2012.5.20
+
+Input Control developer: 灼眼的夏娜
+Contact: 5102040 [at] qq.com
+From: China
+Date: 2012.8.12
+
+Server maintenancer: 乜
+Contact: 2237654175 [at] qq.com
+From: China
+Date: 2012.11.13
+
+Images maintenancer: 娱乐力量全开！
+Contact: xand [at] qq.com
+From: China
+Date: 2012.11.11 
+
+Puzzle Maker developer: 囧囧·D·路飞
+Contact: 350002947 [at] qq.com
+From: China
+Date: 2012.12.2
+
+Card Database maintenancer: benblub
+From: Germany
+Date: 2013.1.1
+
+Card Database maintenancer: Wind2009
+Contact: wind.jackey [at] qq.com
+From: China
+Date: 2013.1.1
+
+
+mycard-image & mycard-decks.user.js developer: 菜菜
+Contact: 2457774381 [at] qq.com
+From: China
+Date: 2013.3.1
+
+mycard-decks.user.js developer: 禾西
+Contact: 29383014 [at] qq.com
+Google+: Vapto Duracain
+From: China
+Date: 2013.3.21
+
+/* THANKS */
+ygopro Founder: Fluorohydride
+From: China
+Contact: argon.sun [at] gmail.com
+Date: 2011.2.17
+
+ygopro Server Developer: yuyuhaso
+Contact: yuyuhaso [at] 10mov.com
+From: China
+Date: 2012.3.1
+
+Server Provide: 东方幻想乡
+Contact: http://www.touhou.cc/
+Date: 2012.3.1
+
+Server Provide: 66rpg
+Contact: http://www.66rpg.com/
+Date: 2012.3.1
+
+Server Provide: OcgSoft
+Contact: http://www.ocgsoft.cn/
+Date: 2012.3.25
+
+Server Provide: Arch Linux 中文社区
+Contact: http://www.archlinuxcn.org/
+Date: 2013.1.1
