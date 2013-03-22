@@ -122,7 +122,7 @@ From: China
 Date: 2012.3.1
 
 Project Hosting: Github
-site: https://github.com/zh99998/mycard
+Site: https://github.com/zh99998/mycard
 Date: 2010.1.1
 
 Server Provide: 东方幻想乡
