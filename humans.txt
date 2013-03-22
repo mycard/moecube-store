@@ -78,6 +78,18 @@ Contact: 350002947 [at] qq.com
 From: China
 Date: 2012.12.2
 
+Web UI adviser: 淡淡清风
+Contact: aturan [at] duelist.cn
+Google+: ﻿+Aturan Tam
+From: China
+Date: 2013.1.1
+
+Web UI adviser: 艾可
+Contact: 9 [at] ikaze.me
+Google+: +艾可
+From: China
+Date: 2013.1.1
+
 Card Database maintenancer: benblub
 From: Germany
 Date: 2013.1.1
@@ -87,7 +99,6 @@ Contact: wind.jackey [at] qq.com
 From: China
 Date: 2013.1.1
 
-
 mycard-image & mycard-decks.user.js developer: 菜菜
 Contact: 2457774381 [at] qq.com
 From: China
@@ -95,7 +106,7 @@ Date: 2013.3.1
 
 mycard-decks.user.js developer: 禾西
 Contact: 29383014 [at] qq.com
-Google+: Vapto Duracain
+Google+: +Vapto Duracain
 From: China
 Date: 2013.3.21
 
@@ -110,18 +121,22 @@ Contact: yuyuhaso [at] 10mov.com
 From: China
 Date: 2012.3.1
 
+Project Hosting: Github
+site: https://github.com/zh99998/mycard
+Date: 2010.1.1
+
 Server Provide: 东方幻想乡
-Contact: http://www.touhou.cc/
+Site: http://www.touhou.cc/
 Date: 2012.3.1
 
 Server Provide: 66rpg
-Contact: http://www.66rpg.com/
+Site: http://www.66rpg.com/
 Date: 2012.3.1
 
 Server Provide: OcgSoft
-Contact: http://www.ocgsoft.cn/
+Site: http://www.ocgsoft.cn/
 Date: 2012.3.25
 
 Server Provide: Arch Linux 中文社区
-Contact: http://www.archlinuxcn.org/
+Site: http://www.archlinuxcn.org/
 Date: 2013.1.1
