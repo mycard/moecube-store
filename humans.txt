@@ -1,3 +1,7 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
 /* TEAM */
 
 Founder: zh99998
