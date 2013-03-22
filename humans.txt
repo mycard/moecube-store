@@ -142,3 +142,6 @@ Contact: phoenixlzx [at] phoenixsec.org
 Google+: +Phoenix Nemo
 Site: http://www.archlinuxcn.org/
 Date: 2013.1.1
+
+/* Special Thanks */
+Player: You
