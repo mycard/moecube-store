@@ -121,18 +121,24 @@ Contact: yuyuhaso [at] 10mov.com
 From: China
 Date: 2012.3.1
 
-Server Provide: 东方幻想乡
+Server Provide: 菠萝包 & sakuya
+Contact: 175779871 [at] qq.com
+Google+: ﻿+杜春 
 Site: http://www.touhou.cc/
 Date: 2012.3.1
 
-Server Provide: 66rpg
+Server Provide: 柳柳
+Contact: rpgmaker [at] 66rpg.com
 Site: http://www.66rpg.com/
 Date: 2012.3.1
 
-Server Provide: OcgSoft
+Server Provide: 随风堕落
+Contact: smdcn [at] inazuma.cn
 Site: http://www.ocgsoft.cn/
 Date: 2012.3.25
 
-Server Provide: Arch Linux 中文社区
+Server Provide: Phoenix Nemo
+Contact: phoenixlzx [at] phoenixsec.org
+Google+: +Phoenix Nemo
 Site: http://www.archlinuxcn.org/
 Date: 2013.1.1
