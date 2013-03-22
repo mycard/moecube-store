@@ -121,10 +121,6 @@ Contact: yuyuhaso [at] 10mov.com
 From: China
 Date: 2012.3.1
 
-Project Hosting: Github
-Site: https://github.com/zh99998/mycard
-Date: 2010.1.1
-
 Server Provide: 东方幻想乡
 Site: http://www.touhou.cc/
 Date: 2012.3.1
