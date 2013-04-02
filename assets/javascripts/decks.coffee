@@ -145,7 +145,7 @@ class Deck extends Spine.Model
       side = decoded >> 29
       count = decoded >> 27 & 0x3
       card_id = decoded & 0x07FFFFFF
-      card_usages.push {card_id: card_id, side: side, count: count}
+      card_usages.push {id: "#{result.cid}_#{side}_#{last_id}_#{Math.random()}", card_id: card_id, side: side, count: count}
     result.card_usages card_usages
     result
   @load: (str, name)->

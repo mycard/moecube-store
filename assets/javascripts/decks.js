@@ -363,6 +363,7 @@
         count = decoded >> 27 & 0x3;
         card_id = decoded & 0x07FFFFFF;
         card_usages.push({
+          id: "" + result.cid + "_" + side + "_" + last_id + "_" + (Math.random()),
           card_id: card_id,
           side: side,
           count: count
