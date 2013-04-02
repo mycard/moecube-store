@@ -83,7 +83,7 @@ class Deck extends Spine.Model
   @configure 'Deck', 'name'
   @hasMany 'card_usages', CardUsage
 
-  @key: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*-="
+  @key: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_="
   encode: ->
     result = ''
     for card_usage in @card_usages().all()
@@ -207,7 +207,6 @@ class Deck extends Spine.Model
       card_usage.save()
     else
       card_usage.destroy()
-
 class DecksController extends Spine.Controller
   events:
     'mouseover .card_usage': 'show',
@@ -369,6 +368,11 @@ class CardsController extends Spine.Controller
 decks = new DecksController(el: $("#deck"))
 cards = new CardsController(el: $("#search_cards"))
 
+#there is a bug in old version deck editor.
+competition_convert = {'*':'-', '-':'_'}
+if document.location.href.indexOf('*') >= 0
+  location.href = document.location.href.replace /[\*\-]/g, (char)-> competition_convert[char]
+
 $(document).ready ->
   decks.load_from_url()
 
@@ -379,11 +383,12 @@ $(document).ready ->
   #dialog
   $("#deck_share_dialog").dialog
     modal: true
-    autoOpen: false
+    autoOpen: $.url().attr('fragment') == 'share'
+    width: 600
     open: ->
       $("#deck_url").val decks.deck().url()
       $("#deck_url")[0].select()
-      $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url())
+      $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=171x171&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url())
 
   $("#drop_upload_dialog").dialog
     dialogClass: 'drop_upload'
@@ -425,7 +430,7 @@ $(document).ready ->
     $("#drop_upload_dialog").dialog('close')
     decks.upload event.dataTransfer.files
 
-  $(".rename_ope").click ->
+  $(".switch").click ->
     $(".text,.graphic").toggleClass("graphic text")
     decks.render()
 
