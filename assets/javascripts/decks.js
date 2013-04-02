@@ -363,7 +363,6 @@
         count = decoded >> 27 & 0x3;
         card_id = decoded & 0x07FFFFFF;
         card_usages.push({
-          id: "" + result.cid + "_" + side + "_" + card_id,
           card_id: card_id,
           side: side,
           count: count
@@ -392,7 +391,7 @@
         } else if (line.substr(0, 5) === '!side') {
           if (last_id) {
             card_usages.push({
-              id: "" + result.cid + "_" + side + "_" + last_id,
+              id: "" + result.cid + "_" + side + "_" + last_id + "_" + (Math.random()),
               card_id: last_id,
               side: side,
               count: count
@@ -408,7 +407,7 @@
             } else {
               if (last_id) {
                 card_usages.push({
-                  id: "" + result.cid + "_" + side + "_" + last_id,
+                  id: "" + result.cid + "_" + side + "_" + last_id + "_" + (Math.random()),
                   card_id: last_id,
                   side: side,
                   count: count
@@ -424,7 +423,7 @@
       }
       if (last_id) {
         card_usages.push({
-          id: "" + result.cid + "_" + side + "_" + last_id,
+          id: "" + result.cid + "_" + side + "_" + last_id + "_" + (Math.random()),
           card_id: last_id,
           side: side,
           count: count

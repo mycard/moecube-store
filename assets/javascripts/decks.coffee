@@ -145,7 +145,7 @@ class Deck extends Spine.Model
       side = decoded >> 29
       count = decoded >> 27 & 0x3
       card_id = decoded & 0x07FFFFFF
-      card_usages.push {id: "#{result.cid}_#{side}_#{card_id}", card_id: card_id, side: side, count: count}
+      card_usages.push {card_id: card_id, side: side, count: count}
     result.card_usages card_usages
     result
   @load: (str, name)->
@@ -160,7 +160,7 @@ class Deck extends Spine.Model
       if !line or line.charAt(0) == '#'
         continue
       else if line.substr(0, 5) == '!side'
-        card_usages.push {id: "#{result.cid}_#{side}_#{last_id}", card_id: last_id, side: side, count: count} if last_id
+        card_usages.push {id: "#{result.cid}_#{side}_#{last_id}_#{Math.random()}", card_id: last_id, side: side, count: count} if last_id
         side = true
         last_id = null
       else
@@ -169,12 +169,12 @@ class Deck extends Spine.Model
           if card_id == last_id
             count++
           else
-            card_usages.push {id: "#{result.cid}_#{side}_#{last_id}", card_id: last_id, side: side, count: count} if last_id
+            card_usages.push {id: "#{result.cid}_#{side}_#{last_id}_#{Math.random()}", card_id: last_id, side: side, count: count} if last_id
             last_id = card_id
             count = 1
         else
           throw '无效卡组'
-    card_usages.push {id: "#{result.cid}_#{side}_#{last_id}", card_id: last_id, side: side, count: count} if last_id
+    card_usages.push {id: "#{result.cid}_#{side}_#{last_id}_#{Math.random()}", card_id: last_id, side: side, count: count} if last_id
     result.card_usages card_usages
     result
 
