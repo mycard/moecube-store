@@ -160,7 +160,7 @@ class Deck extends Spine.Model
       if !line or line.charAt(0) == '#'
         continue
       else if line.substr(0, 5) == '!side'
-        card_usages.push {card_id: last_id, side: side, count: count} if last_id
+        card_usages.push {id: "#{result.cid}_#{side}_#{last_id}", card_id: last_id, side: side, count: count} if last_id
         side = true
         last_id = null
       else
@@ -290,7 +290,12 @@ class DecksController extends Spine.Controller
 
   load_from_url: (url)->
     try
-      decks.deck Deck.decode $.url(url).param('cards'), $.url().param('name')
+      #there is a bug in old version deck editor.
+      cards_param = $.url(url).param('cards')
+      if cards_param.indexOf('*') >= 0
+        cards_param = cards_param.replace /[\*\-]/g, (char)-> {'*':'-', '-':'_'}[char]
+
+      decks.deck Deck.decode cards_param, $.url().param('name')
     catch error
       alert error
 
@@ -368,77 +373,71 @@ class CardsController extends Spine.Controller
 decks = new DecksController(el: $("#deck"))
 cards = new CardsController(el: $("#search_cards"))
 
-#there is a bug in old version deck editor.
-competition_convert = {'*':'-', '-':'_'}
-if document.location.href.indexOf('*') >= 0
-  location.href = document.location.href.replace /[\*\-]/g, (char)-> competition_convert[char]
+decks.load_from_url()
 
-$(document).ready ->
-  decks.load_from_url()
+$('#search').submit ->
+  cards.search $('.search_input').val()
+  return false
 
-  $('#search').submit ->
-    cards.search $('.search_input').val()
-    return false
+#dialog
+$("#deck_share_dialog").dialog
+  modal: true
+  autoOpen: $.url().attr('fragment') == 'share'
+  width: 600
+  open: ->
+    $("#deck_url").val decks.deck().url()
+    $("#deck_url")[0].select()
+    $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=171x171&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url())
 
-  #dialog
-  $("#deck_share_dialog").dialog
-    modal: true
-    autoOpen: $.url().attr('fragment') == 'share'
-    width: 600
-    open: ->
-      $("#deck_url").val decks.deck().url()
+$("#drop_upload_dialog").dialog
+  dialogClass: 'drop_upload'
+  draggable: false
+  resizable: false
+  modal: true
+  autoOpen: false
+
+#share
+$('#deck_share').click ->
+  $("#deck_share_dialog").dialog('open')
+
+$('#deck_url_shorten').click ->
+  $('#deck_url_shorten').attr "disabled", true
+  $.ajax
+    url: 'https://www.googleapis.com/urlshortener/v1/url'
+    type: 'POST'
+    data: JSON.stringify {longUrl: decks.deck().url()}
+    contentType: 'application/json; charset=utf-8'
+    success: (data)->
+      $("#deck_url").val data.id
       $("#deck_url")[0].select()
-      $("#deck_url_qrcode").attr 'src', 'https://chart.googleapis.com/chart?chs=171x171&cht=qr&chld=|0&chl=' + encodeURIComponent(decks.deck().url())
+      $('#deck_url_shorten').attr "disabled", false
 
-  $("#drop_upload_dialog").dialog
-    dialogClass: 'drop_upload'
-    draggable: false
-    resizable: false
-    modal: true
-    autoOpen: false
+#upload
+$('#deck_load').change ->
+  decks.upload(@files)
 
-  #share
-  $('#deck_share').click ->
-    $("#deck_share_dialog").dialog('open')
+$(window).bind 'popstate', (ev)->
+  if ev.state
+    deck.refresh ev.state, false
 
-  $('#deck_url_shorten').click ->
-    $('#deck_url_shorten').attr "disabled", true
-    $.ajax
-      url: 'https://www.googleapis.com/urlshortener/v1/url'
-      type: 'POST'
-      data: JSON.stringify {longUrl: decks.deck().url()}
-      contentType: 'application/json; charset=utf-8'
-      success: (data)->
-        $("#deck_url").val data.id
-        $("#deck_url")[0].select()
-        $('#deck_url_shorten').attr "disabled", false
+$('.main_div').bind 'dragover', (ev)->
+  ev.preventDefault();
+#$("#drop_upload_dialog").dialog('open')
 
-  #upload
-  $('#deck_load').change ->
-    decks.upload(@files)
+$('.main_div').bind 'drop', (ev)->
+  ev.preventDefault();
+  $("#drop_upload_dialog").dialog('close')
+  decks.upload event.dataTransfer.files
 
-  $(window).bind 'popstate', (ev)->
-    if ev.state
-      deck.refresh ev.state, false
-
-  $('.main_div').bind 'dragover', (ev)->
-    ev.preventDefault();
-    #$("#drop_upload_dialog").dialog('open')
-
-  $('.main_div').bind 'drop', (ev)->
-    ev.preventDefault();
-    $("#drop_upload_dialog").dialog('close')
-    decks.upload event.dataTransfer.files
-
-  $(".switch").click ->
-    $(".text,.graphic").toggleClass("graphic text")
-    decks.render()
+$(".switch").click ->
+  $(".text,.graphic").toggleClass("graphic text")
+  decks.render()
 
 
-  $.i18n.properties
-    name: 'card'
-    path: '/locales/'
-    mode: 'map'
-    cache: true
+$.i18n.properties
+  name: 'card'
+  path: '/locales/'
+  mode: 'map'
+  cache: true
 
-  addthis.init()
+addthis.init()
