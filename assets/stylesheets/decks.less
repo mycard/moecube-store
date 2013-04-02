@@ -104,17 +104,15 @@ body{margin:0;padding:0;background:#eee;}
     label{float:left;}
   }
 }
-.page{
-  max-width:518px;height:60px;padding:20px 15px 0 0;text-align:right;
+#pagination {
+  max-width:518px;height:60px;padding:20px 15px 0 0;text-align:right;float:right;
   a{margin:0 4px;}
-}
-.page_home{background:url('/assets/images/decks/page_arrows.gif') -26px 0 no-repeat;width:23px;height:17px;display:block;float:left;}
-.page_pre{background:url('/assets/images/decks/page_arrows.gif') -1px 0 no-repeat;width:13px;height:17px;display:block;float:left;}
-.page_next{background:url('/assets/images/decks/page_arrows.gif') -13px 0 no-repeat;width:13px;height:17px;display:block;float:left;}
-.page_last{background:url('/assets/images/decks/page_arrows.gif') -47px 0 no-repeat;width:23px;height:17px;display:block;float:left;}
-.page_num{
-  display:block;float:left;height:17px;line-height:17px;width:16px;font-size:14px;color:#999;text-decoration:none;text-align:center;
-  &:hover{text-decoration:underline;}
+  li{
+    display:block;float:left;height:17px;line-height:17px;width:16px;font-size:14px;color:#999;text-decoration:none;text-align:center;
+    &:hover{text-decoration:underline;}
+  }
+  .next{background:url('/assets/images/decks/page_arrows.gif') -13px 0 no-repeat;width:13px;height:17px;display:block;float:left;font-size: 0px;}
+  .prev{background:url('/assets/images/decks/page_arrows.gif') -1px 0 no-repeat;width:13px;height:17px;display:block;float:left;font-size: 0px;}
 }
 .card_group{
   height:565px;//width:150px;
@@ -237,7 +235,7 @@ body{margin:0;padding:0;background:#eee;}
       }
       span{font-size:12px;}      
   }
-  .page{
+  #pagination{
     padding:20px 5px 0 0;
     a{margin:0 2px;}
   }

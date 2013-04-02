@@ -354,7 +354,16 @@ class CardsController extends Spine.Controller
     $('#search_cards_' + (if $('.operate_area').hasClass('text') then 'text' else 'graphic') + '_template')
   search: (name)->
     Card.fetch_by_name name, (cards)=>
+      category_count = {}
+      for category in Card.categories
+        category_count[category] = 0
+      for card in cards
+        category_count[(category for category in card.card_type when category in Card.categories).pop()]++
+      $("#search_cards_spells_count").html category_count.Spell
+      $("#search_cards_traps_count").html category_count.Trap
+      $("#search_cards_monsters_count").html category_count.Monster
       @html @template().tmpl cards
+      @el.easyPaginate(step: 7, delay: 30)
 
 
 decks = new DecksController(el: $("#deck"))

@@ -442,22 +442,13 @@
                 <!-- 修改										 -->
                 <div class="floatleft search_results">
                     <span style="color:#3366CC;font-weight:bold;">结果数</span>
-                    魔法：<span style="color:#FFAD6E;">XXX</span>
-                    陷阱：<span style="color:#FFAD6E;">XXX</span>
-                    怪兽：<span style="color:#FFAD6E;">XXX</span>
+                    魔法：<span id="search_cards_spells_count" style="color:#FFAD6E;">-</span>
+                    陷阱：<span id="search_cards_traps_count" style="color:#FFAD6E;">-</span>
+                    怪兽：<span id="search_cards_monsters_count" style="color:#FFAD6E;">-</span>
                 </div>
             </div>
             <div class="floatleft main_area" id="search_cards"></div>
 
-            <div class="floatright page">
-                <a class="page_home" href=""></a>
-                <a class="page_pre" href=""></a>
-                <a class="page_num" href="">9</a>
-                <a class="page_num" href="">10</a>
-                <a class="page_num" href="">11</a>
-                <a class="page_next" href=""></a>
-                <a class="page_last" href=""></a>
-            </div>
             <!--{"archetypes":"","card_type":"\u6548\u679c\u602a\u517d","id":2067,"lore":"\u8fd9\u5f20\u5361\u653b\u51fb\u7684\u573a\u5408\uff0c\u5bf9\u65b9\u76f4\u5230\u4f24\u5bb3\u6b65\u9aa4\u7ed3\u675f\u65f6\u4e0d\u80fd\u53d1\u52a8\u9b54\u6cd5\u00b7\u9677\u9631\u5361\u3002\u7528\u4ee5\u4e0b\u7684\u602a\u517d\u4e3a\u796d\u54c1\u4f5c\u796d\u54c1\u53ec\u5524\u7684\u573a\u5408\uff0c\u8fd9\u5f20\u5361\u5f97\u5230\u5404\u81ea\u7684\u6548\u679c\u3002\u25cf\u7eff\u9f7f\u8f6e\uff1a\u8fd9\u5f20\u5361\u653b\u51fb\u5b88\u5907\u8868\u793a\u602a\u517d\u65f6\uff0c\u82e5\u8fd9\u5f20\u5361\u7684\u653b\u51fb\u529b\u8d85\u8fc7\u5b88\u5907\u8868\u793a\u602a\u517d\u7684\u5b88\u5907\u529b\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206\u90a3\u4e2a\u6570\u503c\u7684\u6218\u6597\u4f24\u5bb3\u3002\u25cf\u7ea2\u9f7f\u8f6e\uff1a\u7ed9\u4e88\u5bf9\u65b9\u73a9\u5bb6\u6218\u6597\u4f24\u5bb3\u65f6\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206400\u5206\u4f24\u5bb3\u3002\u25cf\u9ec4\u9f7f\u8f6e\uff1a\u6218\u6597\u7834\u574f\u5bf9\u65b9\u602a\u517d\u7684\u573a\u5408\uff0c\u7ed9\u4e88\u5bf9\u65b9\u57fa\u672c\u5206600\u5206\u4f24\u5bb3\u3002","mediums":"OCG\tTCG","monster_atk":3000,"monster_attribute":"\u5730","monster_def":2000,"monster_level":8,"monster_type":null,"name":"\u53e4\u4ee3\u7684\u673a\u68b0\u5de8\u9f99","number":50933533,"stats":"21,26,37","status":3,"tokens":0,"type":"\u673a\u68b0"}	-->
         </div>
 
@@ -533,6 +524,7 @@
 <script src="/vendor/javascripts/jquery.i18n.properties-min-1.0.9.js"></script>
 <script src="/vendor/javascripts/jquery-ui-1.9.1.custom.min.js"></script>
 <script src="/vendor/javascripts/jquery.base64.min.js"></script>
+<script src="/vendor/javascripts/easypaginate.js"></script>
 <script src="/vendor/javascripts/hScrollPane.js"></script>
 <script src="/vendor/javascripts/jscroll.js"></script>
 <script src="/vendor/javascripts/json2.js"></script>
