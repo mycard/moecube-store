@@ -102,12 +102,14 @@ Contact: 2457774381 [at] qq.com
 From: China
 Date: 2013.3.1
 
+mycard.user.js developer: 科学PK上帝
+From: China
+Date: 2013.3.1
+
 downloads.php developer: 加大号的猫
 Google+: +Harry Cheng
 From: China
 Date: 2013.3.1
-
-
 
 mycard.user.js developer: 禾西
 Contact: 29383014 [at] qq.com
@@ -149,4 +151,5 @@ Site: http://www.archlinuxcn.org/
 Date: 2013.1.1
 
 /* Special Thanks */
+Original: KONAMI
 Player: You
