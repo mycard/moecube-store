@@ -9,7 +9,7 @@ $(document).ready ->
   #version
   $.get '/mycard/download.url', (data)->
     if matched = data.match(/mycard-(.*)-(.*)\.7z/)
-      $('#download_version').html "#{matched[1]} #{matched[2]}"
+      $('#download_version').html matched[1]
     else
       $('#download_version').html '读取失败'
 

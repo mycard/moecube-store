@@ -10,7 +10,7 @@
     $.get('/mycard/download.url', function(data) {
       var matched;
       if (matched = data.match(/mycard-(.*)-(.*)\.7z/)) {
-        return $('#download_version').html("" + matched[1] + " " + matched[2]);
+        return $('#download_version').html(matched[1]);
       } else {
         return $('#download_version').html('读取失败');
       }
