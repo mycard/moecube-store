@@ -9,7 +9,7 @@
     });
     $.get('/mycard/download.url', function(data) {
       var matched;
-      if (matched = data.match(/mycard-(.*)-(.*)\.(.*)/)) {
+      if (matched = data.match(/mycard-(.*?)-(.*)\.(.*)/)) {
         return $('#download_version').html(matched[1]);
       } else {
         return $('#download_version').html('读取失败');
