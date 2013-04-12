@@ -2,154 +2,170 @@
 /* humanstxt.org */
 
 
-/* TEAM */
+/* Mycard */
 
 Founder: zh99998
 Contact: zh99998 [at] gmail.com
-Google+: +神楽坂玲奈
-From: China
+Google+: +神楽坂玲奈 (101873829070855379840)
+Location: China
 Date: 2010.1.1
-
-Web UI developer: 華胥の羽
-Contact: feather746 [at] hotmail.com
-Google+: ﻿+Yolua Mesiade
-From: China
-Data: 2010.1.1
-
-Rails adviser: David07
-Contact: kuo_david [at] msn.com
-Google+: +Davy Kuo
-From: Taiwan
-Date: 2010.12.1
 
 UI designer: liqunsz
 Contact: liqunsz [at] 126.com
-From: China
+Location: China
 Date: 2011.6.26
 
 UI designer: 溪谷子
 Contact: 1017171492 [at] qq.com
-From: China
+Location: China
+Avatar: http://www.touhou.cc/ucenter/avatar.php?uid=15590&size=middle
 Date: 2011.12.26
 
-Web UI Developer & ygopro-web developer: yuyuhaso
-Contact: yuyuhaso [at] 10mov.com
-From: China
-Date: 2012.3.6
+Input Control developer: 灼眼的夏娜
+Contact: 5102040 [at] qq.com
+Avatar: http://uc.66rpg.com/avatar.php?uid=64917&size=middle
+Location: China
+Date: 2012.8.12
+
+/* Mycard Web */
+
+Web UI developer: 華胥の羽
+Contact: feather746 [at] hotmail.com
+Google+: +Yolua Mesiade (102725466404235496819)
+Location: China
+Data: 2010.1.1
+
+Rails adviser: David07
+Google+: +Davy Kuo (110206040751991209763)
+Contact: kuo_david [at] msn.com
+Location: Taiwan
+Date: 2010.12.1
 
 UI designer: Losses
 Contact: losses.don [at] gmail.com
 Twitter: @Losses_don
-Google+: +Losses Don
-From: China
+Google+: +Losses Don (109343029514852526449)
+Location: China
 Date: 2012.3.11
 
-Maid: Trickster
-Contact: nekokun [at] lolidaisuki.net
-Google+: +松岡修造
-From: China
-Date: 2012.4.9
-
 UI designer: 睙狐丸
+Google+: +Lei Yakumo (111836924530400099465)
 Contact: sakuyadesune [at] gmail.com
-Google+: +Lei Yakumo
-From: China
+Location: China
 Date: 2012.5.20
 
-Input Control developer: 灼眼的夏娜
-Contact: 5102040 [at] qq.com
-From: China
-Date: 2012.8.12
+Web UI adviser: 淡淡清风
+Google+: +Aturan Tam (107570853413519115354)
+Contact: aturan [at] duelist.cn
+Location: China
+Date: 2013.1.1
 
-Server maintenancer: 乜
-Contact: 2237654175 [at] qq.com
-From: China
-Date: 2012.11.13
+downloads.php developer: 加大号的猫
+Google+: +Harry Cheng (100451406650884759770)
+Location: China
+Date: 2013.3.1
+
+/* API & Database */
 
 Images maintenancer: 娱乐力量全开！
 Contact: xand [at] qq.com
-From: China
+Location: China
 Date: 2012.11.11 
 
-Puzzle Maker developer & ygopro-web developer: 囧囧·D·路飞
-Contact: 350002947 [at] qq.com
-From: China
-Date: 2012.12.2
-
-Web UI adviser: 淡淡清风
-Contact: aturan [at] duelist.cn
-Google+: ﻿+Aturan Tam
-From: China
-Date: 2013.1.1
-
-Web UI adviser & mycard.user.js developer: 艾可
-Contact: 9 [at] ikaze.me
-Google+: +艾可
-From: China
-Date: 2013.1.1
-
 Card Database maintenancer: benblub
-From: Germany
+Location: Germany
 Date: 2013.1.1
 
 Card Database maintenancer: Wind2009
+Google+: +Jackey Zack (105571449472658939010)
 Contact: wind.jackey [at] qq.com
-From: China
+Location: China
 Date: 2013.1.1
 
-mycard-image & mycard.user.js developer: 菜菜
+/* Mycard Extension */
+
+mycard.user.js developer: 艾可
+Contact: 9 [at] ikaze.me
+Google+: +艾可 (106228783225517787706)
+Location: China
+Date: 2013.1.1
+
+mycard.user.js developer: 菜菜
 Contact: 2457774381 [at] qq.com
-From: China
+Location: China
+Avatar: http://himg.bdimg.com/sys/portrait/item/c5bba606.jpg
 Date: 2013.3.1
 
 mycard.user.js developer: 科学PK上帝
-From: China
+Location: China
+Avatar: http://himg.bdimg.com/sys/portrait/item/9abce7a791e5ada6504be4b88ae5b89d1802.jpg
+Site: http://www.baidu.com/p/科学PK上帝
 Date: 2013.3.1
 
-downloads.php developer: 加大号的猫
-Google+: +Harry Cheng
-From: China
-Date: 2013.3.1
+/* Ygopro Web */
 
-mycard.user.js developer: 禾西
-Contact: 29383014 [at] qq.com
-Google+: +Vapto Duracain
-From: China
-Date: 2013.3.21
+Web UI Developer & ygopro-web developer: yuyuhaso
+Contact: yuyuhaso [at] 10mov.com
+Location: China
+Date: 2012.3.6
+
+Puzzle Maker developer & ygopro-web developer: 囧囧·D·路飞
+Contact: 350002947 [at] qq.com
+Location: China
+Date: 2012.12.2
+
+/* Other */
+
+Maid: Trickster
+Google+: +松岡修造 (107622002210434606023)
+Contact: nekokun [at] lolidaisuki.net
+Location: China
+Date: 2012.4.9
+
+Server maintenancer: 乜
+Contact: 2237654175 [at] qq.com
+Location: China
+Date: 2012.11.13
 
 /* THANKS */
 ygopro Founder: Fluorohydride
-From: China
+Location: China
+Google+: +Argon Sun (115055552544356232300)
 Contact: argon.sun [at] gmail.com
 Date: 2011.2.17
 
 ygopro Server Developer: yuyuhaso
 Contact: yuyuhaso [at] 10mov.com
-From: China
+Location: China
 Date: 2012.3.1
 
-Server Provide: 菠萝包 & sakuya
+Server Provide: 菠萝包
+Google+: +菠萝包 (105701011106928071740)
 Contact: 175779871 [at] qq.com
-Google+: ﻿+杜春 
 Site: http://www.touhou.cc/
 Date: 2012.3.1
 
 Server Provide: 柳柳
 Contact: rpgmaker [at] 66rpg.com
 Site: http://www.66rpg.com/
+Avatar:  http://uc.66rpg.com/avatar.php?uid=53287&size=middle
 Date: 2012.3.1
 
 Server Provide: 随风堕落
 Contact: smdcn [at] inazuma.cn
 Site: http://www.ocgsoft.cn/
+Avatar: http://www.duelcn.com/uc_server/avatar.php?uid=3&size=middle
 Date: 2012.3.25
 
 Server Provide: Phoenix Nemo
 Contact: phoenixlzx [at] phoenixsec.org
-Google+: +Phoenix Nemo
+Google+: +Phoenix Nemo (107142103119739092775)
 Site: http://www.archlinuxcn.org/
 Date: 2013.1.1
 
 /* Special Thanks */
-Original: KONAMI
+Original Work: KONAMI
+Site: http://www.yugioh-card.com/
+Avatar: http://www.konami.com/imgs/konami_facebook_logo.jpg
+
 Player: You
