@@ -67,16 +67,16 @@ Date: 2013.3.1
 
 /* API & Database */
 
-Images maintenancer: 娱乐力量全开！
+Images maintainer: 娱乐力量全开！
 Contact: xand [at] qq.com
 Location: China
 Date: 2012.11.11 
 
-Card Database maintenancer: benblub
+Card Database maintainer: benblub
 Location: Germany
 Date: 2013.1.1
 
-Card Database maintenancer: Wind2009
+Card Database maintainer: Wind2009
 Google+: +Jackey Zack (105571449472658939010)
 Contact: wind.jackey [at] qq.com
 Location: China
@@ -114,7 +114,7 @@ Contact: 350002947 [at] qq.com
 Location: China
 Date: 2012.12.2
 
-ygopro-web develiper: Simon Chan
+ygopro-web developer: Simon Chan
 Contact: cnsimonchan@gmail.com
 Google+: +Simon Chan (104683496280574876065)
 Twitter: @cnsimonchan
@@ -129,7 +129,7 @@ Contact: nekokun [at] lolidaisuki.net
 Location: China
 Date: 2012.4.9
 
-Server maintenancer: 乜
+Server maintainer: 乜
 Contact: 2237654175 [at] qq.com
 Location: China
 Date: 2012.11.13
