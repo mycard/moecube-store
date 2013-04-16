@@ -1,5 +1,6 @@
 [
-    {"id":10,"title":"和我签下契约，成为魔法少女吧","url":"https://my-card.in/humans", "created_at":"2013-04-13T18:12:07+08:00","updated_at":"2013-04-13T07:12:08+08:00"},
+	{"id":11,"title":"登录崩溃或聊天断开的请更新至1.0.5版本","url":"http://my-card.in/mycard/updates", "created_at":"2013-04-16T18:12:07+08:00","updated_at":"2013-04-16T07:12:08+08:00"},
+        {"id":10,"title":"和我签下契约，成为魔法少女吧","url":"https://my-card.in/humans", "created_at":"2013-04-13T18:12:07+08:00","updated_at":"2013-04-13T07:12:08+08:00"},
 	{"id":9,"title":"卡组分享系统测试中，有问题或建议请到G+ mycard社群吐槽","url":"https://plus.google.com/communities/112748610591305626436", "created_at":"2013-04-02T18:12:07+08:00","updated_at":"2013-04-02T07:12:08+08:00"},
 	{"id":8,"title":"mycard可以使用Google账号登录了<-戳我查看详情","url":"https://github.com/mycard/mycard/wiki/%E7%94%A8%E6%88%B7", "created_at":"2013-03-25T18:12:07+08:00","updated_at":"2013-03-25T07:12:08+08:00"},
 	{"id":3,"title":"可以使用手机登录聊天室了 <-戳我查看详情","url":"https://github.com/mycard/mycard/wiki/聊天室","created_at":"2013-03-09T18:12:07+08:00","updated_at":"2013-03-09T07:12:08+08:00"},
