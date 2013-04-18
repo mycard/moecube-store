@@ -65,6 +65,11 @@ Google+: +Harry Cheng (100451406650884759770)
 Location: China
 Date: 2013.3.1
 
+mycard-web developer: 林静琴
+Google+: +林静琴 (117239089659078825668)
+Location: China
+Date: 2013.4.15
+
 /* API & Database */
 
 Images maintainer: 娱乐力量全开！
@@ -120,6 +125,13 @@ Google+: +Simon Chan (104683496280574876065)
 Twitter: @cnsimonchan
 Location: China
 Date: 2013.4.4
+
+/* thplatform */
+
+Hopeless Masquerade: 雷鸣
+Contact: reimu@hakurei.cn
+Location: China
+Date: 2013.4.17
 
 /* Other */
 
