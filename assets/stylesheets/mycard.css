@@ -181,6 +181,16 @@ a {
     text-align: center;
 }
 
+#platform a {
+    color: #134468;
+    text-shadow: 2px 2px #CFCFCF;
+    border-bottom: dashed #CFCFCF 1px;
+}
+
+#platform a:hover {
+    color: #072847;
+}
+
 #slider {
     clear: both;
     width: 500px;
