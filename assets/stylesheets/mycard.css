@@ -181,6 +181,11 @@ a {
     text-align: center;
 }
 
+#platform {
+    font-size:12px;
+    color:#2E2E2E;
+}
+
 #platform a {
     color: #134468;
     text-shadow: 2px 2px #CFCFCF;
