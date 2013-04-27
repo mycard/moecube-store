@@ -65,6 +65,11 @@ Google+: +Harry Cheng (100451406650884759770)
 Location: China
 Date: 2013.3.1
 
+mycard-combat developer: 亦念
+Google+: +亦念
+Location: China
+Date: 2013.4.1
+
 mycard-web developer: 林静琴
 Google+: +林静琴 (117239089659078825668)
 Location: China
@@ -126,12 +131,14 @@ Twitter: @cnsimonchan
 Location: China
 Date: 2013.4.4
 
-/* thplatform */
+/* shinkirou */
 
-Hopeless Masquerade: 雷鸣
-Contact: reimu@hakurei.cn
+Hopeless Masquerade: ncwhale
+Google+: +Whale Mo
+Site: http://kouga.us/
 Location: China
-Date: 2013.4.17
+Date: 2013.4.20
+
 
 /* Other */
 
@@ -184,7 +191,12 @@ Date: 2013.1.1
 
 /* Special Thanks */
 Original Work: KONAMI
+Facebook: Konami
 Site: http://www.yugioh-card.com/
 Avatar: http://www.konami.com/imgs/konami_facebook_logo.jpg
+
+Original Work: 上海アリス幻樂団
+Twitter: @korindo
+Site: http://www16.big.or.jp/~zun/
 
 Player: You
