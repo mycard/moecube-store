@@ -193,7 +193,6 @@ Date: 2013.1.1
 Original Work: KONAMI
 Facebook: Konami
 Site: http://www.yugioh-card.com/
-Avatar: http://www.konami.com/imgs/konami_facebook_logo.jpg
 
 Original Work: 上海アリス幻樂団
 Twitter: @korindo
