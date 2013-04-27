@@ -178,9 +178,8 @@ Avatar:  http://uc.66rpg.com/avatar.php?uid=53287&size=middle
 Date: 2012.3.1
 
 Server Provide: 随风堕落
-Contact: smdcn [at] inazuma.cn
+Twitter: @smdcn
 Site: http://www.ocgsoft.cn/
-Avatar: http://www.duelcn.com/uc_server/avatar.php?uid=3&size=middle
 Date: 2012.3.25
 
 Server Provide: Phoenix Nemo
