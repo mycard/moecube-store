@@ -244,6 +244,58 @@
   };
 
   this.after_login = function() {
+    (function () {
+  'use strict';
+  window.mycard.friends = new Candy.Core.ChatRoster();
+
+  Candy.Core.addHandler(function (msg) {
+    try {
+      var from = msg.getAttribute('from');
+      var barefrom = from.split('/')[0];
+      if (barefrom == "mycard@conference.my-card.in") return true;
+      console.log(msg);
+      var type = msg.getAttribute('type');
+      var user = new Candy.Core.ChatUser(barefrom, barefrom);
+      switch (type) {
+        case 'subscribe':
+          var conn = Candy.Core.getConnection();
+          if (window.mycard.friends.get(barefrom)) {
+            // Automatically confirm requests from friends.
+            conn.send($pres({ to: barefrom, type: "subscribed" }));
+          } else if (window.confirm("[user] wants to add you as a friend.\nAccept?".replace('[user]', barefrom))) {
+            conn.send($pres({ to: barefrom, type: "subscribed" }));
+          } else {
+            conn.send($pres({ to: barefrom, type: "unsubscribed" }));
+          }
+          break;
+        case 'subscribed':
+          alert('[user] agrees to add you as a friend.'.replace('[user]', barefrom));
+          break;
+        case 'unsubscribed':
+          alert('[user] no longer wants to be your friend.'.replace('[user]', barefrom));
+          break;
+        default:
+          var pres = type || 'available';
+          var show = msg.querySelector('show');
+          if (show) pres = show.textContent;
+          var status = msg.querySelector('status');
+          if (status) pres += ':' + status.textContent;
+          window.mycard.friends.add(new Candy.Core.ChatUser(barefrom, pres));
+          console.log('[user] is now [pres]'.replace('[user]', from).replace('[pres]', pres));
+          break;
+      }
+    } catch(e) { console.log(e.toString()); }
+    return true;
+  }, null, 'presence', null, null, null);
+  
+  window.mycard.friends.subscribe = function (jid) {
+    Candy.Core.getConnection().send($pres({ to: jid, type: "subscribe" }));
+  };
+  
+  window.mycard.friends.unsubscribe = function (jid) {
+    Candy.Core.getConnection().send($pres({ to: jid, type: "unsubscribe" }));
+  };
+})();
     $('#rooms').css('padding-right', 225);
     $('.online_list').show();
     $('#current_username').html(Candy.Util.getCookie('username'));
