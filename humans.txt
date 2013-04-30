@@ -70,11 +70,6 @@ Google+: +亦念 (109260926494135471555)
 Location: China
 Date: 2013.4.1
 
-mycard-web developer: 林静琴
-Google+: +林静琴 (117239089659078825668)
-Location: China
-Date: 2013.4.15
-
 /* API & Database */
 
 Images maintainer: 娱乐力量全开！
