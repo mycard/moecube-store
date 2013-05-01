@@ -6,3 +6,5 @@
 *.coffee text
 *.css text
 *.less text
+*.json text
+*.txt text
