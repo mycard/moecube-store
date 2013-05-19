@@ -16,6 +16,7 @@
         }
     </style>
     <link href="/vendor/stylesheets/bootstrap/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/stylesheets/room_show.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -106,7 +107,7 @@
             <p>需要本地安装了mycard才能自动加入房间，如果没有安装，请手动打开ygopro点联机模式填写上面的资料。</p>
 
             <p><a class="btn"
-                  href="https://github.com/zh99998/mycard/wiki/%E5%AF%B9%E6%88%98:%E7%9B%B4%E6%8E%A5%E8%BF%9E%E6%8E%A5#wiki-wrapper">手动直连教程 &raquo;</a>
+                  href="https://github.com/mycard/mycard/wiki/%E5%AF%B9%E6%88%98:%E7%9B%B4%E6%8E%A5%E8%BF%9E%E6%8E%A5#wiki-wrapper">手动直连教程 &raquo;</a>
             </p>
         </div>
         <div class="span4">
@@ -131,7 +132,19 @@
     <footer>
         <p>&copy; Mycard 2013</p>
     </footer>
-
+    <div id="share" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>约战</h3>
+        </div>
+        <div class="modal-body">
+            <p>按Ctrl+C复制房间地址，并发送给你的好友</p>
+            <input id="room_url"/>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-primary" data-dismiss="modal">确定</a>
+        </div>
+    </div>
 </div>
 <!-- /container -->
 

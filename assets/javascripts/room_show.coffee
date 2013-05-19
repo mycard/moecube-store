@@ -57,3 +57,9 @@ if $.cookie('username') && $.cookie('password')
 
 $('#join').click ->
   mycard.join room.server.ip,room.server.port,mycard.room_name(room.name, room.password), $.cookie('username'), ($.cookie('password') if room.server.auth)
+
+if location.hash == '#share'
+  $('#room_url').val mycard.room_url room.server.ip,room.server.port,mycard.room_name(room.name, room.password), $.cookie('username'), ($.cookie('password') if room.server.auth)
+  $('#share').modal()
+  $('#room_url').focus()
+  $('#room_url').select()
