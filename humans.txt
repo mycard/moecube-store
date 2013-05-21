@@ -42,9 +42,9 @@ Location: Taiwan
 Date: 2010.12.1
 
 UI designer: Losses
-Contact: admin [at] qzworld.net
 Twitter: @Losses_don
 Google+: +Losses Don (109343029514852526449)
+Contact: admin [at] qzworld.net
 Location: China
 Date: 2012.3.11
 
@@ -173,6 +173,7 @@ Avatar:  http://uc.66rpg.com/avatar.php?uid=53287&size=middle
 Date: 2012.3.1
 
 Server Provide: 随风堕落
+Google+: +Yi Hawke (115638771809826277698)
 Twitter: @smdcn
 Site: http://www.ocgsoft.cn/
 Date: 2012.3.25
