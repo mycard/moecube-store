@@ -77,7 +77,7 @@
   });
 
   if (location.hash === '#share') {
-    $('#room_url').val(mycard.room_url(room.server.ip, room.server.port, mycard.room_name(room.name, room.password), $.cookie('username'), (room.server.auth ? $.cookie('password') : void 0)));
+    $('#room_url').val(mycard.room_url(room.server.ip, room.server.port, mycard.room_name(room.name, room.password), null, null, room._private, room.server.auth));
     $('#share').modal();
     $('#room_url').focus();
     $('#room_url').select();
