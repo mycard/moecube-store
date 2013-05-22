@@ -212,13 +212,18 @@ class DecksController extends Spine.Controller
     'mouseover .card_usage': 'show',
     'click .card_usage': 'add',
     'contextmenu .card_usage': 'minus'
-
+  $('#deck_select').change (e)->
+    decks._deck = decks.decks[@selectedOptions[0].value]
+    decks.refresh()
+  decks: {}
   deck: (deck) ->
     if deck
+      @decks[deck.id] = deck
       @_deck = deck
       CardUsage.bind('change refresh', @refresh)
+      $('<option/>', value: deck.id, text: deck.name, selected: true).appendTo $('#deck_select')
       @refresh()
-      $('#name').html deck.name
+
     @_deck
 
   refresh: =>
@@ -277,16 +282,29 @@ class DecksController extends Spine.Controller
 
   upload: (files)->
     file = files[0]
-    reader = new FileReader()
     $('#deck_load').attr 'disabled', true if file
-    reader.onload = (ev)->
-      $('#deck_load').attr 'disabled', false
-      try
-        decks.deck Deck.load(ev.target.result, file.name.split('.')[0])
-      catch error
-        alert error
 
-    reader.readAsText(file)
+    basename = file.name.split('.')
+    extname = basename.pop()
+    basename = basename.join('.')
+
+    if extname == 'yrp'
+      mycard.load_decks_from_replay file, (deck)->
+        result = new Deck(name: deck.name)
+        result.save()
+        result.card_usages deck.card_usages
+        decks.deck result
+
+    else
+      reader = new FileReader()
+
+      reader.onload = (ev)->
+        $('#deck_load').attr 'disabled', false
+        try
+          decks.deck Deck.load(ev.target.result, basename)
+        catch error
+          alert error
+      reader.readAsText(file)
 
   load_from_url: (url)->
     try

@@ -511,12 +511,24 @@
       'contextmenu .card_usage': 'minus'
     };
 
+    $('#deck_select').change(function(e) {
+      decks._deck = decks.decks[this.selectedOptions[0].value];
+      return decks.refresh();
+    });
+
+    DecksController.prototype.decks = {};
+
     DecksController.prototype.deck = function(deck) {
       if (deck) {
+        this.decks[deck.id] = deck;
         this._deck = deck;
         CardUsage.bind('change refresh', this.refresh);
+        $('<option/>', {
+          value: deck.id,
+          text: deck.name,
+          selected: true
+        }).appendTo($('#deck_select'));
         this.refresh();
-        $('#name').html(deck.name);
       }
       return this._deck;
     };
@@ -620,25 +632,41 @@
     };
 
     DecksController.prototype.upload = function(files) {
-      var file, reader;
+      var basename, extname, file, reader;
 
       file = files[0];
-      reader = new FileReader();
       if (file) {
         $('#deck_load').attr('disabled', true);
       }
-      reader.onload = function(ev) {
-        var error;
+      basename = file.name.split('.');
+      extname = basename.pop();
+      basename = basename.join('.');
+      if (extname === 'yrp') {
+        return mycard.load_decks_from_replay(file, function(deck) {
+          var result;
 
-        $('#deck_load').attr('disabled', false);
-        try {
-          return decks.deck(Deck.load(ev.target.result, file.name.split('.')[0]));
-        } catch (_error) {
-          error = _error;
-          return alert(error);
-        }
-      };
-      return reader.readAsText(file);
+          result = new Deck({
+            name: deck.name
+          });
+          result.save();
+          result.card_usages(deck.card_usages);
+          return decks.deck(result);
+        });
+      } else {
+        reader = new FileReader();
+        reader.onload = function(ev) {
+          var error;
+
+          $('#deck_load').attr('disabled', false);
+          try {
+            return decks.deck(Deck.load(ev.target.result, basename));
+          } catch (_error) {
+            error = _error;
+            return alert(error);
+          }
+        };
+        return reader.readAsText(file);
+      }
     };
 
     DecksController.prototype.load_from_url = function(url) {
