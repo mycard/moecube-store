@@ -645,6 +645,7 @@
         return mycard.load_decks_from_replay(file, function(deck) {
           var result;
 
+          $('#deck_load').attr('disabled', false);
           result = new Deck({
             name: deck.name
           });

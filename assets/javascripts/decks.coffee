@@ -290,6 +290,7 @@ class DecksController extends Spine.Controller
 
     if extname == 'yrp'
       mycard.load_decks_from_replay file, (deck)->
+        $('#deck_load').attr 'disabled', false
         result = new Deck(name: deck.name)
         result.save()
         result.card_usages deck.card_usages
