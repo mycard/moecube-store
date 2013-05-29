@@ -211,6 +211,9 @@
         language: 'cn'
       }
     });
+ 
+//    $('#chat-pane').append('<p class="chat_close" ></p>');
+ 
     Candy.Util.getPosTopAccordingToWindowBounds = function(elem, pos) {
       var backgroundPositionAlignment, elemHeight, marginDiff, relative, windowHeight;
       windowHeight = $(document).height();
@@ -505,5 +508,10 @@
     $('#rooms').html('正在读取服务器列表...');
     return Server.fetch();
   });
+ 
+ 
+
+ 
+ 
 
 }).call(this);
