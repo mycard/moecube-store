@@ -11,7 +11,7 @@ $(document).ready ->
     #android
     $('#download').css('background', 'none')
     $('#download_url, .download_information').remove()
-    $('#download').prepend('<a href="https://play.google.com/store/apps/details?id=android.ygo">
+    $('#download').prepend('<a href="https://play.google.com/store/apps/details?id=org.msk86.ygoroid">
       <img alt="Get it on Google Play"
            src="https://developer.android.com/images/brand/zh-cn_generic_rgb_wo_60.png" />
     </a>')
