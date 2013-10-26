@@ -1,4 +1,5 @@
 [
+    {"id":9,"title":"新房间服调试中，还不能用，请在房间筛选勾掉test","url":"http://qun.qzone.qq.com/group#!/225669895/home","created_at":"2013-02-19T18:12:07+08:00","updated_at":"2013-02-19T07:12:08+08:00"},
     {"id":18,"title":"更新了33张卡喵~,戳我查看","url":"http://goo.gl/6yT4n4","created_at":"2013-10-22T10:34:06+08:00","updated_at":"2013-10-22T10:34:06+08:00"},
     {"id":14,"title":"周赛接受预约报名及周秋周赛继续","url":"http://www.duelcn.com/forum.php?mod=viewthread&tid=59897&page=1&extra=#pid251859","created_at":"2013-09-18T13:34:07+08:00","updated_at":"2013-09-18T07:12:08+08:00"},
     {"id":13,"title":"游戏王竞赛联盟~周赛","url":"http://www.duelcn.com/thread-59882-1-1.html","created_at":"2013-08-03T13:34:07+08:00","updated_at":"2013-08-03T07:12:08+08:00"},
@@ -10,4 +11,5 @@
     {"id":3,"title":"可以使用手机登录聊天室了 <-戳我查看详情","url":"https://github.com/mycard/mycard/wiki/聊天室","created_at":"2013-03-09T18:12:07+08:00","updated_at":"2013-03-09T07:12:08+08:00"},
     {"id":1,"title":"网页大厅测试中,需要本机安装了mycard才能用哦","url":"http://my-card.in/rooms/","created_at":"2013-02-19T18:12:07+08:00","updated_at":"2013-02-19T07:12:08+08:00"},
     {"id":4,"title":"QQ群: Mycard - 萌卡(225669895)","url":"http://qun.qzone.qq.com/group#!/225669895/home","created_at":"2013-02-19T18:12:07+08:00","updated_at":"2013-02-19T07:12:08+08:00"}
+    
 ]
