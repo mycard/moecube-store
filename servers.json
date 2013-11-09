@@ -1,4 +1,3 @@
 [
-    {"id":2,"name":"master","ip":"122.0.65.70","port":7911,"auth":false,"index":"http://122.0.65.70:7922/","max_rooms":100,"server_type":"ygopro"},
-    {"id":3,"name":"azura","ip":"42.159.133.245","port":7911,"auth":false,"index":"http://42.159.133.245:7922/","max_rooms":100,"server_type":"ygopro"}
+    {"id":2,"name":"master","ip":"122.0.65.69","port":7911,"auth":false,"index":"http://122.0.65.70:7922/","max_rooms":100,"server_type":"ygopro"}
 ]
