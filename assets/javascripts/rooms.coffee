@@ -41,7 +41,7 @@ class Servers extends Spine.Controller
       ).appendTo $('#server')
   connect: =>
     $('#rooms').html '正在连接...'
-    wsServer = 'ws://mycard-server.my-card.in:9998'
+    wsServer = 'ws://my-card.in/rooms.json'
     websocket = new WebSocket(wsServer);
     websocket.onopen = ->
       $('#rooms').html '正在读取房间列表...'
