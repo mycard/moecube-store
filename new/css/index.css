@@ -70,9 +70,11 @@ h1 {
 
 #about {
     font-size: 12px;
-    line-height: 10px;
-    padding-top: 15px;
+    padding-top: 10px;
     padding-bottom: 5px;
+}
+#about p {
+    margin-bottom: 2px;
 }
 
 #download {
