@@ -23,7 +23,7 @@
     $('#download_desktop').removeClass('hidden');
   }
 
-  $.getJSON('http://www.duelist.cn/api/book/list', function(data) {
+  $.getJSON('https://my-card.in/duelists.json', function(data) {
     var duelist;
     $('#duelist_lastest_issue').html(data[data.length - 1].issue);
     $('#duelist_lastest_issue').removeClass('hidden');
