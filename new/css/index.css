@@ -2,12 +2,6 @@ body {
     padding-top: 50px; /* body padding for fixed top nav */
 }
 
-@media (min-width: 1200px) {
-    .container{
-        max-width: 970px;
-    }
-}
-
 h1, h2, h3,p {
     font-family: "Helvetica Neue", Helvetica, Arial,"Microsoft Yahei";
 }
