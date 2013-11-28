@@ -11,7 +11,7 @@
       }).append($('<img />', {
         title: link.name,
         alt: link.name,
-        src: link.logo
+        src: "https://my-card.in/links/" + link.id + ".png"
       }))).appendTo('#links'));
     }
     return _results;

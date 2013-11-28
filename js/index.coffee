@@ -6,7 +6,7 @@ $.getJSON 'https://my-card.in/links.json', (data)->
     ).append($('<img />',
       title: link.name
       alt: link.name
-      src: link.logo
+      src: "https://my-card.in/links/#{link.id}.png"
     ))).appendTo('#links')
 
 if navigator.userAgent.toLowerCase().indexOf("android") > -1
