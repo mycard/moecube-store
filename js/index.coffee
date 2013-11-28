@@ -1,3 +1,6 @@
+$(".navbar").click ->
+  $('body').animate scrollTop: 0
+
 $.getJSON 'https://my-card.in/links.json', (data)->
   for link in data
     $('<li/>').append($('<a />',
