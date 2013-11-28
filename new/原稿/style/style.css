@@ -1,0 +1,237 @@
+/* 
+    Document   : Style.css
+    Created on : Oct 19, 2013, 8:01:35 AM
+    Author     : losses
+    Description:
+        For Project Mycard(MIT)
+*/
+
+*{
+    padding:0;
+    margin:0;
+    font-family: "Century Gothic","Microsoft Yahei";
+    transition:all 0.3s ease-in-out;
+}
+
+h1{
+    color:#593500;
+}
+
+.left{
+    float:left;
+}
+
+.right{
+    float:right;
+}
+
+.cleaner{
+    clear:both;
+}
+
+.o{
+    width:100%;
+}
+
+header{
+    height:68px;
+    background:#ff9900;
+    font-size:18px;
+    display:block;
+}
+
+header a:link{
+    text-decoration:none;
+    color:white;
+}
+
+header a:visited{
+    color:white;
+}
+
+header nav ul{
+    list-style:none;
+    position:relative;
+    top:-52px;
+}
+
+header nav ul li {
+    margin:0 10px;
+    float:right;
+}
+
+.box{
+    width:900px;
+    margin:0 auto;
+}
+
+#box_main{
+    height:390px;
+    overfloat:hidden;
+}
+
+#introduction{
+    margin:50px 0;
+}
+
+#introduction h1{
+    margin:15px 0 0 0;
+    font-size:40px;
+    text-align:center;
+}
+
+#introduction h2{
+    margin:10px 0 0 0;
+    text-align:right;
+    font-weight: normal;
+    font-size:15px;
+    color:#663300;
+}
+
+#download{
+    width:296px;
+}
+
+.links a:link{
+    text-decoration:none;
+    text-align:center;
+    font-size:20px;
+    color:white;
+    width:60px;  
+    height:60px;
+    position:static;
+}
+
+.links a:visited{
+    color:white;
+}
+
+.links_si{
+    display:inline-block;
+    margin:10px 10px;
+}
+
+.links_si img{
+    margin:10px 0 0 0;
+    width:40px;
+    height:40px;
+}
+
+#links_win{
+    background:#4899d4;
+}
+
+#links_uix{
+    background:#d49748;
+}
+
+#links_and{
+    background:#80d448;   
+}
+
+#links_huge{
+    background:#008aff;
+    width:250px !important;
+    height:auto !important;
+    margin:35px auto 0 auto;
+    padding:15px 0;
+    display:block;
+}
+
+#links_don{
+    width:200px;
+    height:auto !important;
+    background:#ff4646;
+    margin:110px 50px 0 0;
+    padding:15px 0;
+    display:block;
+}
+
+#links_list{
+    width:250px;
+    margin:0 auto;
+}
+
+#links_update{
+    margin:10px 0 0 0;
+    font-size:12px;
+    text-align:center;
+    color:#996600;
+    display:block;
+}
+
+#donate_o{
+    background:#ffe6c0;
+}
+
+#donate_o .box{
+    background:url('../images/piggy_bank.png') no-repeat;
+    background-position:10px 20px;
+}
+
+#donate_o .box:hover{
+    background-position:20px 0px;
+}
+
+#donate_o .box .left{
+    width:600px;
+}
+
+#donate_o .box .left h1{
+    margin:30px 0 0 15px;
+}
+
+#donate_o .box .left a{
+    font-size:15px;
+    line-height:30px;
+    margin:15px 0 30px 20px;
+    color:#663300;
+    display:block;
+}
+
+#map_o{
+    background:#ffc670;
+    padding-bottom:20px;
+}
+
+#map_o .box{
+    padding:30px 0 0 15px;
+}
+
+#map_o ul{
+    list-style:none;
+}
+
+#map_o ul li{
+    float:left;
+}
+
+#map_o .left img{
+    width:100px;
+    height:100px;
+    margin:6px;
+}
+
+#map_o .left img:hover{
+    transform: rotateY(360deg);
+    -webkit-transform: rotateY(360deg);
+    -mozilla-transform: rotateY(360deg);
+}
+
+#map_o .right img{
+    width:88px;
+    height:31px;
+    margin:10px;
+}
+
+#map_o ul{
+    margin-top:25px;
+}
+
+#about_o{
+    background:#ff9900;
+    color:white;
+    font-size:12px;
+    line-height:20px;
+    padding:25px 0;
+}

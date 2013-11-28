@@ -1,0 +1,120 @@
+body {
+    padding-top: 50px; /* body padding for fixed top nav */
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 970px;
+    }
+}
+
+h1, h2, h3,p {
+    font-family: "Helvetica Neue", Helvetica, Arial,"Microsoft Yahei";
+}
+
+h1 {
+    display: inline-block;
+    margin-top: 40px;
+    margin-right: 10px;
+}
+.navbar, footer {
+    background: #ff9900;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: #eeeeee;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #cc6600;
+}
+
+.navbar a, footer{
+    color: #fff;
+}
+.navbar .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+
+#donate_and_contributing {
+    background: #ffe6c0;
+}
+
+#contact_and_links {
+    background: #ffc670;
+}
+
+#contact img {
+    width: 100px;
+    height: 100px;
+    margin: 6px;
+    transition: all 0.3s ease-in-out;
+}
+#contact img:hover {
+    transform: rotateY(360deg);
+    -webkit-transform: rotateY(360deg);
+    -mozilla-transform: rotateY(360deg);
+}
+
+#links img {
+    width: 88px;
+    height: 31px;
+}
+
+#about {
+    font-size: 12px;
+    line-height: 10px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+#download {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#download_desktop {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 0;
+}
+
+#about a {
+    color: white;
+}
+#download_links {
+    text-align: center;
+}
+#download_links a {
+    color: #996600
+}
+
+.subtitle {
+    margin:10px 0 0 0;
+    text-align:right;
+    font-weight: normal;
+    font-size:15px;
+    color:#663300;
+}
+
+#donate_and_contributing p {
+    font-size: 15px;
+    line-height: 30px;
+    margin-top:10px;
+    color: #663300;
+    display: block;
+}
+
+#donate_and_contributing {
+    padding-bottom: 10px;
+}
+#contact_and_links {
+   padding-bottom: 10px;
+}
+
+#main {
+    padding-top: 40px;
+}
