@@ -163,3 +163,9 @@ h2 {
         margin-top: 90px;
     }
 }
+
+@media (max-width: 991px) {
+    #download_wrapper {
+        max-width: 400px;
+    }
+}
