@@ -77,29 +77,28 @@ h1 {
     margin-bottom: 2px;
 }
 
-#download {
-    margin-top: 30px;
-    margin-bottom: 20px;
+#download_desktop {
     text-align: center;
 }
 
-#download_desktop {
+#download_desktop > .btn {
     width: 200px;
     height: 50px;
     font-size: 20px;
     border-radius: 0;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#download_links a {
+    padding: 0 5px;
+    color: #996600
 }
 
 #about a {
     color: white;
 }
-#download_links {
-    text-align: center;
-}
-#download_links a {
-    padding: 0 5px;
-    color: #996600
-}
+
 
 .subtitle {
     margin:10px 0 0 0;
