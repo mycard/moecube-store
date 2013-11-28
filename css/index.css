@@ -42,7 +42,7 @@ h2 {
     background-color: #ffaa22;
 }
 
-#donate_and_contributing {
+#donate {
     background: #ffe6c0;
 }
 
@@ -98,7 +98,7 @@ h2 {
     color:#663300;
 }
 
-#donate_and_contributing p {
+#donate p {
     font-size: 15px;
     line-height: 30px;
     margin-top:10px;
@@ -114,7 +114,7 @@ h2 {
 #humans .row .customAuthor{margin-bottom:4px;}
 #humans .row .customProfession{padding-top: 0px;color: #A8A8A8;font-size: 20px;}*/
 
-#donate_and_contributing {
+#donate {
     padding-bottom: 10px;
 }
 
@@ -129,16 +129,17 @@ h2 {
     padding: 5px 0;
 }
 
+
 /* 桌面端加大间距 */
 @media (min-width: 992px) {
-    #contact_and_links, #donate_and_contributing {
+    #contact_and_links, #donate {
         padding-top: 18px;
         padding-bottom: 20px;
     }
     #contact_and_links .row {
         margin-top: 30px;
     }
-    #donate_and_contributing .row {
+    #donate .row {
         margin-top: 20px;
     }
 
@@ -169,3 +170,37 @@ h2 {
         max-width: 400px;
     }
 }
+
+@media(min-width: 768px) {
+    #contact {
+        float: left;
+    }
+    #links_wrapper {
+        margin-left: 380px;
+    }
+    #donate_text {
+        padding-right: 200px;
+        float: left
+    }
+    #donate_button {
+        margin-left: -200px;
+        float: right;
+    }
+}
+
+#contact, #donate_text, #donate_button, #links_wrapper {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#donate_text {
+    padding-left: 20px;
+}
+
+#links_wrapper {
+    margin-left: 10px;
+}
+#links > li {
+    padding: 5px 15px 0 0;
+}
+
