@@ -77,8 +77,9 @@ h1 {
     margin-bottom: 2px;
 }
 
-#download_desktop {
+#download {
     text-align: center;
+    margin-top: 30px;
 }
 
 #download_desktop > .btn {
@@ -86,7 +87,6 @@ h1 {
     height: 50px;
     font-size: 20px;
     border-radius: 0;
-    margin-top: 30px;
     margin-bottom: 20px;
 }
 
