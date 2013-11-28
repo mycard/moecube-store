@@ -14,28 +14,33 @@ h1, h2, h3,p {
 
 h1 {
     display: inline-block;
-    margin-top: 40px;
     margin-right: 10px;
 }
 .navbar, footer {
-    background: #ff9900;
+    background-color: #ff9900;
+    border-color: #cc6600;
 }
-
-.nav > li > a:hover,
-.nav > li > a:focus {
-    text-decoration: none;
-    background-color: #eeeeee;
-}
-.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: #cc6600;
-}
-
 .navbar a, footer{
     color: #fff;
 }
 .navbar .caret {
     border-top-color: #fff;
     border-bottom-color: #fff;
+}
+
+.navbar-toggle {
+    border-color: #ffc670;
+}
+.navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #cc6600;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #ffaa22;
 }
 
 #donate_and_contributing {
@@ -73,6 +78,7 @@ h1 {
 #download {
     margin-top: 30px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #download_desktop {
@@ -89,6 +95,7 @@ h1 {
     text-align: center;
 }
 #download_links a {
+    padding: 0 5px;
     color: #996600
 }
 
@@ -116,5 +123,11 @@ h1 {
 }
 
 #main {
-    padding-top: 40px;
+    padding-top: 20px;
+}
+#screenshot{
+    margin-top: 20px;
+}
+#title_blank {
+    height: 30px;
 }
