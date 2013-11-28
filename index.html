@@ -45,12 +45,18 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="https://forum.my-card.in/">论坛</a></li>
                 <li><a href="https://my-card.in/puzzles">残局</a></li>
+
+                <!--[if lt IE 10]>
+                <li><a href="http://www.duelist.cn/">《DUELIST》</a></li>
+                <![endif]-->
+                <!--[if gte IE 10]><!-->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">《DUELIST》 <span id="duelist_lastest_issue" class="badge"></span><b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">《DUELIST》 <span id="duelist_lastest_issue" class="badge hidden"></span><b class="caret"></b></a>
                     <ul id="duelists" class="dropdown-menu">
                         <li><a href="#">Loading...</a></li>
                     </ul>
                 </li>
+                <!--<![endif]-->
             </ul>
         </div>
         <!-- /.navbar-collapse -->

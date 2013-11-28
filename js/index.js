@@ -26,6 +26,7 @@
   $.getJSON('http://www.duelist.cn/api/book/list', function(data) {
     var duelist;
     $('#duelist_lastest_issue').html(data[data.length - 1].issue);
+    $('#duelist_lastest_issue').removeClass('hidden');
     return $('#duelists').html((function() {
       var _i, _len, _results;
       _results = [];

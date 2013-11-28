@@ -18,5 +18,6 @@ else
 
 $.getJSON 'http://www.duelist.cn/api/book/list', (data)->
   $('#duelist_lastest_issue').html data[data.length-1].issue
+  $('#duelist_lastest_issue').removeClass('hidden')
   $('#duelists').html (for duelist in data
     $('<li/>').append($('<a/>', href: duelist.url, text: duelist.title )))
