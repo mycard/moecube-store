@@ -79,7 +79,7 @@ h1 {
 
 #download {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 #download_desktop > .btn {
@@ -115,6 +115,14 @@ h1 {
     color: #663300;
     display: block;
 }
+#humans {
+    background-color: #ffd698;
+}
+/*#humans .row {text-align: center;}
+#humans .row img{padding: 4px;border: 1px solid #DDDDDD;}
+#humans .row p{padding-top: 18px;}
+#humans .row .customAuthor{margin-bottom:4px;}
+#humans .row .customProfession{padding-top: 0px;color: #A8A8A8;font-size: 20px;}*/
 
 #donate_and_contributing {
     padding-bottom: 10px;
