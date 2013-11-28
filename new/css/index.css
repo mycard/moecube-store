@@ -2,7 +2,7 @@ body {
     padding-top: 50px; /* body padding for fixed top nav */
 }
 
-h1, h2, p {
+h1, h2, p, #main {
     font-family: "Helvetica Neue", Helvetica, Arial,"Microsoft Yahei";
 }
 
@@ -11,13 +11,10 @@ h1 {
     margin-right: 10px;
 }
 
-h1, h2 {
-    font-weight: bold;
-}
-
 h2 {
     color: #593500;
 }
+
 .navbar, footer {
     background-color: #ff9900;
     border-color: #cc6600;
@@ -70,15 +67,6 @@ h2 {
     height: 31px;
 }
 
-#about {
-    font-size: 12px;
-    line-height: 20px;
-    padding: 25px 0;
-}
-#about p {
-    margin-bottom: 0px;
-}
-
 #download {
     text-align: center;
     margin-top: 40px;
@@ -129,19 +117,45 @@ h2 {
 #donate_and_contributing {
     padding-bottom: 10px;
 }
-#contact_and_links {
-    padding-top: 18px;
-    padding-bottom: 20px;
-}
-#contact_and_links .row {
-    margin-top: 30px;
-}
+
 #main {
     padding-top: 20px;
 }
 #screenshot{
     margin-top: 20px;
 }
-#title_blank {
-    height: 30px;
+
+/* 桌面端加大间距 */
+@media (min-width: 992px) {
+    #contact_and_links, #donate_and_contributing {
+        padding-top: 18px;
+        padding-bottom: 20px;
+    }
+    #contact_and_links .row {
+        margin-top: 30px;
+    }
+    #donate_and_contributing .row {
+        margin-top: 20px;
+    }
+
+    h1 {
+        margin-top: 40px;
+    }
+    h1, h2 {
+        font-weight: bold;
+    }
+
+    #about {
+        font-size: 12px;
+        line-height: 20px;
+        padding: 25px 0;
+    }
+    #about p {
+        margin-bottom: 0px;
+    }
+}
+@media (min-width: 1200px) {
+    h1 {
+        margin-top: 80px;
+    }
 }
