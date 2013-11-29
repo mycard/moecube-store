@@ -4,6 +4,6 @@
     {"id":"ocgsoft","url":"http://www.ocgsoft.cn/", "name":"中国OCG工作室", "logo":"http://www.ocgsoft.cn/s/themes/default/images/pic/footer_logo.jpg"},
     {"id":"ygopro-ocg","url":"http://www.ygopro-ocg.com/", "name":"游戏王YGOCORE-享受自动的轻松", "logo":"http://www.ygopro-ocg.com/logo.gif"},
     {"id":"66rpg","url":"http://www.66rpg.com/", "name":"66RPG", "logo":"http://bbs.66rpg.com/logo.gif"},
-	{"id":"archlinuxcn","url":"https://www.archlinuxcn.org/", "name":"Arch Linux 中文社区", "logo":"https://www.archlinuxcn.org/wp-content/themes/askin2010/archlogo.png"},
+	{"id":"archlinuxcn","url":"https://www.archlinuxcn.org/", "name":"Arch Linux 中文社区", "logo":"http://www.archlinuxcn.org/wp-content/themes/askin2010/archlogo.png"},
 	{"id":"devpro","url":"http://devpro.org/", "name":"YGOPro DevPro", "logo":"http://i.imgur.com/HFm9QQU.png"}	
 ]
