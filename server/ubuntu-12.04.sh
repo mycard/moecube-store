@@ -28,7 +28,6 @@ wget --user-agent="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML
 7z x mycard.7z mycard-$mycard_version/ygocore -y
 yes | cp -rf mycard-$mycard_version/ygocore/* ygopro/
 rm -rf mycard-$mycard_version mycard.7z
-cd ..
 
 #ygopro-server
 git clone https://github.com/mycard/ygopro-server.git
@@ -36,4 +35,3 @@ cd ygopro-server
 npm install
 sudo npm install -g coffee-script forever bunyan
 ln -s ../ygopro ygocore
-vim config.json
