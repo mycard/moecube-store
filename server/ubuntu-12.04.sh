@@ -1,5 +1,3 @@
-mycard_version=1.2.9
-
 #dependences
 sudo apt-get update
 sudo apt-get install python-software-properties -y
