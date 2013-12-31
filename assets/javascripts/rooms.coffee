@@ -104,7 +104,7 @@ login = ->
   #    alert msg
   #  true
   Candy.Util.setCookie('candy-nostatusmessages', '1', 365);
-  Candy.init('http://chat.my-card.in:5280/http-bind/',
+  Candy.init('http://122.0.65.69/http-bind/',
     core:
       debug: false,
       autojoin: ['mycard@conference.my-card.in'],
