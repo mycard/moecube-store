@@ -1,4 +1,4 @@
 {
-    "url": "http://downloads.mycard.90g.org/images/:id.jpg",
-    "thumbnail_url": "http://downloads.mycard.90g.org/images/thumbnail/:id.jpg"
+    "url": "http://test2.my-card.in/images/:id.jpg",
+    "thumbnail_url": "http://test2.my-card.in/images/thumbnail/:id.jpg"
 }
