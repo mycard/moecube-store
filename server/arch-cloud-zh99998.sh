@@ -4,7 +4,7 @@ sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
 rankmirrors /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 rm /etc/pacman.d/mirrorlist.backup
 
-pacstrap -i /mnt base vim grub #base-devel gnome git nodejs opencc alsa-utils ttf-dejavu wqy-microhei wqy-zenhei xf86-video-ati dhclient fcitx-im fcitx-sunpinyin os-prober file-roller wget axel gvfs-mtp gvfs-goa goagent fcitx-cloudpinyin openvpn nautilus-sendto gnome-logs gedit
+pacstrap -i /mnt base base-devel vim grub gnome git nodejs opencc alsa-utils ttf-dejavu wqy-microhei wqy-zenhei xf86-video-ati dhclient fcitx-im fcitx-sunpinyin os-prober file-roller wget axel gvfs-mtp gvfs-goa goagent fcitx-cloudpinyin openvpn nautilus-sendto gnome-logs gedit
 
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
@@ -52,3 +52,5 @@ cd ..
 yaourt -S google-chrome sublime-text-imfix webstorm --noconfirm
 SU_USER
 ARCH_CHROOT
+#umount -R /mnt
+#reboot
