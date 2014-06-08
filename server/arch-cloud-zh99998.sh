@@ -20,7 +20,7 @@ hwclock --systohc --utc
 
 echo 'zh99998-arch' > /etc/hostname
 
-grub-install --target=i386-pc --recheck /dev/sdb
+grub-install --target=i386-pc --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable gdm
