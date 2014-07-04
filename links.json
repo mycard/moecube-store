@@ -4,8 +4,9 @@
     {"id":"ocgsoft","url":"http://www.ocgsoft.cn/", "name":"中国OCG工作室", "logo":"http://www.ocgsoft.cn/s/themes/default/images/pic/footer_logo.jpg"},
     {"id":"ygopro-ocg","url":"http://www.ygopro-ocg.com/", "name":"游戏王YGOCORE-享受自动的轻松", "logo":"http://www.ygopro-ocg.com/logo.gif"},
     {"id":"66rpg","url":"http://www.66rpg.com/", "name":"66RPG", "logo":"http://bbs.66rpg.com/logo.gif"},
-    {"id":"archlinuxcn","url":"https://www.archlinuxcn.org/", "name":"Arch Linux 中文社区", "logo":"https://d11xdyzr0div58.cloudfront.net/static/archnavbar/archlogo.4fefb38dc270.png"},
+    {"id":"archlinuxcn","url":"https://www.archlinuxcn.org/", "name":"Arch Linux 中文社区", "logo":"http://archlinux.ro/logo/buton_archlinux_romania.png"},
     {"id":"devpro","url":"http://devpro.org/", "name":"YGOPro DevPro", "logo":"http://i.imgur.com/HFm9QQU.png"},
     {"id":"oekaki","url":"http://oekaki.so/","name":"Project Oekakisoli","logo":"http://bbs.nekonazo.com/images/logo/oekakiso.gif"},
-    {"id":"mincdn","url":"http://www.mincdn.com/","name":"mincdn","logo":"http://static.hdslb.com/images/common/mincdn-logo.png "}
+    {"id":"mincdn","url":"http://www.mincdn.com/","name":"mincdn","logo":"http://static.hdslb.com/images/common/mincdn-logo.png"},
+    {"id":"jetbrains","url":"http://www.jetbrains.com/","name":"JetBrains :: World's Leading Vendor of Professional Development Tools","logo":"http://www.jetbrains.com/img/logos/logo_jetbrains.gif"}
 ]
