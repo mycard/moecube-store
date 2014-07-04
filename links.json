@@ -7,6 +7,5 @@
     {"id":"archlinuxcn","url":"https://www.archlinuxcn.org/", "name":"Arch Linux 中文社区", "logo":"http://archlinux.ro/logo/buton_archlinux_romania.png"},
     {"id":"devpro","url":"http://devpro.org/", "name":"YGOPro DevPro", "logo":"http://i.imgur.com/HFm9QQU.png"},
     {"id":"oekaki","url":"http://oekaki.so/","name":"Project Oekakisoli","logo":"http://bbs.nekonazo.com/images/logo/oekakiso.gif"},
-    {"id":"mincdn","url":"http://www.mincdn.com/","name":"mincdn","logo":"http://static.hdslb.com/images/common/mincdn-logo.png"},
-    {"id":"jetbrains","url":"http://www.jetbrains.com/","name":"JetBrains :: World's Leading Vendor of Professional Development Tools","logo":"http://www.jetbrains.com/img/logos/logo_jetbrains.gif"}
+    {"id":"mincdn","url":"http://www.mincdn.com/","name":"mincdn","logo":"http://static.hdslb.com/images/common/mincdn-logo.png"}
 ]
