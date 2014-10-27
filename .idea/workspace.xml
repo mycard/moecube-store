@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10cc1c5c-5a77-4cba-a5d1-c2facfcecadd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/mycard.github.io.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\.gitattributes" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\announcements.json" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\add.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\card.jpg" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\download_deck.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\download_inner.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\download_out.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\download_ydk.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\dragbar.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\loading.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\page_arrows.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\rename.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\save.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\search.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\share.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\switch.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\upload_inner.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\ygopro.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\decks\ygopro1.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\dropdown\arrow.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\index\01.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\index\02.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\index\03.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\index\background.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\index\support.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\index\support_L.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\rooms\close.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\rooms\gradual_change.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\rooms\logo.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\rooms\menu.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\rooms\menu_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\rooms\overlay_logo.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\rooms\private.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\rooms\start.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\images\rooms\wait.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\candy.fix.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\decks.coffee" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\decks.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\dropdown.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\duels.coffee" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\duels.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\jquery-ui.cambobox.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\mycard.coffee" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\mycard.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\mycard.map" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\public.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\room_show.coffee" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\room_show.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\room_show.map" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\rooms.coffee" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\rooms.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\rooms.map" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\servers.coffee" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\servers.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\servers_boardcast.coffee" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\javascripts\servers_boardcast.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\stylesheets\browser.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\stylesheets\decks.less" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\stylesheets\dropdown.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\stylesheets\duels.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\stylesheets\mycard.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\stylesheets\room_show.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\stylesheets\rooms.less" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\stylesheets\rooms_normalscreen.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\assets\stylesheets\servers.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\cards\image.json" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\css\bootstrap-ie7.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\css\bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\css\bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\css\bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\css\bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\css\index.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\decks\new\index.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\decks\printer\index.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\dialogues.json" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\duels\new\index.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\fonts\glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\fonts\glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\fonts\glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\fonts\glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\google85361ba2d81ed619.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\htaccess" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\humans.txt" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\img\github.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\img\googleplus.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\img\mail.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\img\screenshot.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\index.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\js\bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\js\bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\js\index.coffee" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\js\index.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\js\index.map" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\js\jquery-1.10.2.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\js\jquery-1.10.2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\js\jquery-1.10.2.min.map" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\links.json" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\locales\card.properties" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\locales\card_zh-CN.properties" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\locales\card_zh.properties" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\locales\room_zh.properties" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\logo.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\logo_200_40.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\logo_60.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\Source\Support.psd" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\Source\air.psd" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\Source\donate.psd" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\Source\logo.psd" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\Source\logo.svg" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\Android.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\Linux.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\Windows.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\github.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\googleplus.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\logo.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\logo_simp.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\mail.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\piggy_bank.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\images\support.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\index - Second.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\index.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\new\原稿\style\style.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\robots.txt" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\rooms\index.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\rooms\show.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\server\arch-cloud-zh99998.sh" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\server\centos-6.sh" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\server\sle-11-sp3.sh" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\server\ubuntu-12.04.sh" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\servers.json" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\servers\boardcast.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\servers\index.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\tips.json" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\candy.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\libs\libs.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\colors\README.md" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\colors\candy.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\colors\candy.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\colors\colors-control.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\colors\screenshot.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\inline-images\README.md" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\inline-images\candy.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\inline-images\candy.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\inline-images\overlay.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\inline-images\screenshot.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\inline-images\spinner.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\README.md" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\screenshot.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\ui-lightness\css\ui-lightness.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\ui-lightness\images\action\menu-hover.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\ui-lightness\images\action\menu.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\ui-lightness\images\context-arrows.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\ui-lightness\images\modal-bg.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\ui-lightness\images\overlay.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\ui-lightness\images\tooltip-arrows.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\jquery-ui\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\roomPanel\README.md" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\roomPanel\default.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\roomPanel\images\room.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\roomPanel\roomPanel.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\roomPanel\screenshot.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\timeago\README.md" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\timeago\candy.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\timeago\candy.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\plugins\timeago\screenshot.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\audioplayer.swf" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\default.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\autoscroll-off.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\autoscroll-on.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\ban.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\emoticons.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\ignore.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\kick.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\menu.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\private.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\settings.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\sound-off.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\sound-on.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\statusmessage-off.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\statusmessage-on.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\subject.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\unignore.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\action\usercount.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\context-arrows.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Angel.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Angry.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Aww.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Aww_2.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Blushing.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Childish.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Confused.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Creepy.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Crying.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Cthulhu.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Cute.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Cute_Winking.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Devil.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Gah.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Gah_2.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Gasping.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Greedy.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Grinning.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Grinning_Winking.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Happy.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Happy_2.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Happy_3.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Heart.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Huh.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Huh_2.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Laughing.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Lips_Sealed.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Madness.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Malicious.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\README" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Sick.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Smiling.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Speechless.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Spiteful.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Stupid.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Sunglasses.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Terrified.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Thumb_Down.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Thumb_Up.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Tired.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Tongue_Out.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Tongue_Out_Laughing.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Tongue_Out_Left.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Tongue_Out_Up.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Tongue_Out_Up_Left.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Tongue_Out_Winking.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Uncertain.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Uncertain_2.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Unhappy.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\emoticons\Winking.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\favicon.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\modal-bg.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\modal-spinner.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\overlay.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\roster\affiliation-owner.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\roster\ignore.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\roster\role-moderator.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\tab-transitions.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\img\tooltip-arrows.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\candy\res\notify.mp3" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\fonts\nunito.woff" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\ZeroClipboard.swf" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\base64.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\easypaginate.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\hScrollPane.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\handlebars.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\humane.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jQuery-URL-Parser.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery-1.8.2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery-2.0.3.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery-ui-1.10.0.custom.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery-ui-1.9.1.custom.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery.base64.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery.cookie.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery.cycle.lite.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery.i18n.properties-min-1.0.9.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery.mousewheel.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery.multiselect.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery.select.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery.tmpl.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jquery.zclip.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\jscroll.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\json2.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\less-1.3.1.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\modernizr-2.6.2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\mycard.coffee" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\mycard.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\spine\ajax.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\spine\list.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\spine\local.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\spine\manager.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\spine\relation.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\spine\route.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\spine\spine.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\stroll.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\underscore-min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\javascripts\underscore.string.min.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\PIE.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\PIE.htc" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\bootstrap\bootstrap-responsive.min.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\bootstrap\bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\bootstrap\ie6.min.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\css_clear.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\hScrollPane.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\humane.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\img\glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\img\glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\jquery.multiselect.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\mod_websocket.lua" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\normalize.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\nunito.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-bg_glass_75_dadada_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-icons_222222_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-icons_2e83ff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-icons_454545_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-icons_888888_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\images\ui-icons_cd0a0a_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\jquery-ui-1.10.0.custom.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\jquery-ui-1.10.0.custom.min.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\jquery-ui-1.9.1.custom.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\vendor\stylesheets\smoothness\jquery-ui-1.9.1.custom.min.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\zh99998\Documents\GitHub\mycard.github.io\ygopro_version.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    </list>
+    <ignored path="mycard.github.io.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="mycard.github.io" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starter/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.357143" vertical-offset="815" max-vertical-offset="1767">
+              <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app-card.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/starter/app-card.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20329025" vertical-offset="150" max-vertical-offset="1197">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app-list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starter/app-list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.7558138" vertical-offset="0" max-vertical-offset="627">
+              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app-service.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app-service/app-service.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="10.0" vertical-offset="741" max-vertical-offset="1805">
+              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post-list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/finished/post-list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.321428" vertical-offset="0" max-vertical-offset="893">
+              <caret line="27" column="20" selection-start-line="20" selection-start-column="8" selection-end-line="27" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="468" />
+    <option name="y" value="598" />
+    <option name="width" value="1352" />
+    <option name="height" value="1017" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="starter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="finished" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-button" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycard.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="C:/Users/zh99998/AppData/Local/GitHub/PortableGit_ed44d00daa128db527396557813e7b68709ed0e2/bin/git.exe" />
+    <property name="options.lastSelected" value="vcs.Git" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10cc1c5c-5a77-4cba-a5d1-c2facfcecadd" name="Default" comment="" />
+      <created>1414385907796</created>
+      <option name="number" value="Default" />
+      <updated>1414385907796</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="468" y="598" width="1352" height="1017" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25898203" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/starter/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1406">
+          <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="133">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="171">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="665">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1406">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="879">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="879">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.678572" vertical-offset="0" max-vertical-offset="665">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finished/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27737227" vertical-offset="0" max-vertical-offset="1862">
+          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finished/post-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.321428" vertical-offset="0" max-vertical-offset="893">
+          <caret line="27" column="20" selection-start-line="20" selection-start-column="8" selection-end-line="27" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-service/app-service.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="10.0" vertical-offset="741" max-vertical-offset="1805">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.357143" vertical-offset="815" max-vertical-offset="1767">
+          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/app-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7558138" vertical-offset="0" max-vertical-offset="627">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/app-card.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20329025" vertical-offset="150" max-vertical-offset="1197">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

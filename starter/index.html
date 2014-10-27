@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>unquote</title>
+
+  <meta name="viewport" 
+  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <script src="../components/platform/platform.js">
+  </script>
+
+  <link rel="import" href="../components/font-roboto/roboto.html">
+  <link rel="import"
+        href="../components/core-header-panel/core-header-panel.html">
+  <link rel="import"
+        href="../components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="../components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="../components/paper-button/paper-button.html">
+  <link rel="import" href="app-list.html">
+
+  <style>
+  @font-face{font-family:'Droid Sans';font-style:normal;font-weight:400;src:local('Droid Sans'),local('DroidSans'),url(http://fonts.gstatic.com/s/droidsans/v6/s-BiyweUPV0v-yRb-cjciCEAvth_LlrfE80CYdSH47w.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215,U+E0FF,U+EFFD,U+F000}
+  html,body {
+    height: 100%;
+    margin: 0;
+    background-color: #E5E5E5;
+    font-family: 'Droid Sans','microsoft yahei',sans-serif, sans-serif;
+  }
+  core-header-panel {
+    height: 100%;
+  }
+  core-header-panel[mode=cover]::shadow #mainContainer {
+    left: 70px;
+  }
+
+  .core-header {
+    height: 400px;
+    line-height: 60px;
+    font-size: 18px;
+    padding: 0 10px;
+    background-color: #3f51b5;
+    color: #FFF;
+    transition: height 0.2s;
+  }
+
+  .content {
+    height: 2000px;
+    background: linear-gradient(rgb(214, 227, 231), lightblue);
+  }
+
+  #logo {
+    width: 300px;
+
+  }
+
+  </style>
+
+</head>
+
+<body unresolved>
+<core-header-panel mode="scroll">
+  <div class="core-header"><!--<img id="logo" src="http://mycard.moe/logo.png">萌卡--></div>
+
+  <div class="container">
+    <app-list show="all"></app-list>
+  </div>
+
+</core-header-panel>
+
+<!--<script>
+
+  // custom transformation: scale header's title
+  var titleStyle = document.querySelector('.title').style;
+  addEventListener('core-header-transform', function(e) {
+    var d = e.detail;
+    var m = d.height - d.condensedHeight;
+    var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
+    titleStyle.transform = titleStyle.webkitTransform =
+            'scale(' + scale + ') translateZ(0)';
+  });
+
+</script>-->
+</body>
+
+</html>

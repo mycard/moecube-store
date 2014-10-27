@@ -1,0 +1,58 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
+
+<polymer-element name="app-card">
+  <template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    polyfill-next-selector { content: 'h2'; }
+    ::content h2 {
+      margin-top: 85%;
+      bottom: 1em;
+      display: block;
+      font-size: 1.329em;
+      font-weight: 400;
+      left: 0;
+      line-height: 1.3em;
+      padding: 0 1.5em;
+      right: 0;
+      text-align: left;
+      z-index: 10;
+    }
+    polyfill-next-selector { content: 'img'; }
+    ::content img {
+      width: 40%;
+      height: auto;
+      margin: 10px;
+    }
+
+    paper-button {
+      background: rgb(69, 39, 160) url(http://localhost:8000/Google-Design-Simple-master/img/icons/nekoim.png) no-repeat 50% 50%;
+      background-size: 40%;
+      color: white;
+      width: 25%;
+      height: 0;
+      padding: 0 0 25% 0;
+      margin: 0;
+    }
+
+    </style>
+
+    <paper-button>
+        <content select="h2"></content>
+    </paper-button>
+
+    
+  </template>
+  <script>
+  Polymer({});
+  </script>
+</polymer-element>
