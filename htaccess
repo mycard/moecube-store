@@ -1,4 +1,0 @@
-AddDefaultCharset UTF-8
-Options +MultiViews
-RewriteEngine On
-RewriteRule http-bind/ http://chat.my-card.in:5280/http-bind/ [P]
