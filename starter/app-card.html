@@ -16,16 +16,9 @@
     polyfill-next-selector { content: 'h2'; }
     ::content h2 {
       margin-top: 85%;
-      bottom: 1em;
-      display: block;
-      font-size: 1.329em;
-      font-weight: 400;
-      left: 0;
-      line-height: 1.3em;
-      padding: 0 1.5em;
-      right: 0;
+      font-size: 20px;
       text-align: left;
-      z-index: 10;
+      padding: 0 1.5em;
     }
     polyfill-next-selector { content: 'img'; }
     ::content img {
@@ -46,7 +39,7 @@
 
     </style>
 
-    <paper-button>
+    <paper-button style="background: {{color}} url({{image}}) ">
         <content select="h2"></content>
     </paper-button>
 
