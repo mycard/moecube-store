@@ -49,7 +49,7 @@ cd yaourt
 makepkg -si --noconfirm
 cd ..
 
-yaourt -S google-chrome sublime-text-imfix webstorm clion --noconfirm
+yaourt -S google-chrome sublime-text-imfix webstorm --noconfirm
 SU_USER
 ARCH_CHROOT
 umount -R /mnt
