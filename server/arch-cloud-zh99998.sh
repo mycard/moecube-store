@@ -8,7 +8,7 @@ pacstrap -i /mnt base base-devel vim grub gnome git nodejs alsa-utils ttf-dejavu
 
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt /bin/bash <<ARCH_CHROOT
+arch-chroot /mnt /bin/bash -e <<ARCH_CHROOT
 
 echo 'en_US.UTF-8 UTF-8
 zh_CN.UTF-8 UTF-8' > /etc/locale.gen
@@ -49,8 +49,8 @@ cd yaourt
 makepkg -si --noconfirm
 cd ..
 
-yaourt -S google-chrome sublime-text-imfix webstorm --noconfirm
+yaourt -S google-chrome sublime-text-imfix webstorm clion --noconfirm
 SU_USER
 ARCH_CHROOT
-#umount -R /mnt
-#reboot
+umount -R /mnt
+reboot
