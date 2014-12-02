@@ -4,7 +4,7 @@ sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
 rankmirrors /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 rm /etc/pacman.d/mirrorlist.backup
 
-pacstrap -i /mnt base base-devel vim grub gnome git nodejs opencc alsa-utils ttf-dejavu wqy-microhei wqy-zenhei xf86-video-ati dhclient fcitx-im fcitx-sunpinyin os-prober file-roller wget axel gvfs-mtp gvfs-goa goagent fcitx-cloudpinyin openvpn nautilus-sendto gnome-logs gedit
+pacstrap -i /mnt base base-devel vim grub gnome git nodejs alsa-utils ttf-dejavu wqy-microhei wqy-zenhei dhclient fcitx-im fcitx-sunpinyin os-prober file-roller wget axel gvfs-mtp gvfs-goa fcitx-cloudpinyin nautilus-sendto gnome-logs gedit
 
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
@@ -29,7 +29,7 @@ systemctl enable NetworkManager
 useradd -m -G wheel -s /bin/bash -p `openssl passwd zh112998` zh99998
 
 chmod u+w /etc/sudoers
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 chmod u-w /etc/sudoers
 
 su - zh99998 << SU_USER
