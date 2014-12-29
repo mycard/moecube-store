@@ -6,7 +6,7 @@
     {"id":"66rpg","url":"http://www.66rpg.com/", "name":"66RPG", "logo":"http://bbs.66rpg.com/logo.gif"},
     {"id":"archlinuxcn","url":"https://www.archlinuxcn.org/", "name":"Arch Linux 中文社区", "logo":"http://archlinux.ro/logo/buton_archlinux_romania.png"},
     {"id":"salvation","url":"http://ygopro.us/", "name":"Salvation Server", "logo":"http://ygopro.us/img/minibanner.png"},
-    {"id":"devpro","url":"http://ygopro.de/", "name":"YGOPro DevPro", "logo":"http://i.imgur.com/HFm9QQU.png"},
+    {"id":"devpro","url":"http://ygopro.de/en", "name":"YGOPro DevPro", "logo":"http://i.imgur.com/HFm9QQU.png"},
     {"id":"oekaki","url":"http://oekaki.so/","name":"Project Oekakisoli","logo":"http://bbs.nekonazo.com/images/logo/oekakiso.gif"},
     {"id":"mincdn","url":"http://www.mincdn.com/","name":"mincdn","logo":"http://static.hdslb.com/images/common/mincdn-logo.png"}
 ]
