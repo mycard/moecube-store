@@ -1,4 +1,4 @@
 [
     {"id":2,"name":"penguin","ip":"182.254.142.247","port":7911,"auth":false,"index":"http://182.254.142.247:7922/","max_rooms":100,"server_type":"ygopro"},
-    {"id":3,"name":"test","ip":"112.98.37.24","port":7911,"auth":false,"index":"http://112.98.37.24:7922/","max_rooms":100,"server_type":"ygopro"}
+    {"id":3,"name":"test","ip":"112.98.37.24","port":7911,"auth":false,"index":"http://112.98.37.24:7911/","max_rooms":100,"server_type":"ygopro"}
 ]
