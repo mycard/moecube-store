@@ -17,11 +17,11 @@
         if(matched){
             document.documentElement.setAttribute('mycard-version', matched[1]);
         }
-        if(navigator.userAgent.indexOf('x64')){
+        if(navigator.userAgent.indexOf('WOW64')>-1 || window.navigator.platform=='Win64'){
             document.documentElement.setAttribute('mycard-arch', 'x64');
-        }else if(navigator.userAgent.indexOf('x86')){
+        }else{
             document.documentElement.setAttribute('mycard-arch', 'x86');
-        }
+        };
     </script>
     <style>
         .mycard-only-x86 {
