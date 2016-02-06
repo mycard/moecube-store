@@ -7,16 +7,49 @@
     <meta name="description" content="Mycard萌卡, 建立在YGOPRO上自动化决斗工具上的卡牌游戏(游戏王)对战平台, 目前正在进行新版本的公测哦. 注册与客户端的下载都可以在这里完成.">
     <meta itemprop="name" content="MyCard - 萌卡">
     <meta itemprop="description" content="萌卡的官方网站 MyCard Official Website">
-    <meta itemprop="image" content="https://my-card.in/logo.png">
+    <meta itemprop="image" content="https://mycard.moe/logo.png">
     
-    <link rel="canonical" href="https://my-card.in/">
+    <link rel="canonical" href="https://mycard.moe/">
     <title>MyCard - 萌卡</title>
+    
+    <script>
+        var matched = navigator.userAgent.match(/mycard\/(\S+)/);
+        if(matched){
+            document.documentElement.setAttribute('mycard-version', matched[1]);
+        }
+        if(navigator.userAgent.indexOf('x64')){
+            document.documentElement.setAttribute('mycard-arch', 'x64');
+        }else if(navigator.userAgent.indexOf('x86')){
+            document.documentElement.setAttribute('mycard-arch', 'x86');
+        }
+    </script>
 
 </head>
 
 <body>
 
-建设中
+<div class="mycard-hide">
+    <a href="https://ygobbs.com">论坛</a> <br>
+    <p>
+        这是正在内测的萌卡客户端，会有诸多问题，不介意的可下载尝鲜，并把 bug 报往<a href="https://ygobbs.com">论坛</a>或 <a href="mailto:zh99998@gmail.com">zh99998@gmail.com</a>。正式版将在几周后上线。
+    </p>
+    <p>
+        目前账号正在转移中，只有部分用户可以登录，无法登陆的请尝试创建新账号或者等两天再来试试。此外，这次的账号是由原萌卡社区、ygobbs、原萌卡平台账号合并起来的，由于重名、重邮箱等原因，有部分用户的用户名被修改了，请尝试使用邮箱找回密码、使用邮箱登录，之后可以在论坛个人管理页面修改用户名。
+    </p>
+    <p>
+        如果要转载，请务必引用本页面 <a href="https://mycard.moe">https://mycard.moe</a>，不得引用下载链接或者直接将安装程序传至网盘。这个页面上的下载会保持最近，并且可能会根据用户的系统等显示不同的下载，直接分享安装程序可能在不同的电脑上出现问题。
+    </p>
+    <p>
+        客户端和论坛均不再支持 Windows XP，推荐 Windows XP 用户升级至 Windows 10。<a href="https://www.microsoft.com/zh-cn/software-download/windows10ISO">微软官方 Win10 下载页面</a>。
+    </p>
+    <span class="mycard-only-x86">你在用32位系统，请点击32位下载</span>
+    <span class="mycard-only-x64">你在用64位系统，请点击64位下载</span>
+    <br>
+    <a href="http://downloads.my-card.in/release/win64/mycard-2.0.6-win32-with-ygopro.exe">32位下载</a> <br>
+    <a href="http://downloads.my-card.in/release/win64/mycard-2.0.6-win64-with-ygopro.exe">64位下载</a> <br>
+</div>
+
+建设中 <br>
 
 </body>
 </html>
