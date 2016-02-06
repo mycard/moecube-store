@@ -23,13 +23,28 @@
             document.documentElement.setAttribute('mycard-arch', 'x86');
         }
     </script>
-
+    <style>
+        .mycard-only-x86 {
+            display: none;
+        }
+        .mycard-only-x64 {
+            display: none;
+        }
+        html[mycard-version] .mycard-hide {
+            display: none;
+        }
+        html[mycard-arch="x86"] .mycard-only-x86 {
+            display: inherit;
+        }
+        html[mycard-arch="x64"] .mycard-only-x64 {
+            display: inherit;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="mycard-hide">
-    <a href="https://ygobbs.com">论坛</a> <br>
     <p>
         这是正在内测的萌卡客户端，会有诸多问题，不介意的可下载尝鲜，并把 bug 报往<a href="https://ygobbs.com">论坛</a>或 <a href="mailto:zh99998@gmail.com">zh99998@gmail.com</a>。正式版将在几周后上线。
     </p>
@@ -45,8 +60,8 @@
     <span class="mycard-only-x86">你在用32位系统，请点击32位下载</span>
     <span class="mycard-only-x64">你在用64位系统，请点击64位下载</span>
     <br>
-    <a href="http://downloads.my-card.in/release/win64/mycard-2.0.6-win32-with-ygopro.exe">32位下载</a> <br>
-    <a href="http://downloads.my-card.in/release/win64/mycard-2.0.6-win64-with-ygopro.exe">64位下载</a> <br>
+    <a href="http://downloads.my-card.in/release/win64/mycard-2.0.6-win32-with-ygopro.exe">32位下载</a> <a href="http://downloads.my-card.in/release/win64/mycard-2.0.6-win64-with-ygopro.exe">64位下载</a> <a href="https://ygobbs.com">论坛</a> <br>
+    <br>
 </div>
 
 建设中 <br>
