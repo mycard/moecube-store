@@ -1,0 +1,14 @@
+{
+  "ygopro": {
+    "news": [
+      {
+        "id": "test",
+        "type": "image",
+        "title": "这是一个测试公告",
+        "text": "聚集的祈愿将成为新生的闪耀之星。化作光芒闪耀的道路吧！",
+        "image": "https://ygobbs.com/uploads/default/optimized/2X/d/d7ac6f3dbeb9ec6e52ac59a61091880bc2d8a953_1_636x500.jpg",
+        "url": "https://ygobbs.com/t/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E5%85%AC%E5%91%8A/78739"
+      }
+    ]
+  }
+}
