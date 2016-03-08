@@ -5,9 +5,9 @@
         "id": "ygopro-sr02",
         "type": "image",
         "title": "已更新 SR02 新卡",
-        "text": "如果没有自动更新，或更新后出现卡载入中情况，请加 QQ 群 429917930 联系 zh99998",
+        "text": "如果没有自动更新，或更新后出现卡载入中/安装中情况，请从 https://mycard.moe 重新下载安装 2.0.9 版本",
         "image": "http://img17.poco.cn/mypoco/myphoto/20151215/16/5587492820151215164037057.jpg",
-        "url": "https://github.com/mycard/ygopro-images/commit/78153cc766f1e47870e171d63923b19f7e658d14"
+        "url": "https://mycard.moe"
       }
     ]
   }
