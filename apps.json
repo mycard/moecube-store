@@ -9,6 +9,14 @@
         "image": "http://mycard.moe/PRO广告位上海.jpg",
         "url": "http://www.douyu.com/231727"
       }
+      {
+        "id": "test",
+        "type": "image",
+        "title": "MC已更新至0724",
+        "text": "常见问题解决方法",
+        "image": "http://mycard.moe/PROtest.jpg",
+        "url": "https://ygobbs.com/t/7%E6%9C%8825%E6%97%A5-MyCard%E5%B7%B2%E6%9B%B4%E6%96%B0INOV910%E7%AD%89%E6%96%B0%E5%8D%A1%EF%BC%8C1033A%E7%A8%8B%E5%BA%8F%E3%80%82%E5%86%85%E5%B8%A6%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0%E4%BB%A5%E5%8F%8A%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E3%80%82/80143"
+      }
     ]
   }
 }
