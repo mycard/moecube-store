@@ -27,6 +27,7 @@
     "@angular/router": "latest",
     "@types/bootstrap": "latest",
     "@types/jquery": "latest",
+    "@types/node": "latest",
     "@types/tether": "latest",
     "angular-in-memory-web-api": "latest",
     "bootstrap": "next",
