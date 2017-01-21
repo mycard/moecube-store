@@ -1,0 +1,73 @@
+#signups {
+  color: #00a4d9;
+}
+
+#online {
+  color: rgb(241, 138, 6);
+}
+
+.stats {
+  font-size: 1.25rem;
+}
+
+.features {
+  padding-top: .5rem;
+}
+
+.col-md-6 {
+  box-shadow: 0 0 30px rgba(0,0,0,.1);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 0.5%;
+  padding-top: 1rem;
+  flex: 0 0 48%;
+}
+h2 {
+  /*background: linear-gradient( to bottom, #f7f7f7, #eee );*/
+  padding: .5rem;
+  font-size: 1.5rem;
+  /*border-radius: 8px;*/
+  /*border: 1px solid #eee;*/
+}
+
+sup {
+  top: -3.6em;
+  font-size: 20%;
+}
+
+.btn-primary {
+  background-color: #00a4d9;
+  border-color: #008dbb;
+}
+
+#requirements-wrapper {
+  background-color: #eceeef;
+  margin-top: 2rem;
+  padding: 2rem 0;
+}
+
+#signups-wrapper {
+  margin-bottom: 0;
+}
+
+#requirements {
+  font-size: 14px;
+}
+#setup {
+  font-size: 1.5rem;
+}
+/*#main > div:nth-child(1) {*/
+  /*border-left: 4px solid #aae5ff;*/
+/*}*/
+
+/*#main > div:nth-child(2) {*/
+  /*border-left: 4px solid #a8ffab;*/
+/*}*/
+
+/*#main > div:nth-child(3) {*/
+  /*border-left: 4px solid #ffaabe;*/
+/*}*/
+
+/*#main > div:nth-child(4) {*/
+  /*border-left: 4px solid #fffc9e;*/
+/*}*/
