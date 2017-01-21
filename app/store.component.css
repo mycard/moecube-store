@@ -1,3 +1,7 @@
+#pic {
+  width: 70%;
+}
+
 #signups {
   color: #00a4d9;
 }
@@ -38,6 +42,10 @@ sup {
 .btn-primary {
   background-color: #00a4d9;
   border-color: #008dbb;
+}
+
+.btn-secondary {
+  color: #00a4d9;
 }
 
 #requirements-wrapper {
