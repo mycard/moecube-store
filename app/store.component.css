@@ -1,9 +1,19 @@
-#pic {
-  width: 70%;
+.navbar-brand {
+  height: 50px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.5rem;
 }
 
-#signups {
-  color: #00a4d9;
+.navbar {
+  border-bottom: 1px solid #dddddd;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  font-size: 1.25rem;
+}
+
+#pic {
+  width: 100%;
 }
 
 #online {
@@ -18,14 +28,20 @@
   padding-top: .5rem;
 }
 
+#title {
+  padding-top: 4rem;
+  padding-left: 4rem;
+}
+
 .col-md-6 {
-  box-shadow: 0 0 30px rgba(0,0,0,.1);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .1);
   border: 1px solid #ccc;
   border-radius: 10px;
   margin: 0.5%;
   padding-top: 1rem;
   flex: 0 0 48%;
 }
+
 h2 {
   /*background: linear-gradient( to bottom, #f7f7f7, #eee );*/
   padding: .5rem;
@@ -48,12 +64,6 @@ sup {
   color: #00a4d9;
 }
 
-#requirements-wrapper {
-  background-color: #eceeef;
-  margin-top: 2rem;
-  padding: 2rem 0;
-}
-
 #signups-wrapper {
   margin-bottom: 0;
 }
@@ -61,21 +71,63 @@ sup {
 #requirements {
   font-size: 14px;
 }
+
 #setup {
   font-size: 1.5rem;
 }
-/*#main > div:nth-child(1) {*/
-  /*border-left: 4px solid #aae5ff;*/
-/*}*/
 
-/*#main > div:nth-child(2) {*/
-  /*border-left: 4px solid #a8ffab;*/
-/*}*/
+#main-wrapper {
+  z-index: 1;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  background: linear-gradient( to bottom, #f7f7f7, #eee );
+}
 
-/*#main > div:nth-child(3) {*/
-  /*border-left: 4px solid #ffaabe;*/
-/*}*/
+#requirements-wrapper {
+  z-index: 2;
+  position: relative;
+  background: linear-gradient( to bottom, #f7f7f7, #eee );
+  padding: 4rem 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+}
 
-/*#main > div:nth-child(4) {*/
-  /*border-left: 4px solid #fffc9e;*/
-/*}*/
+#main > div:nth-child(1) {
+  border-top: 4px solid #9acfe6;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#main > div:nth-child(2) {
+  border-top: 4px solid #9ACFE6;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#main > div:nth-child(3) {
+  border-top: 4px solid #9ACFE6;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#main > div:nth-child(4) {
+  border-top: 4px solid #9ACFE6;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#footer-wrapper {
+  z-index: 3;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background: linear-gradient( to bottom, #f7f7f7, #eee );
+}
+
+#footer {
+  text-align: right;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  padding-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, .05);
+}

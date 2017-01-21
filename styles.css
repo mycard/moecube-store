@@ -1,7 +1,6 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   font-family: -apple-system, Arial, 'Source Sans Pro', "Microsoft YaHei", 'Microsoft JhengHei', "WenQuanYi Micro Hei", sans-serif;
-  padding-top: 2rem;
   font-size: 15px;
 }
 
@@ -10,6 +9,7 @@ body {
 }
 
 .jumbotron {
-  /*background: linear-gradient( to bottom, #f7f7f7, #eee );*/
-  background: linear-gradient( 150deg, #f0c3c2, #e0efd1, #9ae2d3 );
+  background: linear-gradient( to bottom, #f7f7f7, #eee );
+  border-radius:unset;
+  margin-bottom:unset;
 }
