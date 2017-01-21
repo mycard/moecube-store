@@ -10,6 +10,7 @@ import 'rxjs/Rx';
 })
 export class StoreComponent implements OnInit {
   signups: number;
+  online: number;
 
   constructor (private http: Http) {
   }
@@ -21,5 +22,9 @@ export class StoreComponent implements OnInit {
     let data = await this.http.get('https://ygobbs.com/admin/dashboard.json', {search: params})
       .map(response => response.json()).toPromise();
     this.signups = data.global_reports.find((item: any) => item.type === 'signups').total;
+
+    let document = await this.http.get('https://chat.mycard.moe/stats/online')
+      .map(response => new DOMParser().parseFromString(response.text(), 'text/xml')).toPromise();
+    this.online = parseInt(document.querySelector('#content > table > tbody > tr:nth-child(2) > td:nth-child(2)').textContent);
   }
 }
