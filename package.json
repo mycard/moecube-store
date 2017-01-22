@@ -11,7 +11,10 @@
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
     "test-once": "tsc && karma start karma.conf.js --single-run",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "start:aot": "build:aot && lite:aot",
+    "build:aot": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js && node copy-dist-files",
+    "lite:aot": "lite-server -c aot/bs-config.json"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +30,7 @@
     "@angular/router": "latest",
     "@types/bootstrap": "latest",
     "@types/jquery": "latest",
-    "@types/node": "latest",
+    "@types/node": "^7.0.1",
     "@types/tether": "latest",
     "angular-in-memory-web-api": "latest",
     "bootstrap": "next",
@@ -39,9 +42,15 @@
     "zone.js": "^0.7.4"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "^2.4.4",
+    "@angular/platform-server": "^2.4.4",
     "lite-server": "latest",
-    "typescript": "latest",
-    "tslint": "^3.15.1"
+    "rollup": "^0.41.4",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "tslint": "^3.15.1",
+    "typescript": "latest"
   },
   "repository": {}
 }
