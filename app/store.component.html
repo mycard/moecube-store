@@ -31,8 +31,7 @@
           <a class="btn btn-primary btn-lg" [href]="latest[platform].url" role="button">立即安装</a>
         </p>
         <p *ngIf="latest">
-          萌卡平台支持 <a [href]="latest.win32.url">Windows</a> 与 <a [href]="latest.darwin.url">Mac</a> 操作系统。
-        </p>
+          萌卡平台支持 <a [href]="latest.win32.url">Windows</a> 与 <a [href]="latest.darwin.url">Mac</a> 操作系统。 </p>
         <p *ngIf="!latest">Loading...</p>
       </div>
       <div class="col">
@@ -86,8 +85,8 @@
         <p>
           孤独的我们，<br> 在无尽的大海中相互取暖，<br> 多么的希望有这么一个共同的家园啊！<br>
         </p>
-        <p id="signups-wrapper"><span id="signups" class="stats">{{stats.signups}}</span> 只萌新已加入萌卡</p>
-        <p><span id="online" class="stats">{{stats.online}}</span> 位爱的战士正在线游戏</p>
+        <p *ngIf="stats" id="signups-wrapper"><span id="signups" class="stats">{{stats.signups}}</span> 只萌新已加入萌卡</p>
+        <p *ngIf="stats"><span id="online" class="stats">{{stats.online}}</span> 位爱的战士正在线游戏</p>
         <p><a class="btn btn-secondary" href="#" role="button">加入萌卡社区 &raquo;</a></p>
       </div>
 
