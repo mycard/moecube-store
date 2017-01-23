@@ -1,7 +1,6 @@
-import rollup      from 'rollup'
-import nodeResolve from 'rollup-plugin-node-resolve'
-import commonjs    from 'rollup-plugin-commonjs';
-import uglify      from 'rollup-plugin-uglify'
+import nodeResolve from "rollup-plugin-node-resolve";
+import commonjs from "rollup-plugin-commonjs";
+import uglify from "rollup-plugin-uglify";
 
 //paths are relative to the execution path
 export default {
@@ -13,7 +12,8 @@ export default {
   plugins: [
     nodeResolve({jsnext: true, module: true}),
     commonjs({
-      include: ['node_modules/rxjs/**', 'node_modules/js-yaml/**']
+      include: ['node_modules/rxjs/**', 'node_modules/js-yaml/**'],
+      namedExports: {'js-yaml': ['Type', 'Schema', 'FAILSAFE_SCHEMA', 'JSON_SCHEMA', 'CORE_SCHEMA', 'DEFAULT_SAFE_SCHEMA', 'DEFAULT_FULL_SCHEMA', 'load', 'loadAll', 'safeLoad', 'safeLoadAll', 'dump', 'safeDump', 'YAMLException']}
     }),
     uglify()
   ]
