@@ -13,7 +13,7 @@ export default {
     nodeResolve({jsnext: true, module: true}),
     commonjs({
       include: ['node_modules/rxjs/**', 'node_modules/js-yaml/**'],
-      namedExports: {'js-yaml': ['Type', 'Schema', 'FAILSAFE_SCHEMA', 'JSON_SCHEMA', 'CORE_SCHEMA', 'DEFAULT_SAFE_SCHEMA', 'DEFAULT_FULL_SCHEMA', 'load', 'loadAll', 'safeLoad', 'safeLoadAll', 'dump', 'safeDump', 'YAMLException']}
+      namedExports: {'js-yaml': ['safeLoad']}
     }),
     uglify()
   ]
