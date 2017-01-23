@@ -29,7 +29,8 @@
 
       'jquery': 'npm:jquery/dist/jquery.min.js',
       'tether': 'npm:tether/dist/js/tether.min.js',
-      'bootstrap': 'npm:bootstrap/dist/js/bootstrap.min.js'
+      'bootstrap': 'npm:bootstrap/dist/js/bootstrap.min.js',
+      'js-yaml': 'npm:js-yaml/dist/js-yaml.min.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

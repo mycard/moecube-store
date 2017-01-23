@@ -6,7 +6,6 @@
     <a class="navbar-brand" href="#">
       <img src="https://mycard.moe/logo_60.png" width="40" height="40" class="d-inline-block align-center" alt=""> MyCard
     </a>
-    <!--<a class="navbar-brand" href="#"></a>-->
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
@@ -28,12 +27,13 @@
       <div class="col-md-5" id="title">
         <h1 class="display-3">萌卡<sup class="titileBeta">BETA</sup></h1>
         <p>MyCard 同人游戏平台</p>
-        <p>
-          <a class="btn btn-primary btn-lg" href="https://wudizhanche.mycard.moe/download?platform=win32" role="button">立即安装</a>
+        <p *ngIf="latest">
+          <a class="btn btn-primary btn-lg" [href]="latest.win32.url" role="button">立即安装</a>
         </p>
-        <p>
-          萌卡平台支持 <a href="https://wudizhanche.mycard.moe/download?platform=win32">Windows</a> 与
-          <a href="https://wudizhanche.mycard.moe/download?platform=darwin">Mac</a> 操作系统。</p>
+        <p *ngIf="latest">
+          萌卡平台支持 <a [href]="latest.win32.url">Windows</a> 与 <a [href]="latest.darwin.url">Mac</a> 操作系统。
+        </p>
+        <p *ngIf="!latest">Loading...</p>
       </div>
       <div class="col">
         <img id="pic" src="MyCardProduct.png">
@@ -114,9 +114,9 @@
 <div id="requirements-wrapper">
   <div class="container">
     <div class="row">
-      <div id="setup" class="col">
+      <div id="setup" class="col" *ngIf="latest">
         <p>欢迎加入萌卡这个大家庭</p>
-        <a class="btn btn-primary btn-lg" href="https://wudizhanche.mycard.moe/download?platform=win32" role="button">立即安装</a>
+        <a class="btn btn-primary btn-lg" [href]="latest.win32.url" role="button">立即安装</a>
       </div>
       <div id="requirements" class="col">
         <p>
@@ -139,4 +139,3 @@
     </footer>
   </div>
 </div>
-
