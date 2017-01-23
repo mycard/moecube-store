@@ -12,6 +12,7 @@ import * as yaml from 'js-yaml';
 export class StoreComponent implements OnInit {
   stats: {signups: number; online: number;};
   latest: {win32: {version: string, url: string}, darwin: {version: string, url: string}};
+  platform = navigator.platform.match(/Mac/i) ? 'darwin' : 'win32';
 
   constructor (private http: Http) {
   }
