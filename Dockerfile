@@ -7,7 +7,7 @@ COPY package.json /usr/src/app/
 RUN npm install
 COPY . /usr/src/app
 
-RUN npm run build:aot
+RUN npm run build
 VOLUME /usr/src/app/aot
 
 CMD [ "echo", "mycard-store" ]

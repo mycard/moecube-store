@@ -1,0 +1,56 @@
+.App-Logo {
+  width: 120px;
+  height: 31px;
+  border-radius: 6px;
+  margin: 16px 24px 16px 0;
+  float: left;
+  display: flex;
+  align-items: center;
+}
+
+.App-Logo span {
+  font-size: 1rem;
+  color: rgba(255,255,255, 0.75)
+}
+
+.App-Poster {
+  width: 100%; 
+  height: auto;
+  max-width: 100%; 
+}
+
+.App-Poster-Content .ant-btn {
+  margin: 1.2rem 0
+}
+
+.App-Content1 {
+  padding: 50px;
+  background: #333;
+}
+
+.App-Content2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  background: #333;
+}
+
+.App-CardList {
+  padding: 4vh 4vw;
+}
+
+.App-CardList .ant-row {
+  margin: -8px;
+}
+.App-CardList .ant-row > div {
+  padding: 1vh 1vw;
+}
+
+.App-Card-content {
+  margin-bottom: 2vh;
+  white-space: pre;
+}
+
+.ant-layout .ant-layout-header {
+  background: #404040
+}
