@@ -1,3 +1,10 @@
+@import '~antd/dist/antd.css';
+
+.App-Logo span {
+  font-size: 1rem;
+  color: rgba(255,255,255, 0.75)
+}
+
 .App-Logo {
   width: 120px;
   height: 31px;
@@ -6,11 +13,6 @@
   float: left;
   display: flex;
   align-items: center;
-}
-
-.App-Logo span {
-  font-size: 1rem;
-  color: rgba(255,255,255, 0.75)
 }
 
 .App-Poster {
