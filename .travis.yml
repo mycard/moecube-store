@@ -12,5 +12,6 @@ before_deploy:
 deploy:
   provider: script
   script: python osscmd uploadfromdir aot oss://mycard/store --id=$ALIYUN_ID --key=$ALIYUN_SECRET
+  skip_cleanup: true
   on:
     branch: master
