@@ -126,7 +126,7 @@ export default class App extends Component {
               </div>
               </Col>
               <Col span={12} pull={1}>
-                <img alt="img" src={require('../public/MyCardProduct.png')} className="App-Poster"/>
+                <img alt="img" src={require('../public/MoeCubeProduct.png')} className="App-Poster"/>
               </Col>
             </Row>
             ) : (
@@ -161,7 +161,7 @@ export default class App extends Component {
               </Row>
               <Row>
                 <Col span={24}>
-                  <img alt="img" src={require('../public/MyCardProduct.png')} className="App-Poster"/>
+                  <img alt="img" src={require('../public/MoeCubeProduct.png')} className="App-Poster"/>
                 </Col>
               </Row>
             </div>
