@@ -74,6 +74,7 @@ export default class App extends Component {
     let rawText = await fetch('https://chat.mycard.moe/stats/online').then(res => res.text())
     let document = new DOMParser().parseFromString(rawText, 'text/xml')
     let node = document.querySelector('#content > table > tbody > tr:nth-child(2) > td:nth-child(2)') || {}
+    // eslint-disable-next-line
     return parseInt(node.textContent)
   }
 
@@ -125,7 +126,7 @@ export default class App extends Component {
               </div>
               </Col>
               <Col span={12} pull={1}>
-                <img src={require('../public/MyCardProduct.png')} className="App-Poster"/>
+                <img alt="img" src={require('../public/MyCardProduct.png')} className="App-Poster"/>
               </Col>
             </Row>
             ) : (
@@ -160,7 +161,7 @@ export default class App extends Component {
               </Row>
               <Row>
                 <Col span={24}>
-                  <img src={require('../public/MyCardProduct.png')} className="App-Poster"/>
+                  <img alt="img" src={require('../public/MyCardProduct.png')} className="App-Poster"/>
                 </Col>
               </Row>
             </div>

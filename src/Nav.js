@@ -8,7 +8,7 @@ export default class MyComponent extends React.Component {
     return (
       <div>
         <div className="App-Logo">
-          <img src={require("../public/logo.png")} style={{width: '40px', margin: '10px'}}/>
+          <img alt="img" src={require("../public/logo.png")} style={{width: '40px', margin: '10px'}}/>
           <span>MyCard</span>           
         </div>
         <Menu
