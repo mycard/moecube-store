@@ -11,7 +11,6 @@ import { Layout, Row, Col, Button, Card, Timeline} from 'antd'
 
 const { Content, Footer, Header} = Layout
 
-
 import Nav from './Nav'
 
 export default class App extends Component {
@@ -102,19 +101,20 @@ export default class App extends Component {
               <Col span={12} push={1}>
               <div className="App-Poster-Content">
                 <div style={{ fontSize: '2rem', padding: '.8rem 0 ', color: "#eee"}}>
-                  萌卡
+                  <FormattedMessage id="MoeCube"/>
                   <span style={{ fontSize: '1rem', color: "#eee", padding: '0 1vw',}}>
                     Beta
                   </span>
                 </div>
                 <div style={{color: "#ccc"}}>
-                  MyCard 同人游戏平台
+                  <FormattedMessage id="MoeCubeDoujinGamePlatform"/>
                 </div>
                 <div style={{color: "#ccc"}}>
-                  萌卡平台支持 
-                  <DownLoadLink text='Windows' data={latest.win32} />  与 
+                  <FormattedMessage id="SupportBoth"/>
+                  <DownLoadLink text='Windows' data={latest.win32} />
+                  <FormattedMessage id="And"/> 
                   <DownLoadLink text='Mac' data={latest.drawin} /> 
-                  操作系统
+                  <FormattedMessage id="OperationSystem"/>
                 </div>
 
                 <a href={latest[this.state.platform].url}>
@@ -135,19 +135,20 @@ export default class App extends Component {
                 <Col span={12}>
                   <div className="App-Poster-Content">
                   <div style={{ fontSize: '2rem', padding: '.8rem 0 ', color: "#eee"}}>
-                    萌卡
+                    <FormattedMessage id="MoeCube"/>
                     <span style={{ fontSize: '1rem', color: "#eee", padding: '0 1vw',}}>
                       Beta
                     </span>
                   </div>
                   <div style={{color: "#ccc"}}>
-                    MyCard 同人游戏平台
+                    <FormattedMessage id="MoeCubeDoujinGamePlatform"/>
                   </div>
                   <div style={{color: "#ccc"}}>
-                    萌卡平台支持 
-                    <DownLoadLink text='Windows' data={latest.win32} />  与 
+                    <FormattedMessage id="SupportBoth"/>
+                    <DownLoadLink text='Windows' data={latest.win32} />
+                    <FormattedMessage id="And"/>
                     <DownLoadLink text='Mac' data={latest.drawin} /> 
-                    操作系统
+                    <FormattedMessage id="OperationSystem"/>
                   </div>
 
                   <a href={latest[this.state.platform].url}>
@@ -176,12 +177,7 @@ export default class App extends Component {
                 <p className="App-Card-content">
                   <FormattedMessage id={"CardContent1"} />                                  
                 </p>
-                <Timeline pending={<a href="#"><FormattedMessage id={"CardAction1"}/></a>}>
-
-                  {realData.CardTimeLine1.map((item, i) => {
-                    return <Timeline.Item key={i}>{item}</Timeline.Item>
-                  })}
-                </Timeline>
+                <a href=""><Button size="large"><FormattedMessage id={"CardAction1"} /></Button></a>
               </Card>
               </Col>
 
@@ -209,8 +205,8 @@ export default class App extends Component {
                   </p>
 
                 <Timeline pending={<a href="#"><FormattedMessage id={"CardAction3"}/></a>}>
-                  <Timeline.Item>{stats.signups || 'loading..'} 只萌新已加入萌卡</Timeline.Item>  
-                  <Timeline.Item>{stats.online || 'loading..'} 位爱的战士正在线游戏</Timeline.Item>  
+                  <Timeline.Item>{stats.signups || 'loading..'} <FormattedMessage id="IsRegisted"/> </Timeline.Item>  
+                  <Timeline.Item>{stats.online || 'loading..'} <FormattedMessage id="IsPlaying"/> </Timeline.Item>  
 
                   {realData.CardTimeLine3.map((item, i) => {
                     return <Timeline.Item key={i}>{item}</Timeline.Item>
@@ -248,7 +244,7 @@ export default class App extends Component {
 
 
         <Footer style={{ textAlign: 'right' }}>
-          © MyCard 2017 all right reserved.
+          © MoeCube 2017 all right reserved.
         </Footer>
       </Layout>
     )

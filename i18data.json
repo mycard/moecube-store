@@ -1,5 +1,5 @@
 {
-  "zh-CN":{
+  "en-US":{
     "CardTimeLine1":[],    
     "CardTimeLine2":[],
     "CardTimeLine3":[],
@@ -13,18 +13,18 @@
       "一键安装游戏，自动解决各种依赖问题。"
     ]
   },
-  "en-US":{
+  "zh-CN":{
     "CardTimeLine1":[],    
     "CardTimeLine2":[],
     "CardTimeLine3":[],
     "CardTimeLine4":[
-      "能在Mac上玩东方系列及其他 Windows 游戏。",
-      "在 PC 平台上玩部分非 PC 平台的游戏。",
-      "为“FXTZ”等联机方式的游戏，解决联机的问题，实现流畅联机。",
-      "自动保持游戏更新。同时支持第三方补丁（如汉化补丁）的更新。",
-      "为游戏发布者定制自定义功能（参考 YGOPro）。",
-      "为游戏提供在线存档保存功能（云存档）。",
-      "一键安装游戏，自动解决各种依赖问题。"
+      "Play Windows game on MacOS. (e.g.，Touhou series)",
+      "Play some Non-PC game on PC. (e.g.，PC98,NDS Game)",
+      "Offer better connection quality for local networked games.",
+      "Keep game updated. Also keep 3rd party mod updated. (e.g., Language Pack)",
+      "Customizable functions and home page for game creator. （e.g.，YGOPro）",
+      "Offer cloud save function for all game creators.",
+      "One-Click-Install, solve dependency problem."
     ]
   }
 }

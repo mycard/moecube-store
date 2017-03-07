@@ -8,8 +8,8 @@ export default class MyComponent extends React.Component {
     return (
       <div>
         <div className="App-Logo">
-          <img alt="img" src={require("../public/logo.png")} style={{width: '40px', margin: '10px'}}/>
-          <span>MyCard</span>           
+          <img alt="img" src={require("../public/logo.png")} style={{width: '45px', margin: '10px'}}/>
+          <span>MoeCube</span>           
         </div>
         <Menu
           theme="dark"
