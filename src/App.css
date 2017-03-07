@@ -50,9 +50,45 @@
 
 .App-Card-content {
   margin-bottom: 2vh;
-  white-space: pre;
+  white-space: pre-line;
 }
 
 .ant-layout .ant-layout-header {
   background: #404040
 }
+.font-C-Gray{
+    color:#ccc;
+}
+.App-Poster-Content .title{
+  font-size: 2.5rem; 
+  padding: .8rem 0;
+  color: #eee
+}
+.App-Poster-Content a{
+  padding: 0 .5vw
+}
+
+.App-Poster-Content .title .sub{
+   font-size: 1rem;
+   color: #eee;
+   padding: 0 1vw
+}
+
+.ant-layout-content>p{
+  color: #eee;
+  font-size: 1.2rem
+}
+
+.ant-layout-footer{
+  text-align: right
+}
+
+.ant-card-head-title{
+  font-size:1.5rem;
+}
+
+
+.ant-timeline>.ant-timeline-item-pending,.ant-timeline>.ant-timeline-item-pending>div {
+  padding-bottom:0px;
+}
+

@@ -11,7 +11,9 @@ import { Layout, Row, Col, Button, Card, Timeline} from 'antd'
 
 const { Content, Footer, Header} = Layout
 
-import Nav from './Nav'
+import Nav_Mobile from './Nav'
+
+
 
 export default class App extends Component {
   constructor(props){
@@ -26,7 +28,7 @@ export default class App extends Component {
   }
 
   async componentDidMount(){
-    enquire.register('only screen and (min-width: 320px) and (max-width: 767px)', {
+    enquire.register('only screen and (max-width: 767px)', {
       match: () => {
         this.setState({isMobile: true})
       },
@@ -84,32 +86,37 @@ export default class App extends Component {
     return data
   }
 
+  handleClick = (e) => {
+    console.log('click ', e);
+  }
+
   render() {
     const {latest, isMobile, stats} = this.state
     const {language} = this.props
     const realData = i18Data[language] ? i18Data[language] : i18Data['zh-CN']
 
+
     return (
       <Layout>
-        <Header>
-          <Nav isMobile={isMobile}/>
+        <Header style={{position:'fixed' ,zIndex:'9',width:'100%'}}>
+          <Nav_Mobile isMobile={isMobile} />
         </Header>
-
+      
         <Content className="App-Content1">
           {!isMobile ? 
             (<Row type="flex" justify="space-around" align="middle">
               <Col span={12} push={1}>
               <div className="App-Poster-Content">
-                <div style={{ fontSize: '2rem', padding: '.8rem 0 ', color: "#eee"}}>
+                <div className="title">
                   <FormattedMessage id="MoeCube"/>
-                  <span style={{ fontSize: '1rem', color: "#eee", padding: '0 1vw',}}>
+                  <span className="sub">
                     Beta
                   </span>
                 </div>
-                <div style={{color: "#ccc"}}>
+                <div className="font-C-Gray">
                   <FormattedMessage id="MoeCubeDoujinGamePlatform"/>
                 </div>
-                <div style={{color: "#ccc"}}>
+                <div className="font-C-Gray">
                   <FormattedMessage id="SupportBoth"/>
                   <DownLoadLink text='Windows' data={latest.win32} />
                   <FormattedMessage id="And"/> 
@@ -132,18 +139,18 @@ export default class App extends Component {
             ) : (
             <div>
               <Row>
-                <Col span={12}>
+                <Col span={24}>
                   <div className="App-Poster-Content">
-                  <div style={{ fontSize: '2rem', padding: '.8rem 0 ', color: "#eee"}}>
+                  <div className="title">
                     <FormattedMessage id="MoeCube"/>
-                    <span style={{ fontSize: '1rem', color: "#eee", padding: '0 1vw',}}>
+                    <span className="sub">
                       Beta
                     </span>
                   </div>
-                  <div style={{color: "#ccc"}}>
+                  <div className="font-C-Gray">
                     <FormattedMessage id="MoeCubeDoujinGamePlatform"/>
                   </div>
-                  <div style={{color: "#ccc"}}>
+                  <div className="font-C-Gray">
                     <FormattedMessage id="SupportBoth"/>
                     <DownLoadLink text='Windows' data={latest.win32} />
                     <FormattedMessage id="And"/>
@@ -171,71 +178,139 @@ export default class App extends Component {
 
         <Content>
           <div className="App-CardList">
-            <Row>
-              <Col span="12">
-                <Card title={<FormattedMessage id={"CardTitle1"}/>} >
-                <p className="App-Card-content">
-                  <FormattedMessage id={"CardContent1"} />                                  
-                </p>
-                <a href=""><Button size="large"><FormattedMessage id={"CardAction1"} /></Button></a>
-              </Card>
-              </Col>
-
-            <Col span="12">
-              <Card title={<FormattedMessage id={"CardTitle2"}/>} >
-                <p className="App-Card-content">
-                  <FormattedMessage id={"CardContent2"} />                                                  
-                </p>
-
-                <Timeline pending={<a href="#"><FormattedMessage id={"CardAction2"}/></a>}>
-
-                  {realData.CardTimeLine2.map((item, i) => {
-                    return <Timeline.Item key={i}>{item}</Timeline.Item>
-                  })}
-                </Timeline>
-              </Card>
-            </Col>
-            </Row>
-
-            <Row>
-              <Col span="12">
-                <Card title={<FormattedMessage id={"CardTitle3"}/>} >
+          {!isMobile ?
+            (<div>
+              <Row>
+                <Col span="12">
+                  <Card title={<FormattedMessage id={"CardTitle1"}/>} >
                   <p className="App-Card-content">
-                    <FormattedMessage id={"CardContent3"} />                                                  
+                    <FormattedMessage id={"CardContent1"} />                                  
+                  </p>
+                  <a href=""><Button size="large"><FormattedMessage id={"CardAction1"} /></Button></a>
+                </Card>
+                </Col>
+
+              <Col span="12">
+                <Card title={<FormattedMessage id={"CardTitle2"}/>} >
+                  <p className="App-Card-content">
+                    <FormattedMessage id={"CardContent2"} />                                                  
                   </p>
 
-                <Timeline pending={<a href="#"><FormattedMessage id={"CardAction3"}/></a>}>
-                  <Timeline.Item>{stats.signups || 'loading..'} <FormattedMessage id="IsRegisted"/> </Timeline.Item>  
-                  <Timeline.Item>{stats.online || 'loading..'} <FormattedMessage id="IsPlaying"/> </Timeline.Item>  
+                  <Timeline pending={<a href="#"><FormattedMessage id={"CardAction2"}/></a>}>
 
-                  {realData.CardTimeLine3.map((item, i) => {
-                    return <Timeline.Item key={i}>{item}</Timeline.Item>
-                  })}
-                </Timeline>
-
+                    {realData.CardTimeLine2.map((item, i) => {
+                      return <Timeline.Item key={i}>{item}</Timeline.Item>
+                    })}
+                  </Timeline>
                 </Card>
               </Col>
+              </Row>
 
-              <Col span="12">
-                <Card title={<FormattedMessage id={"CardTitle4"}/>} >
+              <Row>
+                <Col span="12">
+                  <Card title={<FormattedMessage id={"CardTitle3"}/>} >
+                    <p className="App-Card-content">
+                      <FormattedMessage id={"CardContent3"} />                                                  
+                    </p>
+
+                  <Timeline pending={<a href="#"><FormattedMessage id={"CardAction3"}/></a>}>
+                    <Timeline.Item>{stats.signups || 'loading..'} <FormattedMessage id="IsRegisted"/> </Timeline.Item>  
+                    <Timeline.Item>{stats.online || 'loading..'} <FormattedMessage id="IsPlaying"/> </Timeline.Item>  
+
+                    {realData.CardTimeLine3.map((item, i) => {
+                      return <Timeline.Item key={i}>{item}</Timeline.Item>
+                    })}
+                  </Timeline>
+
+                  </Card>
+                </Col>
+
+                <Col span="12">
+                  <Card title={<FormattedMessage id={"CardTitle4"}/>} >
+                    <p className="App-Card-content">
+                      <FormattedMessage id={"CardContent4"} />                                                  
+                    </p>
+
+                    <Timeline pending={<a href="#"><FormattedMessage id={"CardAction4"} /></a>}>
+                      {realData.CardTimeLine4.map((item, i) => {
+                        return <Timeline.Item key={i}>{item}</Timeline.Item>
+                      })}
+                    </Timeline>
+                  </Card>
+                </Col>
+              </Row>
+            </div>):(<div>
+            <Row>
+                <Col span="24">
+                  <Card title={<FormattedMessage id={"CardTitle1"}/>} >
+                    <p className="App-Card-content">
+                      <FormattedMessage id={"CardContent1"} />                                  
+                    </p>
+                    <Timeline pending={<a href="#"><FormattedMessage id={"CardAction1"}/></a>}>
+
+                      {realData.CardTimeLine1.map((item, i) => {
+                        return <Timeline.Item key={i}>{item}</Timeline.Item>
+                      })}
+                    </Timeline>
+                  </Card>
+                </Col>
+            </Row>
+            <Row>
+              <Col span="24">
+                <Card title={<FormattedMessage id={"CardTitle2"}/>} >
                   <p className="App-Card-content">
-                    <FormattedMessage id={"CardContent4"} />                                                  
+                    <FormattedMessage id={"CardContent2"} />                                                  
                   </p>
 
-                  <Timeline pending={<a href="#"><FormattedMessage id={"CardAction4"} /></a>}>
-                    {realData.CardTimeLine4.map((item, i) => {
+                  <Timeline pending={<a href="#"><FormattedMessage id={"CardAction2"}/></a>}>
+
+                    {realData.CardTimeLine2.map((item, i) => {
                       return <Timeline.Item key={i}>{item}</Timeline.Item>
                     })}
                   </Timeline>
                 </Card>
               </Col>
             </Row>
+              <Row>
+                <Col span="24">
+                  <Card title={<FormattedMessage id={"CardTitle3"}/>} >
+                    <p className="App-Card-content">
+                      <FormattedMessage id={"CardContent3"} />                                                  
+                    </p>
 
+                  <Timeline pending={<a href="#"><FormattedMessage id={"CardAction3"}/></a>}>
+                    <Timeline.Item>{stats.signups || 'loading..'} 只萌新已加入萌卡</Timeline.Item>  
+                    <Timeline.Item>{stats.online || 'loading..'} 位爱的战士正在线游戏</Timeline.Item>  
+
+                    {realData.CardTimeLine3.map((item, i) => {
+                      return <Timeline.Item key={i}>{item}</Timeline.Item>
+                    })}
+                  </Timeline>
+
+                  </Card>
+                </Col>
+              </Row>
+              <Row>
+                <Col span="24">
+                  <Card title={<FormattedMessage id={"CardTitle4"}/>} >
+                    <p className="App-Card-content">
+                      <FormattedMessage id={"CardContent4"} />                                                  
+                    </p>
+
+                    <Timeline pending={<a href="#"><FormattedMessage id={"CardAction4"} /></a>}>
+                      {realData.CardTimeLine4.map((item, i) => {
+                        return <Timeline.Item key={i}>{item}</Timeline.Item>
+                      })}
+                    </Timeline>
+                  </Card>
+                </Col>
+              </Row>
+            </div>)}
           </div>
         </Content>
 
         <Content className="App-Content2">
-          <p style={{color: '#eee', fontSize: '1.2rem'}} ><FormattedMessage id={"Welcome"} /></p>
+          <p><FormattedMessage id={"Welcome"} /></p>
 
            <Button type="primary" icon="download" size='large' onClick={() => window.open(latest[this.state.platform].url)}>
             <FormattedMessage id={"Download"}/>                                
@@ -243,7 +318,7 @@ export default class App extends Component {
         </Content>
 
 
-        <Footer style={{ textAlign: 'right' }}>
+        <Footer>
           © MoeCube 2017 all right reserved.
         </Footer>
       </Layout>
@@ -254,7 +329,7 @@ export default class App extends Component {
 const DownLoadLink = ({text, data = {}}) => {
 
   return (
-    <a href={data.url} style={{padding: '0 .5vw'}}>{text}</a>
+    <a href={data.url} >{text}</a>
   )
 }
 
