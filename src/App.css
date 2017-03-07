@@ -92,3 +92,51 @@
   padding-bottom:0px;
 }
 
+.square{
+  padding-right:20px;
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+  color:#aaa;
+}
+.square:hover{
+  color:#fff;
+}
+.caidan {
+  z-index: 1;
+  width:100%;
+  position:fixed;
+  top:64px;
+
+}
+.caidan li{
+  line-height: 40px;
+  height:40px;
+  padding: 0 20px;
+  color:white;
+  background:#404040;
+  border-top:#777 solid 1px;
+  font-size:14px;
+}
+.caidan li:hover{
+  background:#777;
+}
+.chidden{
+  animation: downotup 0.5s;
+  -webkit-animation:downotup 0.5s;
+  transform:translate(0,-1000px)
+}
+.cshow{
+  animation: uptodown 0.5s;
+  -webkit-animation:uptodown 0.5s;
+  transform:translate(0,0px)
+}
+
+@keyframes uptodown{
+  from{transform:translate(0,-1000px)}
+  to{transform:translate(0,0px)}
+}
+@keyframes downotup{
+  from{transform:translate(0,0px)}
+  to{transform:translate(0,-1000px)}
+}

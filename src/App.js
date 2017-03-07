@@ -98,9 +98,15 @@ export default class App extends Component {
 
     return (
       <Layout>
-        <Header style={{position:'fixed' ,zIndex:'9',width:'100%'}}>
+
+      {!isMobile ? 
+        (<Header style={{width:'100%'}}>
+          <Nav_Mobile isMobile={isMobile} />
+        </Header>):
+        (<Header style={{width:'100%', padding:0}}>
           <Nav_Mobile isMobile={isMobile} />
         </Header>
+      )}
       
         <Content className="App-Content1">
           {!isMobile ? 
