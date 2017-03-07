@@ -16,18 +16,19 @@
 }
 
 .App-Poster {
-  width: 100%; 
+  margin-top: 10px;
+  width: 295px;
   height: auto;
   max-width: 100%; 
 }
 
-.App-Poster-Content .ant-btn {
-  margin: 1.2rem 0
-}
-
 .App-Content1 {
-  padding: 50px;
-  background: #333;
+  margin-top: 64px;
+  height:450px;
+  background: url(../public/FrontPageBackGround.jpg) 100%/cover;
+  background-position: center;
+  overflow:hidden;
+  width:100%;
 }
 
 .App-Content2 {
@@ -59,19 +60,29 @@
 .font-C-Gray{
     color:#ccc;
 }
+
+.App-Poster-Content
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .App-Poster-Content .title{
-  font-size: 2.5rem; 
-  padding: .8rem 0;
+  margin-top: -20px;
+  margin-bottom: -5px;
+  font-size: 1.3rem;
   color: #eee
 }
 .App-Poster-Content a{
-  padding: 0 .5vw
+  padding: 0 .5vw;
+  margin-top: 8px
 }
 
 .App-Poster-Content .title .sub{
-   font-size: 1rem;
+   font-size: 0.7rem;
    color: #eee;
-   padding: 0 1vw
+   padding: 0 0.4vw
 }
 
 .ant-layout-content>p{
@@ -92,22 +103,26 @@
   padding-bottom:0px;
 }
 
+#Card4Button
+{
+  margin-top: 50px;
+}
+
 .square{
-  padding-right:20px;
-  float:right;
-  cursor:pointer;
-  font-size:22px;
-  color:#aaa;
+    padding-right:20px;
+    float:right;
+    cursor:pointer;
+    font-size:22px;
+    color:#aaa;
 }
 .square:hover{
-  color:#fff;
+    color:#fff;
 }
 .caidan {
-  z-index: 1;
-  width:100%;
-  position:fixed;
-  top:64px;
-
+    z-index: 1;
+    width:100%;
+    position:fixed;
+    top:64px;
 }
 .caidan li{
   line-height: 40px;
