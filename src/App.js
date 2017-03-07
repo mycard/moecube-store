@@ -254,13 +254,33 @@ export default class App extends Component {
           </div>
         </Content>
 
-        <Content className="App-Content2">
-          <p><FormattedMessage id={"Welcome"} /></p>
+        {!isMobile ?
+          (<div>
+            <Content className="App-Content2">
+              <Col span="14">
+                <p id="Welcome"><FormattedMessage id={"Welcome"}/></p>
+                <Button id="downloadbot" type="primary" icon="download" size='large' onClick={() => window.open(latest[this.state.platform].url)}>
+                  <FormattedMessage id={"Download"} />
+                </Button>
+              </Col>
+              <Col span="10">
+                <p id="requirments"><FormattedMessage id={"SystemRequirements"} /></p>
+              </Col>
+            </Content>
+          </div>) : (<div>
+            <Content className="App-Content2">
+              <Col span="24">
+                <p id="Welcome"><FormattedMessage id={"Welcome"} /></p>
+                <Button id="downloadbot" type="primary" icon="download" size='large' onClick={() => window.open(latest[this.state.platform].url)}>
+                  <FormattedMessage id={"Download"} />
+                </Button>
+                <p id="requirments"><FormattedMessage id={"SystemRequirements"} /></p>
+              </Col>
+            </Content>
+          </div>)
+        }
 
-          <Button type="primary" icon="download" size='large' onClick={() => window.open(latest[this.state.platform].url)}>
-            <FormattedMessage id={"Download"} />
-          </Button>
-        </Content>
+
 
 
         <Footer>
