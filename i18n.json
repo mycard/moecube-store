@@ -1,5 +1,5 @@
 {
-  "zh" : {
+  "en" : {
     "MoeCube":"MoeCube",
     "MoeCubeDoujinGamePlatform":"MoeCube Doujin Game Platform",
     "SupportBoth":"Support Both",
@@ -24,7 +24,7 @@
     "IsRegisted":" player is registered.",
     "IsPlaying":" player is playing."
   },
-  "en" : {
+  "zh" : {
     "MoeCube":"萌立方",
     "MoeCubeDoujinGamePlatform":"萌立方同人游戏平台",
     "SupportBoth":"萌立方同时支持",
