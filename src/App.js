@@ -198,12 +198,7 @@ export default class App extends Component {
                       <p className="App-Card-content">
                         <FormattedMessage id={"CardContent1"} />
                       </p>
-                      <Timeline pending={<a href="#"><FormattedMessage id={"CardAction1"} /></a>}>
-
-                        {realData.CardTimeLine1.map((item, i) => {
-                          return <Timeline.Item key={i}>{item}</Timeline.Item>
-                        })}
-                      </Timeline>
+                      <a href=""><Button type="primary" icon="download"><FormattedMessage id={"CardAction1"} /></Button></a>
                     </Card>
                   </Col>
                 </Row>
@@ -214,12 +209,8 @@ export default class App extends Component {
                         <FormattedMessage id={"CardContent2"} />
                       </p>
 
-                      <Timeline pending={<a href="#"><FormattedMessage id={"CardAction2"} /></a>}>
+                      <a href=""><Button type="primary" icon="plus-square-o"><FormattedMessage id={"CardAction2"} /></Button></a>
 
-                        {realData.CardTimeLine2.map((item, i) => {
-                          return <Timeline.Item key={i}>{item}</Timeline.Item>
-                        })}
-                      </Timeline>
                     </Card>
                   </Col>
                 </Row>
@@ -230,14 +221,12 @@ export default class App extends Component {
                         <FormattedMessage id={"CardContent3"} />
                       </p>
 
-                      <Timeline pending={<a href="#"><FormattedMessage id={"CardAction3"} /></a>}>
+                      <Timeline>
                         <Timeline.Item>{stats.signups || 'loading..'} 只萌新已加入萌卡</Timeline.Item>
                         <Timeline.Item>{stats.online || 'loading..'} 位爱的战士正在线游戏</Timeline.Item>
-
-                        {realData.CardTimeLine3.map((item, i) => {
-                          return <Timeline.Item key={i}>{item}</Timeline.Item>
-                        })}
                       </Timeline>
+                      <a href=""><Button type="primary" icon="heart"><FormattedMessage id={"CardAction3"} /></Button></a>
+
                     </Card>
                   </Col>
                 </Row>
@@ -252,7 +241,8 @@ export default class App extends Component {
                           return <Timeline.Item key={i}>{item}</Timeline.Item>
                         })}
                       </Timeline>
-                      <a href=""><Button size="large" type="primary"><FormattedMessage id={"CardAction4"} /></Button></a>
+
+                      <a href=""><Button id="Card4Button" size="large" type="primary"><FormattedMessage id={"CardAction4"} /></Button></a>
                     </Card>
                   </Col>
                 </Row>
