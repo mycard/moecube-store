@@ -99,15 +99,14 @@ export default class App extends Component {
     return (
       <Layout>
 
-      {!isMobile ?
-        (<Header style={{width:'100%'}}>
-          <Nav_Mobile isMobile={isMobile} />
-        </Header>):
-        (<Header style={{width:'100%', padding:0}}>
-          <Nav_Mobile isMobile={isMobile} />
-        </Header>
-      )}
-
+        {!isMobile ?
+          (<Header style={{ width: '100%' }}>
+            <Nav_Mobile isMobile={isMobile} />
+          </Header>) :
+          (<Header style={{ width: '100%', padding: 0 }}>
+            <Nav_Mobile isMobile={isMobile} />
+          </Header>
+          )}
         <Content className="App-Content1">
           (<Row type="flex" justify="space-around" align="middle" >
             <Col span={24} style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
@@ -134,13 +133,10 @@ export default class App extends Component {
                     <FormattedMessage id={"Download"} />
                   </Button>
                 </a>
-
               </div>
             </Col>
-
           </Row>
         </Content>
-
         <Content>
           <div className="App-CardList">
             {!isMobile ?
@@ -167,6 +163,19 @@ export default class App extends Component {
 
                 <Row>
                   <Col span="12">
+                    <Card title={<FormattedMessage id={"CardTitle4"} />} >
+                      <p className="App-Card-content">
+                        <FormattedMessage id={"CardContent4"} />
+                      </p>
+                      <Timeline pending={<a href="#"><FormattedMessage id={"WillHaveFunctions"} /></a>}>
+                        {realData.CardTimeLine4.map((item, i) => {
+                          return <Timeline.Item key={i}>{item}</Timeline.Item>
+                        })}
+                      </Timeline>
+                      <a href=""><Button id="Card4Button" type="primary" icon="heart"><FormattedMessage id={"CardAction4"} /></Button></a>
+                    </Card>
+                  </Col>
+                  <Col span="12">
                     <Card title={<FormattedMessage id={"CardTitle3"} />} >
                       <p className="App-Card-content">
                         <FormattedMessage id={"CardContent3"} />
@@ -175,29 +184,18 @@ export default class App extends Component {
                         <Timeline.Item>{stats.signups || 'loading..'} <FormattedMessage id="IsRegisted" /> </Timeline.Item>
                         <Timeline.Item>{stats.online || 'loading..'} <FormattedMessage id="IsPlaying" /> </Timeline.Item>
                       </Timeline>
-
-                      <a href=""><Button type="primary" icon="star"><FormattedMessage id={"CardAction3"} /></Button></a>
-                    </Card>
-                  </Col>
-
-                  <Col span="12">
-                    <Card title={<FormattedMessage id={"CardTitle4"} />} >
-                      <p className="App-Card-content">
-                        <FormattedMessage id={"CardContent4"} />
-                      </p>
-
-                      <Timeline pending={<a href="#"><FormattedMessage id={"WillHaveFunctions"} /></a>}>
-                        {realData.CardTimeLine4.map((item, i) => {
-                          return <Timeline.Item key={i}>{item}</Timeline.Item>
-                        })}
-                      </Timeline>
-                      <a href=""><Button id="Card4Button" type="primary" icon="heart"><FormattedMessage id={"CardAction4"} /></Button></a>
-
-
+                      <div className="MoeCubeProduct">
+                        <img alt="MoeCubeProduct" width="100%" src={require('../public/MoeCubeProduct.png')} />
+                      </div>
+                      <a href=""><Button id="Card3Button" type="primary" icon="star"><FormattedMessage id={"CardAction3"} /></Button></a>
                     </Card>
                   </Col>
                 </Row>
+
+
               </div>) : (<div>
+
+
                 <Row>
                   <Col span="24">
                     <Card title={<FormattedMessage id={"CardTitle1"} />} >
@@ -214,25 +212,7 @@ export default class App extends Component {
                       <p className="App-Card-content">
                         <FormattedMessage id={"CardContent2"} />
                       </p>
-
                       <a href=""><Button type="primary" icon="plus-square-o"><FormattedMessage id={"CardAction2"} /></Button></a>
-
-                    </Card>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col span="24">
-                    <Card title={<FormattedMessage id={"CardTitle3"} />} >
-                      <p className="App-Card-content">
-                        <FormattedMessage id={"CardContent3"} />
-                      </p>
-
-                      <Timeline>
-                        <Timeline.Item>{stats.signups || 'loading..'} 只萌新已加入萌卡</Timeline.Item>
-                        <Timeline.Item>{stats.online || 'loading..'} 位爱的战士正在线游戏</Timeline.Item>
-                      </Timeline>
-                      <a href=""><Button type="primary" icon="heart"><FormattedMessage id={"CardAction3"} /></Button></a>
-
                     </Card>
                   </Col>
                 </Row>
@@ -247,8 +227,26 @@ export default class App extends Component {
                           return <Timeline.Item key={i}>{item}</Timeline.Item>
                         })}
                       </Timeline>
-
                       <a href=""><Button id="Card4Button" size="large" type="primary"><FormattedMessage id={"CardAction4"} /></Button></a>
+                    </Card>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col span="24">
+                    <Card title={<FormattedMessage id={"CardTitle3"} />} >
+                      <p className="App-Card-content">
+                        <FormattedMessage id={"CardContent3"} />
+                      </p>
+                      <Timeline>
+                        <Timeline.Item>{stats.signups || 'loading..'} 只萌新已加入萌卡</Timeline.Item>
+                        <Timeline.Item>{stats.online || 'loading..'} 位爱的战士正在线游戏</Timeline.Item>
+                      </Timeline>
+
+                      <div className="MoeCubeProduct">
+                        <img alt="MoeCubeProduct" width="100%" src={require('../public/MoeCubeProduct.png')} />
+                      </div>
+
+                      <a href=""><Button id="Card3Button" type="primary" icon="heart"><FormattedMessage id={"CardAction3"} /></Button></a>
                     </Card>
                   </Col>
                 </Row>

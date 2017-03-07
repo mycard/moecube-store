@@ -23,7 +23,6 @@
 }
 
 .App-Content1 {
-  margin-top: 64px;
   height:450px;
   background: url(../public/FrontPageBackGround.jpg) 100%/cover;
   background-position: center;
@@ -51,7 +50,7 @@
 
 .App-Card-content {
   margin-bottom: 2vh;
-  white-space: pre-line;
+  white-space: pre;
 }
 
 .ant-layout .ant-layout-header {
@@ -98,14 +97,27 @@
   font-size:1.5rem;
 }
 
+.ant-timeline-item-content {
+    padding: 0 0 0px 24px;
+}
+
+.ant-timeline-item-last .ant-timeline-item-content {
+    min-height: 0px;
+}
 
 .ant-timeline>.ant-timeline-item-pending,.ant-timeline>.ant-timeline-item-pending>div {
   padding-bottom:0px;
 }
 
+#Card3Button
+{
+  margin-top: 20px;
+}
+
+
 #Card4Button
 {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .square{
@@ -154,4 +166,8 @@
 @keyframes downotup{
   from{transform:translate(0,0px)}
   to{transform:translate(0,-1000px)}
+}
+
+.MoeCubeProduct{
+  max-width: 370px;
 }
