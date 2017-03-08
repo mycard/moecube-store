@@ -11,7 +11,7 @@ import { Layout, Row, Col, Button, Card, Timeline, Dropdown, Menu, Icon } from '
 
 const { Content, Footer, Header } = Layout
 
-import NavMobile from './Nav'
+import Nav from './Nav'
 
 
 
@@ -120,10 +120,10 @@ export default class App extends Component {
 
         {!isMobile ?
           (<Header style={{ width: '100%' }}>
-            <NavMobile isMobile={isMobile} />
+            <Nav isMobile={isMobile} />
           </Header>) :
           (<Header style={{ width: '100%', padding: 0 }}>
-            <NavMobile isMobile={isMobile} />
+            <Nav isMobile={isMobile} />
           </Header>
           )}
         <Content className="App-Content1">
