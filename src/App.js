@@ -166,7 +166,7 @@ export default class App extends Component {
                       <p className="App-Card-content">
                         <FormattedMessage id={"CardContent1"} />
                       </p>
-                      <a href=""><Button type="primary" icon="download"><FormattedMessage id={"CardAction1"} /></Button></a>
+                      <a href={latest[this.state.platform].url}><Button type="primary" icon="download"><FormattedMessage id={"CardAction1"} /></Button></a>
                     </Card>
                   </Col>
 
