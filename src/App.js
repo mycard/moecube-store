@@ -72,7 +72,7 @@ export default class App extends Component {
   }
 
   async get_stats_online() {
-    let rawText = await fetch('https://chat.mycard.moe/stats/online').then(res => res.text())
+    let rawText = await fetch('https://api.mycard.moe/stats/online').then(res => res.text())
     let document = new DOMParser().parseFromString(rawText, 'text/xml')
     let node = document.querySelector('#content > table > tbody > tr:nth-child(2) > td:nth-child(2)') || {}
     // eslint-disable-next-line
@@ -278,9 +278,11 @@ export default class App extends Component {
             <Content className="App-Content2">
               <Col span="14">
                 <p id="Welcome"><FormattedMessage id={"Welcome"}/></p>
-                <Button id="downloadbot" type="primary" icon="download" size='large' onClick={() => window.open(latest[this.state.platform].url)}>
-                  <FormattedMessage id={"Download"} />
-                </Button>
+                <a href={latest[this.state.platform].url}>
+                  <Button id="downloadbot" type="primary" icon="download" size='large'>
+                    <FormattedMessage id={"Download"} />
+                  </Button>
+                </a>
               </Col>
               <Col span="10">
                 <p id="requirments"><FormattedMessage id={"SystemRequirements"} /></p>
@@ -290,9 +292,11 @@ export default class App extends Component {
             <Content className="App-Content2">
               <Col span="24">
                 <p id="Welcome"><FormattedMessage id={"Welcome"} /></p>
-                <Button id="downloadbot" type="primary" icon="download" size='large' onClick={() => window.open(latest[this.state.platform].url)}>
-                  <FormattedMessage id={"Download"} />
-                </Button>
+                <a href={latest[this.state.platform].url}>
+                  <Button id="downloadbot" type="primary" icon="download" size='large'>
+                    <FormattedMessage id={"Download"} />
+                  </Button>
+                </a>
                 <p id="requirments"><FormattedMessage id={"SystemRequirements"} /></p>
               </Col>
             </Content>
