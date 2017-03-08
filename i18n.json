@@ -24,7 +24,7 @@
     "Welcome": "What are you waiting for?\nJoin MoeCube and start your new aventure now!",
     "IsRegisted": " player is registered.",
     "IsPlaying": " player is playing.",
-    "SystemRequirements": "System Requirements\nWindows XP, Vista, or 7\n512 MB RAM\n1 Ghz or faster processor\n\nIntel Mac, OS X version 10.7 (Lion), or later.\nTwo-button mouse strongly recommended\n\n1GB HD space (recommended)\nInternet connection (broadband recommended)"
+    "SystemRequirements": "System Requirements\nWindows Vista, 7 or later\n512 MB RAM\n1 Ghz or faster processor\n\nIntel Mac, OS X version 10.11 (El Capitan), or later.\nTwo-button mouse strongly recommended\n\n1GB HD space (recommended)\nInternet connection (broadband recommended)"
   },
   "zh": {
     "MoeCube": "萌立方",
@@ -51,6 +51,6 @@
     "Welcome": "还等什么呢？\n马上开始萌立方的二次元冒险！",
     "IsRegisted": "位萌新已加入萌立方",
     "IsPlaying": "位爱的战士正在线进行游戏",
-    "SystemRequirements": "系统需求\nWindows XP、Vista 或 7\n512 MB 内存\n1 Ghz 或更快的处理器\n\nIntel Mac、OS X 版本 10.7 (Lion) 或更新的版本。\n\n1GB 硬盘空间（推荐）\n互联网连接（推荐使用宽带）"
+    "SystemRequirements": "系统需求\nWindows Vista、7 或更新的版本\n512 MB 内存\n1 Ghz 或更快的处理器\n\nIntel Mac、OS X 版本 10.11 (El Capitan) 或更新的版本。\n\n1GB 硬盘空间（推荐）\n互联网连接（推荐使用宽带）"
   }
 }
