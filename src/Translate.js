@@ -6,7 +6,7 @@ import localeData from '../i18n.json'
 
 
 addLocaleData([...en, ...zh])
-const language = navigator.language || (navigator.languages && navigator.languages[0]) || navigator.userLanguage;
+const language = localStorage.getItem('language') || (navigator.languages && navigator.languages[0]) || navigator.userLanguage;
 
 const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
 

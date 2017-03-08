@@ -7,7 +7,7 @@ import config from './config'
 import i18Data from '../i18data.json'
 
 import { FormattedMessage } from 'react-intl'
-import { Layout, Row, Col, Button, Card, Timeline } from 'antd'
+import { Layout, Row, Col, Button, Card, Timeline, Dropdown, Menu, Icon } from 'antd'
 
 const { Content, Footer, Header } = Layout
 
@@ -86,15 +86,34 @@ export default class App extends Component {
     return data
   }
 
+  changeLanguage(language){
+    localStorage.setItem('language',language);
+    history.go(0);
+  }
+
   handleClick = (e) => {
     console.log('click ', e);
   }
 
   render() {
     const { latest, isMobile, stats } = this.state
-    const { language } = this.props
-    const realData = i18Data[language] ? i18Data[language] : i18Data['zh-CN']
+    const language = localStorage.getItem('language') || this.props.language
+    const realData = i18Data[language] ? i18Data[language] : i18Data[this.props.language] ? i18Data[this.props.language] : i18Data['zh-CN']
 
+    const menu = (
+      <Menu style={{transform: 'translateX(-16px)'}}>
+        <Menu.Item key="0">
+          <a onClick={() => this.changeLanguage('en-US')} className='changelanguage'> 
+          <img alt="img" src={require('../public/USFlag.png')}/> 
+          &nbsp;English</a>
+        </Menu.Item>
+        <Menu.Item key="1">
+          <a onClick={() => this.changeLanguage('zh-CN')} className='changelanguage'> 
+          <img alt="img" src={require('../public/CNFlag.png')}/> 
+          &nbsp;中文</a>
+        </Menu.Item>
+      </Menu>
+    );
 
     return (
       <Layout>
@@ -281,9 +300,20 @@ export default class App extends Component {
         }
 
 
-
-
+        
         <Footer>
+        <div>
+          <Dropdown overlay={menu} trigger={['click']}>
+            {language=='en-US'?
+            (<a className="ant-dropdown-link changelanguage" href="#">
+              <img alt="img" src={require('../public/USFlag.png')}/>
+              &nbsp;English <Icon type="down" class="flag"/>
+            </a>):(<a className="ant-dropdown-link changelanguage" href="#">
+              <img alt="img" src={require('../public/CNFlag.png')}/>
+              &nbsp;中文 <Icon type="down" class="flag"/>
+            </a>)}
+          </Dropdown>
+        </div>
           © MoeCube 2017 all right reserved.
         </Footer>
       </Layout>

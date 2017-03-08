@@ -93,7 +93,8 @@
 }
 
 .ant-layout-footer{
-  text-align: right
+  display: flex;
+  justify-content: space-between;
 }
 
 .ant-card-head-title{
@@ -191,4 +192,16 @@
   margin-bottom:10px;
   height: 40px;
   width: 180px
+}
+
+.changelanguage{
+  display: flex;
+  line-height:30px;
+}
+.changelanguage>i{
+  line-height:30px;
+}
+li>.changelanguage{
+  display: flex;
+  line-height:30px;
 }
