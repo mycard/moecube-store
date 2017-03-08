@@ -11,7 +11,7 @@ import { Layout, Row, Col, Button, Card, Timeline, Dropdown, Menu, Icon } from '
 
 const { Content, Footer, Header } = Layout
 
-import Nav_Mobile from './Nav'
+import NavMobile from './Nav'
 
 
 
@@ -120,10 +120,10 @@ export default class App extends Component {
 
         {!isMobile ?
           (<Header style={{ width: '100%' }}>
-            <Nav_Mobile isMobile={isMobile} />
+            <NavMobile isMobile={isMobile} />
           </Header>) :
           (<Header style={{ width: '100%', padding: 0 }}>
-            <Nav_Mobile isMobile={isMobile} />
+            <NavMobile isMobile={isMobile} />
           </Header>
           )}
         <Content className="App-Content1">
@@ -304,7 +304,7 @@ export default class App extends Component {
         <Footer>
         <div>
           <Dropdown overlay={menu} trigger={['click']}>
-            {language=='en-US'?
+            {language==='en-US'?
             (<a className="ant-dropdown-link changelanguage" href="#">
               <img alt="img" src={require('../public/USFlag.png')}/>
               &nbsp;English <Icon type="down" class="flag"/>
