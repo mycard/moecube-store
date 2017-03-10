@@ -8,6 +8,7 @@ import i18Data from '../i18data.json'
 
 import { FormattedMessage } from 'react-intl'
 import { Layout, Row, Col, Button, Card, Timeline, Dropdown, Menu, Icon } from 'antd'
+import { Link } from 'react-router'
 
 const { Content, Footer, Header } = Layout
 
@@ -68,7 +69,7 @@ export default class App extends Component {
     params.set('api_username', config.ygobbs.api_username);
     let data = await fetch(`${config.ygobbs.dashboard}?${params.toString()}`).then(res => res.json())
 
-    return data.global_reports.find((item: any) => item.type === 'signups').total
+    return data.global_reports.find((item) => item.type === 'signups').total
   }
 
   async get_stats_online() {
@@ -175,7 +176,9 @@ export default class App extends Component {
                       <p className="App-Card-content">
                         <FormattedMessage id={"CardContent2"} />
                       </p>
-                      <a href=""><Button type="primary" icon="plus-square-o"><FormattedMessage id={"CardAction2"} /></Button></a>
+                      <Link to="about">
+                        <Button type="primary" icon="plus-square-o"><FormattedMessage id={"CardAction2"} /></Button>
+                      </Link>
                     </Card>
                   </Col>
                 </Row>
@@ -311,10 +314,10 @@ export default class App extends Component {
             {language==='en-US'?
             (<a className="ant-dropdown-link changelanguage" href="#">
               <img alt="img" src={require('../public/USFlag.png')}/>
-              &nbsp;English <Icon type="down" class="flag"/>
+              &nbsp;English <Icon type="down" className="flag"/>
             </a>):(<a className="ant-dropdown-link changelanguage" href="#">
               <img alt="img" src={require('../public/CNFlag.png')}/>
-              &nbsp;中文 <Icon type="down" class="flag"/>
+              &nbsp;中文 <Icon type="down" className="flag"/>
             </a>)}
           </Dropdown>
         </div>

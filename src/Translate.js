@@ -17,7 +17,7 @@ export default class Translate extends React.Component {
     render() {
     	return (
 	    	<IntlProvider locale={ language } messages={ messages }>
-					{React.cloneElement(this.props.Template, {language})}
+				{React.cloneElement(this.props.Template, {language})}
 	    	</IntlProvider>
 	    )
     }
