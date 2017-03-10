@@ -50,12 +50,23 @@
 .App-CardList .ant-row > div {
   padding: 1vh 1vw;
 }
-
+.App-CardList .ant-btn{
+  position:absolute;
+  bottom:20px;
+}
 .App-Card-content {
   margin-bottom: 2vh;
   white-space: pre;
 }
-
+.ant-card-bordered{
+  height:100%;
+}
+.ant-col-12{
+  padding:10px;
+}
+.ant-card-body{
+  padding-bottom: 50px;
+}
 .ant-layout .ant-layout-header {
   background: #404040
 }

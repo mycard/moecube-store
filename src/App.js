@@ -161,7 +161,7 @@ export default class App extends Component {
           <div className="App-CardList">
             {!isMobile ?
               (<div>
-                <Row>
+                <Row type="flex">
                   <Col span="12">
                     <Card title={<FormattedMessage id={"CardTitle1"} />} >
                       <p className="App-Card-content">
@@ -183,7 +183,7 @@ export default class App extends Component {
                   </Col>
                 </Row>
 
-                <Row>
+                <Row type="flex">
                   <Col span="12">
                     <Card title={<FormattedMessage id={"CardTitle4"} />} >
                       <p className="App-Card-content">
