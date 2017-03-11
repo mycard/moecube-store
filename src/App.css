@@ -1,15 +1,15 @@
 @import '~antd/dist/antd.css';
 
-.App-Logo span {
-  font-size: 1rem;
-  color: rgba(255,255,255, 0.75)
+.ant-menu{
+  padding-top:4px;
+  font-size:10pt;
 }
 
 .App-Logo {
   width: 120px;
   height: 31px;
   border-radius: 6px;
-  margin: 16px 24px 16px 0;
+  margin: 16px 40px 16px 0;
   float: left;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@
 
 .App-Content1 {
   height:450px;
-  background: url(../public/FrontPageBackGround.jpg) 100%/cover;
+  background: url(../public/front-page-background.jpg) 100%/cover;
   background-position: center;
   overflow:hidden;
   width:100%;

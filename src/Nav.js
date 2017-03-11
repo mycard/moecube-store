@@ -19,8 +19,7 @@ export default class Nav_Mobile extends React.Component{
       return (
         <div>
           <div className="App-Logo">
-            <img alt="img" src={require("../public/logo.png")} style={{width: '45px', margin: '10px'}}/>
-            <span>MoeCube</span>           
+            <img alt="img" src={require("../public/logo.png")} style={{width: '140px', margin: '10px'}}/>      
           </div>
           <Menu
             theme="dark"
@@ -44,8 +43,7 @@ export default class Nav_Mobile extends React.Component{
         <div>
           <div style={{position:'fixed',zIndex:10,width:'100%',background:'#404040'}}>
             <div className="App-Logo">
-              <img alt="img" src={require("../public/logo.png")} style={{width: '45px', margin: '10px'}}/>
-              <span>MoeCube</span>           
+              <img alt="img" src={require("../public/logo.png")} style={{width: '140px', margin: '10px'}}/>         
             </div>
             <div className="square" onClick={this.caidan}>
               <Icon type="down-circle-o" />

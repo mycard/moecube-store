@@ -105,12 +105,12 @@ export default class App extends Component {
       <Menu style={{transform: 'translateX(-16px)'}}>
         <Menu.Item key="0">
           <a onClick={() => this.changeLanguage('en-US')} className='changelanguage'> 
-          <img alt="img" src={require('../public/USFlag.png')}/> 
+          <img alt="img" src={require('../public/flag-us.png')}/> 
           &nbsp;English</a>
         </Menu.Item>
         <Menu.Item key="1">
           <a onClick={() => this.changeLanguage('zh-CN')} className='changelanguage'> 
-          <img alt="img" src={require('../public/CNFlag.png')}/> 
+          <img alt="img" src={require('../public/flag-cn.png')}/> 
           &nbsp;中文</a>
         </Menu.Item>
       </Menu>
@@ -131,7 +131,7 @@ export default class App extends Component {
           (<Row type="flex" justify="space-around" align="middle" >
             <Col span={24} style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
 
-              <img alt="img" src={require('../public/Cubbit_Full_512.png')} className="App-Poster" />
+              <img alt="img" src={require('../public/cubbit-full-512.png')} className="App-Poster" />
 
               <div className="App-Poster-Content">
                 <div className="title">
@@ -207,7 +207,7 @@ export default class App extends Component {
                         <Timeline.Item>{stats.online || 'loading..'} <FormattedMessage id="IsPlaying" /> </Timeline.Item>
                       </Timeline>
                       <div className="MoeCubeProduct">
-                        <img alt="MoeCubeProduct" width="100%" src={require('../public/MoeCubeProduct.png')} />
+                        <img alt="MoeCubeProduct" width="100%" src={require('../public/moecube-product.png')} />
                       </div>
                       <a href=""><Button id="Card3Button" type="primary" icon="star"><FormattedMessage id={"CardAction3"} /></Button></a>
                     </Card>
@@ -265,7 +265,7 @@ export default class App extends Component {
                       </Timeline>
 
                       <div className="MoeCubeProduct">
-                        <img alt="MoeCubeProduct" width="100%" src={require('../public/MoeCubeProduct.png')} />
+                        <img alt="MoeCubeProduct" width="100%" src={require('../public/moecube-product.png')} />
                       </div>
 
                       <a href=""><Button id="Card3Button" type="primary" icon="heart"><FormattedMessage id={"CardAction3"} /></Button></a>
@@ -313,10 +313,10 @@ export default class App extends Component {
           <Dropdown overlay={menu} trigger={['click']}>
             {language==='en-US'?
             (<a className="ant-dropdown-link changelanguage" href="#">
-              <img alt="img" src={require('../public/USFlag.png')}/>
+              <img alt="img" src={require('../public/flag-us.png')}/>
               &nbsp;English <Icon type="down" className="flag"/>
             </a>):(<a className="ant-dropdown-link changelanguage" href="#">
-              <img alt="img" src={require('../public/CNFlag.png')}/>
+              <img alt="img" src={require('../public/flag-cn.png')}/>
               &nbsp;中文 <Icon type="down" className="flag"/>
             </a>)}
           </Dropdown>
