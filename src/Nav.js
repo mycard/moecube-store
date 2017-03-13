@@ -7,14 +7,14 @@ export default class Nav_Mobile extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      classCaidan: false,
+      classMenu: false,
     };
   }
-  caidan=()=>{
-    this.setState({classCaidan:!this.state.classCaidan});
+  menu=()=>{
+    this.setState({classMenu:!this.state.classMenu});
   }
   render() {
-    var classCaidan=this.state.classCaidan;
+    var classMenu=this.state.classMenu;
     if(!this.props.isMobile){
       return (
         <div>
@@ -45,11 +45,11 @@ export default class Nav_Mobile extends React.Component{
             <div className="App-Logo">
               <img alt="img" src={require("../public/logo.png")} style={{width: '140px', margin: '10px'}}/>         
             </div>
-            <div className="square" onClick={this.caidan}>
+            <div className="square" onClick={this.menu}>
               <Icon type="down-circle-o" />
             </div>
           </div>
-          <ul className={ classCaidan ? "caidan cshow" : "caidan chidden" }>
+          <ul className={ classMenu ? "menu cshow" : "menu chidden" }>
             <a href="#">
               <li>
                 <FormattedMessage id={"Home"}/>  
