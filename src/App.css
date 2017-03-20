@@ -145,13 +145,13 @@
 .square:hover{
     color:#fff;
 }
-.caidan {
+.menu {
     z-index: 1;
     width:100%;
     position:fixed;
     top:64px;
 }
-.caidan li{
+.menu li{
   line-height: 40px;
   height:40px;
   padding: 0 20px;
@@ -160,7 +160,7 @@
   border-top:#777 solid 1px;
   font-size:14px;
 }
-.caidan li:hover{
+.menu li:hover{
   background:#777;
 }
 .chidden{
