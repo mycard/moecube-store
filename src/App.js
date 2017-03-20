@@ -13,7 +13,7 @@ import { Link } from 'react-router'
 const { Content, Footer, Header } = Layout
 
 import Nav from './Nav'
-
+var URLSearchParams = require('url-search-params');
 
 
 export default class App extends Component {
