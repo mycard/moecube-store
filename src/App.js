@@ -38,21 +38,17 @@ export default class App extends Component {
       }
     })
 
-    const initState = {
-      stats: {
-        signups: await this.get_stats_signups(),
-        online: await this.get_stats_online()
-      }
-    }
-    const initLatest = {
-      latest: {
-        win32: await this.get_latest_win32(),
-        drawin: await this.get_latest_drawin()
-      }
-    }
+    const [signups, online, win32, drawin] = await Promise.all([
+       this.get_stats_signups(),
+       this.get_stats_online(),
+       this.get_latest_win32(),
+       this.get_latest_drawin()
+    ])
 
-    this.setState(initState)
-    this.setState(initLatest)
+    this.setState({
+      stats: {signups, online},
+      latest: {win32,drawin}
+    })
   }
 
   async get_latest_win32() {
@@ -156,7 +152,7 @@ export default class App extends Component {
                     </a>
                   </div>
                 ) : (
-                    <div className="loading">Loading...</div>
+                    <div className="loading">loading...</div>
                   )}
               </div>
             </Col>
@@ -172,7 +168,11 @@ export default class App extends Component {
                       <p className="App-Card-content">
                         <FormattedMessage id={"CardContent1"} />
                       </p>
-                      <a href={latest[this.state.platform].url}><Button type="primary" icon="download"><FormattedMessage id={"CardAction1"} /></Button></a>
+                      <a href={latest[this.state.platform].url}>{latest[this.state.platform].url ? (
+                        <Button type="primary" icon="download"><FormattedMessage id={"CardAction1"} /></Button>) : (
+                          <Button type="primary" icon="download" disabled >loading...</Button>
+                        )}
+                      </a>
                     </Card>
                   </Col>
 
@@ -229,7 +229,10 @@ export default class App extends Component {
                       <p className="App-Card-content">
                         <FormattedMessage id={"CardContent1"} />
                       </p>
-                      <a href=""><Button type="primary" icon="download"><FormattedMessage id={"CardAction1"} /></Button></a>
+                      <a href={latest[this.state.platform].url}>{latest[this.state.platform].url ? (
+                        <Button type="primary" icon="download"><FormattedMessage id={"CardAction1"} /></Button>) : (
+                          <Button type="primary" icon="download" disabled >loading...</Button>
+                        )}</a>
                     </Card>
                   </Col>
                 </Row>
@@ -287,9 +290,14 @@ export default class App extends Component {
               <Col span="14">
                 <p id="Welcome"><FormattedMessage id={"Welcome"} /></p>
                 <a href={latest[this.state.platform].url}>
-                  <Button id="downloadbot" type="primary" icon="download" size='large'>
-                    <FormattedMessage id={"Download"} />
-                  </Button>
+                  {latest[this.state.platform].url?
+                    (<Button id="downloadbot" type="primary" icon="download" size='large'>
+                      <FormattedMessage id={"Download"} />
+                    </Button>):(
+                    <Button id="downloadbot" type="primary" icon="download" size='large'disabled>
+                      loading...
+                    </Button>
+                    )}
                 </a>
               </Col>
               <Col span="10">
@@ -301,9 +309,14 @@ export default class App extends Component {
               <Col span="24">
                 <p id="Welcome"><FormattedMessage id={"Welcome"} /></p>
                 <a href={latest[this.state.platform].url}>
-                  <Button id="downloadbot" type="primary" icon="download" size='large'>
-                    <FormattedMessage id={"Download"} />
-                  </Button>
+                  {latest[this.state.platform].url?
+                    (<Button id="downloadbot" type="primary" icon="download" size='large'>
+                      <FormattedMessage id={"Download"} />
+                    </Button>):(
+                    <Button id="downloadbot" type="primary" icon="download" size='large'disabled>
+                      loading...
+                    </Button>
+                    )}
                 </a>
                 <p id="requirments"><FormattedMessage id={"SystemRequirements"} /></p>
               </Col>
