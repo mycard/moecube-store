@@ -87,8 +87,8 @@ export default class App extends Component {
     return data
   }
 
-  changeLanguage(language){
-    localStorage.setItem('language',language);
+  changeLanguage(language) {
+    localStorage.setItem('language', language);
     history.go(0);
   }
 
@@ -102,16 +102,16 @@ export default class App extends Component {
     const realData = i18Data[language] ? i18Data[language] : i18Data[this.props.language] ? i18Data[this.props.language] : i18Data['zh-CN']
 
     const menu = (
-      <Menu style={{transform: 'translateX(-16px)'}}>
+      <Menu style={{ transform: 'translateX(-16px)' }}>
         <Menu.Item key="0">
-          <a onClick={() => this.changeLanguage('en-US')} className='changelanguage'> 
-          <img alt="img" src={require('../public/flag-us.png')}/> 
-          &nbsp;English</a>
+          <a onClick={() => this.changeLanguage('en-US')} className='changelanguage'>
+            <img alt="img" src={require('../public/flag-us.png')} />
+            &nbsp;English</a>
         </Menu.Item>
         <Menu.Item key="1">
-          <a onClick={() => this.changeLanguage('zh-CN')} className='changelanguage'> 
-          <img alt="img" src={require('../public/flag-cn.png')}/> 
-          &nbsp;中文</a>
+          <a onClick={() => this.changeLanguage('zh-CN')} className='changelanguage'>
+            <img alt="img" src={require('../public/flag-cn.png')} />
+            &nbsp;中文</a>
         </Menu.Item>
       </Menu>
     );
@@ -140,19 +140,24 @@ export default class App extends Component {
                     Beta
                   </span>
                 </div>
-                <div className="font-C-Gray">
-                  <FormattedMessage id="SupportBoth" />
-                  <DownLoadLink text='Windows' data={latest.win32} />
-                  <FormattedMessage id="And" />
-                  <DownLoadLink text='Mac' data={latest.drawin} />
-                  <FormattedMessage id="OperationSystem" />
-                </div>
-
-                <a href={latest[this.state.platform].url}>
-                  <Button type="primary" icon="download" size='large'>
-                    <FormattedMessage id={"Download"} />
-                  </Button>
-                </a>
+                {latest[this.state.platform].url ? (
+                  <div style={{ textAlign: 'center' }}>
+                    <div className="font-C-Gray">
+                      <FormattedMessage id="SupportBoth" />
+                      <DownLoadLink text='Windows' data={latest.win32} />
+                      <FormattedMessage id="And" />
+                      <DownLoadLink text='Mac' data={latest.drawin} />
+                      <FormattedMessage id="OperationSystem" />
+                    </div>
+                    <a href={latest[this.state.platform].url}>
+                      <Button type="primary" icon="download" size='large'>
+                        <FormattedMessage id={"Download"} />
+                      </Button>
+                    </a>
+                  </div>
+                ) : (
+                    <div className="loading">Loading...</div>
+                  )}
               </div>
             </Col>
           </Row>
@@ -280,7 +285,7 @@ export default class App extends Component {
           (<div>
             <Content className="App-Content2">
               <Col span="14">
-                <p id="Welcome"><FormattedMessage id={"Welcome"}/></p>
+                <p id="Welcome"><FormattedMessage id={"Welcome"} /></p>
                 <a href={latest[this.state.platform].url}>
                   <Button id="downloadbot" type="primary" icon="download" size='large'>
                     <FormattedMessage id={"Download"} />
@@ -307,20 +312,20 @@ export default class App extends Component {
         }
 
 
-        
+
         <Footer>
-        <div>
-          <Dropdown overlay={menu} trigger={['click']}>
-            {language==='en-US'?
-            (<a className="ant-dropdown-link changelanguage" href="#">
-              <img alt="img" src={require('../public/flag-us.png')}/>
-              &nbsp;English <Icon type="down" className="flag"/>
-            </a>):(<a className="ant-dropdown-link changelanguage" href="#">
-              <img alt="img" src={require('../public/flag-cn.png')}/>
-              &nbsp;中文 <Icon type="down" className="flag"/>
-            </a>)}
-          </Dropdown>
-        </div>
+          <div>
+            <Dropdown overlay={menu} trigger={['click']}>
+              {language === 'en-US' ?
+                (<a className="ant-dropdown-link changelanguage" href="#">
+                  <img alt="img" src={require('../public/flag-us.png')} />
+                  &nbsp;English <Icon type="down" className="flag" />
+                </a>) : (<a className="ant-dropdown-link changelanguage" href="#">
+                  <img alt="img" src={require('../public/flag-cn.png')} />
+                  &nbsp;中文 <Icon type="down" className="flag" />
+                </a>)}
+            </Dropdown>
+          </div>
           © MoeCube 2017 all right reserved.
         </Footer>
       </Layout>
