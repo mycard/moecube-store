@@ -94,8 +94,8 @@ export default class App extends Component {
 
   render() {
     const { latest, isMobile, stats } = this.state
-    const language = localStorage.getItem('language') || this.props.language
-    const realData = i18Data[language] ? i18Data[language] : i18Data[this.props.language] ? i18Data[this.props.language] : i18Data['zh-CN']
+    const language =  localStorage.getItem('language') || navigator.language || (navigator.languages && navigator.languages[0]) || navigator.userLanguage || navigator.browserLanguage || 'zh-CN' ;
+    const realData = i18Data[language] ? i18Data[language] : i18Data[this.props.language] ? i18Data[this.props.language] : i18Data['zh-CN'];
 
     const menu = (
       <Menu style={{ transform: 'translateX(-16px)' }}>
@@ -268,8 +268,8 @@ export default class App extends Component {
                         <FormattedMessage id={"CardContent3"} />
                       </p>
                       <Timeline>
-                        <Timeline.Item>{stats.signups || 'loading..'} 只萌新已加入萌卡</Timeline.Item>
-                        <Timeline.Item>{stats.online || 'loading..'} 位爱的战士正在线游戏</Timeline.Item>
+                        <Timeline.Item>{stats.signups || 'loading..'} <FormattedMessage id="IsRegisted" /> </Timeline.Item>
+                        <Timeline.Item>{stats.online || 'loading..'} <FormattedMessage id="IsPlaying" /> </Timeline.Item>
                       </Timeline>
 
                       <div className="MoeCubeProduct">
