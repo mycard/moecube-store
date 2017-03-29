@@ -10,4 +10,4 @@ COPY . /usr/src/app
 RUN npm run build
 VOLUME /usr/src/app/aot
 
-CMD [ "echo", "mycard-store" ]
+CMD [ "echo", "moecube-store" ]

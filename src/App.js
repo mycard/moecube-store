@@ -55,7 +55,7 @@ export default class App extends Component {
     let rawData = await fetch(config.win32_url).then(res => res.text())
     let data = yaml.safeLoad(rawData)
 
-    data.url = 'https://r.my-card.in/downloads/' + data.path
+    data.url = 'https://cdn01.moecube.com/downloads/' + data.path
     return data
   }
 
@@ -69,7 +69,7 @@ export default class App extends Component {
   }
 
   async get_stats_online() {
-    let rawText = await fetch('https://api.mycard.moe/stats/online').then(res => res.text())
+    let rawText = await fetch('https://api.moecube.com/stats/online').then(res => res.text())
     let document = new DOMParser().parseFromString(rawText, 'text/xml')
     let node = document.querySelector('#content > table > tbody > tr:nth-child(2) > td:nth-child(2)') || {}
     // eslint-disable-next-line
@@ -78,7 +78,7 @@ export default class App extends Component {
 
   async get_latest_drawin() {
     let data = await fetch(config.drawin_url).then(res => res.json())
-    data.url = data.url.replace('-mac.zip', '.dmg').replace('https://wudizhanche.mycard.moe/downloads/', 'https://r.my-card.in/downloads/')
+    data.url = data.url.replace('-mac.zip', '.dmg').replace('https://wudizhanche.moecube.com/downloads/', 'https://cdn01.moecube.com/downloads/')
 
     return data
   }
