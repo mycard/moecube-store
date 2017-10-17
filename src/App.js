@@ -284,6 +284,14 @@ export default class App extends Component {
           </div>
         </Content>
 
+        <h2>代表作品</h2>
+        <div id="apps">
+          <img src={require('../public/ygopro.jpg')} />
+          <img src={require('../public/ozns.jpg')} />
+          <img src={require('../public/eddyviolet.jpg')} />
+          <img src={require('../public/df02.jpg')} />
+        </div>
+
         {!isMobile ?
           (<div>
             <Content className="App-Content2">
