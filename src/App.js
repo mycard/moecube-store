@@ -286,10 +286,18 @@ export default class App extends Component {
 
         <h2>代表作品</h2>
         <div id="apps">
-          <img src={require('../public/ygopro.jpg')} />
-          <img src={require('../public/ozns.jpg')} />
-          <img src={require('../public/eddyviolet.jpg')} />
-          <img src={require('../public/df02.jpg')} />
+          <div class="row">
+            <img src={require('../public/ygopro_1.jpg')} />
+            <img src={require('../public/ozns_1.jpg')} />
+            <img src={require('../public/eddyviolet_1.jpg')} />
+            <img src={require('../public/df02_1.jpg')} />
+          </div>
+            <div class="row">
+              <img src={require('../public/ygopro_2.jpg')} />
+              <img src={require('../public/ozns_2.jpg')} />
+              <img src={require('../public/eddyviolet_2.jpg')} />
+              <img src={require('../public/df02_2.jpg')} />
+            </div>
         </div>
 
         {!isMobile ?

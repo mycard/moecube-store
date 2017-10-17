@@ -246,8 +246,11 @@ li > .changelanguage {
 
 #apps {
     padding: 1vh 4vw 4vh 4vw;
+}
+.row {
     display: flex;
     width: 100%;
+
 }
 
 #apps img {
