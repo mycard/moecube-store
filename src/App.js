@@ -287,16 +287,16 @@ export default class App extends Component {
         <h2>代表作品</h2>
         <div id="apps">
           <div class="row">
-            <a target="_blank" href="https://mycard.moe/ygopro/arena/"><img alt="ygopro" src={require('../public/ygopro_1.jpg')} /></a>
-            <a target="_blank" href="http://fuckoz.com/thread-3-1-1.html"><img alt="OZ大乱斗NS" src={require('../public/ozns_1.jpg')} /></a>
-            <a target="_blank" href="http://dgspitzer.my-style.in/gameportfolio/?p=139"><img alt="Eddy紫" src={require('../public/eddyviolet_1.jpg')} /></a>
-            <a target="_blank" href="https://tieba.baidu.com/p/4478725122"><img alt="东方龙隐谈" src={require('../public/df02_1.jpg')} /></a>
+            <a target="_blank" href="ygopro.html"><img alt="ygopro" src={require('../public/ygopro_1.jpg')} /></a>
+            <a target="_blank" href="ozns.html"><img alt="OZ大乱斗NS" src={require('../public/ozns_1.jpg')} /></a>
+            <a target="_blank" href="eddyviolet.html"><img alt="Eddy紫" src={require('../public/eddyviolet_1.jpg')} /></a>
+            <a target="_blank" href="df02.html"><img alt="东方龙隐谈" src={require('../public/df02_1.jpg')} /></a>
           </div>
           <div class="row">
-            <a target="_blank" href="https://mycard.moe/ygopro/arena/"><img alt="ygopro" src={require('../public/ygopro_2.jpg')} /></a>
-            <a target="_blank" href="http://fuckoz.com/thread-3-1-1.html"><img alt="OZ大乱斗NS" src={require('../public/ozns_2.jpg')} /></a>
-            <a target="_blank" href="http://dgspitzer.my-style.in/gameportfolio/?p=139"><img alt="Eddy紫" src={require('../public/eddyviolet_2.jpg')} /></a>
-            <a target="_blank" href="https://tieba.baidu.com/p/4478725122"><img alt="东方龙隐谈" src={require('../public/df02_2.jpg')} /></a>
+            <a target="_blank" href="ygopro.html"><img alt="ygopro" src={require('../public/ygopro_2.jpg')} /></a>
+            <a target="_blank" href="ozns.html"><img alt="OZ大乱斗NS" src={require('../public/ozns_2.jpg')} /></a>
+            <a target="_blank" href="eddyviolet.html"><img alt="Eddy紫" src={require('../public/eddyviolet_2.jpg')} /></a>
+            <a target="_blank" href="df02.html"><img alt="东方龙隐谈" src={require('../public/df02_2.jpg')} /></a>
           </div>
         </div>
 
