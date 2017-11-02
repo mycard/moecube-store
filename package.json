@@ -50,6 +50,7 @@
     "antd": "^2.7.4",
     "axios": "^0.15.3",
     "babel-plugin-import": "^1.1.1",
+    "core-js": "^2.5.1",
     "enquire": "^0.0.2",
     "install": "^0.8.7",
     "js-yaml": "^3.8.1",
