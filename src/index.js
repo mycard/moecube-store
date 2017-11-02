@@ -1,4 +1,7 @@
 import 'core-js/shim'
+import 'intl'
+import 'intl/locale-data/jsonp/en.js'
+import 'intl/locale-data/jsonp/zh-Hans.js'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
