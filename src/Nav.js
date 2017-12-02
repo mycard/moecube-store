@@ -40,6 +40,36 @@ export default class Nav_Mobile extends React.Component {
                 <FormattedMessage id={"DataBase"} />
               </a>
             </Menu.Item>
+            <Menu.Item key="3">
+              <a href="https://accounts.moecube.com/">
+                用户中心
+              </a>
+            </Menu.Item>
+            <Menu.Item key="#">
+              <a href="#">
+                客服中心
+              </a>
+            </Menu.Item>
+            <Menu.Item key="5">
+              <a href="#">
+                最新资讯
+              </a>
+            </Menu.Item>
+            <Menu.Item key="6">
+              <a href="#">
+                创意分享
+              </a>
+            </Menu.Item>
+            <Menu.Item key="7">
+              <a href="#">
+                最新科技
+              </a>
+            </Menu.Item>
+            <Menu.Item key="8">
+              <a href="#">
+                学习天地
+              </a>
+            </Menu.Item>
           </Menu>
         </div>
       );

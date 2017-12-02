@@ -284,6 +284,22 @@ export default class App extends Component {
           </div>
         </Content>
 
+        <h2>代表作品</h2>
+        <div id="apps">
+          <div class="row">
+            <a target="_blank" href="ygopro.html"><img alt="ygopro" src={require('../public/ygopro_1.jpg')} /></a>
+            <a target="_blank" href="ozns.html"><img alt="OZ大乱斗NS" src={require('../public/ozns_1.jpg')} /></a>
+            <a target="_blank" href="eddyviolet.html"><img alt="Eddy紫" src={require('../public/eddyviolet_1.jpg')} /></a>
+            <a target="_blank" href="df02.html"><img alt="东方龙隐谈" src={require('../public/df02_1.jpg')} /></a>
+          </div>
+          <div class="row">
+            <a target="_blank" href="ygopro.html"><img alt="ygopro" src={require('../public/ygopro_2.jpg')} /></a>
+            <a target="_blank" href="ozns.html"><img alt="OZ大乱斗NS" src={require('../public/ozns_2.jpg')} /></a>
+            <a target="_blank" href="eddyviolet.html"><img alt="Eddy紫" src={require('../public/eddyviolet_2.jpg')} /></a>
+            <a target="_blank" href="df02.html"><img alt="东方龙隐谈" src={require('../public/df02_2.jpg')} /></a>
+          </div>
+        </div>
+
         {!isMobile ?
           (<div>
             <Content className="App-Content2">
@@ -299,6 +315,11 @@ export default class App extends Component {
                     </Button>
                     )}
                 </a>
+                <p>健康游戏忠告</p>
+                  <p>抵制不良游戏 拒绝盗版游戏
+                  注意自我保护 谨防受骗上当</p>
+                <p>适度游戏益脑 过度游戏伤身
+                  合理安排时间 享受健康生活</p>
               </Col>
               <Col span="10">
                 <p id="requirments"><FormattedMessage id={"SystemRequirements"} /></p>
@@ -339,7 +360,7 @@ export default class App extends Component {
                 </a>)}
             </Dropdown>
           </div>
-          © MoeCube 2017 all right reserved.
+          <div>© MoeCube 2017 all right reserved. | 上海市长宁区定西路 710 弄 16 号 | 客服电话: 18521057800 | 本游戏适合 16 岁以上人群 | <a  style={{ color:'rgba(0, 0, 0, 0.65)' }} href="supervise.html">家长监护</a></div>
         </Footer>
       </Layout>
     )

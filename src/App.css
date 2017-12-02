@@ -1,115 +1,123 @@
 @import '~antd/dist/antd.css';
 
-.ant-menu{
-  padding-top:4px;
-  font-size:10pt;
+.ant-menu {
+    padding-top: 4px;
+    font-size: 10pt;
 }
 
 .App-Logo {
-  width: 120px;
-  height: 31px;
-  border-radius: 6px;
-  margin: 16px 40px 16px 0;
-  float: left;
-  display: flex;
-  align-items: center;
+    width: 120px;
+    height: 31px;
+    border-radius: 6px;
+    margin: 16px 40px 16px 0;
+    float: left;
+    display: flex;
+    align-items: center;
 }
 
 .App-Poster {
-  margin-top: 10px;
-  width: 295px;
-  height: auto;
-  max-width: 100%; 
+    margin-top: 10px;
+    width: 295px;
+    height: auto;
+    max-width: 100%;
 }
 
 .App-Content1 {
-  height:450px;
-  background: url(../public/front-page-background.jpg) 100%/cover;
-  background-position: center;
-  overflow:hidden;
-  width:100%;
-  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6)
+    height: 450px;
+    background: url(../public/front-page-background.jpg) 100%/cover;
+    background-position: center;
+    overflow: hidden;
+    width: 100%;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6)
 }
 
 .App-Content2 {
-  display: flex;
-  justify-content: space-between;
-  padding: 50px 0px 50px 60px;
-  background-image: radial-gradient(ellipse farthest-corner at 45px 45px ,#3d75a2 0%, #091a4b 95%);
-  color: #eee;
-  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6)
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0px 50px 60px;
+    background-image: radial-gradient(ellipse farthest-corner at 45px 45px, #3d75a2 0%, #091a4b 95%);
+    color: #eee;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6)
 }
 
 .App-CardList {
-  padding: 4vh 4vw;
+    padding: 4vh 4vw;
 }
 
 .App-CardList .ant-row {
-  margin: -8px;
+    margin: -8px;
 }
+
 .App-CardList .ant-row > div {
-  padding: 1vh 1vw;
+    padding: 1vh 1vw;
 }
-.App-CardList .ant-btn{
-  position:absolute;
-  bottom:20px;
+
+.App-CardList .ant-btn {
+    position: absolute;
+    bottom: 20px;
 }
+
 .App-Card-content {
-  margin-bottom: 2vh;
-  white-space: pre;
+    margin-bottom: 2vh;
+    white-space: pre;
 }
-.ant-card-bordered{
-  height:100%;
+
+.ant-card-bordered {
+    height: 100%;
 }
-.ant-col-12{
-  padding:10px;
+
+.ant-col-12 {
+    padding: 10px;
 }
-.ant-card-body{
-  padding-bottom: 50px;
+
+.ant-card-body {
+    padding-bottom: 50px;
 }
+
 .ant-layout .ant-layout-header {
-  background: #404040
-}
-.font-C-Gray{
-    color:#ccc;
+    background: #404040
 }
 
-.App-Poster-Content
-{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.font-C-Gray {
+    color: #ccc;
 }
 
-.App-Poster-Content .title{
-  margin-top: -20px;
-  margin-bottom: -5px;
-  font-size: 1.3rem;
-  color: #eee
-}
-.App-Poster-Content a{
-  padding: 0 .5vw;
-  margin-top: 8px
+.App-Poster-Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.App-Poster-Content .title .sub{
-   font-size: 0.7rem;
-   color: #eee;
-   padding: 0 0.4vw
+.App-Poster-Content .title {
+    margin-top: -20px;
+    margin-bottom: -5px;
+    font-size: 1.3rem;
+    color: #eee
 }
 
-.ant-layout-content>p{
-  color: #eee;
-  font-size: 1.2rem
+.App-Poster-Content a {
+    padding: 0 .5vw;
+    margin-top: 8px
 }
 
-.ant-layout-footer{
-  display: flex;
-  justify-content: space-between;
+.App-Poster-Content .title .sub {
+    font-size: 0.7rem;
+    color: #eee;
+    padding: 0 0.4vw
 }
 
-.ant-card-head-title{
-  font-size:1.5rem;
+.ant-layout-content > p {
+    color: #eee;
+    font-size: 1.2rem
+}
+
+.ant-layout-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ant-card-head-title {
+    font-size: 1.5rem;
 }
 
 .ant-timeline-item-content {
@@ -120,105 +128,140 @@
     min-height: 0px;
 }
 
-.ant-timeline>.ant-timeline-item-pending,.ant-timeline>.ant-timeline-item-pending>div {
-  padding-bottom:0px;
+.ant-timeline > .ant-timeline-item-pending, .ant-timeline > .ant-timeline-item-pending > div {
+    padding-bottom: 0px;
 }
 
-#Card3Button
-{
-  margin-top: 20px;
+#Card3Button {
+    margin-top: 20px;
 }
 
-.loading
-{
-  margin-top: 20px;
-  font-size:20px;
-  color:white;
+.loading {
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
 }
 
-#Card4Button
-{
-  margin-top: 20px;
+#Card4Button {
+    margin-top: 20px;
 }
 
-.square{
-    padding-right:20px;
-    float:right;
-    cursor:pointer;
-    font-size:22px;
-    color:#aaa;
+.square {
+    padding-right: 20px;
+    float: right;
+    cursor: pointer;
+    font-size: 22px;
+    color: #aaa;
 }
-.square:hover{
-    color:#fff;
+
+.square:hover {
+    color: #fff;
 }
+
 .menu {
     z-index: 1;
-    width:100%;
-    position:fixed;
-    top:64px;
-}
-.menu li{
-  line-height: 40px;
-  height:40px;
-  padding: 0 20px;
-  color:white;
-  background:#404040;
-  border-top:#777 solid 1px;
-  font-size:14px;
-}
-.menu li:hover{
-  background:#777;
-}
-.chidden{
-  animation: downotup 0.5s;
-  -webkit-animation:downotup 0.5s;
-  transform:translate(0,-1000px)
-}
-.cshow{
-  animation: uptodown 0.5s;
-  -webkit-animation:uptodown 0.5s;
-  transform:translate(0,0px)
+    width: 100%;
+    position: fixed;
+    top: 64px;
 }
 
-@keyframes uptodown{
-  from{transform:translate(0,-1000px)}
-  to{transform:translate(0,0px)}
-}
-@keyframes downotup{
-  from{transform:translate(0,0px)}
-  to{transform:translate(0,-1000px)}
-}
-
-.MoeCubeProduct{
-  max-width: 370px;
+.menu li {
+    line-height: 40px;
+    height: 40px;
+    padding: 0 20px;
+    color: white;
+    background: #404040;
+    border-top: #777 solid 1px;
+    font-size: 14px;
 }
 
-#requirments{
-  white-space: pre-wrap;
+.menu li:hover {
+    background: #777;
 }
 
-#Welcome{
-  margin-top: 10px;
-  font-size: 1.3rem;
-  white-space: pre-wrap;
+.chidden {
+    animation: downotup 0.5s;
+    -webkit-animation: downotup 0.5s;
+    transform: translate(0, -1000px)
 }
 
-#downloadbot
-{
-  margin-top:10px;
-  margin-bottom:10px;
-  height: 40px;
-  width: 180px
+.cshow {
+    animation: uptodown 0.5s;
+    -webkit-animation: uptodown 0.5s;
+    transform: translate(0, 0px)
 }
 
-.changelanguage{
-  display: flex;
-  line-height:30px;
+@keyframes uptodown {
+    from {
+        transform: translate(0, -1000px)
+    }
+    to {
+        transform: translate(0, 0px)
+    }
 }
-.changelanguage>i{
-  line-height:30px;
+
+@keyframes downotup {
+    from {
+        transform: translate(0, 0px)
+    }
+    to {
+        transform: translate(0, -1000px)
+    }
 }
-li>.changelanguage{
-  display: flex;
-  line-height:30px;
+
+.MoeCubeProduct {
+    max-width: 370px;
+}
+
+#requirments {
+    white-space: pre-wrap;
+}
+
+#Welcome {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    white-space: pre-wrap;
+}
+
+#downloadbot {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 180px
+}
+
+.changelanguage {
+    display: flex;
+    line-height: 30px;
+}
+
+.changelanguage > i {
+    line-height: 30px;
+}
+
+li > .changelanguage {
+    display: flex;
+    line-height: 30px;
+}
+
+#apps {
+    padding: 1vh 4vw 4vh 4vw;
+}
+.row {
+    display: flex;
+    width: 100%;
+
+}
+
+#apps img {
+    padding: 10px;
+    width: 25%;
+    height: 16vw;
+    object-fit: cover;
+}
+
+h2 {
+    padding-left: calc(4vw + 10px);
+    font-size: 1.5rem;
+
 }
