@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu, Icon } from 'antd'
-import { FormattedMessage } from 'react-q'
+import { FormattedMessage } from 'react-intl'
 
 export default class Nav_Mobile extends React.Component {
 
@@ -35,7 +35,7 @@ export default class Nav_Mobile extends React.Component {
                 <FormattedMessage id={"BBS"} />
               </a>
             </Menu.Item>
-            <Menu.Item key="3">
+            <Menu.Item key="9">
               <a href="https://mycard.moe/ygopro/arena/index.html">
                 <FormattedMessage id={"DataBase"} />
               </a>
