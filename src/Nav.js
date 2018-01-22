@@ -45,7 +45,7 @@ export default class Nav_Mobile extends React.Component {
                 用户中心
               </a>
             </Menu.Item>
-            <Menu.Item key="#">
+            {/*<Menu.Item key="#">
               <a href="#">
                 客服中心
               </a>
@@ -69,7 +69,7 @@ export default class Nav_Mobile extends React.Component {
               <a href="#">
                 学习天地
               </a>
-            </Menu.Item>
+            </Menu.Item>*/}
           </Menu>
         </div>
       );
