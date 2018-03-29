@@ -1,19 +1,69 @@
 import React from 'react'
 import { Menu, Icon } from 'antd'
 import { FormattedMessage } from 'react-intl'
-
+import querystring from 'querystring';
+import crypto from 'crypto';
 export default class Nav_Mobile extends React.Component {
 
   constructor(props) {
     super(props);
+
+    var isLogin = false;
+    var userName = "";
+    var user;
+
+    var token = querystring.parse(location.search.slice(1)).sso;
+    if (token) {
+      localStorage.setItem('token', token);
+      user = querystring.parse(new Buffer(token, 'base64').toString());
+      isLogin = true;
+      userName = user.username;
+    } else {
+      token = localStorage.getItem('token');
+      if (token) {
+        user = querystring.parse(new Buffer(token, 'base64').toString());
+        isLogin = true;
+        userName = user.username;
+      }
+    }
+
     this.state = {
       classMenu: false,
+      isLogin: isLogin,
+      userName: userName
     };
+
   }
+
+  login() {
+    var payload = new Buffer(querystring.stringify({
+      return_sso_url: location.href
+    })).toString('base64');
+
+    var request = querystring.stringify({
+      'sso': payload,
+      'sig': crypto.createHmac('sha256', 'zsZv6LXHDwwtUAGa').update(payload).digest('hex')
+    });
+    location.href = "https://ygobbs.com/session/sso_provider?" + request;
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+
+    // var redirectUrl = "http://localhost:3001/#";
+    var redirectUrl = "https://mycard.moe/";
+    this.setState({ isLogin: false });
+    var request = querystring.stringify({
+      'redirect': redirectUrl
+    });
+    location.href = "https://ygobbs.com/logout?" + request;
+  }
+
   menu = () => {
     this.setState({ classMenu: !this.state.classMenu });
   }
   render() {
+    const {  isLogin } = this.state
     var classMenu = this.state.classMenu;
     if (!this.props.isMobile) {
       return (
@@ -45,31 +95,26 @@ export default class Nav_Mobile extends React.Component {
                 用户中心
               </a>
             </Menu.Item>
-            {/*<Menu.Item key="#">
-              <a href="#">
-                客服中心
-              </a>
-            </Menu.Item>
-            <Menu.Item key="5">
-              <a href="#">
-                最新资讯
-              </a>
-            </Menu.Item>
-            <Menu.Item key="6">
-              <a href="#">
-                创意分享
-              </a>
-            </Menu.Item>
-            <Menu.Item key="7">
-              <a href="#">
-                最新科技
-              </a>
-            </Menu.Item>
-            <Menu.Item key="8">
-              <a href="#">
-                学习天地
-              </a>
-            </Menu.Item>*/}
+
+            {isLogin ?
+              (<Menu.Item key="5" style={{ float: 'right' }}>
+                <a onClick={() => this.logout()} >
+                  退出
+                  </a>
+              </Menu.Item>) : ("")}
+
+            {!isLogin ?
+              (<Menu.Item key="4" style={{ float: 'right' }}>
+                <a onClick={() => this.login()} >
+                  注册 | 登录
+                  </a>
+              </Menu.Item>) :
+              (<Menu.Item key="4" style={{ float: 'right' }}>
+                <a href="#" >
+                  Jc1991
+                  </a>
+              </Menu.Item>)}
+
           </Menu>
         </div>
       );

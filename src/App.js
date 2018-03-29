@@ -286,13 +286,13 @@ export default class App extends Component {
 
         <h2>代表作品</h2>
         <div id="apps">
-          <div class="row">
+          <div className="row">
             <a target="_blank" href="ygopro.html"><img alt="ygopro" src={require('../public/ygopro_1.jpg')} /></a>
             <a target="_blank" href="ozns.html"><img alt="OZ大乱斗NS" src={require('../public/ozns_1.jpg')} /></a>
             <a target="_blank" href="eddyviolet.html"><img alt="Eddy紫" src={require('../public/eddyviolet_1.jpg')} /></a>
             <a target="_blank" href="df02.html"><img alt="东方龙隐谈" src={require('../public/df02_1.jpg')} /></a>
           </div>
-          <div class="row">
+          <div className="row">
             <a target="_blank" href="ygopro.html"><img alt="ygopro" src={require('../public/ygopro_2.jpg')} /></a>
             <a target="_blank" href="ozns.html"><img alt="OZ大乱斗NS" src={require('../public/ozns_2.jpg')} /></a>
             <a target="_blank" href="eddyviolet.html"><img alt="Eddy紫" src={require('../public/eddyviolet_2.jpg')} /></a>
