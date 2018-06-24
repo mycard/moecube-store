@@ -65,6 +65,7 @@ export default class Nav_Mobile extends React.Component {
   render() {
     const {  isLogin } = this.state
     var classMenu = this.state.classMenu;
+    var userName = this.state.userName;
     if (!this.props.isMobile) {
       return (
         <div>
@@ -111,7 +112,7 @@ export default class Nav_Mobile extends React.Component {
               </Menu.Item>) :
               (<Menu.Item key="4" style={{ float: 'right' }}>
                 <a href="#" >
-                  Jc1991
+                  {userName}
                   </a>
               </Menu.Item>)}
 
