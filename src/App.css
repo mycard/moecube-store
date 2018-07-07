@@ -252,11 +252,14 @@ li > .changelanguage {
     width: 100%;
 
 }
-
-#apps img {
-    padding: 10px;
+#apps a {
     width: 25%;
     height: 16vw;
+}
+#apps img {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
