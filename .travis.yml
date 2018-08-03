@@ -6,6 +6,8 @@ env:
 cache:
   directories:
   - "$HOME/.npm"
+notifications:
+  webhooks: https://api.mycard.moe/notify/travis
 
 script: npm run build
 
