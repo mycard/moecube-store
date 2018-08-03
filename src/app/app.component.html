@@ -3,7 +3,7 @@
 <nz-layout class="layout">
   <nz-header>
     <div class="App-Logo">
-      <img alt="img" src="../assets/logo.png" style=" width: 140px; margin: 10px">
+      <img alt="img" src="assets/logo.png" style=" width: 140px; margin: 10px">
     </div>
     <ul nz-menu nzTheme="dark" nzMode="horizontal" style="line-height: 64px;">
       <li nz-menu-item [nzSelected]="true" i18n="@@Home"><a href="#">首页</a></li>
@@ -16,7 +16,7 @@
   <nz-content class="App-Content1">
     <div nz-row nz-type="flex" nz-justify="space-around" nz-align="middle">
       <div nz-col nzSpan="24" style="display: flex; flex-direction: column; align-items: center">
-        <img alt="img" src="../assets/cubbit-full-512.png" class="App-Poster">
+        <img alt="img" src="assets/cubbit-full-512.png" class="App-Poster">
         <div class="App-Poster-Content">
           <div class="title">
             <span i18n="@@MoeCubeDoujinGamePlatform">萌立方同人游戏平台</span>
@@ -108,7 +108,7 @@
               <nz-timeline-item i18n="@@IsPlaying" *ngIf="stats_online | async">{{stats_online | async}} 位爱的战士正在线进行游戏</nz-timeline-item>
             </nz-timeline>
             <div class="MoeCubeProduct">
-              <img alt="MoeCubeProduct" src="../assets/moecube-product.png" style="width: 100%"/>
+              <img alt="MoeCubeProduct" src="assets/moecube-product.png" style="width: 100%"/>
             </div>
             <a nz-button nzType="primary" href="https://ygobbs.com"><i class="anticon anticon-star"></i><span i18n="@@CardAction4">加入萌立方社区</span></a>
           </nz-card>
@@ -119,28 +119,28 @@
   <h2 i18n="@@apps">代表作品</h2>
   <div nz-row id="apps">
     <div nz-col nzSpan="6">
-      <img alt="ygopro" src="../assets/ygopro_1.jpg">
+      <img alt="ygopro" src="assets/ygopro_1.jpg">
     </div>
     <div nz-col nzSpan="6">
-      <img alt="OZ大乱斗NS" src="../assets/ozns_1.jpg">
+      <img alt="OZ大乱斗NS" src="assets/ozns_1.jpg">
     </div>
     <div nz-col nzSpan="6">
-      <img alt="Eddy紫" src="../assets/eddyviolet_1.jpg">
+      <img alt="Eddy紫" src="assets/eddyviolet_1.jpg">
     </div>
     <div nz-col nzSpan="6">
-      <img alt="东方龙隐谈" src="../assets/df02_1.jpg">
+      <img alt="东方龙隐谈" src="assets/df02_1.jpg">
     </div>
     <div nz-col nzSpan="6">
-      <img alt="ygopro" src="../assets/ygopro_2.jpg">
+      <img alt="ygopro" src="assets/ygopro_2.jpg">
     </div>
     <div nz-col nzSpan="6">
-      <img alt="OZ大乱斗NS" src="../assets/ozns_2.jpg">
+      <img alt="OZ大乱斗NS" src="assets/ozns_2.jpg">
     </div>
     <div nz-col nzSpan="6">
-      <img alt="Eddy紫" src="../assets/eddyviolet_2.jpg">
+      <img alt="Eddy紫" src="assets/eddyviolet_2.jpg">
     </div>
     <div nz-col nzSpan="6">
-      <img alt="东方龙隐谈" src="../assets/df02_2.jpg">
+      <img alt="东方龙隐谈" src="assets/df02_2.jpg">
     </div>
   </div>
   <nz-content class="App-Content2">
@@ -170,19 +170,19 @@
     <nz-dropdown>
       <a nz-dropdown [ngSwitch]="locale" class="ant-dropdown-link changelanguage">
         <ng-container *ngSwitchCase="'zh-CN'">
-          <img alt="img" src="../assets/flag-cn.png"> 中文
+          <img alt="img" src="assets/flag-cn.png"> 中文
         </ng-container>
         <ng-container *ngSwitchCase="'en-US'">
-          <img alt="img" src="../assets/flag-us.png"> English
+          <img alt="img" src="assets/flag-us.png"> English
         </ng-container>
         <i class="anticon anticon-down"></i>
       </a>
       <ul nz-menu nzSelectable>
         <li nz-menu-item class="changelanguage" (click)="setLocale('en-US')">
-          <img alt="img" src="../assets/flag-us.png" /> English
+          <img alt="img" src="assets/flag-us.png" /> English
         </li>
         <li nz-menu-item class="changelanguage" (click)="setLocale('zh-CN')">
-          <img alt="img" src="../assets/flag-cn.png" /> 中文
+          <img alt="img" src="assets/flag-cn.png" /> 中文
         </li>
       </ul>
     </nz-dropdown>
