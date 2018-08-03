@@ -6,7 +6,7 @@
     "start": "ng serve --aot --open",
     "build": "npm run build:zh-CN && npm run build:en-US",
     "build:zh-CN": "ng build --prod --source-map --deploy-url https://cdn01.moecube.com/store/zh-CN/ --outputPath dist/zh-CN --i18n-locale zh-CN",
-    "build:en-US": "ng build --aot --source-map --outputPath dist/en-US --i18n-locale en-US --i18n-file src/locale/messages.en-US.xlf",
+    "build:en-US": "ng build --prod --source-map --deploy-url https://cdn01.moecube.com/store/en-US/ --outputPath dist/en-US --i18n-locale en-US --i18n-file src/locale/messages.en-US.xlf",
     "i18n": "ng xi18n --output-path locale --i18n-locale zh-CN"
   },
   "private": true,
