@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="zh-CN" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="MoeCube" datatype="html">
+        <source>萌立方</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Home" datatype="html">
+        <source>首页</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BBS" datatype="html">
+        <source>&gt;社区</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DataBase" datatype="html">
+        <source>数据库</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navAccount" datatype="html">
+        <source>用户中心</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navRegister" datatype="html">
+        <source>注册 | 登录</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="MoeCubeDoujinGamePlatform" datatype="html">
+        <source>萌立方同人游戏平台</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="SupportBoth" datatype="html">
+        <source>萌立方同时支持</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="And" datatype="html">
+        <source>和</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="OperationSystem" datatype="html">
+        <source>操作系统</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Download" datatype="html">
+        <source>立即安装</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardContent1" datatype="html">
+        <source>或许您曾听说过一些来自同人世界的传说
+              曾有过有无所不能的神奇网上社区，
+              存在过无数创造者共同创造的神奇游戏，
+              曾有所有人融洽相处的幻想乡...Dalao们所说的那个新世界，
+              萌新却怎么也不知道在哪里！
+              不过这一次，你也许找对地方了！
+              安装“萌立方”就是您需要做的第一步！
+              萌立方希望能为萌新打开同人创作新世界的大门!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardAction1" datatype="html">
+        <source>安装萌立方ACG平台</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTitle1" datatype="html">
+        <source>新世界的入口</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardContent2" datatype="html">
+        <source>如果有过同人创作的经历，
+              你应该会深深地了解到,
+              爱的一面是孤独的，忧伤的，边缘化的。
+              但只要你还相信爱，
+              它就必将创造出爱与忧伤的结晶，给生命赋予意义。
+              萌立方的创造者们，就是抛弃了顾虑，为了爱而努力的人。
+              因为有大家在，萌立方才会存在。
+              也正是萌立方存在的意义。
+              萌立方平台希望能为有爱的人提供可能！</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardAction2" datatype="html">
+        <source>欢迎勾搭合作</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTitle2" datatype="html">
+        <source>为了爱而存在的萌立方</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardContent3" datatype="html">
+        <source>萌立方从诞生起就考虑到了为同人服务的复杂性与个性化需求，
+              于是萌立方为满足各种奇奇怪怪需求而开发了许多的黑科技！
+              这些点点滴滴的积累，或许就能够带动同人产业革新哦！
+
+              已实装黑科技功能:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTimeLine4-1" datatype="html">
+        <source>能在Mac上玩东方系列及其他 Windows 游戏。</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTimeLine4-2" datatype="html">
+        <source>在 PC 平台上玩部分非 PC 平台的游戏。</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTimeLine4-3" datatype="html">
+        <source>为“FXTZ”等联机方式的游戏，解决联机的问题，实现流畅联机。</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTimeLine4-4" datatype="html">
+        <source>自动保持游戏更新。同时支持第三方补丁（如汉化补丁）的更新。</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTimeLine4-5" datatype="html">
+        <source>为游戏发布者定制自定义功能（参考 YGOPro）。</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTimeLine4-6" datatype="html">
+        <source>为游戏提供在线存档保存功能（云存档）。</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTimeLine4-7" datatype="html">
+        <source>一键安装游戏，自动解决各种依赖问题。</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="WillHaveFunctions" datatype="html">
+        <source>其他功能目标</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardAction3" datatype="html">
+        <source>向萌立方建议新功能</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTitle3" datatype="html">
+        <source>黑科技创造新希望</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardContent4" datatype="html">
+        <source>世界与我是那么格格不入，
+              我们总在搜索与我们相似的人，
+              ——同道之人，同好之人，同命之人。
+              在这个一切都被沦为工具的时代，
+              呼吸似乎都变得困难。
+              孤独的我们，
+              在无尽的大海中相互取暖，
+              多么的希望有一个共同的家园啊！</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="IsRegisted" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{1}}"/> 位萌新已加入萌立方</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="IsPlaying" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{2}}"/> 位爱的战士正在线进行游戏</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardAction4" datatype="html">
+        <source>加入萌立方社区</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">121</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CardTitle4" datatype="html">
+        <source>孤独者的家园</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="apps" datatype="html">
+        <source>代表作品</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Welcome" datatype="html">
+        <source>还等什么呢？
+        马上开始萌立方的二次元冒险！</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">157</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f37c8f75df6872b0c850f182f51494c2f14c0357" datatype="html">
+        <source>立即安装</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">162</context>
+        </context-group>
+        <note priority="1" from="description">Download</note>
+      </trans-unit>
+      <trans-unit id="SystemRequirements" datatype="html">
+        <source>系统需求
+        Windows Vista、7 或更新的版本
+        512 MB 内存
+        1 Ghz 或更快的处理器
+
+        Intel Mac、OS X 版本 10.11 (El Capitan) 或更新的版本。
+
+        1GB 硬盘空间（推荐）
+        互联网连接（推荐使用宽带）</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">169</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
