@@ -8,7 +8,9 @@ cache:
   directories:
     - '$HOME/.npm'
 notifications:
-  webhooks: https://api.mycard.moe/notify/travis
+  webhooks:
+    urls: https://api.mycard.moe/notify/travis
+    on_cancel: never
 
 script: npm run build
 
