@@ -15,7 +15,7 @@ notifications:
 script: npm run build
 
 before_deploy:
-  - curl --location --retry 5 --output ossutil "http://ossutil-version-update.oss-cn-hangzhou.aliyuncs.com/$(curl http://ossutil-version-update.oss-cn-hangzhou.aliyuncs.com/ossutilversion)/ossutil64"
+  - curl --location --retry 5 --output ossutil "https://ossutil-version-update.oss-cn-hangzhou.aliyuncs.com/$(curl --location --retry 5 https://ossutil-version-update.oss-cn-hangzhou.aliyuncs.com/ossutilversion)/ossutil64"
   - chmod +x ossutil
   - ./ossutil config --endpoint oss-cn-hangzhou.aliyuncs.com --access-key-id $ALIYUN_ID
     --access-key-secret $ALIYUN_SECRET
