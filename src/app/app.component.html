@@ -1,4 +1,4 @@
-<app-title title="萌立方" i18n-title="@@MoeCube"></app-title>
+<app-title title="萌卡" i18n-title="@@MyCard"></app-title>
 
 <nz-layout class="layout">
   <nz-header>
@@ -19,12 +19,12 @@
         <img alt="img" src="assets/cubbit-full-512.png" class="App-Poster">
         <div class="App-Poster-Content">
           <div class="title">
-            <span i18n="@@MoeCubeDoujinGamePlatform">萌立方同人游戏平台</span>
+            <span i18n="@@MyCardeDoujinGamePlatform">萌卡同人游戏平台</span>
             <span class="sub">Beta</span>
           </div>
           <div style="text-align:center">
             <div class="font-C-Gray">
-              <span i18n="@@SupportBoth">萌立方同时支持</span>
+              <span i18n="@@SupportBoth">MyCard同时支持</span>
               <a [href]="(latest_win32 | async) || '#'">windows</a>
               <span i18n="@@And">和</span>
               <a [href]="(latest_drawin | async) || '#'">macOS</a>
@@ -51,32 +51,32 @@
               曾有所有人融洽相处的幻想乡...Dalao们所说的那个新世界，
               萌新却怎么也不知道在哪里！
               不过这一次，你也许找对地方了！
-              安装“萌立方”就是您需要做的第一步！
-              萌立方希望能为萌新打开同人创作新世界的大门!</p>
+              安装“萌卡”就是您需要做的第一步！
+              萌卡希望能为萌新打开同人创作新世界的大门!</p>
             <a nz-button nzType="primary" [nzLoading]="!(latest_current | async)" [href]="latest_current | async">
               <i class="anticon anticon-download"></i>
-              <span i18n="@@CardAction1">安装萌立方ACG平台</span>
+              <span i18n="@@CardAction1">安装MyCard平台</span>
             </a>
           </nz-card>
         </div>
         <div nz-col nzSpan="12">
-          <nz-card nzTitle="为了爱而存在的萌立方" i18n-nzTitle="@@CardTitle2">
+          <nz-card nzTitle="为了爱而存在的萌卡" i18n-nzTitle="@@CardTitle2">
             <p class="App-Card-content" i18n="@@CardContent2">如果有过同人创作的经历，
               你应该会深深地了解到,
               爱的一面是孤独的，忧伤的，边缘化的。
               但只要你还相信爱，
               它就必将创造出爱与忧伤的结晶，给生命赋予意义。
-              萌立方的创造者们，就是抛弃了顾虑，为了爱而努力的人。
-              因为有大家在，萌立方才会存在。
-              也正是萌立方存在的意义。
-              萌立方平台希望能为有爱的人提供可能！</p>
+              萌卡的创造者们，就是抛弃了顾虑，为了爱而努力的人。
+              因为有大家在，萌卡才会存在。
+              也正是萌卡存在的意义。
+              萌卡平台希望能为有爱的人提供可能！</p>
             <a nz-button nzType="primary" href="mailto:zh99998@gmail.com"><i class="anticon anticon-plus-square-o"></i><span i18n="@@CardAction2">欢迎勾搭合作</span></a>
           </nz-card>
         </div>
         <div nz-col nzSpan="12">
           <nz-card nzTitle="黑科技创造新希望" i18n-nzTitle="@@CardTitle3">
-            <p class="App-Card-content" i18n="@@CardContent3">萌立方从诞生起就考虑到了为同人服务的复杂性与个性化需求，
-              于是萌立方为满足各种奇奇怪怪需求而开发了许多的黑科技！
+            <p class="App-Card-content" i18n="@@CardContent3">萌卡从诞生起就考虑到了为同人服务的复杂性与个性化需求，
+              于是萌卡为满足各种奇奇怪怪需求而开发了许多的黑科技！
               这些点点滴滴的积累，或许就能够带动同人产业革新哦！
 
               已实装黑科技功能:</p>
@@ -104,7 +104,7 @@
               在无尽的大海中相互取暖，
               多么的希望有一个共同的家园啊！</p>
             <nz-timeline>
-              <nz-timeline-item i18n="@@IsRegisted" *ngIf="stats_signups | async">{{stats_signups | async}} 位萌新已加入萌立方</nz-timeline-item>
+              <nz-timeline-item i18n="@@IsRegisted" *ngIf="stats_signups | async">{{stats_signups | async}} 位萌新已加入萌卡</nz-timeline-item>
               <nz-timeline-item i18n="@@IsPlaying" *ngIf="stats_online | async">{{stats_online | async}} 位爱的战士正在线进行游戏</nz-timeline-item>
             </nz-timeline>
             <div class="MoeCubeProduct">
@@ -146,7 +146,7 @@
   <nz-content class="App-Content2">
     <div nz-col nzSpan="14">
       <p id="Welcome" class="preline" i18n="@@Welcome">还等什么呢？
-        马上开始萌立方的二次元冒险！</p>
+        马上开始萌卡的二次元冒险！</p>
         <a nz-button id="downloadbot" nzType="primary" nzSize='large' [nzLoading]="!(latest_current | async)" [href]="latest_current | async">
           <i class="anticon anticon-download"></i>
           <span i18n="@@Download">立即安装</span>
