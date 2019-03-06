@@ -16,8 +16,8 @@ export class AppComponent {
     .pipe(map(rawData => 'https://cdn01.moecube.com/downloads/' + yaml.parse(rawData).path));
 
   latest_drawin = this.http
-    .get('https://cdn01.moecube.com/downloads/latest-mac.json')
-    .pipe(map((data: any) => data.url.replace('-mac.zip', '.dmg')));
+    .get('https://cdn01.moecube.com/downloads/latest-mac.yml', { responseType: 'text' })
+    .pipe(map((rawData) => 'https://cdn01.moecube.com/downloads/' + yaml.parse(rawData).path.replace('-mac.zip', '.dmg')));
 
   latest_current = navigator.platform.match(/Mac/i) ? this.latest_drawin : this.latest_win32;
 
