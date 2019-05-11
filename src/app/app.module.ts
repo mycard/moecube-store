@@ -2,20 +2,33 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
-// import { registerLocaleData } from '@angular/common';
-// import zh from '@angular/common/locales/zh';
-import { TitleComponent } from './title/title.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+import { BannerComponent } from './banner/banner.component';
+import {LayoutComponent} from "./layout/layout.component";
 
-// registerLocaleData(zh);
+registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent, TitleComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, FormsModule, HttpClientModule, NgZorroAntdModule],
-  // providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    BannerComponent,
+    LayoutComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgZorroAntdModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
+  ],
+  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

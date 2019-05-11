@@ -1,0 +1,198 @@
+<nz-layout class="layout">
+    <nz-affix class="nav-affix">
+        <nz-header id="nav-header" class="nav">
+            <img class="logo" src="https://cdn01.moecube.com/store/zh-CN/assets/logo.png"/>
+            <ul id="nav-ul" nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+                <li nz-menu-item>首页</li>
+                <li nz-menu-item>社区</li>
+                <li nz-menu-item>数据库</li>
+                <li nz-menu-item>用户中心</li>
+            </ul>
+        </nz-header>
+    </nz-affix>
+
+    <nz-content class="container">
+        <div id="banner" class="home-banner">
+            <img class="no-select" draggable="false" style="position: relative;top:180px;left:80px;"
+                 src="../../assets/img/font-1.png"/><br>
+            <img class="no-select" draggable="false" style="position: relative;top:130px;left:197px;"
+                 src="../../assets/img/font-2.png"/><br>
+            <img class="no-select" draggable="false" style="position: relative;top:80px;left:115px;"
+                 src="../../assets/img/font-3.png"/>
+            <div class="no-select" style="position: absolute;bottom:0;left:45%;z-index:0;color:#fff;font-size: 25px;">
+                <p>向下 <i nz-icon nzType="down-circle" nzTheme="outline" class="down-icon"></i> 滚动</p>
+            </div>
+            <div class="download-button">
+                <a href="{{latest_current|async}}">
+                    <button nz-button nzType="primary" [nzSize]="large" nzShape="round"><i nz-icon type="download"></i>下载游戏
+                    </button>
+                </a>
+            </div>
+        </div>
+        <section class="section-two ">
+            <div class="section-two-container">
+                <div class="cards-group no-select">
+                    <img class="card-one" draggable="false" src="../../assets/img/card-1.jpg" width="200px"/>
+                    <img class="card-two" draggable="false" src="../../assets/img/card-1.jpg" width="200px"/>
+                    <img class="card-three" draggable="false" src="../../assets/img/card-1.jpg" width="200px"/>
+                </div>
+                <div nz-row class="grid-group no-select">
+                    <div nz-col nzSpan="6" class="plant-grid">
+                        <i nz-icon nzType="gift" nzTheme="outline" class="icon"></i>
+                        <p class="plant-title">免费收录</p>
+                        <p>氪金要素是不存在的<br/>从最开始所有卡片都可选用<br/>随心所欲组出您想要的卡组</p>
+                    </div>
+                    <div nz-col nzSpan="6" class="plant-grid">
+                        <i nz-icon nzType="rocket" nzTheme="outline" class="icon"></i>
+                        <p class="plant-title">自动更新</p>
+                        <p>无需为更新而烦恼<br/>客户端会自动更新</p>
+                    </div>
+                    <div nz-col nzSpan="6" class="plant-grid">
+                        <i nz-icon nzType="radar-chart" nzTheme="outline" class="icon"></i>
+                        <p class="plant-title">丰富玩法</p>
+                        <p>2V2决斗<br/>人机决斗<br/>竞技向卡组决斗<br/>娱乐向卡组决斗<br/>总有适合你的<br/></p>
+                    </div>
+                    <div nz-col nzSpan="6" class="plant-grid">
+                        <i nz-icon nzType="team" nzTheme="outline" class="icon"></i>
+                        <p class="plant-title">同人世界</p>
+                        <p>东方project与其旧作有趣的同人游戏等您探索</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-third no-select">
+            <div class="section-third-container">
+                <div class="section-title"><p style="font-size:50px;">- 代表作品 -</p></div>
+                <div nz-row class="section-third-grid">
+                    <div nz-col nzSpan="6">
+                        <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-fourth no-select">
+            <div class="section-fourth-container">
+                <div class="section-title"><p style="font-size:50px;">- 原创周边 -</p></div>
+                <div nz-row class="section-fourth-row">
+                    <div nz-col nzSpan="6">
+                        <div class="section-fourth-bg">
+                            <div class="section-card-cover">
+                                <div class="section-card-body">
+                                    <p>McPro 原创卡垫</p>
+                                    <p>以飒爽的闪到姬与开辟的使者为主题的帅气卡垫</p>
+                                    <button nz-button nzType="primary" [nzSize]="large"><i nz-icon nzType="shopping"
+                                                                                           nzTheme="outline"></i>购买
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <div class="section-fourth-bg">
+                            <div class="section-card-cover">
+                                <div class="section-card-body">
+                                    <p>McPro 原创卡垫</p>
+                                    <p>以飒爽的闪到姬与开辟的使者为主题的帅气卡垫</p>
+                                    <button nz-button nzType="primary" [nzSize]="large"><i nz-icon nzType="shopping"
+                                                                                           nzTheme="outline"></i>购买
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <div class="section-fourth-bg">
+                            <div class="section-card-cover">
+                                <div class="section-card-body">
+                                    <p>McPro 原创卡垫</p>
+                                    <p>以飒爽的闪到姬与开辟的使者为主题的帅气卡垫</p>
+                                    <button nz-button nzType="primary" [nzSize]="large"><i nz-icon nzType="shopping"
+                                                                                           nzTheme="outline"></i>购买
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <div class="section-fourth-bg">
+                            <div class="section-card-cover">
+                                <div class="section-card-body">
+                                    <p>McPro 原创卡垫</p>
+                                    <p>以飒爽的闪到姬与开辟的使者为主题的帅气卡垫</p>
+                                    <button nz-button nzType="primary" [nzSize]="large"><i nz-icon nzType="shopping"
+                                                                                           nzTheme="outline"></i>购买
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-fifth no-select">
+            <div class="section-fifth-container">
+                <div class="section-title"><p style="font-size:50px;"><br></p></div>
+                <div nz-row style="margin:0 auto;text-align: center;">
+
+                    <div nz-col nzSpan="12">
+                        <p style="font-size: 40px;color:#ffffff">Mc 决斗数据库</p>
+                        <p style="font-size: 20px;color:#ffffff">今日决斗</p>
+                        <nz-statistic [nzValueStyle]="{color: '#FFFFFF' }" [nzValue]="stats_online|async | number"
+                                      [nzTitle]=""></nz-statistic>
+                        <button nz-button nzType="primary" [nzSize]="large"><i nz-icon nzType="double-right"
+                                                                               nzTheme="outline"></i>进入决斗数据库
+                        </button>
+                    </div>
+                    <div nz-col nzSpan="12">
+                        <p style="font-size: 40px;color:#ffffff">Mc 决斗大赛</p>
+                        <p style="font-size: 20px;color:#ffffff">参赛人数</p>
+                        <nz-statistic [nzValueStyle]="{color: '#FFFFFF' }" [nzValue]="1949101 | number"
+                                      [nzTitle]=""></nz-statistic>
+                        <button nz-button nzType="primary" [nzSize]="large"><i nz-icon nzType="double-right"
+                                                                               nzTheme="outline"></i>查看近期赛事
+                        </button>
+                    </div>
+                    <!--
+                    <div nz-col nzSpan="8">
+                        <p style="font-size: 40px;color:#ffffff">Mc 用户数</p>
+                        <p style="font-size: 20px;color:#ffffff">注册用户</p>
+                        <nz-statistic [nzValueStyle]="{color: '#FFFFFF' }" [nzValue]="stats_signups|async"
+                                      [nzTitle]=""></nz-statistic>
+                        <button nz-button nzType="primary" [nzSize]="large"><i nz-icon nzType="double-right"
+                                                                               nzTheme="outline"></i>进入决斗数据库
+                        </button>
+                    </div>
+                    -->
+                </div>
+            </div>
+
+        </section>
+
+        <section class="foot">
+            <p>© MyCard 2019 all rights reserved.</p>
+        </section>
+    </nz-content>
+</nz-layout>
