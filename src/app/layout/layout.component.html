@@ -13,21 +13,30 @@
 
     <nz-content class="container">
         <div id="banner" class="home-banner">
-            <img class="no-select" draggable="false" style="position: relative;top:180px;left:80px;"
-                 src="assets/img/font-1.png"/><br>
-            <img class="no-select" draggable="false" style="position: relative;top:130px;left:197px;"
-                 src="assets/img/font-2.png"/><br>
-            <img class="no-select" draggable="false" style="position: relative;top:80px;left:115px;"
-                 src="assets/img/font-3.png"/>
+            <div style="width:100%;position: relative;top:100px;text-align: center;">
+              <img class="no-select" draggable="false" style="margin:0 auto;width:300px;"
+                   src="assets/img/font-1.png"/><br>
+              <img class="no-select" draggable="false" style="margin:0 auto;width:370px;position: relative;top:-51px;"
+                   src="assets/img/font-2.png"/><br>
+              <img class="no-select" draggable="false" style="margin:0 auto;width:600px;position: relative;top:-55px;"
+                   src="assets/img/font-3.png"/>
+              <div style="margin:0 auto;position: relative; top:-50px;">
+                <a href="{{latest_current|async}}">
+                  <button nz-button nzType="primary" nzSize="large" nzShape="round"><i nz-icon type="download"></i>下载游戏
+                  </button>
+                </a>
+              </div>
+
+            </div>
+
             <div class="no-select" style="position: absolute;bottom:0;left:45%;z-index:0;color:#fff;font-size: 25px;">
                 <p>向下 <i nz-icon nzType="down-circle" nzTheme="outline" class="down-icon"></i> 滚动</p>
             </div>
+            <!--
             <div class="download-button">
-                <a href="{{latest_current|async}}">
-                    <button nz-button nzType="primary" nzSize="large" nzShape="round"><i nz-icon type="download"></i>下载游戏
-                    </button>
-                </a>
+
             </div>
+            -->
         </div>
         <section class="section-two ">
             <div class="section-two-container">
