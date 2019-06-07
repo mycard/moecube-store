@@ -14,16 +14,15 @@
     <nz-content class="container">
         <div id="banner" class="home-banner">
             <div style="width:100%;position: relative;top:100px;text-align: center;">
-              <img class="no-select" draggable="false" style="margin:0 auto;width:300px;"
-                   src="assets/img/font-1.png"/><br>
-              <img class="no-select" draggable="false" style="margin:0 auto;width:370px;position: relative;top:-51px;"
-                   src="assets/img/font-2.png"/><br>
-              <img class="no-select" draggable="false" style="margin:0 auto;width:600px;position: relative;top:-55px;"
-                   src="assets/img/font-3.png"/>
+              <img class="no-select" draggable="false" style="margin:0 auto;width:480px;position: relative;top:80px;"
+                   src="assets/img/font-2.png"/>
+              <br>
+              <img class="no-select" draggable="false" style="margin:0 auto;width:580px;position: relative;top:40px;" src="assets/img/desc.png">
               <div style="margin:0 auto;position: relative; top:-50px;">
                 <a href="{{latest_current|async}}">
-                  <button nz-button nzType="primary" nzSize="large" nzShape="round"><i nz-icon type="download"></i>下载游戏
-                  </button>
+                  <!--<button nz-button nzType="primary" nzSize="large" nzShape="round"><i nz-icon type="download"></i>下载游戏
+                  </button>-->
+                  <img src="assets/img/button-3.png" width="150px" style="position: relative;top:80px; border-radius: 3px; border: 1px solid #F2F6FC"/>
                 </a>
               </div>
 
@@ -40,38 +39,34 @@
         </div>
         <section class="section-two ">
             <div class="section-two-container">
+                <div class="section-title no-select"><p style="font-size:50px;color: #C5D1EB !important;">游戏王全卡模拟器YGOPro</p></div>
                 <div class="cards-group no-select">
                     <img class="card-one" draggable="false" src="assets/img/card-1.jpg" width="200px"/>
                     <img class="card-two" draggable="false" src="assets/img/card-1.jpg" width="200px"/>
                     <img class="card-three" draggable="false" src="assets/img/card-1.jpg" width="200px"/>
                 </div>
                 <div nz-row class="grid-group no-select">
-                    <div nz-col nzSpan="6" class="plant-grid">
+                    <div nz-col nzSpan="8" class="plant-grid">
                         <i nz-icon nzType="gift" nzTheme="outline" class="icon"></i>
                         <p class="plant-title">免费收录</p>
-                        <p>氪金要素是不存在的<br/>从最开始所有卡片都可选用<br/>随心所欲组出您想要的卡组</p>
+                        <p class="grid-desc">氪金要素是不存在的<br/>从最开始所有卡片都可选用<br/>随心所欲组出您想要的卡组</p>
                     </div>
-                    <div nz-col nzSpan="6" class="plant-grid">
+                    <div nz-col nzSpan="8" class="plant-grid">
                         <i nz-icon nzType="rocket" nzTheme="outline" class="icon"></i>
                         <p class="plant-title">自动更新</p>
-                        <p>无需为更新而烦恼<br/>客户端会自动更新</p>
+                        <p class="grid-desc">无需为更新而烦恼<br/>客户端会自动更新</p>
                     </div>
-                    <div nz-col nzSpan="6" class="plant-grid">
+                    <div nz-col nzSpan="8" class="plant-grid">
                         <i nz-icon nzType="radar-chart" nzTheme="outline" class="icon"></i>
                         <p class="plant-title">丰富玩法</p>
-                        <p>2V2决斗<br/>人机决斗<br/>竞技向卡组决斗<br/>娱乐向卡组决斗<br/>总有适合你的<br/></p>
-                    </div>
-                    <div nz-col nzSpan="6" class="plant-grid">
-                        <i nz-icon nzType="team" nzTheme="outline" class="icon"></i>
-                        <p class="plant-title">同人世界</p>
-                        <p>东方project与其旧作有趣的同人游戏等您探索</p>
+                        <p class="grid-desc">2V2决斗/人机决斗<br/>竞技向卡组决斗<br/>娱乐向卡组决斗<br/>总有适合你的<br/></p>
                     </div>
                 </div>
             </div>
         </section>
         <section class="section-third no-select">
             <div class="section-third-container">
-                <div class="section-title"><p style="font-size:50px;">- 代表作品 -</p></div>
+                <div class="section-title"><p style="font-size:50px;color:#313154 !important;">代表作品</p></div>
                 <div nz-row class="section-third-grid">
                     <div nz-col nzSpan="6">
                         <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
@@ -103,7 +98,7 @@
 
         <section class="section-fourth no-select">
             <div class="section-fourth-container">
-                <div class="section-title"><p style="font-size:50px;">- 原创周边 -</p></div>
+                <div class="section-title"><p style="font-size:50px;color: #C5D1EB !important;">MCPro原创周边</p></div>
                 <div nz-row class="section-fourth-row">
                     <div nz-col nzSpan="6">
                         <div class="section-fourth-bg">
@@ -124,9 +119,9 @@
                                 <div class="section-card-body">
                                     <p>McPro 原创卡垫</p>
                                     <p>以飒爽的闪到姬与开辟的使者为主题的帅气卡垫</p>
-                                    <button nz-button nzType="primary" nzSize="'large'"><i nz-icon nzType="shopping"
-                                                                                           nzTheme="outline"></i>购买
-                                    </button>
+                                  <button nz-button nzType="primary" nzSize="large"><i nz-icon nzType="shopping"
+                                                                                       nzTheme="outline"></i>购买
+                                  </button>
                                 </div>
                             </div>
                         </div>
@@ -167,18 +162,18 @@
                 <div nz-row style="margin:0 auto;text-align: center;">
 
                     <div nz-col nzSpan="12">
-                        <p style="font-size: 40px;color:#ffffff">Mc 决斗数据库</p>
-                        <p style="font-size: 20px;color:#ffffff">今日决斗</p>
-                        <nz-statistic [nzValueStyle]="{color: '#FFFFFF' }" [nzValue]="stats_online|async | number"
+                        <p style="font-size: 40px;color:#313154">Mc 决斗数据库</p>
+                        <p style="font-size: 20px;color:#313154">今日决斗</p>
+                        <nz-statistic [nzValueStyle]="{color: '#000D1E' }" [nzValue]="stats_online|async | number"
                                       [nzTitle]=""></nz-statistic>
                         <button nz-button nzType="primary" nzSize="large"><i nz-icon nzType="double-right"
                                                                                nzTheme="outline"></i>进入决斗数据库
                         </button>
                     </div>
                     <div nz-col nzSpan="12">
-                        <p style="font-size: 40px;color:#ffffff">Mc 决斗大赛</p>
-                        <p style="font-size: 20px;color:#ffffff">参赛人数</p>
-                        <nz-statistic [nzValueStyle]="{color: '#FFFFFF' }" [nzValue]="1949101 | number"
+                        <p style="font-size: 40px;color:#313154">Mc 决斗大赛</p>
+                        <p style="font-size: 20px;color:#313154">参赛人数</p>
+                        <nz-statistic [nzValueStyle]="{color: '#000D1E' }" [nzValue]="1949101 | number"
                                       [nzTitle]=""></nz-statistic>
                         <button nz-button nzType="primary" nzSize="large"><i nz-icon nzType="double-right"
                                                                                nzTheme="outline"></i>查看近期赛事

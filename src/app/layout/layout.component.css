@@ -25,7 +25,7 @@
     width: 100%;
     position: absolute;
     top: 0;
-    overflow-x: hidden;
+
 }
 
 .home-banner {
@@ -195,7 +195,7 @@
 }
 
 .plant-grid {
-    color: #ffffff;
+    color: #C5D1EB;
     text-align: center;
 }
 
@@ -205,12 +205,16 @@
 
 .plant-title {
     font-size: 30px;
+    color: #C5D1EB !important;
+}
+.grid-desc{
+    color: #92AFD7 !important;
 }
 
 .section-two {
-    height: 900px;
+    height: 100vh;
     width: 100%;
-    background: #111111;
+    background: #000D1E;
     min-width: 1300px;
     margin: 0 auto;
 
@@ -219,6 +223,8 @@
 .section-two-container {
     position: relative;
     top: 130px;
+    vertical-align: middle;
+    margin: 0 auto;
 }
 
 .cards-group {
@@ -233,17 +239,15 @@
     left: 600px;
     top: -140px;
     width: 700px;
+    color: #C5D1EB;
 }
 
 .section-third {
     min-height: 720px;
     min-width: 1300px;
     width: 100%;
-    height: 100%;
-    background-size: auto 900px;
-    background-image: url("../../assets/img/background.png");
-    background-repeat: no-repeat;
-    background-position: center;
+    height: 100vh;
+    background-color: #C5D1EB;
 }
 
 .section-third-container {
@@ -316,7 +320,7 @@
 .section-fourth {
     height: 900px;
     width: 100%;
-    background: #111111;
+    background: #000D1E;
     min-width: 1300px;
     margin: 0 auto;
 }
@@ -413,11 +417,8 @@
     min-height: 720px;
     min-width: 1300px;
     width: 100%;
-    height: 100%;
-    background-size: auto 900px;
-    background-image: url("../../assets/img/background.png");
-    background-repeat: no-repeat;
-    background-position: center;
+    height: 100vh;
+    background-color: #C5D1EB;
 }
 
 .section-fifth-container {
@@ -428,6 +429,8 @@
 
 .foot{
     height:60px;
+    width: 100%;
+    min-width: 1300px;
     background: #111111;
 }
 .foot > p{
