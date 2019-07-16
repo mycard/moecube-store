@@ -11,6 +11,7 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { BannerComponent } from './banner/banner.component';
 import {LayoutComponent} from "./layout/layout.component";
+import { ArenaTableComponent } from './arena-table/arena-table.component';
 
 registerLocaleData(zh);
 
@@ -19,7 +20,8 @@ registerLocaleData(zh);
     AppComponent,
     HomeComponent,
     BannerComponent,
-    LayoutComponent
+    LayoutComponent,
+    ArenaTableComponent
   ],
   imports: [
     BrowserModule,
