@@ -37,18 +37,18 @@
             </div>
             -->
         </div>
-        <section class="section-two ">
+        <section class="section-two">
             <div class="section-two-container">
               <div class="section-title no-select"><p style="font-size:50px;color: #C5D1EB !important;">游戏王全卡模拟器YGOPro</p></div>
-              <div nz-row style="position: relative;top:50px;">
-                <div nz-col nzSpan="12">
+              <div nz-row [nzType]="'flex'" [nzJustify]="'center'" style="padding-top:50px;">
+                <div nz-col>
                   <div class="no-select" style="position: relative; left: 100px;">
                     <img class="card-one" draggable="false" src="assets/img/card-1.jpg" width="200px"/>
                     <img class="card-two" draggable="false" src="assets/img/card-1.jpg" width="200px"/>
                     <img class="card-three" draggable="false" src="assets/img/card-1.jpg" width="200px"/>
                   </div>
                 </div>
-                <div nz-col nzSpan="12">
+                <div nz-col style="min-width: 600px">
                   <div nz-row class="no-select">
                     <div nz-col nzSpan="8" class="plant-grid">
                       <i nz-icon nzType="gift" nzTheme="outline" class="icon"></i>
@@ -98,7 +98,7 @@
         <section class="section-third no-select">
             <div class="section-third-container">
                 <div class="section-title"><p style="font-size:50px;color:#313154 !important;">代表作品</p></div>
-                <div nz-row class="section-third-grid">
+                <div nz-row class="section-third-grid" [nzType]="'flex'">
                     <div nz-col nzSpan="6">
                         <img class="section-third-pic" src="https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg"/>
                     </div>
