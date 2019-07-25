@@ -1,0 +1,16 @@
+<nz-table #ajaxTable [nzData]="listOfData" [nzLoading]="loading" nzSize="small" [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Deck</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of ajaxTable.data; let i = index">
+      <td>{{ i+1 }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.count }}</td>
+    </tr>
+  </tbody>
+</nz-table>
