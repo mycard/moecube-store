@@ -341,7 +341,19 @@
     margin: 0 auto;
     width: 300px;
     height: 220px;
-    background: url('https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg');
+}
+
+.section-fourth-row > div[nz-col]:nth-child(1) > .section-fourth-bg {
+  background: url('https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg');
+}
+.section-fourth-row > div[nz-col]:nth-child(2) > .section-fourth-bg {
+  background: url('https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg');
+}
+.section-fourth-row > div[nz-col]:nth-child(3) > .section-fourth-bg {
+  background: url('https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg');
+}
+.section-fourth-row > div[nz-col]:nth-child(4) > .section-fourth-bg {
+  background: url('https://cdn01.moecube.com/store/zh-CN/assets/ozns_1.jpg');
 }
 
 .section-card-cover {
