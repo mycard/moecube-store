@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href https://cdn01.moecube.com/store/mycard-store/ --deploy-url https://cdn01.moecube.com/store/mycard-store/",
+    "build": "ng build --prod --source-map --deploy-url https://cdn01.moecube.com/store/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

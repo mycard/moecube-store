@@ -1,27 +1,20 @@
 language: node_js
 node_js: node
-
-env:
-  secure:
-    QwnXsCYkcEftTWJShEVjVWuSkGu87sv/3yHx+JRPkdoqUHDlmWrS3Rl0LMBoJi9dJ/G7mIslKs89bzP0c8iPRiccwbc0tz/6AWwPYGYj7cHZcbH7wA0WEUpmOEO98I5x0Li6n+NK4DPTJTvGJjfWx4AQ4iTtsz/hTHDGYtMQuoY=
 cache:
   directories:
-    - '$HOME/.npm'
+  - "$HOME/.npm"
+script: npm run build
+deploy:
+  provider: s3
+  access_key_id: ztDf0fCxr0eCgSIi
+  secret_access_key:
+    secure: QzoeJUI0ojAl6Te3Fd/RzF8bYqzON00x25K7bnHDSFkFjNXy8OSdoZqlFm5erbxA3ZTgvuheCeVXPYsED7qw7/IcycQFTsYhYcc8kQkqNEgumPEURt0U4AY/o4RUjIRIZeJhcF15Fz86j8JYNRP/KnSKVoBX8IMWhbPzPjsnymo=
+  bucket: mycard
+  skip_cleanup: true
+  local-dir: dist
+  upload-dir: store
+  endpoint: https://minio.mycard.moe:9000
 notifications:
   webhooks:
     urls: https://api.mycard.moe/notify/travis
     on_cancel: never
-
-script: npm run build
-
-before_deploy:
-  - curl --location --retry 5 --output ossutil "https://ossutil-version-update.oss-cn-hangzhou.aliyuncs.com/$(curl --location --retry 5 https://ossutil-version-update.oss-cn-hangzhou.aliyuncs.com/ossutilversion)/ossutil64"
-  - chmod +x ossutil
-  - ./ossutil config --endpoint oss-cn-hangzhou.aliyuncs.com --access-key-id $ALIYUN_ID
-    --access-key-secret $ALIYUN_SECRET
-deploy:
-  provider: script
-  script: ./ossutil cp -rf dist oss://mycard/store
-  skip_cleanup: true
-  on:
-    branch: master
