@@ -11,7 +11,7 @@ deploy:
     secure: QzoeJUI0ojAl6Te3Fd/RzF8bYqzON00x25K7bnHDSFkFjNXy8OSdoZqlFm5erbxA3ZTgvuheCeVXPYsED7qw7/IcycQFTsYhYcc8kQkqNEgumPEURt0U4AY/o4RUjIRIZeJhcF15Fz86j8JYNRP/KnSKVoBX8IMWhbPzPjsnymo=
   bucket: mycard
   skip_cleanup: true
-  local-dir: dist
+  local-dir: dist/mycard-store
   upload-dir: store
   endpoint: https://minio.mycard.moe:9000
 notifications:
